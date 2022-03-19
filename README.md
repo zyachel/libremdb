@@ -5,7 +5,7 @@ A FOSS alternative front-end to IMDb.
 Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter](https://github.com/zedeus/nitter) and [many others](#similar-projects).
 
 <br/>
-<img src="./public/img/misc/preview.png" title="dark mode showing lighthouse stats" width="1000" />
+<img src="./public/img/misc/preview.png" title="image showing matrix movie info on libremdb" width="1000" />
 
 ---
 
