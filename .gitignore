@@ -1,0 +1,21 @@
+#big stuff
+node_modules/
+.cache/
+.parcel-cache/
+
+# env variables
+*.env
+
+# CSS files
+public/css/*.css
+public/css/*.css.map
+
+#misc stuff
+fetchers/*
+!fetchers/movie.js
+controllers/movieControllers.js
+routes/movieRoutes.js
+views/pug/homepage.pug
+views/pug/movies.pug
+views/pug/_card.pug
+utils/constants.js

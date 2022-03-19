@@ -1,0 +1,155 @@
+extends base
+
+block content 
+  main.main.movie
+    .movie__basic.basic
+      figure.basic__image-box(style=`background-image: url(${movie.basic.poster})`)
+        if movie.basic.poster
+          img.basic__image(
+          src=movie.basic.poster,
+          alt=`${movie.basic.name} cover image`,
+          title=`${movie.basic.name} cover image`
+          )
+        else 
+          svg.basic__image-na: use(href='/img/misc/sprite.svg#icon-image-slash')
+      .basic__about
+        h1.basic__title= movie.basic.name
+        .basic__metadata
+          each metadata in movie.basic.metadata
+            span.basic__metadata-data= metadata
+
+        .basic__stats
+          .basic__rating
+            span.basic__rating-num= movie.basic.rating || '\u2013'
+            svg.basic__rating-icon.basic__icon: use(href='/img/misc/sprite.svg#icon-rating')
+            span.basic__rating-text avg. rating
+          .basic__votes
+            span.basic__votes-num= movie.basic.numVotes || '\u2013'
+            svg.basic__votes-icon.basic__icon: use(href='/img/misc/sprite.svg#icon-like-dislike')
+            span.basic__votes-text number of votes
+          .basic__popularity
+            span.basic__popularity-num=movie.basic.popularity || '\u2013'
+            svg.basic__popularity-icon.basic__icon: use(href='/img/misc/sprite.svg#icon-graph-rising')
+            span.basic__popularity-text popularity 
+
+        .basic__genres
+          span.basic__genre-heading Genres: 
+          -if (movie.basic.genres.length)
+            each genre in movie.basic.genres 
+              span.basic__genre= genre
+          -else
+            span.basic__genre &ndash;
+
+        .basic__description
+          p.basic__description-heading Overview
+          p.basic__description-text= movie.basic.plotBrief || '\u2013'
+        .basic__directors
+          span.basic__director-heading Director: 
+          -if (movie.basic.directors.length)
+            each director in movie.basic.directors
+              span.basic__director= director
+          - else
+            span.basic__director &ndash;
+        .basic__writers
+          span.basic__writer-heading Writers: 
+          -if (movie.basic.writers.length)
+            each writer in movie.basic.writers
+              span.basic__writer= writer || '\u2013'
+          - else
+            span.basic__writer &ndash;
+
+    .movie__cast
+      h2.movie__heading-main Top Cast
+      ul.movie__cast-list.actors
+        each cast in movie.topCast.actors
+          li.actor: figure.actor__details 
+            if cast.avatar
+              img.actor__image(src=cast.avatar, alt=`image of ${cast.name}`)
+            else 
+              svg.actor__image-na: use(href='/img/misc/sprite.svg#icon-image-slash')
+            figcaption.actor__name= cast.name 
+            figcaption.actor__character-name= cast.characterName ? 'as '+ cast.characterName : ''
+
+    .movie__storyline 
+      h2.movie__heading-main Storyline 
+      .movie__storyline-details.storyline 
+        .storyline__story 
+          p.movie__heading-sub Story
+          span= movie.storyline.plotExpanded || '\u2013'
+        .storyline__tagline 
+          span.movie__heading-sub Tagline:&nbsp;
+          span= movie.storyline.tagline || '\u2013'
+        .storyline__pg 
+          span.movie__heading-sub Parental Guidance:&nbsp;
+          span= movie.storyline.parentalGuidance || '\u2013'
+
+
+    .movie__details 
+      h2.movie__heading-main Details 
+      .movie__details-container.details 
+        p.details__release-date 
+          span.movie__heading-sub Release Date:&nbsp; 
+          span=movie.details.releaseDate || '\u2013'
+        p.details__country 
+          span.movie__heading-sub Countries:&nbsp;
+          span=movie.details.countries.join(', ') || '\u2013'
+        p.details__languages 
+          span.movie__heading-sub Languages:&nbsp;
+          span= movie.details.languages.join(', ')
+        p.details__alt-name 
+          span.movie__heading-sub Also known as:&nbsp;
+          span= movie.details.alternateTitle || '\u2013'
+        p.details__-locations 
+          span.movie__heading-sub Filming locations:&nbsp;
+          span= movie.details.filmingLocations.join(', ') || '\u2013'
+        p.details__companies 
+          span.movie__heading-sub Companies:&nbsp;
+          span= movie.details.companies.join(', ')
+        -if(movie.details.officialSite)
+          a.movie__link(href=movie.details.officialSite) Official website
+            span &nbsp;&rarr;
+
+    .movie__boxoffice 
+      h2.movie__heading-main Box Office
+      .movie__boxoffice-details.boxoffice 
+        -	if (movie.boxoffice.grossWorldwide)
+          p.boxoffice__budget 
+            span.movie__heading-sub Budget:&nbsp;
+            span= movie.boxoffice.budget || '\u2013'
+          p.boxoffice__opening-weekend-domestic 
+            span.movie__heading-sub Opening Weekend:&nbsp;
+            span= movie.boxoffice.openingWeekendDomestic[0] || '\u2013'
+          p.boxoffice__domestic 
+            span.movie__heading-sub Gross Domestic:&nbsp;
+            span= movie.boxoffice.grossDomestic || '\u2013'
+          p.boxoffice__worldwide 
+            span.movie__heading-sub Gross Worldwide:&nbsp;
+            span= movie.boxoffice.grossWorldwide || '\u2013'
+        - else 
+          p.boxoffice__na Data not available
+
+    .movie__technical 
+      h2.movie__heading-main Technical Specs 
+      .movie__technical-details.technical
+        p.technical__runtime 
+          span.movie__heading-sub Runtime:&nbsp; 
+          span= movie.technicalSpecs.runtime || '\u2013'
+        p.technical__color 
+          span.movie__heading-sub Color:&nbsp; 
+          span= movie.technicalSpecs.color || '\u2013'
+        p.technical__ratio 
+          span.movie__heading-sub Aspect ratio:&nbsp; 
+          span= movie.technicalSpecs.aspectRatio || '\u2013'
+        p.technical__sound 
+          span.movie__heading-sub Sound:&nbsp; 
+          span= movie.technicalSpecs.sound.join(', ') || '\u2013'
+
+    .movie__media 
+      h2.movie__heading-main Media
+      -if (movie.media.images.length)
+        .movie__media-box 
+          each image, index in movie.media.images
+            figure.movie__media-image-secondary-box 
+              img.movie__media-image(src=image, alt=`image ${index + 1} from ${movie.basic.name}`)
+      -else 
+        p.movie-media__na no media avaiable

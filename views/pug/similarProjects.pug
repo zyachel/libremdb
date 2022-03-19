@@ -1,0 +1,50 @@
+extends base
+
+mixin project(name, description, website, instance, official=true)
+	.project
+		a.project__name(href=website)=name
+		p.project__about=description
+		a.project__instance(href=instance)=`${official ? 'Official' : 'Community'} instance `
+			span.project__instance-arrow &rarr;
+
+block content
+	main.main.similar-projects 
+		h1.heading.heading__primary.similar-projects__heading Other cool projects you should check out:
+		.similar-projects__list
+			+project(
+				'Teddit',
+				'Teddit is an alternative Reddit front-end focused on privacy.',
+				"https://codeberg.org/teddit/teddit", 
+				"https://teddit.net/"
+				)
+			+project(
+				'Nitter', 
+				'Nitter is a free and open source alternative Twitter front-end focused on privacy.', 
+				'https://github.com/zedeus/nitter', 
+				'https://nitter.net/'
+				)
+			+project(
+				'Bibliogram', 
+				'Bibliogram is an alternative front-end for Instagram.', 
+				'https://sr.ht/~cadence/bibliogram/', 
+				'https://bibliogram.art/'
+				)
+			+project(
+				'Invidious', 
+				'Invidious is an alternative front-end to YouTube.', 
+				'https://invidious.org', 
+				'https://invidious.snopyta.org/feed/popular', 
+				false
+				)
+			+project(
+				'Libreddit', 
+				'Libreddit is an alternative private front-end to Reddit.', 
+				'https://github.com/spikecodes/libreddit', 
+				'https://libreddit.spike.codes/'
+				)
+			+project(
+				'Scribe', 
+				'Scribe is an alternative Medium frontend.', 
+				'https://git.sr.ht/~edwardloveall/scribe', 
+				'https://scribe.rip/'
+				)

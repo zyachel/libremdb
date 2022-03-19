@@ -1,0 +1,13 @@
+extends base
+
+block content 
+	main.main.error 
+		h1.heading.heading__primary.error__status-code= statusCode
+		h2.heading.heading__secondary.error__message= message
+		if stack 
+			.error__stack-box
+				pre.error__stack: code= stack
+		p.error__text go back to the&nbsp;
+			a.error__link(href="/") home page
+		p.error__text if you believe this itself is an error,&nbsp;
+			a.error__link(href="/contact") contact us

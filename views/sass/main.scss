@@ -1,0 +1,5 @@
+// @use 'abstracts'; // stuff like sass mixins, variables and the likes
+@use 'base'; // containes main reset rules, some typography and keyframes for animations
+@use 'components'; // for things that are smaller than layouts. eg: buttons
+@use 'layout'; // will contain navs, header, footer, grid and stuff
+@use 'pages'; // for very specific styles for specific pages.

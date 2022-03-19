@@ -1,0 +1,16 @@
+extends base
+
+block content 
+	main.main.privacy
+		h1.heading.heading__primary.privacy__heading Privacy Policy
+		p.privacy__jist In short: libremdb doesn't collect any data at all.
+		.privacy__item
+			h2.heading.heading__secondary.privacy__item-heading Data you directly provide 
+			p.privacy__item-text None. 
+		.privacy__item 
+			h2.heading.heading__secondary.privacy__item-heading Data you passively provide 
+			p.privacy__item-text Heroku might log some things(like IP address). So, consider hosting your own instance or using a VPN.
+		.privacy__item 
+			h2.heading.heading__secondary.privacy__item-heading Data stored in your browser 
+			p.privacy__item-text To remember theme preferences, the website stores a key named 'theme' in Local Storage provided by your browser. Apart from that, there is nothing stored in your browser. To remove the key, press F12 > Storage(or Application in chromium-based browsers) > Local Storage > right click > Delete.
+			p.privacy__item-text To permamently disable libremdb from storing your theme prefrences, either turn off JavaScript or disable access to Local Storage for libremdb.

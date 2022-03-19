@@ -1,0 +1,26 @@
+header(class=`${page === 'About'? 'about__header' : ''} header`)
+  block header
+    .header__nav-bar
+      a.header__logo-box(href="/") 
+        svg.header__logo: use(href='/img/misc/sprite.svg#icon-logo')
+        span.header__logo-text libremdb
+
+      nav.header__nav
+        ul.header__nav-links
+          - if(page === 'About')
+            li.header__nav-item 
+              a.header__link(href='#features') Features
+            li.header__nav-item 
+              a.header__link(href="#faqs") FAQs
+          - else 
+            li.header__nav-item 
+              a.header__link(href='/about') About  
+            li.header__nav-item 
+              -const link = page === 'Contact' ? 'Privacy' : 'Contact';
+              a.header__link(href=`/${link.toLowerCase()}`)= link
+          li.header__nav-item 
+            a.header__link(href="https://github.com/zyachel/libremdb") Code
+
+        //- for theme 
+        label.theme-switcher__label(for="theme-switcher", name="theme switcher label", title="change theme") 
+          svg.theme-switcher__icon: use(href='/img/misc/sprite.svg#icon-theme-switcher')
