@@ -31,10 +31,10 @@
 }
 
 .go-to-page {
-  margin: 3rem 5rem;
+  margin: var(--spacer-300) var(--spacer-500);
   display: grid;
   grid-auto-flow: column;
-  gap: 5rem;
+  gap: var(--spacer-500);
   place-content: center;
   place-items: center;
 
@@ -44,8 +44,8 @@
   }
 
   &__icon {
-    height: 3rem;
-    width: 3rem;
+    height: var(--fs-300);
+    width: var(--fs-300);
     fill: var(--clr-button-alt-alpha);
   }
 
@@ -68,14 +68,14 @@
 ////////////////////////////////////////////////////////////////
 .overview {
   &__nav-box {
-    padding: 5rem 2rem;
+    padding: var(--spacer-500) var(--spacer-200);
 
     @include bp(bp-725) {
-      padding: 2rem;
+      padding: var(--spacer-200);
     }
 
     @include bp(bp-550) {
-      padding: 2rem 0;
+      padding: var(--spacer-200) 0;
     }
   }
 
@@ -86,7 +86,7 @@
   }
 
   &__nav {
-    padding: 0 2rem;
+    padding: 0 var(--spacer-200);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -94,7 +94,7 @@
     // overflow-x: scroll;
 
     @include bp(bp-725) {
-      padding: 0 1rem;
+      padding: 0 var(--spacer-100);
     }
 
     @include bp(bp-550) {
@@ -159,7 +159,7 @@
   }
 
   &__features {
-    padding: 6rem;
+    padding: var(--spacer-500);
 
     // display: grid;
     // grid-template-rows: max-content auto;
@@ -167,8 +167,8 @@
     // gap: 6rem;
     // padding: 6rem;
 
-    @include bp(bp-450) {
-      padding: 1rem;
+    @include bp(bp-550) {
+      padding: var(--spacer-100);
     }
   }
 
@@ -184,7 +184,7 @@
     max-width: 120rem;
     margin: 0 auto;
 
-    @include bp(bp-450) {
+    @include bp(bp-550) {
       padding: 5rem 1rem;
     }
   }
@@ -222,7 +222,7 @@
   &__item {
     // background-color: var(--color-secondary);
     display: grid;
-    gap: 1.5rem;
+    gap: var(--spacer-150);
   }
 
   &__item-heading {
@@ -275,7 +275,7 @@
 
   &__ways {
     text-align: center;
-    padding: 1rem;
+    padding: var(--spacer-100);
   }
 
   &__ways-image {
@@ -496,17 +496,20 @@
   &__heading-main {
     font-size: var(--fs-350);
     font-family: var(--ff-alt-alpha);
-    color: var(--clr-card-heading);
+    color: var(--clr-base-heading);
 
     @include bp(bp-900) {
-      font-size: 3rem;
+      font-size: var(--fs-300);
+    }
+    @include bp(bp-550) {
+      font-size: var(--fs-250);
     }
   }
   &__heading-sub {
     font-size: 1em;
     font-weight: 600;
     font-family: var(--ff-alt-alpha);
-    color: var(--clr-card-heading-alt-alpha);
+    color: var(--clr-base-heading-alt-alpha);
   }
 
   &__storyline,
@@ -584,11 +587,6 @@
     max-height: 30rem;
     flex: 1 0 30rem;
     max-width: 30rem;
-
-    @include bp(bp-900) {
-      max-height: 20rem;
-      flex: 1 0 20rem;
-    }
   }
   &__media-box {
     display: flex;
@@ -637,6 +635,6 @@
   }
 
   @include bp(bp-550) {
-    padding: var(--spacer-200);
+    padding-inline: var(--spacer-200);
   }
 }

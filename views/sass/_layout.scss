@@ -280,8 +280,10 @@
 //                           MAIN
 ////////////////////////////////////////////////////////////////
 .main {
-  // max-width: 200rem;
-  // margin-inline: auto;
+  @include bp(bp-1800, true) {
+    width: 180rem;
+    margin-inline: auto;
+  }
   padding: 2rem;
 
   @include bp(bp-450) {

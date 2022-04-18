@@ -8,7 +8,8 @@ block content
           img.basic__image(
           src=movie.basic.poster,
           alt=`${movie.basic.name} cover image`,
-          title=`${movie.basic.name} cover image`
+          title=`${movie.basic.name} cover image`,
+          loading='lazy'
           )
         else 
           svg.basic__image-na: use(href='/img/misc/sprite.svg#icon-image-slash')
@@ -64,7 +65,7 @@ block content
         each cast in movie.topCast.actors
           li.actor: figure.actor__details 
             if cast.avatar
-              img.actor__image(src=cast.avatar, alt=`image of ${cast.name}`)
+              img.actor__image(src=cast.avatar, alt=`image of ${cast.name}`, loading='lazy')
             else 
               svg.actor__image-na: use(href='/img/misc/sprite.svg#icon-image-slash')
             figcaption.actor__name= cast.name 
@@ -150,6 +151,6 @@ block content
         .movie__media-box 
           each image, index in movie.media.images
             figure.movie__media-image-secondary-box 
-              img.movie__media-image(src=image, alt=`image ${index + 1} from ${movie.basic.name}`)
+              img.movie__media-image(src=image, alt=`a still from ${movie.basic.name}`, loading='lazy')
       -else 
         p.movie-media__na no media avaiable

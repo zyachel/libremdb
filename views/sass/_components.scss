@@ -356,7 +356,7 @@
 .features {
   display: grid;
   grid-template-rows: max-content auto;
-  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
   gap: var(--spacer-500);
 
   @include bp(bp-550) {

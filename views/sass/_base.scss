@@ -14,10 +14,6 @@ html {
   scroll-behavior: smooth;
   font-size: 62.5%;
 
-  @include bp(bp-725) {
-    font-size: 58%;
-  }
-
   @include bp(bp-350) {
     font-size: 55%;
   }

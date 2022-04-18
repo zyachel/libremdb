@@ -95,6 +95,7 @@ $font-type-map: (
 // using em for accessibility reasons(see: https://zellwk.com/blog/media-query-units/)
 // 1em = 16px
 $breakpoints: (
+  bp-1800: 112.5em,
   bp-1100: 68.75em,
   bp-900: 56.25em,
   bp-725: 45.32em,
@@ -105,7 +106,7 @@ $breakpoints: (
 );
 
 // mixin to handle known and unknown breakpoints:
-@mixin bp($given-breakpoint) {
+@mixin bp($given-breakpoint, $min:false) {
   // just  assigning the given value to a new variable since we're going to change it conditionally;
   $breakpoint: $given-breakpoint;
   // if $breakpoints map contains the given variable then getting it's value
@@ -113,7 +114,12 @@ $breakpoints: (
     $breakpoint: map.get($breakpoints, $breakpoint);
   }
   // and then using it for media query. This will also work for straight out values(50em or 800px, for example)
-  @media screen and (max-width: $breakpoint) {
+  $expr: 'max-width: #{$breakpoint}';
+  @if($min) {
+    $expr: 'min-width: #{$breakpoint}';
+  }
+
+  @media screen and ($expr) {
     @content;
   }
 }
@@ -160,6 +166,7 @@ $misc-variables: (
   spacer-200: 2rem,
   spacer-050: 0.5rem,
   spacer-100: 1rem,
+  spacer-150: 1.5rem,
   spacer-300: 3rem,
   spacer-500: 5rem,
   spacer-800: 8rem,
@@ -176,12 +183,12 @@ $themed-variables: (
       dark: color.scale($clr-tertiary, $lightness: -82%),
     ),
   clr-base-heading: (
-    light: darken($clr-tertiary, 9%),
-    dark: color.scale($clr-primary, $lightness: -10%, $saturation: -70%),
-  ),
-  clr-base-heading-alt-alpha: (
-    light: initial,
-    dark: initial,
+    light: color.scale($clr-tertiary, $lightness: -35%),
+    dark: $clr-primary,
+    ),
+    clr-base-heading-alt-alpha: (
+          light: color.scale($clr-tertiary, $lightness: -15%),
+      dark: color.scale($clr-secondary, $lightness: 95%),
   ),
   clr-base-text: (
     light: $clr-alpha,
@@ -239,7 +246,7 @@ $themed-variables: (
   ),
   clr-card-heading: (
     light: color.scale($clr-tertiary, $lightness: -35%),
-    dark: color.scale($clr-secondary, $lightness: 85%, $saturation: 0%),
+    dark: color.scale($clr-secondary, $lightness: 90%, $saturation: 0%),
   ),
   clr-card-heading-alt-alpha: (
     light: color.scale($clr-tertiary, $lightness: -15%),
