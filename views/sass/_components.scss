@@ -2,6 +2,25 @@
 @use 'abstracts' as *;
 
 ////////////////////////////////////////////////////////////////
+//                          PLACEHOLDERS
+////////////////////////////////////////////////////////////////
+%list-items:not(:last-of-type)::after {
+  margin-right: 0.6rem;
+  display: inline-block;
+  content: ',';
+}
+
+%bullet-items:not(:last-of-type)::after {
+  display: inline-block;
+  content: '\00b7';
+  margin: 0 5px;
+  font-weight: 900;
+  font-family: var(--ff-alt-alpha);
+  // font-size: var(--fs-200);
+  color: var(--clr-card-text-alt-alpha);
+}
+
+////////////////////////////////////////////////////////////////
 //                          HEADINGS
 ////////////////////////////////////////////////////////////////
 .heading {
@@ -556,11 +575,6 @@
     }
   }
 
-  %list-items:not(:last-of-type)::after {
-    margin-right: 0.6rem;
-    display: inline-block;
-    content: ',';
-  }
   &__title {
     font-family: var(--ff-alt-alpha);
     color: var(--clr-card-heading);
@@ -605,15 +619,7 @@
     // font-size: var(--fs-180);
     // line-height: 1;
 
-    &:not(:last-of-type)::after {
-      display: inline-block;
-      content: '\00b7';
-      margin: 0 5px;
-      font-weight: 900;
-      font-family: var(--ff-alt-alpha);
-      font-size: var(--fs-200);
-      color: var(--clr-card-text-alt-alpha);
-    }
+    @extend %bullet-items;
   }
 
   &__stats {
@@ -801,4 +807,45 @@
 .details {
   display: grid;
   gap: var(--spacer-050);
+}
+
+////////////////////////////////////////////////////////////////
+//                          review
+////////////////////////////////////////////////////////////////
+.review {
+  &__scores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacer-050) var(--spacer-300);
+    padding-block: var(--spacer-100);
+  }
+
+  &__score {
+  }
+
+  &__box {
+    display: grid;
+    grid-template-columns: auto min-content;
+    gap: var(--spacer-100);
+
+    @include bp(bp-725) {
+      grid-template-columns: auto;
+    }
+  }
+
+  &__summary {
+  }
+
+  &__rating {
+    display: flex;
+    gap: var(--spacer-050);
+
+    > * {
+      align-self: center;
+    }
+  }
+
+  &__comment {
+    grid-column: 1 / -1;
+  }
 }

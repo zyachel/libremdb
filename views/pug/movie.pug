@@ -84,6 +84,26 @@ block content
           span.movie__heading-sub Parental Guidance:&nbsp;
           span= movie.storyline.parentalGuidance || '\u2013'
 
+    .movie__review 
+      h2.movie__heading-main Reviews 
+      -if (movie.reviews.review.reviewRating)
+        .movie__review-box.review__box
+          h3.review__summary.movie__heading-sub= movie.reviews.review.reviewSummary
+          p.review__rating
+            svg.basic__rating-icon.basic__icon: use(href='/img/misc/sprite.svg#icon-rating')
+            span.movie__heading-sub= movie.reviews.review.reviewRating
+          p.review__comment= movie.reviews.review.reviewComment
+      -else 
+        p.review__na no reviews
+
+      .movie__review-scores.review__scores
+        each reviewScore in movie.reviews.reviewScores
+          p.review__score
+            span.movie__heading-sub= reviewScore[0]
+            |&nbsp;
+            span= reviewScore[1]
+        
+      a.movie__link(href='./reviews') All reviews
 
     .movie__details 
       h2.movie__heading-main Details 

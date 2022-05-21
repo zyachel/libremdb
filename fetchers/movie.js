@@ -109,6 +109,20 @@ const getMovie = async (title, quality = null) => {
       '[data-testid="storyline-certificate"] li'
     ).text();
 
+    // reviews
+    const reviewSummary = $(
+      'section[data-testid="UserReviews"] span[data-testid="review-summary"]'
+    ).text();
+    const reviewRating = $(
+      'section[data-testid="UserReviews"] div[data-testid="review-featured-header"]'
+    )
+      .children()
+      .last()
+      .text();
+    const reviewComment = $(
+      'section[data-testid="UserReviews"] div[data-testid="review-overflow"]'
+    ).text();
+
     // details
     const releaseDate = $(
       'section[data-testid="Details"] li[data-testid="title-details-releasedate"] li'
@@ -223,6 +237,11 @@ const getMovie = async (title, quality = null) => {
       },
       reviews: {
         reviewScores,
+        review: {
+          reviewComment,
+          reviewSummary,
+          reviewRating,
+        },
       },
     };
 

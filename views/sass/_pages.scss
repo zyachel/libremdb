@@ -516,7 +516,8 @@
   &__boxoffice,
   &__details,
   &__technical,
-  &__media {
+  &__media,
+  &__review {
     // background: var(--clr-card-bg);
     // border-radius: var(--border-radius);
     padding: var(--spacer-200);
@@ -573,7 +574,7 @@
     }
   }
 
-  &__media {
+  &__review {
     align-self: center;
     grid-column: 1 / span 4;
     grid-row: -3 / -1;
@@ -581,6 +582,16 @@
       grid-column: 1 / -1;
       grid-row: unset;
     }
+  }
+
+  &__media {
+    align-self: center;
+    grid-column: 1 / -1;
+    // grid-row: -3 / -1;
+    // @include bp(bp-1100) {
+    //   grid-column: 1 / -1;
+    //   grid-row: unset;
+    // }
   }
 
   &__media-image-secondary-box {
