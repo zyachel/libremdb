@@ -91,6 +91,8 @@ In short: libremdb doesn't collect any data at all.
 
 ## Installation
 
+### Manual
+
 1. Install Node.js and Git.  
    for Node.js, visit [their website](https://nodejs.org/en/).  
    for Git, run `sudo apt install git` if you're on a Debain-based distro. Else visit [their website](https://git-scm.com/).
@@ -107,6 +109,10 @@ In short: libremdb doesn't collect any data at all.
    ```
 
 libremdb will start running at http://localhost:3000.
+
+### Docker
+
+There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay) made by [@TheFrenchGhosty](https://github.com/TheFrenchGhosty) for [PussTheCat.org's instance](https://libremdb.pussthecat.org). You can use that in case you wish to use docker.
 
 ---
 
