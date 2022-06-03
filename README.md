@@ -30,6 +30,15 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 
 ---
 
+## Instances
+
+| Instance URL                    | Country       | Notes                                                 |
+| ------------------------------- | ------------- | ----------------------------------------------------- |
+| https://libremdb.herokuapp.com  | United States | Official; Hosted on Heroku                            |
+| https://libremdb.pussthecat.org | Germany       | Operated by [PussTheCat.org](https://pussthecat.org/) |
+
+---
+
 ## FAQs
 
 - Why is it so slow?  
