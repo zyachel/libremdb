@@ -1,6 +1,6 @@
 {
   "name": "libremdb",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a FOSS alternative front-end to IMDb",
   "main": "server.js",
   "scripts": {
