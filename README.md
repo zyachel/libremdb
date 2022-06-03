@@ -110,7 +110,7 @@ libremdb will start running at http://localhost:3000.
   Nitter is a free and open source alternative Twitter front-end focused on privacy.
 - [Bibliogram](https://sr.ht/~cadence/bibliogram/)  
   Bibliogram is an alternative front-end for Instagram.
-- [Invidious](https://invidious.org)  
+- [Invidious](https://invidious.io)  
   Invidious is an alternative front-end to YouTube.
 - [Libreddit](https://github.com/spikecodes/libreddit)  
   Libreddit is an alternative private front-end to Reddit.
