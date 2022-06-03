@@ -57,8 +57,6 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
   Refer to the [features section](#features) above.
 - Why didn't you use other databases like [TMDB](https://www.themoviedb.org/) or [OMDb](https://www.omdbapi.com/)?  
   IMDb simply has superior dataset compared to all other alternatives. With that being said, I'd encourage you to check out those alternatives too.
-- Why did you deploy it on heroku? Why not just buy your own domain name?  
-  It's just a proof-of-concept for now. However, if you'd like to do so, you are very welcome.
 
 ---
 
@@ -67,8 +65,9 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 In short: libremdb doesn't collect any data at all.
 
 - Data you directly provide: None.
-- Data you passively provide: Heroku might log some things(like IP address). So, consider hosting your own instance or using a VPN.
+- Data you passively provide: A stack trace is logged to console on the server if you hit some error route.
 - Data stored in your browser: To remember theme preferences, the website stores a key named 'theme' in Local Storage provided by your browser. Apart from that, there is nothing stored in your browser.
+- Data collected by other services: libremdb connects to `m.media-amazon.com` for fetching images. So, Amazon might log your IP address. If you use the official instance which is deployed on Heroku, then Heroku might also log you IP address. You're advised to follow due precaution.
 
 ---
 
