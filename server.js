@@ -1,4 +1,3 @@
-const dotenv = require('dotenv');
 const app = require('./app');
 
 //---------------------------------------------------------------------------//
@@ -15,11 +14,6 @@ process.on('unhandledRejection', err => {
   console.log('\x1b[31m%s\x1b[0m', '🔴️ ERROR:', err);
   server.close(() => process.exit(1)); // shutting the system down gracefully
 });
-
-//---------------------------------------------------------------------------//
-//                       LOADING CONFIG FILE VARIABLES
-//---------------------------------------------------------------------------//
-dotenv.config({ path: './config.env' }); // loading .env variables
 
 //---------------------------------------------------------------------------//
 //                              STARTING SERVER

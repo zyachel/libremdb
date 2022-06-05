@@ -3,11 +3,18 @@ const path = require('path');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const compression = require('compression');
-const app = express();
-// const movieRouter = require('./routes/movieRoutes');
+const dotenv = require('dotenv');
+
 const viewRouter = require('./routes/viewRoutes');
 const globalErrorHandler = require('./controllers/errorControllers');
 const { AppError } = require('./utils/errorUtils');
+
+const app = express();
+
+//---------------------------------------------------------------------------//
+//                       LOADING CONFIG FILE VARIABLES
+//---------------------------------------------------------------------------//
+dotenv.config({ path: './config.env' }); // loading .env variables
 
 //-------------------------------------------------------------------------//
 //                            GLOBAL MIDDLEWARES
