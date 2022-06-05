@@ -38,7 +38,11 @@ app.use(
 app.set('view engine', 'pug'); // setting pug as a view engine
 app.set('views', path.join(__dirname, 'views/pug')); // directory from where html template will be sourced
 
-app.use(express.static(path.join(__dirname, 'public'))); // directory from where files like css, images, fonts, will be sourced
+app.use(
+  express.static(path.join(__dirname, 'public'), {
+    maxAge: process.env.CACHE_PERIOD || '1h',
+  })
+); // directory from where files like css, images, fonts, will be sourced
 
 if (process.env.NODE_ENV === 'development') app.use(morgan('dev')); // for logging requests
 // app.use(express.json({ limit: '3mb' })); // for parsing json
