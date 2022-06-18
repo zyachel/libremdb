@@ -95,7 +95,7 @@ In short: libremdb doesn't collect any data at all.
 
 1. Install Node.js and Git.  
    for Node.js, visit [their website](https://nodejs.org/en/).  
-   for Git, run `sudo apt install git` if you're on a Debain-based distro. Else visit [their website](https://git-scm.com/).
+   for Git, run `sudo apt install git` if you're on a Debian-based distro. Else visit [their website](https://git-scm.com/).
 
 2. Clone and set up the repo.
 
