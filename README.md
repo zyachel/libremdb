@@ -32,10 +32,11 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 
 ## Instances
 
-| Instance URL                    | Country       | Notes                                                 |
-| ------------------------------- | ------------- | ----------------------------------------------------- |
-| https://libremdb.herokuapp.com  | United States | Official; Hosted on Heroku                            |
-| https://libremdb.pussthecat.org | Germany       | Operated by [PussTheCat.org](https://pussthecat.org/) |
+| Instance URL                     | Region        | Notes                                                     |
+| -------------------------------- | ------------- | --------------------------------------------------------- |
+| https://libremdb.herokuapp.com   | United States | Official; Hosted on Heroku                                |
+| https://libremdb.pussthecat.org  | Germany       | Operated by [PussTheCat.org](https://pussthecat.org/)     |
+| https://libremdbeu.herokuapp.com | Europe        | Operated by [toyboatcash](https://github.com/toyboatcash) |
 
 ---
 
