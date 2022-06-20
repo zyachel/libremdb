@@ -83,7 +83,7 @@ In short: libremdb doesn't collect any data at all.
 ### at a later stage
 
 - [ ] use redis
-- [ ] implement a better installation method
+- [x] implement a better installation method
 - [ ] serve images from libremdb itself
 - [ ] add a way to see trailer and other videos
 - [ ] implement other trivial routes
@@ -101,7 +101,7 @@ In short: libremdb doesn't collect any data at all.
 2. Clone and set up the repo.
 
    ```bash
-   git clone https://github.com/zyachel/libremdb.git
+   git clone https://github.com/zyachel/libremdb.git # replace gituhb.com with codeberg.org if you wish so.
    cd libremdb
    cp config.env.template config.env # you can make necessary changes
    # if you use npm, change 'pnpm' to 'npm run' here as well as in package.json
@@ -117,7 +117,26 @@ There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay)
 
 ---
 
-## similar projects
+## Miscellaneous
+
+### Automatic redirection
+
+Use any of these extensions to automatically redirect IMDb URLs to libremdb:
+
+- [Redirector](https://github.com/einaregilsson/Redirector)  
+  config:
+
+  ```
+  Description: redirect IMDb to libremdb
+  Example URL: https://www.imdb.com/title/tt0258463/?ref_=tt_sims_tt_t_4
+  Include pattern: https?:\/\/(www\.)?imdb\.com\/title\/([^\?]*)
+  Redirect to: https://libremdb.herokuapp.com/title/$2
+  Pattern type: Regular Expression
+  ```
+
+- [LibRedirect](https://github.com/libredirect/libredirect/)
+
+### Similar projects
 
 - [Teddit](https://codeberg.org/teddit/teddit)  
   Teddit is an alternative Reddit front-end focused on privacy.
@@ -131,8 +150,7 @@ There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay)
   Libreddit is an alternative private front-end to Reddit.
 - [Scribe](https://git.sr.ht/~edwardloveall/scribe)  
   Scribe is an alternative Medium frontend.
-
-- [other cool projects &rarr;](https://github.com/mendel5/alternative-front-ends)
+- [full list &rarr;](https://github.com/digitalblossom/alternative-frontends)
 
 ---
 
@@ -148,4 +166,4 @@ There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay)
 ## License
 
 Licensed under GNU AGPLv3.  
-Refer to [License](/LICENSE) for full legalese.
+See [License](./LICENSE) for full legalese.
