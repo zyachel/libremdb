@@ -113,7 +113,13 @@ libremdb will start running at http://localhost:3000.
 
 ### Docker
 
-There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay) made by [@TheFrenchGhosty](https://github.com/TheFrenchGhosty) for [PussTheCat.org's instance](https://libremdb.pussthecat.org). You can use that in case you wish to use docker.
+To run libremdb with Docker, you need to install Docker & docker-compose.
+
+   ```bash
+   git clone https://github.com/zyachel/quetre.git # replace gituhb.com with codeberg.org if you wish so.
+   cd quetre
+   docker-compose up -d
+   ```
 
 ---
 
