@@ -37,6 +37,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | https://libremdb.herokuapp.com   | United States | Official; Hosted on Heroku                                |
 | https://libremdb.pussthecat.org  | Germany       | Operated by [PussTheCat.org](https://pussthecat.org/)     |
 | https://libremdbeu.herokuapp.com | Europe        | Operated by [toyboatcash](https://github.com/toyboatcash) |
+| https://lmdb.tokhmi.xyz/         | U.S.          | Operated by [Tokhmi](https://tokhmi.xyz)                  |
 
 ---
 
