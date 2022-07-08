@@ -9,5 +9,6 @@ services:
     environment:
       - "NODE_ENV=production"
       - "PORT=3000"
-      - "IMAGE_QUALITY=500"
-      - "CACHE_PERIOD=1h"
+      - "IMAGE_QUALITY=500" # change image quality
+      - "CACHE_PERIOD=1h" # cache duration for static assets(eg: '2.5 days', 3600, 2m)
+
