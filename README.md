@@ -38,6 +38,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | https://libremdb.pussthecat.org  | Germany       | Operated by [PussTheCat.org](https://pussthecat.org/)     |
 | https://libremdbeu.herokuapp.com | Europe        | Operated by [toyboatcash](https://github.com/toyboatcash) |
 | https://lmdb.tokhmi.xyz/         | U.S.          | Operated by [Tokhmi](https://tokhmi.xyz)                  |
+| https://libremdb.esmailelbob.xyz/         | Canada          | Operated by [Esmail EL BoB](https://esmailelbob.xyz)                  |
 
 ---
 
