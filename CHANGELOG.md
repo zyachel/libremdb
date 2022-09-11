@@ -1,3 +1,17 @@
+# [1.0.0](https://github.com/zyachel/libremdb/compare/v0.1.2...v1.0.0) (2022-09-11)
+
+
+### Features
+
+* major rewrite ([e4849e8](https://github.com/zyachel/libremdb/commit/e4849e8c757e4f1416be7338c89421ca27e28e8d))
+
+
+### BREAKING CHANGES
+
+* the whole application is rewritten from scratch.
+
+
+
 ## [0.1.2](https://github.com/zyachel/libremdb/compare/v0.1.1...v0.1.2) (2022-06-06)
 
 
