@@ -1,0 +1,56 @@
+////////////////////////////////////////////////////////////////
+//                      RAW VARIABLES
+////////////////////////////////////////////////////////////////
+
+// 1. type scale
+// see more at https://type-scale.com/
+// 1.33
+$_perfect-fourth: (
+  0: 6rem,
+  1: 5rem,
+  2: 3.8rem,
+  3: 2.8rem,
+  4: 2.1rem,
+  5: 1.6rem,
+  // 6:  1.2rem,
+);
+// 1.25
+$_major-third: (
+  0: 4.9rem,
+  1: 3.9rem,
+  2: 3.1rem,
+  3: 2.5rem,
+  4: 2rem,
+  5: 1.6rem,
+  // 6: 1.3rem,
+);
+
+// 2 font families
+$_ff-sans: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+  helvetica neue, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+$_ff-serif: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman,
+  Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji,
+  Segoe UI Symbol;
+$_ff-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+
+////////////////////////////////////////////////////////////////
+//                         TO EXPORT
+////////////////////////////////////////////////////////////////
+
+$font-sizes: (
+  desktop: $_perfect-fourth,
+  mobile: $_major-third,
+);
+
+$misc: (
+  ff-base: $_ff-sans,
+  ff-accent: (
+    'RedHat Display',
+    $_ff-sans,
+  ),
+  fw-thin: 300,
+  fw-base: 400,
+  fw-medium: 500,
+  fw-bold: 700,
+  fw-black: 900,
+);

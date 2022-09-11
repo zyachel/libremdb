@@ -1,0 +1,24 @@
+.progress {
+  position: fixed;
+  z-index: 1;
+  inset-inline: 0;
+  inset-block-start: 0;
+  height: 4px;
+  width: 100%;
+  background: var(--clr-fill);
+  transform: translateX(-100%);
+  box-shadow: 2px 0 5px var(--clr-fill);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  animation: prograte 60s ease-out forwards;
+}
+
+@keyframes prograte {
+  5% {
+    transform: translateX(-40%);
+  }
+  100% {
+    transform: translateX(-3%);
+  }
+}

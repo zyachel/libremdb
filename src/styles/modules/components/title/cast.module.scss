@@ -1,0 +1,76 @@
+@use '../../../abstracts' as helper;
+
+.container {
+  display: grid;
+  gap: var(--comp-whitespace);
+  margin-inline: auto; // for when cast members are so few that the container doesn't scroll
+}
+
+.cast {
+  --max-width: 15rem;
+  --min-height: 35rem;
+  list-style: none;
+  overflow-x: auto;
+
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--spacer-4);
+  padding: 0 var(--spacer-2) var(--spacer-3) var(--spacer-2);
+
+  grid-auto-columns: var(--max-width);
+  min-height: var(--min-height);
+
+  @include helper.bp('bp-700') {
+    --min-height: 30rem;
+  }
+}
+
+.member {
+  height: 100%;
+  display: grid;
+  grid-template-rows: minmax(auto, 70%) min-content auto;
+  justify-items: center;
+  text-align: center;
+  font-size: var(--fs-5);
+
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: var(--clr-shadow);
+  background-color: var(--clr-bg-accent);
+
+  &__imgContainer {
+    justify-self: stretch;
+    position: relative;
+
+    // for icon when image is unavailable
+    display: grid;
+    place-items: center;
+  }
+  &__img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__imgNA {
+    fill: var(--clr-fill-muted);
+    height: 40%;
+  }
+
+  &__textContainer {
+    display: grid;
+    gap: var(--spacer-0);
+    padding: var(--spacer-0);
+    // place-content: center;
+    text-align: center;
+    justify-items: center;
+    align-content: start;
+  }
+
+  &__name {
+    @include helper.prettify-link(var(--clr-link));
+  }
+
+  &__role {
+    font-size: 0.9em;
+  }
+}

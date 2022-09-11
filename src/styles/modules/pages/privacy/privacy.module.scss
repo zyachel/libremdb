@@ -1,0 +1,36 @@
+@use '../../../abstracts' as helper;
+
+.policy {
+  // to make text more readable for large screen users
+  margin-inline: auto;
+  width: min(100%, 100rem);
+
+  display: grid;
+  --doc-whitespace: var(--spacer-8);
+  --comp-whitespace: var(--spacer-5);
+
+  padding: var(--doc-whitespace);
+
+  &__heading {
+    text-align: center;
+  }
+
+  @include helper.bp('bp-700') {
+    --doc-whitespace: var(--spacer-5);
+    --comp-whitespace: var(--spacer-3);
+  }
+  @include helper.bp('bp-450') {
+    padding: var(--spacer-3);
+  }
+}
+
+.list {
+  padding-block: var(--doc-whitespace);
+
+  display: grid;
+  gap: var(--comp-whitespace);
+
+  @include helper.bp('bp-900') {
+    padding-block: var(--spacer-3);
+  }
+}

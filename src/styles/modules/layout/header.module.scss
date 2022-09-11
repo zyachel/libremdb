@@ -1,0 +1,91 @@
+@use '../../abstracts' as helper;
+
+.header {
+  --dimension: 1.5em; // will be used for icons
+
+  font-size: 1.1em;
+
+  display: grid;
+  background: (var(--clr-bg-muted));
+
+  &__about {
+    min-height: 100vh;
+    background: var(--clr-gradient);
+    grid-template-rows: max-content 1fr 0.15fr; // .15fr for centering the hero
+  }
+}
+
+.topbar {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns:
+    minmax(max-content, 0.3fr)
+    1fr minmax(max-content, 0.3fr);
+
+  align-items: center;
+  gap: var(--spacer-4);
+  padding: var(--spacer-4);
+
+  @include helper.bp('bp-700') {
+    padding: var(--spacer-3);
+  }
+}
+
+.logo {
+  justify-self: start;
+
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-1);
+
+  &__icon {
+    height: var(--dimension);
+    width: var(--dimension);
+    fill: var(--clr-fill);
+  }
+
+  &__text {
+    line-height: 1;
+    font-size: var(--fs-4);
+    color: var(--clr-fill);
+    font-weight: var(--fw-bold);
+    font-family: var(--ff-accent);
+  }
+}
+
+.nav {
+  justify-self: center;
+  &__list {
+    display: flex;
+    list-style: none;
+    gap: var(--spacer-4);
+  }
+
+  @include helper.bp('bp-700') {
+    display: none;
+  }
+}
+
+.themeToggler {
+  justify-self: end;
+  grid-column: -2 / -1;
+}
+
+.hero {
+  display: grid;
+  text-align: center;
+  place-content: center;
+  gap: var(--spacer-0);
+  padding-inline: var(--spacer-1);
+
+  &__text {
+    font-size: var(--fs-0);
+  }
+
+  @include helper.bp('bp-700') {
+    &__text {
+      font-size: var(--fs-1);
+    }
+  }
+}

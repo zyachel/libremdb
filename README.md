@@ -1,61 +1,58 @@
 # libremdb
 
-A FOSS alternative front-end to IMDb.
+A free & open source IMDb front-end.
 
 Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter](https://github.com/zedeus/nitter) and [many others](#similar-projects).
 
-<br/>
-<img src="./public/img/misc/preview.png" title="image showing matrix movie info on libremdb" width="1000" />
+_(This is a rewrite of libremdb in Next.js. The information below corresponds to this branch only. I'll make this branch default sometime later.)_
+| | |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| <img src="./public/img/misc/preview.png" title="screenshot (desktop screen, light mode)" width="1500" /> | <img src="./public/img/misc/preview2.png" title="screenshot (mobile screen, dark mode)" width="385" /> |
 
 ---
 
-## Features
+## Some Features
 
 - No ads or tracking  
   Browse any movie info without being tracked or bombarded by annoying ads.
-- No connection to IMDb  
-  All requests go through the backend; client never talks to IMDb except for a bunch of requests to `m.media-amazon.com` for images.
-- No JavaScript required  
-  Just a few linesof code(~30) to save theme preference, which itself is optional.
 - Modern interface  
   Modern interface with curated colors supporting both dark and light themes.
 - Responsive design  
   Be it your small mobile or big computer screen, it's fully responsive.
 - Lightweight  
   _[Up movie page](https://imdb.com/title/tt1049413/)_  
-  | | libremdb | IMDb |
-  | --------------- | -------- | ------ |
-  | no. of requests | ~35 | ~280 |
-  | data consumed | 1.35MB | 7.75MB |
+  (tested on Firefox v104; without scroll; simulated regular 4g)
+
+  | Network tab stats        | libremdb | IMDb   |
+  | ------------------------ | -------- | ------ |
+  | no. of requests          | 22       | 180    |
+  | data transfered(gzipped) | 468KB    | 1.88MB |
+  | load event fired in      | 6.22s    | 10.01s |
 
 ---
 
 ## Instances
 
-| Instance URL                     | Region        | Notes                                                     |
-| -------------------------------- | ------------- | --------------------------------------------------------- |
-| https://libremdb.herokuapp.com   | United States | Official; Hosted on Heroku                                |
-| https://libremdb.pussthecat.org  | Germany       | Operated by [PussTheCat.org](https://pussthecat.org/)     |
-| https://libremdbeu.herokuapp.com | Europe        | Operated by [toyboatcash](https://github.com/toyboatcash) |
-| https://lmdb.tokhmi.xyz/         | U.S.          | Operated by [Tokhmi](https://tokhmi.xyz)                  |
-| https://libremdb.esmailelbob.xyz/         | Canada          | Operated by [Esmail EL BoB](https://esmailelbob.xyz)                  |
-| http://libremdb.lqs5fjmajyp7rvp4qvyubwofzi6d4imua7vs237rkc4m5qogitqwrgyd.onion/         | Canada          | Operated by [Esmail EL BoB](https://esmailelbob.xyz)                  |
+| Instance URL             | Region | Notes          |
+| ------------------------ | ------ | -------------- |
+| https://libremdb.iket.me | Canada | Operated by me |
 
 ---
 
-## FAQs
+## Questions you might have
 
 - Why is it so slow?  
   Whenever you request info about a movie/show on libremdb, 4 trips are made(2 between your browser and libremdb's server, and 2 between libremdb's server and IMDb's server) instead of the usual 2 trips when you visit a website. For this reason there's a noticable delay. This is a bit of inconvenience you'll have to face should you wish to use this website.
 
 - It doesn't have all routes.  
-  I think most of the people just check IMDb to get a quick glimpse of a movie/show. That's why there is just one route for now. However, I will try to implement other important routes if time allows. Keep an eye on [To-Do](#to-do) section.
+  I'll implement more with time :)
 
-- Why is it connecting to `m.media-amazon.com`?  
-  For now, images are directly served from amazon. If I have enough time in the future, I'll implement a way to serve the images from libremdb instead.
+- I see connection being made to some Amazon domains.  
+  For now, images and videos are directly served from Amazon. If I have enough time in the future, I'll implement a way to serve the images from libremdb instead.
 
-- Will amazon track me then?  
-  They may log your IP address. I'd recommend using a VPN for mitigating this risk.
+- Will Amazon track me then?  
+  They may log your IP address, useragent, and other such
+  identifiers. I'd recommend using a VPN, or accessing the website through TOR for mitigating this risk.
 
 - Why not just use IMDb?  
   Refer to the [features section](#features) above.
@@ -66,12 +63,14 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 
 ## Privacy
 
-In short: libremdb doesn't collect any data at all.
+- Information collected:  
+  None.
 
-- Data you directly provide: None.
-- Data you passively provide: A stack trace is logged to console on the server if you hit some error route.
-- Data stored in your browser: To remember theme preferences, the website stores a key named 'theme' in Local Storage provided by your browser. Apart from that, there is nothing stored in your browser.
-- Data collected by other services: libremdb connects to `m.media-amazon.com` for fetching images. So, Amazon might log your IP address. If you use the official instance which is deployed on Heroku, then Heroku might also log you IP address. You're advised to follow due precaution.
+- Information stored in your browser:  
+  A key named 'theme' is stored in Local Storage provided by your browser, if you ever override the default theme. To remove it, go to site data settings, and clear the data for this website. To permamently disable libremdb from storing your theme prefrences, either turn off JavaScript or disable access to Local Storage for libremdb.
+
+- Information collected by other services:  
+  libremdb connects to 'media-amazon.com' and 'media-imdb.com' for fetching images and videos. So, Amazon might log your IP address, and other information(such as http headers) sent by your browser.
 
 ---
 
@@ -80,20 +79,22 @@ In short: libremdb doesn't collect any data at all.
 ### soon
 
 - [ ] add advanced search route
-- [ ] add did you know and reviews on movie info page
+- [x] add did you know and reviews on movie info page
 - [ ] implement routes for reviews, quotes, goofs, trivia and crazy credits
 
 ### at a later stage
 
 - [ ] use redis
-- [x] implement a better installation method
+- [ ] implement a better installation method
 - [ ] serve images from libremdb itself
-- [ ] add a way to see trailer and other videos
+- [x] add a way to see trailer and other videos
 - [ ] implement other trivial routes
 
 ---
 
 ## Installation
+
+As libremdb is made with Next.js, you can deploy it anywhere where Next.js is supported. Below are a few other methods:
 
 ### Manual
 
@@ -104,11 +105,13 @@ In short: libremdb doesn't collect any data at all.
 2. Clone and set up the repo.
 
    ```bash
-   git clone https://github.com/zyachel/libremdb.git # replace gituhb.com with codeberg.org if you wish so.
+   git clone https://github.com/zyachel/libremdb.git # replace github.com with codeberg.org if you wish so.
    cd libremdb
-   cp config.env.template config.env # you can make necessary changes
-   # if you use npm, change 'pnpm' to 'npm run' here as well as in package.json
+   # optional configuration
+   cp .env.local.example .env.local
+   # replace 'pnpm' with yarn or npm if you use those
    pnpm install
+   pnpm build
    pnpm start
    ```
 
@@ -116,7 +119,7 @@ libremdb will start running at http://localhost:3000.
 
 ### Docker
 
-There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay) made by [@TheFrenchGhosty](https://github.com/TheFrenchGhosty) for [PussTheCat.org's instance](https://libremdb.pussthecat.org). You can use that in case you wish to use docker.
+No image available yet.
 
 ---
 
@@ -124,20 +127,16 @@ There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay)
 
 ### Automatic redirection
 
-Use any of these extensions to automatically redirect IMDb URLs to libremdb:
-
 - [Redirector](https://github.com/einaregilsson/Redirector)  
   config:
 
   ```
   Description: redirect IMDb to libremdb
   Example URL: https://www.imdb.com/title/tt0258463/?ref_=tt_sims_tt_t_4
-  Include pattern: https?:\/\/(www\.)?imdb\.com\/title\/([^\?]*)
-  Redirect to: https://libremdb.herokuapp.com/title/$2
+  Include pattern: https?:\/\/(www\.)?imdb\.com\/([^\?]*)
+  Redirect to: https://libremdb.iket.me/$2
   Pattern type: Regular Expression
   ```
-
-- [LibRedirect](https://github.com/libredirect/libredirect/)
 
 ### Similar projects
 
@@ -159,10 +158,7 @@ Use any of these extensions to automatically redirect IMDb URLs to libremdb:
 
 ## Contact
 
-|                         \[matrix\]                         |                          email                           |
-| :--------------------------------------------------------: | :------------------------------------------------------: |
-| <img src="./public/img/contact/matrix.png" width="120" />  | <img src="./public/img/contact/email.png" width="120" /> |
-| [@ninal:matrix.org](https://matrix.to/#/@ninal:matrix.org) |  [aricla@protonmail.com](mailto:aricla@protonmail.com)   |
+I'm availabe on [[matrix]](https://matrix.to/#/@ninal:matrix.org) and [email](mailto:aricla@protonmail.com) in case you wish to contact me personally.
 
 ---
 

@@ -1,0 +1,13 @@
+.button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.icon {
+  // we'll get --dimension var from header.module.scss
+  height: var(--dimension, 4rem);
+  width: var(--dimension, 4rem);
+
+  fill: var(--clr-fill);
+}

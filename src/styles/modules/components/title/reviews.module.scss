@@ -1,0 +1,26 @@
+.reviews {
+  display: grid;
+  gap: var(--comp-whitespace);
+
+  &__reviewContainer {
+    // background-color: antiquewhite;
+  }
+
+  &__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacer-2);
+  }
+}
+
+.review {
+  &__summary {
+    font-size: calc(var(--fs-5) * 1.1);
+    cursor: pointer;
+  }
+
+  &__text,
+  &__metadata {
+    padding-top: var(--spacer-2);
+  }
+}

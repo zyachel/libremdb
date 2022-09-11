@@ -1,0 +1,80 @@
+@use 'sass:map';
+@use './variables' as v;
+
+////////////////////////////////////////////////////////////////
+//                      ROOT MIXINS
+////////////////////////////////////////////////////////////////
+// MIXINS TO TURN SCSS VARIABLES INTO CSS VARIABLES:
+@mixin typescale($mode) {
+  // getting appropriate type scale
+  $type-scale: map.get(v.$font-sizes, $mode);
+  // making variables out of it
+  @each $key, $value in $type-scale {
+    --fs-#{$key}: #{$value};
+  }
+}
+
+@mixin typography {
+  $other-vars: v.$misc;
+  @each $key, $value in $other-vars {
+    --#{$key}: #{$value};
+  }
+}
+
+@mixin spacers {
+  @each $var, $value in v.$space {
+    --spacer-#{$var}: #{$value};
+  }
+}
+
+@mixin colors($color: 'light') {
+  $color-map: map-get(v.$themes, $color);
+
+  @each $prop, $val in $color-map {
+    --clr-#{$prop}: #{$val};
+  }
+}
+
+////////////////////////////////////////////////////////////////
+//                      REUSABLE MIXINS
+////////////////////////////////////////////////////////////////
+// 1. mixin to handle known and unknown breakpoints:
+@mixin bp($given-breakpoint, $min: false) {
+  // just assigning the given value to a new variable since we're going to change it conditionally;
+  $breakpoint: $given-breakpoint;
+  // if $breakpoints map contains the given variable then getting it's value
+  @if map.has-key(v.$breakpoints, $breakpoint) {
+    $breakpoint: map.get(v.$breakpoints, $breakpoint);
+  }
+  // and then using it for media query. This will also work for straight out values(50em or 800px, for example)
+  $expr: 'max-width: #{$breakpoint}';
+  @if ($min) {
+    $expr: 'min-width: #{$breakpoint}';
+  }
+
+  @media screen and ($expr) {
+    @content;
+  }
+}
+
+// 2. for prettifying links
+@mixin prettify-link($clr: currentColor, $clr-line: $clr, $animate: true) {
+  $height: 0.1em;
+
+  text-decoration: none;
+  color: $clr;
+  background: linear-gradient(to left, $clr-line, $clr-line) no-repeat right
+    bottom;
+
+  @if ($animate) {
+    background-size: 0 $height;
+    transition: background-size 200ms ease;
+
+    &:where(:hover, :focus-visible) {
+      background-size: 100% $height;
+      background-position-x: left;
+    }
+  } @else {
+    background-size: 100% $height;
+  }
+}

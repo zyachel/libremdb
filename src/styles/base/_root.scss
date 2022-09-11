@@ -1,0 +1,27 @@
+@use '../abstracts' as helper;
+
+:root {
+  @include helper.typography;
+  @include helper.typescale('desktop');
+  @include helper.spacers;
+  @include helper.colors('light');
+
+  // dark themed vars when root has an attribute of theme set to 'dark'
+  &[data-theme='dark'] {
+    @include helper.colors('dark');
+  }
+
+  // styles to be applied when js is disabled
+  &:not([data-js]) {
+    // if the user prefers dark theme
+    @media (prefers-color-scheme: dark) {
+      // using dark theme instead of default one
+      @include helper.colors('dark');
+    }
+  }
+
+  // change typescale for small screens
+  @include helper.bp('bp-700') {
+    @include helper.typescale('mobile');
+  }
+}

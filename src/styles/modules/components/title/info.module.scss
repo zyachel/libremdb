@@ -1,0 +1,35 @@
+.info {
+  display: grid;
+
+  gap: var(--doc-whitespace);
+}
+
+.episodeInfo,
+.seriesInfo,
+.accolades,
+.keywords,
+.details,
+.boxoffice,
+.technical {
+  display: grid;
+  gap: var(--comp-whitespace);
+
+  &__container {
+    display: grid;
+    gap: var(--spacer-0);
+
+    // for span elements like these: 'release date:'
+    & > p > span:first-of-type {
+      font-weight: var(--fw-bold);
+    }
+  }
+}
+
+.keywords {
+  &__container {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    column-gap: var(--spacer-2);
+  }
+}

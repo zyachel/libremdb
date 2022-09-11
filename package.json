@@ -1,47 +1,36 @@
 {
   "name": "libremdb",
   "version": "0.1.2",
-  "description": "a FOSS alternative front-end to IMDb",
-  "main": "server.js",
-  "scripts": {
-    "sass:watch": "sass views/sass/main.scss public/css/styles.css --watch",
-    "sass:build": "sass views/sass/main.scss public/css/styles.css --style=compressed",
-    "prod": " (nodemon server.js) & (pnpm sass:watch)",
-    "dev": " (NODE_ENV=development nodemon server.js) & (pnpm sass:watch)",
-    "start": "(mkdir -p public/css) && (npm run sass:build) && (node server.js)"
-  },
+  "description": "a free & open source IMDb front-end",
+  "private": true,
+  "type": "module",
   "author": "libremdb-contributors",
   "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
     "axios": "^0.27.2",
-    "cheerio": "1.0.0-rc.11",
-    "compression": "^1.7.4",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "helmet": "^5.1.0",
-    "morgan": "^1.10.0",
-    "pug": "^3.0.2",
-    "sass": "^1.52.2"
+    "cheerio": "1.0.0-rc.12",
+    "next": "12.2.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sharp": "^0.31.0"
   },
   "devDependencies": {
-    "@types/express": "^4.17.13",
-    "@types/morgan": "^1.9.3",
-    "nodemon": "^2.0.16"
-  },
-  "nodemonConfig": {
-    "ignore": [
-      "node_modules/*",
-      "public/*"
-    ]
+    "@types/node": "18.7.3",
+    "@types/react": "18.0.17",
+    "@types/react-dom": "18.0.6",
+    "eslint": "8.22.0",
+    "eslint-config-next": "12.2.5",
+    "sass": "^1.54.4",
+    "typescript": "4.7.4"
   },
   "engines": {
-    "node": ">= 16.5.0",
-    "npm": ">= 8.5.5",
-    "pnpm": "^7.1.8"
-  },
-  "pnpm": {
-    "overrides": {
-      "json-schema@<0.4.0": ">=0.4.0"
-    }
+    "node": ">=16.5.0",
+    "pnpm": ">=7.0.0"
   }
 }
