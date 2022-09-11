@@ -1,0 +1,22 @@
+body {
+  font-family: var(--ff-base);
+  font-size: var(--fs-5);
+}
+
+.heading {
+  color: var(--clr-text-accent);
+  font-family: var(--ff-accent);
+  font-weight: var(--fw-medium);
+
+  &__primary {
+    font-size: var(--fs-1);
+  }
+
+  &__secondary {
+    font-size: var(--fs-2);
+  }
+
+  &__tertiary {
+    font-size: var(--fs-3);
+  }
+}

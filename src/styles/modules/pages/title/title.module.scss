@@ -1,0 +1,71 @@
+@use '../../../abstracts' as helper;
+
+.title {
+  // major whitespace properties used on title page
+  --doc-whitespace: var(--spacer-8);
+  --comp-whitespace: var(--spacer-3);
+
+  display: grid;
+
+  gap: var(--doc-whitespace);
+  padding: var(--doc-whitespace);
+  align-items: start;
+
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-areas:
+    'basic   basic   basic   basic   basic   basic   basic   basic'
+    'media   media   media   media   media   media   media   media'
+    'cast    cast    cast    cast    cast    cast    cast    cast'
+    'text    text    text    text    text    info    info    info'
+    'related related related related related related related related';
+
+  @include helper.bp('bp-1200') {
+    grid-template-columns: none;
+    grid-template-areas:
+      'basic'
+      'media'
+      'cast'
+      'text'
+      'info'
+      'related';
+  }
+
+  @include helper.bp('bp-700') {
+    --doc-whitespace: var(--spacer-5);
+  }
+
+  @include helper.bp('bp-450') {
+    padding: var(--spacer-3);
+  }
+}
+
+.basic {
+  grid-area: basic;
+}
+
+.media {
+  grid-area: media;
+}
+
+.cast {
+  grid-area: cast;
+}
+
+.textarea {
+  grid-area: text;
+  display: grid;
+
+  gap: var(--doc-whitespace);
+}
+
+.infoarea {
+  grid-area: info;
+}
+
+.related {
+  grid-area: related;
+}
+
+.morelikethis {
+  grid-area: related;
+}

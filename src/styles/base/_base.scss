@@ -1,0 +1,24 @@
+@use '../abstracts' as helper;
+
+#__next,
+html,
+body {
+  min-height: 100vh;
+}
+
+#__next {
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+}
+
+body {
+  color: var(--clr-text);
+  background-color: var(--clr-bg);
+}
+
+// restricting to 1600px width
+.main {
+  --max-width: 160rem;
+  width: min(100%, var(--max-width));
+  margin-inline: auto;
+}

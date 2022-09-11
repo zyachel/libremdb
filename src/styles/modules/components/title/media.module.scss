@@ -1,0 +1,101 @@
+@use '../../../abstracts' as helper;
+
+// grid is better than flexbox, as in flexbox, you specifically have to specify height.
+
+.media {
+  --min-height: 30rem;
+  --max-width: 50rem;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: var(--doc-whitespace); // declared in title.module.scss
+
+  @include helper.bp('bp-1200') {
+    grid-auto-flow: row;
+    grid-auto-columns: initial;
+  }
+
+  @include helper.bp('bp-700') {
+    --min-height: 20rem;
+    --max-width: 30rem;
+  }
+
+  @include helper.bp('bp-450') {
+    // --min-height: 15rem;
+    --max-width: 95%;
+  }
+}
+
+// section
+.images,
+.videos {
+  display: grid;
+  grid-template-rows: min-content;
+  gap: var(--comp-whitespace); // declared in title.module.scss
+
+  &__container {
+    overflow-x: auto;
+    display: grid;
+    grid-auto-flow: column;
+    gap: var(--spacer-2);
+    padding: 0 var(--spacer-2) var(--spacer-3) var(--spacer-2);
+
+    grid-auto-columns: var(--max-width);
+    min-height: var(--min-height);
+  }
+}
+
+%cardify {
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: var(--clr-shadow);
+}
+
+// child of .videos
+.trailer {
+  @extend %cardify;
+
+  &__video {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+// since it is wrapped in a tag
+.video {
+  text-decoration: none;
+}
+
+.video,
+.image {
+  @extend %cardify;
+  position: relative;
+
+  &__caption {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-end: 0;
+    padding: var(--spacer-0);
+
+    font-size: 0.9em;
+    color: var(--clr-text);
+    background: var(--clr-bg);
+
+    // hovering effect only for desktop/stylus users
+    @media (any-hover: hover) and (any-pointer: fine) {
+      transform: translateY(100%);
+      transition: transform 500ms ease-in-out;
+    }
+  }
+
+  &__img {
+    object-position: top;
+    object-fit: cover;
+  }
+
+  &:hover &__caption {
+    transform: translateY(1%); // 0% is leaving some gap from bottom
+  }
+}

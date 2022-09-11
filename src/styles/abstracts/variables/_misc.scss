@@ -1,0 +1,28 @@
+// 8 pt spacer
+$space: (
+  0: 0.4rem,
+  1: 0.8rem,
+  2: 1.6rem,
+  3: 2.4rem,
+  4: 3.2rem,
+  5: 4rem,
+  6: 4.8rem,
+  7: 5.6rem,
+  8: 6.4rem,
+  9: 7.2rem,
+  10: 8rem,
+);
+
+$breakpoints: (
+  'bp-1200': 75em,
+  'bp-900': 56.25em,
+  'bp-700': 43.75em,
+  'bp-450': 28.125em,
+);
+
+// 1. colors
+$clr-primary: hsl(240, 31%, 25%);
+$clr-secondary: hsl(344, 79%, 40%);
+$clr-tertiary: hsl(176, 43%, 46%);
+$clr-quatenary: hsl(204, 4%, 23%);
+$clr-quintenary: hsl(0, 0%, 100%);

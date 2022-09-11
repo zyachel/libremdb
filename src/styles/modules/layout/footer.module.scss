@@ -1,0 +1,37 @@
+@use '../../abstracts' as helper;
+
+.footer {
+  background: var(--clr-bg-muted);
+  padding: var(--spacer-4);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-small);
+  font-size: var(--fs-5);
+}
+
+.nav {
+  .list {
+    list-style: none;
+    display: flex;
+    gap: var(--spacer-2) var(--spacer-4);
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  &__item {
+  }
+
+  &__link {
+    @include helper.prettify-link(var(--clr-link));
+  }
+
+  &__linkActive {
+    @include helper.prettify-link(var(--clr-link), $animate: false);
+  }
+}
+
+.licence {
+  margin-top: var(--spacer-1);
+  align-self: center;
+  text-align: center;
+}

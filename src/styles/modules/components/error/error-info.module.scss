@@ -1,0 +1,33 @@
+@use '../../../abstracts/' as helper;
+
+.error {
+  --doc-whitespace: var(--spacer-8);
+  --comp-whitespace: var(--spacer-5);
+
+  padding: var(--doc-whitespace);
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  gap: var(--spacer-1);
+
+  @include helper.bp('bp-700') {
+    --doc-whitespace: var(--spacer-5);
+    --comp-whitespace: var(--spacer-3);
+  }
+  @include helper.bp('bp-450') {
+    padding: var(--spacer-3);
+  }
+}
+
+.gnu {
+  --dim: 30rem;
+
+  height: var(--dim);
+  width: var(--dim);
+  fill: var(--clr-fill);
+}
+
+.heading {
+  // justify-self: center;
+  text-align: center;
+}

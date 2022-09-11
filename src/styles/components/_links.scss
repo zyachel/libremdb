@@ -1,0 +1,6 @@
+@use '../abstracts' as helper;
+
+.link,
+.ipc-md-link {
+  @include helper.prettify-link(var(--clr-link));
+}

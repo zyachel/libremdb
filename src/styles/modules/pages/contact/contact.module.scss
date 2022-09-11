@@ -1,0 +1,32 @@
+@use '../../../abstracts' as helper;
+
+.contact {
+  // to make text more readable for large screen users
+  margin: auto;
+  width: min(100%, 100rem);
+
+  display: grid;
+  --doc-whitespace: var(--spacer-8);
+  --comp-whitespace: var(--spacer-3);
+
+  padding: var(--doc-whitespace);
+  place-content: center;
+
+  &__heading {
+    text-align: center;
+  }
+
+  @include helper.bp('bp-700') {
+    --doc-whitespace: var(--spacer-5);
+  }
+  @include helper.bp('bp-450') {
+    --doc-whitespace: var(--spacer-3);
+  }
+}
+
+.list {
+  padding-block: var(--comp-whitespace);
+
+  display: grid;
+  gap: var(--comp-whitespace);
+}
