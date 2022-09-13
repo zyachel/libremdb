@@ -36,6 +36,15 @@ _(This is a rewrite of libremdb in Next.js. The information below corresponds to
 | Instance URL             | Region | Notes          |
 | ------------------------ | ------ | -------------- |
 | https://libremdb.iket.me | Canada | Operated by me |
+| https://ld.vern.cc       | Canada | ~vern          |
+### Onion
+| Instance URL                                                              | Region | Notes             |
+| ------------------------------------------------------------------------- | ------ | ----------------- |
+| http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion | Canada | Operated by ~vern  | 
+
+### I2P
+| Instance URL                                                        | Region | Notes             |
+| http://vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p | Canada | Operated by ~vern |  
 
 ---
 
