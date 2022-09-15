@@ -39,7 +39,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | https://libremdbeu.herokuapp.com | Europe        | Operated by [toyboatcash](https://github.com/toyboatcash) |
 | https://lmdb.tokhmi.xyz/         | U.S.          | Operated by [Tokhmi](https://tokhmi.xyz)                  |
 | https://libremdb.esmailelbob.xyz/         | Canada          | Operated by [Esmail EL BoB](https://esmailelbob.xyz)                  |
-| http://libremdb.lqs5fjmajyp7rvp4qvyubwofzi6d4imua7vs237rkc4m5qogitqwrgyd.onion/         | Canada          | Operated by [Esmail EL BoB](https://esmailelbob.xyz)                  |
+| http://libremdb.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion/         | Canada          | Operated by [Esmail EL BoB](https://esmailelbob.xyz)                  |
 
 ---
 
