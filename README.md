@@ -4,8 +4,7 @@ A free & open source IMDb front-end.
 
 Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter](https://github.com/zedeus/nitter) and [many others](#similar-projects).
 
-_(This is a rewrite of libremdb in Next.js. The information below corresponds to this branch only. I'll make this branch default sometime later.)_
-| | |
+|                                                                                                          |                                                                                                        |
 | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | <img src="./public/img/misc/preview.png" title="screenshot (desktop screen, light mode)" width="1500" /> | <img src="./public/img/misc/preview2.png" title="screenshot (mobile screen, dark mode)" width="385" /> |
 
@@ -33,13 +32,31 @@ _(This is a rewrite of libremdb in Next.js. The information below corresponds to
 
 ## Instances
 
-| Instance URL             | Region | Notes          |
-| ------------------------ | ------ | -------------- |
-| https://libremdb.iket.me | Canada | Operated by me |
+### Clearnet
+
+<!-- prettier-ignore -->
+| Instance URL | Region | Notes |
+| ------------ | ------ | ----- |
+| 1. Clearnet | | |
+| [libremdb.iket.me](https://libremdb.iket.me) | Canada  | Operated by me |
+| [libremdb.pussthecat.org](https://libremdb.pussthecat.org) | Germany | Operated by [PussTheCat.org](https://pussthecat.org/) |
+| [libremdbeu.herokuapp.com](https://libremdbeu.herokuapp.com) | Europe | Operated by [toyboatcash](https://github.com/toyboatcash) |
+| [lmdb.tokhmi.xyz](https://lmdb.tokhmi.xyz) | U.S. | Operated by [Tokhmi](https://tokhmi.xyz) |
+| [libremdb.esmailelbob.xyz](https://libremdb.esmailelbob.xyz) | Canada | Operated by [Esmail EL BoB](https://esmailelbob.xyz) |
+| [ld.vern.cc](https://ld.vern.cc) | Canada | Operated by [~vern](https://vern.cc) |
+| 2. Onion | | |
+| [libremdb.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion](http://libremdb.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion) | Canada | Operated by [Esmail EL BoB](https://esmailelbob.xyz) |
+| [ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) | Canada | Operated by [~vern](https://vern.cc) |
+| 3. I2P | | |
+| [vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p](http://vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p) | Canada | Operated by [~vern](https://vern.cc) |
 
 ---
 
 ## Questions you might have
+
+- How do I use it?  
+  Replace `imdb.com` in any IMDb URL with any of the instances. For example: '[imdb.com/title/tt1049413](https://imdb.com/title/tt1049413/)' to '[libremdb.iket.me/title/tt1049413](https://libremdb.iket.me/title/tt1049413/)'.  
+  To avoid changing the URLs manually, you can use [extensions](#automatic-redirection).
 
 - Why is it so slow?  
   Whenever you request info about a movie/show on libremdb, 4 trips are made(2 between your browser and libremdb's server, and 2 between libremdb's server and IMDb's server) instead of the usual 2 trips when you visit a website. For this reason there's a noticable delay. This is a bit of inconvenience you'll have to face should you wish to use this website.
@@ -55,7 +72,7 @@ _(This is a rewrite of libremdb in Next.js. The information below corresponds to
   identifiers. I'd recommend using a VPN, or accessing the website through TOR for mitigating this risk.
 
 - Why not just use IMDb?  
-  Refer to the [features section](#features) above.
+  Refer to the [features section](#some-features) above.
 - Why didn't you use other databases like [TMDB](https://www.themoviedb.org/) or [OMDb](https://www.omdbapi.com/)?  
   IMDb simply has superior dataset compared to all other alternatives. With that being said, I'd encourage you to check out those alternatives too.
 
@@ -76,19 +93,28 @@ _(This is a rewrite of libremdb in Next.js. The information below corresponds to
 
 ## To-Do
 
-### soon
-
 - [ ] add advanced search route
 - [x] add did you know and reviews on movie info page
-- [ ] implement routes for reviews, quotes, goofs, trivia and crazy credits
-
-### at a later stage
-
-- [ ] use redis
-- [ ] implement a better installation method
-- [ ] serve images from libremdb itself
 - [x] add a way to see trailer and other videos
-- [ ] implement other trivial routes
+- [ ] implement movie specific routes like:
+
+  - [ ] reviews(including critic reviews)
+  - [ ] video & image gallery
+  - [ ] sections under 'did you know'
+  - [ ] release info
+  - [ ] parental guide
+
+- [ ] implement other routes like:
+
+  - [ ] lists
+  - [ ] moviemeter
+  - [ ] person info(includes directors and actors)
+  - [ ] company info
+  - [ ] user info
+
+- [ ] use redis, or any other caching strategy
+- [x] implement a better installation method
+- [ ] serve images and videos from libremdb itself
 
 ---
 
@@ -115,11 +141,12 @@ As libremdb is made with Next.js, you can deploy it anywhere where Next.js is su
    pnpm start
    ```
 
-libremdb will start running at http://localhost:3000.
+libremdb will start running at http://localhost:3000.  
+To change port, modify the last command like this: `pnpm start -- -p <port-number>`.
 
 ### Docker
 
-No image available yet.
+There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay) made by [@TheFrenchGhosty](https://github.com/TheFrenchGhosty) for [PussTheCat.org's instance](https://libremdb.pussthecat.org). You can use that in case you wish to use docker.
 
 ---
 
@@ -137,6 +164,8 @@ No image available yet.
   Redirect to: https://libremdb.iket.me/$2
   Pattern type: Regular Expression
   ```
+
+- [LibRedirect](https://github.com/libredirect/libredirect/)
 
 ### Similar projects
 

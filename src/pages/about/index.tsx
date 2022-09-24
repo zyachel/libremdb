@@ -85,6 +85,34 @@ const About = () => {
           </h2>
           <div className={styles.faqs__list}>
             <details className={styles.faq}>
+              <summary className={styles.faq__summary}>
+                How do I use this?
+              </summary>
+              <p className={styles.faq__description}>
+                Replace `imdb.com` in any IMDb URL with any of the instances.
+                For example: `
+                <a href='https://imdb.com/title/tt1049413' className='link'>
+                  imdb.com/title/tt1049413
+                </a>
+                ` to `
+                <a
+                  href='https://libremdb.iket.me/title/tt1049413'
+                  className='link'
+                >
+                  libremdb.iket.me/title/tt1049413
+                </a>
+                ` . To avoid changing the URLs manually, you can use extensions
+                like{' '}
+                <a
+                  href='https://github.com/libredirect/libredirect/'
+                  className='link'
+                >
+                  LibRedirect
+                </a>
+                .
+              </p>
+            </details>
+            <details className={styles.faq}>
               <summary className={styles.faq__summary}>Why is it slow?</summary>
               <p className={styles.faq__description}>
                 Whenever you request info about a movie/show on libremdb, 4
