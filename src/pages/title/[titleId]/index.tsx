@@ -50,7 +50,7 @@ const TitleInfo = ({ data, error }: Props) => {
       <Head>
         <meta
           title="og:image"
-          content={data.media.images.images[0].url || '/icon-512.png'}
+          content={data.basic.poster?.url || '/icon-512.png'}
         />
       </Head>
       <Layout className={styles.title}>
