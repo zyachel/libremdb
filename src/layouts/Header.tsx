@@ -68,7 +68,7 @@ const Header = (props: Props) => {
             <a href='https://github.com/zedeus/nitter' className='link'>
               nitter
             </a>
-            ,&nbsp; and&nbsp;
+            , and&nbsp;
             <a
               href='https://github.com/digitalblossom/alternative-frontends'
               className='link'

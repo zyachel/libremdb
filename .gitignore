@@ -32,3 +32,4 @@ yarn-error.log*
 
 #just dev stuff
 dev/*
+yarn.lock
