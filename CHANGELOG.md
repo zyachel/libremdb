@@ -1,9 +1,16 @@
-# [1.0.0](https://github.com/zyachel/libremdb/compare/v0.1.2...v1.0.0) (2022-09-11)
+# [2.0.0](https://github.com/zyachel/libremdb/compare/v0.1.2...v2.0.0) (2022-10-31)
+
+
+### Bug Fixes
+
+* change to poster for og:image ([f207d68](https://github.com/zyachel/libremdb/commit/f207d688e2dc0d6c12a0b6e8f6ddc7b0eadf5e0b))
+* remove double space in inspiration credit ([3f987b5](https://github.com/zyachel/libremdb/commit/3f987b59dcadbb5f931dda4d510b4c13a4ed5cd0))
 
 
 ### Features
 
-* major rewrite ([e4849e8](https://github.com/zyachel/libremdb/commit/e4849e8c757e4f1416be7338c89421ca27e28e8d))
+* add "og:image" property for social media embeds ([d152cf4](https://github.com/zyachel/libremdb/commit/d152cf4b6210b3dd5eb33274d05695bd5593cd06))
+* major rewrite ([9891204](https://github.com/zyachel/libremdb/commit/9891204f5a11eb24ad7c924f50f0e069589b82ff))
 
 
 ### BREAKING CHANGES
