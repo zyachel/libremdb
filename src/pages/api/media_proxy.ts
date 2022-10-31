@@ -3,7 +3,7 @@ import fetch from 'node-fetch'
 import redis from '../../utils/redis'
 import crypto from 'crypto'
 
-const acceptableExtensions = ['.jpg', '.png', '.gif', '.webp']
+const acceptableExtensions = ['.jpg', '.png', '.gif', '.webp', '.mp4']
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,7 +14,10 @@ export default async function handler(
 
   if (!mediaUrl) {
     res.status(400)
-    res.end()
+    res.json({
+      success: false,
+      message: 'Missing query',
+    })
     return
   }
 
@@ -24,22 +27,34 @@ export default async function handler(
     mediaUrlParsed = new URL(mediaUrl)
   } catch {
     res.status(400)
-    res.end()
+    res.json({
+      success: false,
+      message: 'Invalid URL',
+    })
     return
   }
 
   // get media domain
   const mediaDomain = mediaUrlParsed.hostname
 
-  if (!mediaDomain.endsWith('media-amazon.com')) {
+  if (
+    !mediaDomain.endsWith('media-amazon.com') &&
+    mediaDomain !== 'imdb-video.media-imdb.com'
+  ) {
     res.status(400)
-    res.end()
+    res.json({
+      success: false,
+      message: 'Unauthorized domain',
+    })
     return
   }
 
   if (mediaUrlParsed.protocol !== 'https:') {
     res.status(400)
-    res.end()
+    res.json({
+      success: false,
+      message: 'Unauthorized protocol',
+    })
     return
   }
 
@@ -54,12 +69,15 @@ export default async function handler(
 
   if (!validExtension) {
     res.status(400)
-    res.end()
+    res.json({
+      success: false,
+      message: 'Unauthorized extension',
+    })
     return
   }
 
   // hash mediaUrl with blake3
-  const mediaUrlHash = await crypto
+  const mediaUrlHash = crypto
     .createHash('sha256')
     .update(mediaUrl)
     .digest('base64')
@@ -70,6 +88,7 @@ export default async function handler(
   const cachedMedia = await redis.get(cacheKey)
 
   if (cachedMedia) {
+    res.status(302)
     res.send(cachedMedia)
     return
   }
@@ -79,7 +98,10 @@ export default async function handler(
 
   if (!mediaRes.ok) {
     res.status(mediaRes.status)
-    res.end()
+    res.json({
+      success: false,
+      message: 'Error from Amazon',
+    })
     return
   }
 

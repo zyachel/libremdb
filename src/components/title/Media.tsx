@@ -37,7 +37,7 @@ const Media = ({ className, media, router }: Props) => {
                     <source
                       key={source.url}
                       type={source.mimeType}
-                      src={source.url}
+                      src={getProxiedIMDbImgUrl(source.url)}
                       data-res={source.resolution}
                     />
                   ))}
