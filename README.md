@@ -64,7 +64,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 - It doesn't have all routes.  
   I'll implement more with time :)
 
-- Is content served from third-parties, like Amazon?
+- Is content served from third-parties, like Amazon?  
   Nope, libremdb proxies all image and video requests through the instance to avoid exposing your IP address, browser information and other personally identifiable metadata ([Contributor](https://github.com/httpjamesm)).
 
 - Will Amazon track me then?  
