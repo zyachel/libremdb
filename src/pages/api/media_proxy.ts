@@ -9,6 +9,50 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const userIp =
+    (req.headers['cf-connecting-ip'] as string) ||
+    (req.headers['x-real-ip'] as string) ||
+    req.socket.remoteAddress ||
+    null
+
+  if (!userIp) {
+    res.status(500)
+    res.json({
+      success: false,
+      message: 'Unable to enforce ratelimit',
+    })
+    return
+  }
+
+  // hash ip with md5 (for speed)
+  const ipHash = crypto.createHash('md5').update(userIp).digest('hex')
+
+  const key = `ip_ratelimit:${ipHash}`
+
+  // check if ip is in redis
+  let ipInRedis = await redis.get(key)
+
+  if (!ipInRedis) {
+    // if not, set it to 1
+    await redis.setex(key, 30, '1')
+    ipInRedis = '1'
+  }
+
+  const ipReqNumber = Number(ipInRedis)
+
+  if (ipReqNumber > 60) {
+    res.status(429)
+    res.setHeader('x-cringe', 'stop abusing a FOSS service')
+    res.json({
+      success: false,
+      message: 'Too many requests',
+    })
+    return
+  }
+
+  // increment ip in redis
+  await redis.set(key, String(ipReqNumber + 1))
+
   // get query param
   const mediaUrl = (req.query as { url: string }).url
 
@@ -89,9 +133,12 @@ export default async function handler(
 
   if (cachedMedia) {
     res.status(302)
+    res.setHeader('x-cached', 'true')
     res.send(cachedMedia)
     return
   }
+
+  res.setHeader('x-cached', 'false')
 
   // download media
   const mediaRes = await fetch(mediaUrl)
