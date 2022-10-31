@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import fetch from 'node-fetch'
+import redis from '../../utils/redis'
+import crypto from 'crypto'
 
 const acceptableExtensions = ['.jpg', '.png', '.gif', '.webp']
 
@@ -56,6 +58,22 @@ export default async function handler(
     return
   }
 
+  // hash mediaUrl with blake3
+  const mediaUrlHash = await crypto
+    .createHash('sha256')
+    .update(mediaUrl)
+    .digest('base64')
+
+  // try to find mediaUrlHash in redis
+  const cacheKey = `media_proxy:${mediaUrlHash}`
+
+  const cachedMedia = await redis.get(cacheKey)
+
+  if (cachedMedia) {
+    res.send(cachedMedia)
+    return
+  }
+
   // download media
   const mediaRes = await fetch(mediaUrl)
 
@@ -64,20 +82,11 @@ export default async function handler(
     return
   }
 
-  // get media type
-  const mediaType = mediaRes.headers.get('content-type')
+  const mediaBuffer = Buffer.from(await mediaRes.arrayBuffer())
 
-  if (!mediaType) {
-    res.status(500)
-    res.send(null)
-    return
-  }
-
-  // set media type
-  res.setHeader('content-type', mediaType)
-
-  const mediaBuffer = await mediaRes.arrayBuffer()
+  // save in redis for 30 minutes
+  await redis.setex(cacheKey, 60 * 30, mediaBuffer)
 
   // send media
-  res.send(Buffer.from(mediaBuffer))
+  res.send(mediaBuffer)
 }
