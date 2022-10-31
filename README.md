@@ -156,7 +156,7 @@ Change the docker-compose file to your liking and run `docker-compose up -d` to 
 
 ### Docker (Built)
 
-## There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay) made by [@TheFrenchGhosty](https://github.com/TheFrenchGhosty) for [PussTheCat.org's instance](https://libremdb.pussthecat.org). You can use that in case you wish to use docker.
+There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay) made by [@TheFrenchGhosty](https://github.com/TheFrenchGhosty) for [PussTheCat.org's instance](https://libremdb.pussthecat.org). You can use that in case you wish to use docker.
 
 ## Miscellaneous
 
