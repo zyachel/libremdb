@@ -14,7 +14,7 @@ export default async function handler(
 
   if (!mediaUrl) {
     res.status(400)
-    res.send(null)
+    res.end()
     return
   }
 
@@ -24,7 +24,7 @@ export default async function handler(
     mediaUrlParsed = new URL(mediaUrl)
   } catch {
     res.status(400)
-    res.send(null)
+    res.end()
     return
   }
 
@@ -33,13 +33,13 @@ export default async function handler(
 
   if (!mediaDomain.endsWith('media-amazon.com')) {
     res.status(400)
-    res.send(null)
+    res.end()
     return
   }
 
   if (mediaUrlParsed.protocol !== 'https:') {
     res.status(400)
-    res.send(null)
+    res.end()
     return
   }
 
@@ -54,7 +54,7 @@ export default async function handler(
 
   if (!validExtension) {
     res.status(400)
-    res.send(null)
+    res.end()
     return
   }
 
@@ -79,6 +79,7 @@ export default async function handler(
 
   if (!mediaRes.ok) {
     res.status(mediaRes.status)
+    res.end()
     return
   }
 

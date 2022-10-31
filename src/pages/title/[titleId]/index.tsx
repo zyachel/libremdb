@@ -20,6 +20,7 @@ import { AppError } from '../../../interfaces/shared/error'
 // styles
 import styles from '../../../styles/modules/pages/title/title.module.scss'
 import Head from 'next/head'
+import { getProxiedIMDbImgUrl } from '../../../utils/helpers'
 
 type Props = { data: Title; error: null } | { error: AppError; data: null }
 
@@ -50,7 +51,11 @@ const TitleInfo = ({ data, error }: Props) => {
       <Head>
         <meta
           title="og:image"
-          content={data.basic.poster?.url || '/icon-512.png'}
+          content={
+            data.basic.poster?.url
+              ? getProxiedIMDbImgUrl(data.basic.poster?.url)
+              : '/icon-512.png'
+          }
         />
       </Head>
       <Layout className={styles.title}>

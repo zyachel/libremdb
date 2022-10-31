@@ -53,6 +53,10 @@ export const modifyIMDbImg = (url: string, widthInPx = 600) => {
   return url.replaceAll('.jpg', `UX${widthInPx}.jpg`);
 };
 
+export const getProxiedIMDbImgUrl = (url: string) => {
+    return `/api/media_proxy?url=${encodeURIComponent(url)}`;
+}
+
 export const AppError = class extends Error {
   constructor(message: string, public statusCode: number, cause?: any) {
     super(message, cause);
