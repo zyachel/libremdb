@@ -1,14 +1,14 @@
-import Meta from '../../components/Meta/Meta';
-import Layout from '../../layouts/Layout';
+import Meta from '../../components/Meta/Meta'
+import Layout from '../../layouts/Layout'
 
-import styles from '../../styles/modules/pages/privacy/privacy.module.scss';
+import styles from '../../styles/modules/pages/privacy/privacy.module.scss'
 
 const Privacy = () => {
   return (
     <>
       <Meta
-        title='Privacy'
-        description='Privacy policy of libremdb, a free & open source IMDb front-end.'
+        title="Privacy"
+        description="Privacy policy of libremdb, a free & open source IMDb front-end."
       />
       <Layout className={styles.privacy}>
         <section className={styles.policy}>
@@ -41,24 +41,11 @@ const Privacy = () => {
                 Local Storage for libremdb.
               </p>
             </div>
-            <div className={styles.item}>
-              <h2
-                className={`heading heading__secondary ${styles.item__heading}`}
-              >
-                Information collected by other services
-              </h2>
-              <p className={styles.item__text}>
-                libremdb connects to 'media-amazon.com' and 'media-imdb.com' for
-                fetching images and videos. So, Amazon might log your IP
-                address, and other information(such as http headers) sent by
-                your browser.
-              </p>
-            </div>
           </div>
 
           <footer className={styles.metadata}>
             <p>
-              Last updated on <time>10 september, 2022.</time>
+              Last updated on <time>31 october, 2022.</time>
             </p>
             <p>
               You can see the full revision history of this privacy policy on
@@ -68,7 +55,7 @@ const Privacy = () => {
         </section>
       </Layout>
     </>
-  );
-};
+  )
+}
 
-export default Privacy;
+export default Privacy
