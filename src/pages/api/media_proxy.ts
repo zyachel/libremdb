@@ -113,3 +113,9 @@ export default async function handler(
   // send media
   res.send(mediaBuffer)
 }
+
+export const config = {
+  api: {
+    responseLimit: false,
+  },
+}
