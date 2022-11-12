@@ -18,12 +18,14 @@ export default async function handler(
       message: 'Invalid query',
     })
 
-  const cachedMedia = await redis.getBuffer(mediaUrl)
+  if (process.env.USE_REDIS === 'true') {
+    const cachedMedia = await redis.getBuffer(mediaUrl)
 
-  if (cachedMedia) {
-    res.setHeader('x-cached', 'true')
-    res.status(302).send(cachedMedia)
-    return
+    if (cachedMedia) {
+      res.setHeader('x-cached', 'true')
+      res.status(302).send(cachedMedia)
+      return
+    }
   }
 
   let mediaRes: AxiosResponse
@@ -39,9 +41,12 @@ export default async function handler(
   }
 
   const data = mediaRes.data
-  // save in redis for 30 minutes
-  await redis.setex(mediaUrl, 30 * 60, Buffer.from(data))
 
+  if (process.env.USE_REDIS === 'true') {
+    // save in redis for 30 minutes
+    await redis.setex(mediaUrl, 30 * 60, Buffer.from(data))
+  }
+  
   // send media
   res.setHeader('x-cached', 'false')
   res.send(data)
