@@ -8,6 +8,9 @@ const axiosInstance = axios.create({
       'User-Agent': process.env.AXIOS_USERAGENT,
     }),
     ...(process.env.AXIOS_ACCEPT && { Accept: process.env.AXIOS_ACCEPT }),
+    ...(process.env.AXIOS_LANGUAGE && {
+      'Accept-Language': process.env.AXIOS_LANGUAGE,
+    }),
   },
 });
 
