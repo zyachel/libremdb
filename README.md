@@ -67,9 +67,6 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 - Is content served from third-parties, like Amazon?  
   Nope, libremdb proxies all image and video requests through the instance to avoid exposing your IP address, browser information and other personally identifiable metadata ([Contributor](https://github.com/httpjamesm)).
 
-- Will Amazon track me then?  
-  Also nope. All Amazon will see is the libremdb instance making the request, not you. IP address, browser information and other personally identifiable metadata is hidden from Amazon.
-
 - Why not just use IMDb?  
   Refer to the [features section](#some-features) above.
 - Why didn't you use other databases like [TMDB](https://www.themoviedb.org/) or [OMDb](https://www.omdbapi.com/)?  
@@ -86,8 +83,6 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
   A key named 'theme' is stored in Local Storage provided by your browser, if you ever override the default theme. To remove it, go to site data settings, and clear the data for this website. To permamently disable libremdb from storing your theme prefrences, either turn off JavaScript or disable access to Local Storage for libremdb.
 
 - Information collected by other services:  
-  ~~libremdb connects to 'media-amazon.com' and 'media-imdb.com' for fetching images and videos. So, Amazon might log your IP address, and other information(such as http headers) sent by your browser.~~
-
   None. libremdb proxies images anonymously through the instance for maximum privacy ([Contributor](https://github.com/httpjamesm)).
 
 ---
@@ -129,7 +124,7 @@ As libremdb is made with Next.js, you can deploy it anywhere where Next.js is su
    for Node.js, visit [their website](https://nodejs.org/en/).  
    for Git, run `sudo apt install git` if you're on a Debian-based distro. Else visit [their website](https://git-scm.com/).
 
-2. Install redis
+2. Install redis(optional).  
    You can install redis from [here](https://redis.io).
 
 3. Clone and set up the repo.
@@ -137,26 +132,28 @@ As libremdb is made with Next.js, you can deploy it anywhere where Next.js is su
    ```bash
    git clone https://github.com/zyachel/libremdb.git # replace github.com with codeberg.org if you wish so.
    cd libremdb
-   # optional configuration
+   # change the configuration file to your liking.
    cp .env.local.example .env.local
-   # replace 'pnpm' with yarn or npm if you use those
+   # replace 'pnpm' with yarn or npm if you use those.
    pnpm install
    pnpm build
    pnpm start
+   # optional: if you're using redis
+   redis-server
    ```
 
 libremdb will start running at http://localhost:3000.  
 To change port, modify the last command like this: `pnpm start -- -p <port-number>`.
 
-### Docker (Local & Recommended)
+### Docker (Local)
 
-You can build the docker image using the provided Dockerfile and set it up using the example docker-compose file.
+You can build the docker image using the provided Dockerfile(thanks to [@httpjamesm](https://github.com/httpjamesm)) and set it up using the [example docker-compose file](./docker-compose.example.yml).
 
 Change the docker-compose file to your liking and run `docker-compose up -d` to start the container, that's all!
 
 ### Docker (Built)
 
-There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay) made by [@TheFrenchGhosty](https://github.com/TheFrenchGhosty) for [PussTheCat.org's instance](https://libremdb.pussthecat.org). You can use that in case you wish to use docker.
+There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay) made by [@TheFrenchGhosty](https://github.com/TheFrenchGhosty) for [PussTheCat.org's instance](https://libremdb.pussthecat.org). You can use that as well.
 
 ## Miscellaneous
 
@@ -168,7 +165,7 @@ There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay)
   ```
   Description: redirect IMDb to libremdb
   Example URL: https://www.imdb.com/title/tt0258463/?ref_=tt_sims_tt_t_4
-  Include pattern: https?:\/\/(www\.)?imdb\.com\/([^\?]*)
+  Include pattern: https?:\/\/(www\.)?imdb\.com\/(.*)
   Redirect to: https://libremdb.iket.me/$2
   Pattern type: Regular Expression
   ```
