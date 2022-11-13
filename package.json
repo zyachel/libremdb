@@ -1,6 +1,6 @@
 {
   "name": "libremdb",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "a free & open source IMDb front-end",
   "private": true,
   "type": "module",

@@ -1,3 +1,17 @@
+# [2.2.0](https://github.com/zyachel/libremdb/compare/v2.1.0...v2.2.0) (2022-11-13)
+
+
+### Bug Fixes
+
+* **redis:** fix logs being polluted when redis is disabled ([5fd0d92](https://github.com/zyachel/libremdb/commit/5fd0d9218707797999fe49e256244bb5cb8d2f66))
+
+
+### Features
+
+* force a certain language when getting data ([1658769](https://github.com/zyachel/libremdb/commit/1658769a30eae5e642c7c2a54aecf88aec4fd274))
+
+
+
 # [2.1.0](https://github.com/zyachel/libremdb/compare/v2.0.0...v2.1.0) (2022-11-13)
 
 
@@ -65,15 +79,6 @@
 ### Bug Fixes
 
 * typo in URL ([#2](https://github.com/zyachel/libremdb/issues/2)) ([9f35a66](https://github.com/zyachel/libremdb/commit/9f35a668b508d79353da5db70014d99094788d5a))
-
-
-
-# [0.1.0](https://github.com/zyachel/libremdb/compare/30dac07ba33dbe4331a5c9fa6cd2c332100868df...v0.1.0) (2022-05-21)
-
-
-### Features
-
-* add review section ([30dac07](https://github.com/zyachel/libremdb/commit/30dac07ba33dbe4331a5c9fa6cd2c332100868df))
 
 
 
