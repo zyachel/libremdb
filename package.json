@@ -15,7 +15,9 @@
   "dependencies": {
     "axios": "^0.27.2",
     "cheerio": "1.0.0-rc.12",
+    "ioredis": "^5.2.3",
     "next": "12.2.5",
+    "node-fetch": "^3.2.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sharp": "^0.31.0"

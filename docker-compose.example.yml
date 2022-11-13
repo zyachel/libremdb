@@ -1,0 +1,23 @@
+# docker-compose.yml
+
+version: '3'
+
+services:
+  frontend:
+    container_name: libremdb
+    build:
+      context: .
+      network: host
+    ports:
+      - "3000:3000"
+    env_file: .env.local
+    depends_on:
+      - redis
+    restart: always
+  redis:
+    container_name: libremdb_redis
+    image: redis
+    # FOR DEBUGGING ONLY
+    # ports:
+    #   - "6379:6379"
+    restart: always

@@ -64,12 +64,11 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 - It doesn't have all routes.  
   I'll implement more with time :)
 
-- I see connection being made to some Amazon domains.  
-  For now, images and videos are directly served from Amazon. If I have enough time in the future, I'll implement a way to serve the images from libremdb instead.
+- Is content served from third-parties, like Amazon?  
+  Nope, libremdb proxies all image and video requests through the instance to avoid exposing your IP address, browser information and other personally identifiable metadata ([Contributor](https://github.com/httpjamesm)).
 
 - Will Amazon track me then?  
-  They may log your IP address, useragent, and other such
-  identifiers. I'd recommend using a VPN, or accessing the website through TOR for mitigating this risk.
+  Also nope. All Amazon will see is the libremdb instance making the request, not you. IP address, browser information and other personally identifiable metadata is hidden from Amazon.
 
 - Why not just use IMDb?  
   Refer to the [features section](#some-features) above.
@@ -87,7 +86,9 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
   A key named 'theme' is stored in Local Storage provided by your browser, if you ever override the default theme. To remove it, go to site data settings, and clear the data for this website. To permamently disable libremdb from storing your theme prefrences, either turn off JavaScript or disable access to Local Storage for libremdb.
 
 - Information collected by other services:  
-  libremdb connects to 'media-amazon.com' and 'media-imdb.com' for fetching images and videos. So, Amazon might log your IP address, and other information(such as http headers) sent by your browser.
+  ~~libremdb connects to 'media-amazon.com' and 'media-imdb.com' for fetching images and videos. So, Amazon might log your IP address, and other information(such as http headers) sent by your browser.~~
+
+  None. libremdb proxies images anonymously through the instance for maximum privacy ([Contributor](https://github.com/httpjamesm)).
 
 ---
 
@@ -114,7 +115,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 
 - [ ] use redis, or any other caching strategy
 - [x] implement a better installation method
-- [ ] serve images and videos from libremdb itself
+- [x] serve images and videos from libremdb itself
 
 ---
 
@@ -128,7 +129,10 @@ As libremdb is made with Next.js, you can deploy it anywhere where Next.js is su
    for Node.js, visit [their website](https://nodejs.org/en/).  
    for Git, run `sudo apt install git` if you're on a Debian-based distro. Else visit [their website](https://git-scm.com/).
 
-2. Clone and set up the repo.
+2. Install redis
+   You can install redis from [here](https://redis.io).
+
+3. Clone and set up the repo.
 
    ```bash
    git clone https://github.com/zyachel/libremdb.git # replace github.com with codeberg.org if you wish so.
@@ -144,11 +148,15 @@ As libremdb is made with Next.js, you can deploy it anywhere where Next.js is su
 libremdb will start running at http://localhost:3000.  
 To change port, modify the last command like this: `pnpm start -- -p <port-number>`.
 
-### Docker
+### Docker (Local & Recommended)
+
+You can build the docker image using the provided Dockerfile and set it up using the example docker-compose file.
+
+Change the docker-compose file to your liking and run `docker-compose up -d` to start the container, that's all!
+
+### Docker (Built)
 
 There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay) made by [@TheFrenchGhosty](https://github.com/TheFrenchGhosty) for [PussTheCat.org's instance](https://libremdb.pussthecat.org). You can use that in case you wish to use docker.
-
----
 
 ## Miscellaneous
 
