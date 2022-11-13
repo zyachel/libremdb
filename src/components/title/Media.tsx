@@ -1,16 +1,16 @@
-import Image from 'next/future/image'
-import Link from 'next/link'
-import { NextRouter } from 'next/router'
-import { Media } from '../../interfaces/shared/title'
-import { getProxiedIMDbImgUrl, modifyIMDbImg } from '../../utils/helpers'
+import Image from 'next/future/image';
+import Link from 'next/link';
+import { NextRouter } from 'next/router';
+import { Media } from '../../interfaces/shared/title';
+import { getProxiedIMDbImgUrl, modifyIMDbImg } from '../../utils/helpers';
 
-import styles from '../../styles/modules/components/title/media.module.scss'
+import styles from '../../styles/modules/components/title/media.module.scss';
 
 type Props = {
-  className: string
-  media: Media
-  router: NextRouter
-}
+  className: string;
+  media: Media;
+  router: NextRouter;
+};
 
 const Media = ({ className, media, router }: Props) => {
   return (
@@ -32,8 +32,9 @@ const Media = ({ className, media, router }: Props) => {
                     modifyIMDbImg(media.trailer.thumbnail)
                   )}
                   className={styles.trailer__video}
+                  preload="none"
                 >
-                  {media.trailer.urls.map((source) => (
+                  {media.trailer.urls.map(source => (
                     <source
                       key={source.url}
                       type={source.mimeType}
@@ -46,7 +47,7 @@ const Media = ({ className, media, router }: Props) => {
             )}
 
             {!!media.videos.total &&
-              media.videos.videos.map((video) => (
+              media.videos.videos.map(video => (
                 <Link href={`/video/${video.id}`} key={video.id}>
                   <a className={styles.video}>
                     <Image
@@ -69,7 +70,7 @@ const Media = ({ className, media, router }: Props) => {
         <section className={styles.images}>
           <h2 className="heading heading__secondary">Images</h2>
           <div className={styles.images__container}>
-            {media.images.images.map((image) => (
+            {media.images.images.map(image => (
               <figure key={image.id} className={styles.image}>
                 <Image
                   className={styles.image__img}
@@ -87,6 +88,6 @@ const Media = ({ className, media, router }: Props) => {
         </section>
       )}
     </div>
-  )
-}
-export default Media
+  );
+};
+export default Media;

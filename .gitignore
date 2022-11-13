@@ -28,11 +28,15 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
- next-env.d.ts
+next-env.d.ts
 
 #just dev stuff
 dev/*
+
+# other lockfiles 
 yarn.lock
+package-lock.json
 
 # docker
 docker-compose.yml
+dump.rdb

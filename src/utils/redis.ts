@@ -1,11 +1,11 @@
-import Redis from 'ioredis'
+import Redis from 'ioredis';
 
-const redisUrl = process.env.REDIS_URL
+const redisUrl = process.env.REDIS_URL;
+const toUseRedis = process.env.USE_REDIS === 'true';
 
-if (!redisUrl) {
-  throw 'Please set the REDIS_URL environment variable.'
-}
+let redis: Redis | null;
 
-const redis = new Redis(redisUrl)
+if (toUseRedis && redisUrl) redis = new Redis(redisUrl);
+else redis = null;
 
-export default redis
+export default redis;
