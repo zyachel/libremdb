@@ -43,12 +43,12 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | [libremdbeu.herokuapp.com](https://libremdbeu.herokuapp.com) | Europe | Operated by [toyboatcash](https://github.com/toyboatcash) |
 | [lmdb.tokhmi.xyz](https://lmdb.tokhmi.xyz) | U.S. | Operated by [Tokhmi](https://tokhmi.xyz) |
 | [libremdb.esmailelbob.xyz](https://libremdb.esmailelbob.xyz) | Canada | Operated by [Esmail EL BoB](https://esmailelbob.xyz) |
-| [ld.vern.cc](https://ld.vern.cc) | Canada | Operated by [~vern](https://vern.cc) |
+| [ld.vern.cc](https://ld.vern.cc) | US | Operated by [~vern](https://vern.cc) |
 | 2. Onion | | |
 | [libremdb.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion](http://libremdb.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion) | Canada | Operated by [Esmail EL BoB](https://esmailelbob.xyz) |
-| [ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) | Canada | Operated by [~vern](https://vern.cc) |
+| [ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) | US  | Operated by [~vern](https://vern.cc) |
 | 3. I2P | | |
-| [vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p](http://vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p) | Canada | Operated by [~vern](https://vern.cc) |
+| [vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p](http://vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p) | US  | Operated by [~vern](https://vern.cc) |
 
 ---
 
