@@ -1,3 +1,12 @@
+## [2.2.1](https://github.com/zyachel/libremdb/compare/v2.2.0...v2.2.1) (2022-12-01)
+
+
+### Bug Fixes
+
+* **title:** fix site crash ([dd75df0](https://github.com/zyachel/libremdb/commit/dd75df01eb7c03d8945a8bd20ed231a66bd88b8f))
+
+
+
 # [2.2.0](https://github.com/zyachel/libremdb/compare/v2.1.0...v2.2.0) (2022-11-13)
 
 
@@ -70,15 +79,6 @@
 ### Performance Improvements
 
 * implement caching of static files ([170fbab](https://github.com/zyachel/libremdb/commit/170fbabe5ef4b8cec63ca8831a4ae2a79798a6b0))
-
-
-
-## [0.1.1](https://github.com/zyachel/libremdb/compare/v0.1.0...v0.1.1) (2022-06-03)
-
-
-### Bug Fixes
-
-* typo in URL ([#2](https://github.com/zyachel/libremdb/issues/2)) ([9f35a66](https://github.com/zyachel/libremdb/commit/9f35a668b508d79353da5db70014d99094788d5a))
 
 
 
