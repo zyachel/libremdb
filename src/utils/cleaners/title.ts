@@ -25,10 +25,12 @@ const cleanTitle = (rawData: RawTitle) => {
           | 'videoGame',
         name: main.titleType.text,
       },
-      status: {
-        id: main.productionStatus.currentProductionStage.id,
-        text: main.productionStatus.currentProductionStage.text,
-      },
+      ...(main.productionStatus && {
+        status: {
+          id: main.productionStatus.currentProductionStage.id,
+          text: main.productionStatus.currentProductionStage.text,
+        },
+      }),
       ceritficate: main.certificate?.rating || null,
       ...(main.releaseYear && {
         releaseYear: {

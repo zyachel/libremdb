@@ -58,7 +58,7 @@ const Basic = ({ data, className }: Props) => {
           {data.title}
         </h1>
         <ul className={styles.meta} aria-label="quick facts">
-          {data.status.id !== 'released' && (
+          {data.status && data.status.id !== 'released' && (
             <li className={styles.meta__text}>{data.status.text}</li>
           )}
           <li className={styles.meta__text}>{data.type.name}</li>

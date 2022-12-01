@@ -18,7 +18,7 @@ export default interface RawTitle {
             restrictionReason: Array<string>;
             unrestrictedTotal: number;
           };
-        };
+        } | null;
         canHaveEpisodes: boolean;
         series?: {
           episodeNumber: {
