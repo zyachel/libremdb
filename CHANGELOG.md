@@ -1,3 +1,12 @@
+## [2.2.2](https://github.com/zyachel/libremdb/compare/v2.2.1...v2.2.2) (2022-12-10)
+
+
+### Bug Fixes
+
+* app crash on qutebrowser ([78b14ec](https://github.com/zyachel/libremdb/commit/78b14ec07955d29403b8b5ae0d449f38eea2bbc5))
+
+
+
 ## [2.2.1](https://github.com/zyachel/libremdb/compare/v2.2.0...v2.2.1) (2022-12-01)
 
 
@@ -64,21 +73,6 @@
 ### BREAKING CHANGES
 
 * the whole application is rewritten from scratch.
-
-
-
-## [0.1.2](https://github.com/zyachel/libremdb/compare/v0.1.1...v0.1.2) (2022-06-06)
-
-
-### Bug Fixes
-
-* change the order in which env vars are loaded ([55c0eba](https://github.com/zyachel/libremdb/commit/55c0eba6e47c85654242173796e76205328f5f31))
-* **robots.txt:** disallow all robots ([f39998d](https://github.com/zyachel/libremdb/commit/f39998d57bd2531fd1bd8b21e32ca563baf7565c))
-
-
-### Performance Improvements
-
-* implement caching of static files ([170fbab](https://github.com/zyachel/libremdb/commit/170fbabe5ef4b8cec63ca8831a4ae2a79798a6b0))
 
 
 
