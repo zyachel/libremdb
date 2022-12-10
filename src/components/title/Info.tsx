@@ -124,10 +124,7 @@ const Info = ({ info, className, router }: Props) => {
             {keywords.list.map(word => (
               <li className={styles.keywords__item} key={word}>
                 <Link
-                  href={`/search/keyword/?keywords=${word.replaceAll(
-                    ' ',
-                    '-'
-                  )}`}
+                  href={`/search/keyword/?keywords=${word.replace(/\s/g,'-')}`}
                 >
                   <a className='link'>{word}</a>
                 </Link>

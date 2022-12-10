@@ -46,16 +46,17 @@ export const formatMoney = (num: number, cur: string) => {
     style: 'currency',
     currency: cur,
     maximumFractionDigits: 0,
+    minimumFractionDigits: 0,
   }).format(num);
 };
 
 export const modifyIMDbImg = (url: string, widthInPx = 600) => {
-  return url.replaceAll('.jpg', `UX${widthInPx}.jpg`);
+  return url.replace(/\.jpg/g, `UX${widthInPx}.jpg`);
 };
 
 export const getProxiedIMDbImgUrl = (url: string) => {
-    return `/api/media_proxy?url=${encodeURIComponent(url)}`;
-}
+  return `/api/media_proxy?url=${encodeURIComponent(url)}`;
+};
 
 export const AppError = class extends Error {
   constructor(message: string, public statusCode: number, cause?: any) {
