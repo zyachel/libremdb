@@ -32,8 +32,6 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 
 ## Instances
 
-### Clearnet
-
 <!-- prettier-ignore -->
 | Instance URL | Region | Notes |
 | ------------ | ------ | ----- |
@@ -44,6 +42,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | [lmdb.tokhmi.xyz](https://lmdb.tokhmi.xyz) | U.S. | Operated by [Tokhmi](https://tokhmi.xyz) |
 | [libremdb.esmailelbob.xyz](https://libremdb.esmailelbob.xyz) | Canada | Operated by [Esmail EL BoB](https://esmailelbob.xyz) |
 | [ld.vern.cc](https://ld.vern.cc) | US | Operated by [~vern](https://vern.cc) |
+| [binge.whatever.social](https://binge.whatever.social) | US & Germany | Operated by [Whatever Social](https://whatever.social) |
 | 2. Onion | | |
 | [libremdb.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion](http://libremdb.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion) | Canada | Operated by [Esmail EL BoB](https://esmailelbob.xyz) |
 | [ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) | US  | Operated by [~vern](https://vern.cc) |
