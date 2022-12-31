@@ -1,3 +1,17 @@
+# [2.3.0](https://github.com/zyachel/libremdb/compare/v2.2.2...v2.3.0) (2022-12-31)
+
+
+### Bug Fixes
+
+* couple css improvements for webkit-based browsers ([81eaf2f](https://github.com/zyachel/libremdb/commit/81eaf2fd5e5980c0c4d59a8805cf541fa8fe51f9))
+
+
+### Features
+
+* **search:** add basic search functionality ([0cff34a](https://github.com/zyachel/libremdb/commit/0cff34a766b09ba17be2a89f6290889dbf225436))
+
+
+
 ## [2.2.2](https://github.com/zyachel/libremdb/compare/v2.2.1...v2.2.2) (2022-12-10)
 
 
@@ -52,27 +66,6 @@
 * media proxy for anonymous loads ([59a314b](https://github.com/zyachel/libremdb/commit/59a314b2bd632faa2ceac7e430be381b23547e89))
 * proxy videos and add more descriptive error messages ([1983f6b](https://github.com/zyachel/libremdb/commit/1983f6b1fb0380642c6488a0347a7073eea20338))
 * update information in FAQ ([44d3a33](https://github.com/zyachel/libremdb/commit/44d3a33fb3366adafd8a629a4b11211bf7479dc8))
-
-
-
-# [2.0.0](https://github.com/zyachel/libremdb/compare/v0.1.2...v2.0.0) (2022-10-31)
-
-
-### Bug Fixes
-
-* change to poster for og:image ([f207d68](https://github.com/zyachel/libremdb/commit/f207d688e2dc0d6c12a0b6e8f6ddc7b0eadf5e0b))
-* remove double space in inspiration credit ([3f987b5](https://github.com/zyachel/libremdb/commit/3f987b59dcadbb5f931dda4d510b4c13a4ed5cd0))
-
-
-### Features
-
-* add "og:image" property for social media embeds ([d152cf4](https://github.com/zyachel/libremdb/commit/d152cf4b6210b3dd5eb33274d05695bd5593cd06))
-* major rewrite ([9891204](https://github.com/zyachel/libremdb/commit/9891204f5a11eb24ad7c924f50f0e069589b82ff))
-
-
-### BREAKING CHANGES
-
-* the whole application is rewritten from scratch.
 
 
 
