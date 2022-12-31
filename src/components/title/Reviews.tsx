@@ -1,4 +1,4 @@
-import { NextRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Reviews } from '../../interfaces/shared/title';
 import { formatNumber } from '../../utils/helpers';
@@ -6,15 +6,15 @@ import styles from '../../styles/modules/components/title/reviews.module.scss';
 
 type Props = {
   reviews: Reviews;
-  router: NextRouter;
 };
 
-const Reviews = ({ reviews, router }: Props) => {
+const Reviews = ({ reviews }: Props) => {
+  const router = useRouter();
   const { titleId } = router.query;
 
   return (
     <section className={styles.reviews}>
-      <h2 className='heading heading__secondary'>Reviews</h2>
+      <h2 className="heading heading__secondary">Reviews</h2>
 
       {reviews.featuredReview && (
         <article className={styles.reviews__reviewContainer}>
@@ -38,7 +38,7 @@ const Reviews = ({ reviews, router }: Props) => {
                 {' '}
                 by{' '}
                 <Link href={`/user/${reviews.featuredReview.reviewer.id}`}>
-                  <a className='link'>{reviews.featuredReview.reviewer.name}</a>
+                  <a className="link">{reviews.featuredReview.reviewer.name}</a>
                 </Link>
               </span>
               <span> on {reviews.featuredReview.date}.</span>
@@ -58,21 +58,21 @@ const Reviews = ({ reviews, router }: Props) => {
       <div className={styles.reviews__stats}>
         <p>
           <Link href={`/title/${titleId}/reviews`}>
-            <a className='link'>
+            <a className="link">
               {formatNumber(reviews.numUserReviews)} User reviews
             </a>
           </Link>
         </p>
         <p>
           <Link href={`/title/${titleId}/externalreviews`}>
-            <a className='link'>
+            <a className="link">
               {formatNumber(reviews.numCriticReviews)} Critic reviews
             </a>
           </Link>
         </p>
         <p>
           <Link href={`/title/${titleId}/criticreviews`}>
-            <a className='link'> {reviews.metacriticScore} Metascore</a>
+            <a className="link"> {reviews.metacriticScore} Metascore</a>
           </Link>
         </p>
       </div>

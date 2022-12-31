@@ -1,7 +1,7 @@
-import Meta from '../../components/Meta/Meta'
-import Layout from '../../layouts/Layout'
+import Meta from '../../components/meta/Meta';
+import Layout from '../../layouts/Layout';
 
-import styles from '../../styles/modules/pages/privacy/privacy.module.scss'
+import styles from '../../styles/modules/pages/privacy/privacy.module.scss';
 
 const Privacy = () => {
   return (
@@ -55,7 +55,7 @@ const Privacy = () => {
         </section>
       </Layout>
     </>
-  )
-}
+  );
+};
 
-export default Privacy
+export default Privacy;

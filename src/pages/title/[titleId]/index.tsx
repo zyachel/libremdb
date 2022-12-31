@@ -1,35 +1,34 @@
 // external
 import { GetServerSideProps, GetStaticProps, GetStaticPaths } from 'next'
-import { useRouter } from 'next/router'
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 // local
-import Meta from '../../../components/Meta/Meta'
-import Layout from '../../../layouts/Layout'
-import title from '../../../utils/fetchers/title'
-// components
-import ErrorInfo from '../../../components/Error/ErrorInfo'
-import Basic from '../../../components/title/Basic'
-import Media from '../../../components/title/Media'
-import Cast from '../../../components/title/Cast'
-import DidYouKnow from '../../../components/title/DidYouKnow'
-import Info from '../../../components/title/Info'
-import Reviews from '../../../components/title/Reviews'
-import MoreLikeThis from '../../../components/title/MoreLikeThis'
+import Meta from '../../../components/meta/Meta';
+import Layout from '../../../layouts/Layout';
+import ErrorInfo from '../../../components/error/ErrorInfo';
+import {
+  Basic,
+  Cast,
+  DidYouKnow,
+  Info,
+  Media,
+  MoreLikeThis,
+  Reviews,
+} from '../../../components/title';
 // misc
-import Title from '../../../interfaces/shared/title'
-import { AppError } from '../../../interfaces/shared/error'
+import Title from '../../../interfaces/shared/title';
+import { AppError } from '../../../interfaces/shared/error';
+import title from '../../../utils/fetchers/title';
+import { getProxiedIMDbImgUrl } from '../../../utils/helpers';
 // styles
-import styles from '../../../styles/modules/pages/title/title.module.scss'
-import Head from 'next/head'
-import { getProxiedIMDbImgUrl } from '../../../utils/helpers'
+import styles from '../../../styles/modules/pages/title/title.module.scss';
 
-type Props = { data: Title; error: null } | { error: AppError; data: null }
+type Props = { data: Title; error: null } | { error: AppError; data: null };
 
 // TO-DO: make a wrapper page component to display errors, if present in props
 const TitleInfo = ({ data, error }: Props) => {
-  const router = useRouter()
-
   if (error)
-    return <ErrorInfo message={error.message} statusCode={error.statusCode} />
+    return <ErrorInfo message={error.message} statusCode={error.statusCode} />;
 
   const info = {
     meta: data.meta,
@@ -38,7 +37,7 @@ const TitleInfo = ({ data, error }: Props) => {
     boxOffice: data.boxOffice,
     technicalSpecs: data.technicalSpecs,
     accolades: data.accolades,
-  }
+  };
 
   return (
     <>
@@ -60,18 +59,18 @@ const TitleInfo = ({ data, error }: Props) => {
       </Head>
       <Layout className={styles.title}>
         <Basic data={data.basic} className={styles.basic} />
-        <Media className={styles.media} media={data.media} router={router} />
+        <Media className={styles.media} media={data.media} />
         <Cast className={styles.cast} cast={data.cast} />
         <div className={styles.textarea}>
           <DidYouKnow data={data.didYouKnow} />
-          <Reviews reviews={data.reviews} router={router} />
+          <Reviews reviews={data.reviews} />
         </div>
-        <Info className={styles.infoarea} info={info} router={router} />
+        <Info className={styles.infoarea} info={info} />
         <MoreLikeThis className={styles.related} data={data.moreLikeThis} />
       </Layout>
     </>
-  )
-}
+  );
+};
 
 // TO-DO: make a getServerSideProps wrapper for handling errors
 export const getServerSideProps: GetServerSideProps = async (ctx) => {

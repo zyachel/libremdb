@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { NextRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { Info } from '../../interfaces/shared/title';
 import { formatMoney, formatTime } from '../../utils/helpers';
 
@@ -8,10 +8,10 @@ import styles from '../../styles/modules/components/title/info.module.scss';
 type Props = {
   info: Info;
   className: string;
-  router: NextRouter;
 };
 
-const Info = ({ info, className, router }: Props) => {
+const Info = ({ info, className }: Props) => {
+  const router = useRouter();
   const { titleId } = router.query;
   const { boxOffice, details, meta, keywords, technicalSpecs, accolades } =
     info;
@@ -20,7 +20,7 @@ const Info = ({ info, className, router }: Props) => {
     <div className={`${className} ${styles.info}`}>
       {meta.infoEpisode && (
         <section className={styles.episodeInfo}>
-          <h2 className='heading heading__secondary'>Episode info</h2>
+          <h2 className="heading heading__secondary">Episode info</h2>
           <div className={styles.episodeInfo__container}>
             {meta.infoEpisode.numSeason && (
               <p className={styles.series}>
@@ -50,14 +50,14 @@ const Info = ({ info, className, router }: Props) => {
             {meta.infoEpisode.prevId && (
               <p>
                 <Link href={`/title/${meta.infoEpisode.prevId}`}>
-                  <a className='link'>Go to previous episode</a>
+                  <a className="link">Go to previous episode</a>
                 </Link>
               </p>
             )}
             {meta.infoEpisode.nextId && (
               <p>
                 <Link href={`/title/${meta.infoEpisode.nextId}`}>
-                  <a className='link'>Go to next episode</a>
+                  <a className="link">Go to next episode</a>
                 </Link>
               </p>
             )}
@@ -66,7 +66,7 @@ const Info = ({ info, className, router }: Props) => {
       )}
       {meta.infoSeries && (
         <section className={styles.seriesInfo}>
-          <h2 className='heading heading__secondary'>Series info</h2>
+          <h2 className="heading heading__secondary">Series info</h2>
           <div className={styles.seriesInfo__container}>
             <p>
               <span>Total Seasons: </span>
@@ -82,19 +82,19 @@ const Info = ({ info, className, router }: Props) => {
             </p>
             <p>
               <Link href={`/title/${titleId}/episodes`}>
-                <a className='link'>See all Episodes</a>
+                <a className="link">See all Episodes</a>
               </Link>
             </p>
           </div>
         </section>
       )}
       <section className={styles.accolades}>
-        <h2 className='heading heading__secondary'>Accolades</h2>
+        <h2 className="heading heading__secondary">Accolades</h2>
         <div className={styles.accolades__container}>
           {accolades.topRating && (
             <p>
               <Link href={`/chart/top`}>
-                <a className='link'>Top rated (#{accolades.topRating})</a>
+                <a className="link">Top rated (#{accolades.topRating})</a>
               </Link>
             </p>
           )}
@@ -112,21 +112,21 @@ const Info = ({ info, className, router }: Props) => {
           </p>
           <p>
             <Link href={`/title/${titleId}/awards`}>
-              <a className='link'>View all awards</a>
+              <a className="link">View all awards</a>
             </Link>
           </p>
         </div>
       </section>
       {!!keywords.total && (
         <section className={styles.keywords}>
-          <h2 className='heading heading__secondary'>Keywords</h2>
+          <h2 className="heading heading__secondary">Keywords</h2>
           <ul className={styles.keywords__container}>
             {keywords.list.map(word => (
               <li className={styles.keywords__item} key={word}>
                 <Link
-                  href={`/search/keyword/?keywords=${word.replace(/\s/g,'-')}`}
+                  href={`/search/keyword/?keywords=${word.replace(/\s/g, '-')}`}
                 >
-                  <a className='link'>{word}</a>
+                  <a className="link">{word}</a>
                 </Link>
               </li>
             ))}
@@ -135,7 +135,7 @@ const Info = ({ info, className, router }: Props) => {
       )}
       {!!Object.keys(details).length && (
         <section className={styles.details}>
-          <h2 className='heading heading__secondary'>Details</h2>
+          <h2 className="heading heading__secondary">Details</h2>
           <div className={styles.details__container}>
             {details.releaseDate && (
               <p>
@@ -156,7 +156,7 @@ const Info = ({ info, className, router }: Props) => {
                     <Link
                       href={`/search/title/?country_of_origin=${country.id}`}
                     >
-                      <a className='link'>{country.text}</a>
+                      <a className="link">{country.text}</a>
                     </Link>
                   </span>
                 ))}
@@ -168,7 +168,7 @@ const Info = ({ info, className, router }: Props) => {
                 {details.officialSites.sites.map((site, i) => (
                   <span key={site.url}>
                     {!!i && ', '}
-                    <a href={site.url} className='link'>
+                    <a href={site.url} className="link">
                       {site.name}
                     </a>
                   </span>
@@ -182,7 +182,7 @@ const Info = ({ info, className, router }: Props) => {
                   <span key={lang.id}>
                     {!!i && ', '}
                     <Link href={`/search/title/?primary_language=${lang.id}`}>
-                      <a className='link'>{lang.text}</a>
+                      <a className="link">{lang.text}</a>
                     </Link>
                   </span>
                 ))}
@@ -201,7 +201,7 @@ const Info = ({ info, className, router }: Props) => {
                   <span key={loc}>
                     {!!i && ', '}
                     <Link href={`/search/title/?locations=${loc}`}>
-                      <a className='link'>{loc}</a>
+                      <a className="link">{loc}</a>
                     </Link>
                   </span>
                 ))}
@@ -214,7 +214,7 @@ const Info = ({ info, className, router }: Props) => {
                   <span key={co.id}>
                     {!!i && ', '}
                     <Link href={`/company/${co.id}`}>
-                      <a className='link'>{co.name}</a>
+                      <a className="link">{co.name}</a>
                     </Link>
                   </span>
                 ))}
@@ -225,7 +225,7 @@ const Info = ({ info, className, router }: Props) => {
       )}
       {!!Object.keys(boxOffice).length && (
         <section className={styles.boxoffice}>
-          <h2 className='heading heading__secondary'>Box office</h2>
+          <h2 className="heading heading__secondary">Box office</h2>
           <div className={styles.boxoffice__container}>
             {boxOffice.budget && (
               <p>
@@ -277,7 +277,7 @@ const Info = ({ info, className, router }: Props) => {
       )}
       {!!Object.keys(technicalSpecs).length && (
         <section className={styles.technical}>
-          <h2 className='heading heading__secondary'>Technical specs</h2>
+          <h2 className="heading heading__secondary">Technical specs</h2>
           <div className={styles.technical__container}>
             {technicalSpecs.runtime && (
               <p>
@@ -293,7 +293,7 @@ const Info = ({ info, className, router }: Props) => {
                     <span key={color.id}>
                       {!!i && ', '}
                       <Link href={`/search/title/?colors=${color.id}`}>
-                        <a className='link'>{color.name}</a>
+                        <a className="link">{color.name}</a>
                       </Link>
                     </span>
                   ))}
@@ -308,7 +308,7 @@ const Info = ({ info, className, router }: Props) => {
                     <span key={sound.id}>
                       {!!i && ', '}
                       <Link href={`/search/title/?sound_mixes=${sound.id}`}>
-                        <a className='link'>{sound.name}</a>
+                        <a className="link">{sound.name}</a>
                       </Link>
                     </span>
                   ))}

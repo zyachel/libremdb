@@ -17,9 +17,9 @@ const ThemeToggler = (props: Props) => {
   return (
     <button
       className={`${styles.button}  ${props.className}`}
-      aria-label='Change theme'
       onClick={clickHandler}
     >
+      <span className='visually-hidden'>Change theme</span>
       <svg
         className={`icon ${styles.icon}`}
         focusable='false'

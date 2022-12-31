@@ -1,4 +1,4 @@
-import ErrorInfo from '../components/Error/ErrorInfo';
+import ErrorInfo from '../components/error/ErrorInfo';
 
 const Error404 = () => {
   return <ErrorInfo />;

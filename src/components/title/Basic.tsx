@@ -1,27 +1,27 @@
-import { Fragment } from 'react'
-import Image from 'next/future/image'
-import Link from 'next/link'
+import { Fragment } from 'react';
+import Image from 'next/future/image';
+import Link from 'next/link';
 
 import {
   formatNumber,
   formatTime,
   getProxiedIMDbImgUrl,
   modifyIMDbImg,
-} from '../../utils/helpers'
-import { Basic } from '../../interfaces/shared/title'
-import styles from '../../styles/modules/components/title/basic.module.scss'
+} from '../../utils/helpers';
+import { Basic } from '../../interfaces/shared/title';
+import styles from '../../styles/modules/components/title/basic.module.scss';
 
 type Props = {
-  className: string
-  data: Basic
-}
+  className: string;
+  data: Basic;
+};
 
 const Basic = ({ data, className }: Props) => {
-  const titleType = data.type.id
+  const titleType = data.type.id;
   const releaseTime =
     titleType === 'tvSeries'
       ? `${data.releaseYear?.start}-${data.releaseYear?.end || 'present'}`
-      : data.releaseYear?.start
+      : data.releaseYear?.start;
 
   return (
     <section
@@ -45,11 +45,11 @@ const Basic = ({ data, className }: Props) => {
             alt={data.poster.caption}
             priority
             fill
-            sizes="300px"
+            sizes='300px'
           />
         ) : (
           <svg className={styles.image__NA}>
-            <use href="/svg/sprite.svg#icon-image-slash" />
+            <use href='/svg/sprite.svg#icon-image-slash' />
           </svg>
         )}
       </div>
@@ -57,7 +57,7 @@ const Basic = ({ data, className }: Props) => {
         <h1 className={`${styles.title} heading heading__primary`}>
           {data.title}
         </h1>
-        <ul className={styles.meta} aria-label="quick facts">
+        <ul className={styles.meta} aria-label='quick facts'>
           {data.status && data.status.id !== 'released' && (
             <li className={styles.meta__text}>{data.status.text}</li>
           )}
@@ -78,7 +78,7 @@ const Basic = ({ data, className }: Props) => {
               <p className={styles.rating}>
                 <span className={styles.rating__num}>{data.ratings.avg}</span>
                 <svg className={styles.rating__icon}>
-                  <use href="/svg/sprite.svg#icon-rating"></use>
+                  <use href='/svg/sprite.svg#icon-rating'></use>
                 </svg>
                 <span className={styles.rating__text}> Avg. rating</span>
               </p>
@@ -87,7 +87,7 @@ const Basic = ({ data, className }: Props) => {
                   {formatNumber(data.ratings.numVotes)}
                 </span>
                 <svg className={styles.rating__icon}>
-                  <use href="/svg/sprite.svg#icon-like-dislike"></use>
+                  <use href='/svg/sprite.svg#icon-like-dislike'></use>
                 </svg>
                 <span className={styles.rating__text}> No. of votes</span>
               </p>
@@ -99,7 +99,7 @@ const Basic = ({ data, className }: Props) => {
                 {formatNumber(data.ranking.position)}
               </span>
               <svg className={styles.rating__icon}>
-                <use href="/svg/sprite.svg#icon-graph-rising"></use>
+                <use href='/svg/sprite.svg#icon-graph-rising'></use>
               </svg>
               <span className={styles.rating__text}>
                 {' '}
@@ -136,7 +136,7 @@ const Basic = ({ data, className }: Props) => {
             <span className={styles.overview__text}>{data.plot || '-'}</span>
           </p>
         }
-        {data.primaryCrew.map((crewType) => (
+        {data.primaryCrew.map(crewType => (
           <p className={styles.crewType} key={crewType.type.id}>
             <span className={styles.crewType__heading}>
               {`${crewType.type.category}: `}
@@ -153,7 +153,7 @@ const Basic = ({ data, className }: Props) => {
         ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Basic
+export default Basic;
