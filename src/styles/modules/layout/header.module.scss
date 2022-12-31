@@ -1,7 +1,7 @@
 @use '../../abstracts' as helper;
 
 .header {
-  --dimension: 1.5em; // will be used for icons
+  --dimension: 1.6em; // will be used for icons
 
   font-size: 1.1em;
 
@@ -67,9 +67,20 @@
   }
 }
 
-.themeToggler {
+.misc {
   justify-self: end;
   grid-column: -2 / -1;
+
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-2);
+  position: relative;
+
+  svg {
+    height: var(--dimension);
+    width: var(--dimension);
+    fill: var(--clr-fill);
+  }
 }
 
 .hero {

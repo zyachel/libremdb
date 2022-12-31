@@ -1,31 +1,24 @@
 import { ReactNode } from 'react';
-// import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
-import styles from '../styles/modules/layout/header.module.scss';
 import ThemeToggler from '../components/buttons/ThemeToggler';
 
-// const ThemeToggler = dynamic(
-//   () => import('../components/buttons/ThemeToggler'),
-//   { ssr: false }
-// );
+import styles from '../styles/modules/layout/header.module.scss';
 
 type Props = { full?: boolean; children?: ReactNode };
 
 const Header = (props: Props) => {
+  const { asPath: path } = useRouter();
+
   return (
     <header
       id='header'
       className={`${styles.header} ${props.full ? styles.header__about : ''}`}
     >
       <div className={styles.topbar}>
-        <Link href='/about'>
+        <Link href='/'>
           <a aria-label='go to homepage' className={styles.logo}>
-            <svg
-              className={styles.logo__icon}
-              focusable='false'
-              role='img'
-              aria-hidden='true'
-            >
+            <svg className={styles.logo__icon} role='img' aria-hidden>
               <use href='/svg/sprite.svg#icon-logo'></use>
             </svg>
             <span className={styles.logo__text}>libremdb</span>
@@ -52,7 +45,29 @@ const Header = (props: Props) => {
             </ul>
           </nav>
         )}
-        <ThemeToggler className={styles.themeToggler} />
+        <div className={styles.misc}>
+          <a
+            href={`https://www.imdb.com${path}`}
+            target='_blank'
+            rel='noreferrer'
+          >
+            <span className='visually-hidden'>
+              View on IMDb (opens in new tab)
+            </span>
+            <svg className='icon' role='img' aria-hidden>
+              <use href='/svg/sprite.svg#icon-external-link'></use>
+            </svg>
+          </a>
+          <Link href='/find'>
+            <a>
+              <span className='visually-hidden'>Search</span>
+              <svg className='icon' role='img' aria-hidden>
+                <use href='/svg/sprite.svg#icon-search'></use>
+              </svg>
+            </a>
+          </Link>
+          <ThemeToggler className={styles.themeToggler} />
+        </div>
       </div>
       {props.full && (
         <div className={styles.hero}>
@@ -60,15 +75,15 @@ const Header = (props: Props) => {
             A free & open source IMDb front-end
           </h1>
           <p className={styles.hero__more}>
-            inspired by projects like&nbsp;
+            inspired by projects like{' '}
             <a href='https://codeberg.org/teddit/teddit' className='link'>
               teddit
             </a>
-            ,&nbsp;
+            ,{' '}
             <a href='https://github.com/zedeus/nitter' className='link'>
               nitter
             </a>
-            , and&nbsp;
+            , and{' '}
             <a
               href='https://github.com/digitalblossom/alternative-frontends'
               className='link'

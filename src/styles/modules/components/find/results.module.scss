@@ -1,0 +1,25 @@
+@use '../../../abstracts' as helper;
+
+.results {
+  display: grid;
+  gap: var(--spacer-2);
+
+  &__list {
+    display: grid;
+    gap: var(--spacer-5);
+  }
+}
+
+.titles, .people, .companies, .keywords {
+  display: grid;
+  gap: var(--spacer-2);
+
+  &__list {
+    padding: var(--spacer-2);
+    display: grid;
+    gap: var(--spacer-4);
+    // justify-self: start;
+
+
+  }
+}

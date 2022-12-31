@@ -1,0 +1,148 @@
+@use '../../../abstracts' as helper;
+
+.form {
+  display: grid;
+  gap: var(--spacer-2);
+
+  position: sticky;
+  top: var(--spacer-2);
+
+  @include helper.bp('bp-1200') {
+    position: initial;
+  }
+}
+
+%border-styles {
+  border-radius: var(--spacer-1);
+  border: 2px solid var(--clr-fill-muted);
+}
+
+.searchbar {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--spacer-1);
+  padding: var(--spacer-1);
+
+  @extend %border-styles;
+
+  --dim: 3rem;
+
+  &__icon {
+    height: var(--dim);
+    width: var(--dim);
+
+    fill: var(--clr-fill-muted);
+  }
+
+  &__input {
+    font: inherit;
+    border: none;
+    outline: none;
+    caret-color: var(--clr-fill);
+    background: transparent;
+    color: var(--clr-text-accent);
+
+    -webkit-appearance: none; // webkit sucks!
+  }
+
+  // accessibility
+  &:focus-within {
+    background: var(--clr-bg-muted);
+  }
+
+}
+
+.types,
+.titleTypes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacer-2);
+  padding: var(--spacer-2);
+
+  @extend %border-styles;
+
+  &__heading {
+    font-size: var(--fs-4);
+    padding-inline: var(--spacer-1);
+    flex: 100%;
+    line-height: 1;
+    color: var(--clr-text-muted);
+  }
+
+  &:disabled {
+    &,  * {
+      cursor: not-allowed;
+      filter: brightness(.95);
+    }
+  }
+}
+
+.type,
+.titleType {
+  --border-color: transparent;
+  position: relative;
+  display: inline-flex;
+
+  label {
+    cursor: pointer;
+    padding: var(--spacer-1) var(--spacer-2);
+    border-radius: 5px;
+    color: var(--clr-text-accent);
+    background-color: var(--clr-bg-accent);
+    border: 2px solid var(--border-color);
+  }
+  
+  input:checked + label {
+    --border-color: var(--clr-text-accent);
+  }
+
+  // for keyboard navigation
+  input:focus + label {
+    @include helper.focus-rules;
+  }
+
+  @supports selector(:focus-visible) {
+    input:focus + label {
+      outline: none;
+    }
+
+    input:focus-visible + label {
+      @include helper.focus-rules;
+    }
+  }
+}
+
+.exact {
+  display: flex;
+  gap: var(--spacer-1);
+  justify-self: start;
+  align-items: center;
+  
+  label, input {
+    cursor: pointer;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: var(--spacer-2);
+}
+
+.button {
+
+  --text: var(--clr-link);
+
+  padding: var(--spacer-1) var(--spacer-2);
+  font: inherit;
+
+  background: transparent;
+  color: var(--text);
+  border: 2px solid currentColor;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &[type='reset'] {
+    --text: var(--clr-text-muted)
+
+  }
+}

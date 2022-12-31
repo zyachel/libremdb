@@ -1,3 +1,9 @@
+import {
+  ResultMetaTitleTypes,
+  ResultMetaTypes,
+} from '../interfaces/shared/search';
+import { resultTitleTypes } from './constants/find';
+
 export const formatTime = (timeInSecs: number) => {
   if (!timeInSecs) return;
   // year, month, date, hours, minutes, seconds
@@ -50,8 +56,14 @@ export const formatMoney = (num: number, cur: string) => {
   }).format(num);
 };
 
+const imageRegex = /https:\/\/m\.media-amazon\.com\/images\/M\/[^.]*/;
+
 export const modifyIMDbImg = (url: string, widthInPx = 600) => {
-  return url.replace(/\.jpg/g, `UX${widthInPx}.jpg`);
+  // as match returns either array or null, returning array in case it returns null. and destructuring it right away.
+  const [cleanImg] = url.match(imageRegex) || [];
+
+  if (cleanImg) return `${cleanImg}.UX${widthInPx}.jpg`;
+  return url;
 };
 
 export const getProxiedIMDbImgUrl = (url: string) => {
@@ -63,5 +75,31 @@ export const AppError = class extends Error {
     super(message, cause);
 
     Error.captureStackTrace(this, AppError);
+  }
+};
+
+export const cleanQueryStr = (
+  entries: [string, string][],
+  filterable = ['q', 's', 'exact', 'ttype']
+) => {
+  let queryStr = '';
+
+  entries.forEach(([key, val], i) => {
+    if (!val || !filterable.includes(key)) return;
+    queryStr += `${i > 0 ? '&' : ''}${key}=${val.trim()}`;
+  });
+
+  return queryStr;
+};
+
+export const getResTitleTypeHeading = (
+  type: ResultMetaTypes,
+  titleType: ResultMetaTitleTypes
+) => {
+  if (type !== 'TITLE') return 'Titles';
+
+  for (let i = 0; i < resultTitleTypes.types.length; i++) {
+    const el = resultTitleTypes.types[i];
+    if (el.id === titleType) return el.name;
   }
 };

@@ -19,6 +19,11 @@ const Footer: FC = () => {
             </Link>
           </li>
           <li className={styles.nav__item}>
+            <Link href='/find'>
+              <a className={className('/find')}>Search</a>
+            </Link>
+          </li>
+          <li className={styles.nav__item}>
             <Link href='/privacy'>
               <a className={className('/privacy')}>Privacy</a>
             </Link>

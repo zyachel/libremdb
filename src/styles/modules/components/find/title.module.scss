@@ -1,0 +1,75 @@
+@use '../../../abstracts' as helper;
+
+.title {
+  --width: 10rem;
+  --height: 10rem;
+
+  background: var(--clr-bg-accent);
+  box-shadow: var(--clr-shadow);
+  border-radius: 5px;
+  overflow: hidden; // for background image
+  display: grid;
+  grid-template-columns: var(--width) auto;
+
+  @include helper.bp('bp-450') {
+    --height: 15rem;
+    grid-template-columns: auto;
+  }
+}
+
+.imgContainer {
+  min-height: var(--height);
+
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.img {
+  object-fit: cover;
+
+  @include helper.bp('bp-450') {
+    object-position: center 25%;
+  }
+}
+
+.imgNA {
+  width: 80%;
+  fill: var(--clr-fill-muted);
+}
+
+.info {
+  display: grid;
+  gap: var(--spacer-0);
+  padding: var(--spacer-3);
+
+  @include helper.bp('bp-450') {
+    padding: var(--spacer-1);
+  }
+}
+
+.heading {
+  font-size: var(--fs-4);
+  text-decoration: none;
+}
+
+.basicInfo,
+.seriesInfo {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+
+  & * + ::before {
+    content: '\00b7';
+    padding-inline: var(--spacer-1);
+    font-weight: 900;
+    line-height: 0;
+    font-size: var(--fs-5);
+  }
+}
+
+.stars {
+  span {
+    font-weight: var(--fw-bold);
+  }
+}

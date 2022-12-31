@@ -1,0 +1,13 @@
+.keyword {
+  background: var(--clr-bg-accent);
+  box-shadow: var(--clr-shadow);
+  border-radius: 5px;
+  display: grid;
+  padding: var(--spacer-3);
+  gap: var(--spacer-0);
+}
+
+.heading {
+  font-size: var(--fs-4);
+  text-decoration: none;
+}
