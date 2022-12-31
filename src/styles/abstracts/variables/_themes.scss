@@ -34,7 +34,9 @@ $_light: (
         transparent 70%
       ),
       radial-gradient(at 72% 55%, hsla(344, 79%, 40%, 0.2) 0px, transparent 50%)
-    )
+    ),
+  // changes color of native html elemnts, either 'light' or 'dark' must be set.
+  scheme: light
 );
 
 $_dark: (
@@ -54,6 +56,7 @@ $_dark: (
     radial-gradient(at 23% 32%, hsla(344, 79%, 40%, 0.04) 0px, transparent 70%),
     radial-gradient(at 72% 55%, hsla(344, 79%, 40%, 0.05) 0px, transparent 50%),
   ),
+  scheme: dark,
 );
 
 $themes: (

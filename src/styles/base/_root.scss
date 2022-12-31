@@ -24,4 +24,9 @@
   @include helper.bp('bp-700') {
     @include helper.typescale('mobile');
   }
+
+  // not using any external fonts on webkit because of many issues
+  @include helper.fix-for-safari {
+    --ff-accent: var(--ff-base);
+  }
 }

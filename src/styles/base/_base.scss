@@ -9,11 +9,17 @@ body {
 #__next {
   display: grid;
   grid-template-rows: min-content 1fr min-content;
+
+  &:has(span[role='progressbar']) {
+    cursor: progress;
+  }
 }
 
 body {
   color: var(--clr-text);
   background-color: var(--clr-bg);
+  color-scheme: var(--clr-scheme);
+  accent-color: var(--clr-fill);
 }
 
 // restricting to 1600px width
@@ -21,4 +27,21 @@ body {
   --max-width: 160rem;
   width: min(100%, var(--max-width));
   margin-inline: auto;
+}
+
+////////////////////////////////////////////////////////
+//                 KEYBOARD NAVIGATION
+////////////////////////////////////////////////////////
+:focus {
+  @include helper.focus-rules;
+}
+
+@supports selector(:focus-visible) {
+  :focus {
+    outline: none;
+  }
+
+  :focus-visible {
+    @include helper.focus-rules;
+  }
 }

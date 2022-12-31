@@ -96,6 +96,11 @@
       content: '+';
       font-weight: bold;
     }
+
+    // fix for webkit(not including blink)
+    &::-webkit-details-marker {
+      display: none;
+    }
   }
 
   &__description {
