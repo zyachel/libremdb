@@ -2,6 +2,22 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import redis from '../../utils/redis';
 import axiosInstance from '../../utils/axiosInstance';
 
+const getCleanReqHeaders = (headers: NextApiRequest['headers']) => ({
+  ...(headers.accept && { accept: headers.accept }),
+  ...(headers.range && { range: headers.range }),
+  ...(headers['accept-encoding'] && {
+    'accept-encoding': headers['accept-encoding'] as string,
+  }),
+});
+
+const resHeadersArr = [
+  'content-range',
+  'content-length',
+  'content-type',
+  'accept-ranges',
+];
+
+// checks if a url is pointing towards a video/image from imdb
 const regex =
   /^https:\/\/((m\.)?media-amazon\.com|imdb-video\.media-imdb\.com).*\.(jpg|jpeg|png|mp4|gif|webp).*$/;
 
@@ -11,6 +27,7 @@ export default async function handler(
 ) {
   try {
     const mediaUrl = req.query.url as string | undefined;
+    const requestHeaders = getCleanReqHeaders(req.headers);
 
     // 1. returning if query is illegal
     if (!mediaUrl || !regex.test(mediaUrl))
@@ -23,9 +40,15 @@ export default async function handler(
     if (redis === null) {
       const mediaRes = await axiosInstance.get(mediaUrl, {
         responseType: 'stream',
+        headers: requestHeaders,
       });
 
-      res.setHeader('Content-Type', mediaRes.headers['content-type']);
+      // chromium browsers want a 206 response with specific headers. so, we gotta pass them on.
+      res.statusCode = mediaRes.status;
+      resHeadersArr.forEach(key => {
+        const val = mediaRes.headers[key];
+        if (val) res.setHeader(key, val);
+      });
       mediaRes.data.pipe(res);
       return;
     }
@@ -44,7 +67,7 @@ export default async function handler(
       responseType: 'arraybuffer',
     });
 
-    const data = mediaRes.data;
+    const { data } = mediaRes;
 
     // saving in redis for 30 minutes
     await redis!.setex(mediaUrl, 30 * 60, Buffer.from(data));
