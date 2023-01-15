@@ -69,6 +69,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 
 - Why not just use IMDb?  
   Refer to the [features section](#some-features) above.
+
 - Why didn't you use other databases like [TMDB](https://www.themoviedb.org/) or [OMDb](https://www.omdbapi.com/)?  
   IMDb simply has superior dataset compared to all other alternatives. With that being said, I'd encourage you to check out those alternatives too.
 
@@ -171,6 +172,8 @@ There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay)
   ```
 
 - [LibRedirect](https://github.com/libredirect/libredirect/)
+
+- [Privacy Redirector](https://github.com/dybdeskarphet/privacy-redirector)
 
 ### Similar projects
 
