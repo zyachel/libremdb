@@ -28,6 +28,16 @@
 }
 
 .heading {
-  // justify-self: center;
   text-align: center;
+}
+
+.button {
+  align-self: end;
+  
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--clr-link);
+  border-bottom: 2px solid var(--clr-link);
 }
