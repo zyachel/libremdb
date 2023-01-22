@@ -5,9 +5,17 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 const setInitialTheme = `
 (() => {
   document.documentElement.dataset.js = true;
+  const isLocalStorageAvailable = () => {
+    try {
+      window.localStorage.getItem('test');
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
   let theme = 'light';
   let themeColor = '#ffe5ef';
-  const userPrefersTheme = window.localStorage.getItem('theme') || null;
+  const userPrefersTheme = isLocalStorageAvailable() ? window.localStorage.getItem('theme') : null;
   const browserPrefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
   if (userPrefersTheme) theme = userPrefersTheme;
   else if (browserPrefersDarkTheme) theme = 'dark';

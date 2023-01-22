@@ -1,10 +1,13 @@
 import React, { useState, createContext, ReactNode } from 'react';
+import { isLocalStorageAvailable } from '../utils/helpers';
 
 const getInitialTheme = () => {
   // for server-side rendering, as window isn't availabe there
   if (typeof window === 'undefined') return 'light';
 
-  const userPrefersTheme = window.localStorage.getItem('theme') || null;
+  const userPrefersTheme = isLocalStorageAvailable()
+    ? window.localStorage.getItem('theme')
+    : null;
   const browserPrefersDarkTheme = window.matchMedia(
     '(prefers-color-scheme: dark)'
   ).matches;
@@ -35,7 +38,7 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   const setTheme = (theme: string) => {
     setCurTheme(theme);
-    window.localStorage.setItem('theme', theme);
+    if (isLocalStorageAvailable()) window.localStorage.setItem('theme', theme);
     document.documentElement.dataset.theme = theme;
     updateMetaTheme();
   };

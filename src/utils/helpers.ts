@@ -103,3 +103,13 @@ export const getResTitleTypeHeading = (
     if (el.id === titleType) return el.name;
   }
 };
+
+
+export const isLocalStorageAvailable = () => {
+  try {
+    localStorage.getItem('test');
+    return true;
+  } catch (e) {
+    return false;
+  }
+};
