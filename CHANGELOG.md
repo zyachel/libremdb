@@ -1,3 +1,17 @@
+# [2.4.0](https://github.com/zyachel/libremdb/compare/v2.3.1...v2.4.0) (2023-01-22)
+
+
+### Bug Fixes
+
+* fix app crash ([71d1d5b](https://github.com/zyachel/libremdb/commit/71d1d5b34e2866729ae0c96c59ea51e8d1a3dcca))
+
+
+### Features
+
+* add error boundary ([5cc2ef0](https://github.com/zyachel/libremdb/commit/5cc2ef02cec0b31c5d449e189a054fbef5801f60))
+
+
+
 ## [2.3.1](https://github.com/zyachel/libremdb/compare/v2.3.0...v2.3.1) (2023-01-15)
 
 
@@ -36,20 +50,6 @@
 ### Bug Fixes
 
 * **title:** fix site crash ([dd75df0](https://github.com/zyachel/libremdb/commit/dd75df01eb7c03d8945a8bd20ed231a66bd88b8f))
-
-
-
-# [2.2.0](https://github.com/zyachel/libremdb/compare/v2.1.0...v2.2.0) (2022-11-13)
-
-
-### Bug Fixes
-
-* **redis:** fix logs being polluted when redis is disabled ([5fd0d92](https://github.com/zyachel/libremdb/commit/5fd0d9218707797999fe49e256244bb5cb8d2f66))
-
-
-### Features
-
-* force a certain language when getting data ([1658769](https://github.com/zyachel/libremdb/commit/1658769a30eae5e642c7c2a54aecf88aec4fd274))
 
 
 
