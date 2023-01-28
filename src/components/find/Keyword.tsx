@@ -1,7 +1,6 @@
-import { Keywords } from '../../interfaces/shared/search';
 import Link from 'next/link';
-
-import styles from '../../styles/modules/components/find/keyword.module.scss';
+import { Keywords } from 'src/interfaces/shared/search';
+import styles from 'src/styles/modules/components/find/keyword.module.scss';
 
 type Props = {
   keyword: Keywords[0];

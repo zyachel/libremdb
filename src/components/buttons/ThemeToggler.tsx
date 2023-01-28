@@ -1,7 +1,6 @@
 import { useContext } from 'react';
-import { themeContext } from '../../context/theme-context';
-
-import styles from '../../styles/modules/components/buttons/themeToggler.module.scss';
+import { themeContext } from 'src/context/theme-context';
+import styles from 'src/styles/modules/components/buttons/themeToggler.module.scss';
 
 type Props = {
   className: string;

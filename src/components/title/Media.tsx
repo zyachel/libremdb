@@ -1,9 +1,8 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
-import { Media } from '../../interfaces/shared/title';
-import { getProxiedIMDbImgUrl, modifyIMDbImg } from '../../utils/helpers';
-
-import styles from '../../styles/modules/components/title/media.module.scss';
+import { Media } from 'src/interfaces/shared/title';
+import { getProxiedIMDbImgUrl, modifyIMDbImg } from 'src/utils/helpers';
+import styles from 'src/styles/modules/components/title/media.module.scss';
 
 type Props = {
   className: string;

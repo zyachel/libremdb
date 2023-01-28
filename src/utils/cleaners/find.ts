@@ -1,4 +1,4 @@
-import RawFind from '../../interfaces/misc/rawFind';
+import RawFind from 'src/interfaces/misc/rawFind';
 
 const formatSAndE = (
   season: string | undefined,

@@ -1,5 +1,5 @@
-import cleanFind from '../../utils/cleaners/find';
-import { resultTitleTypes, resultTypes } from '../../utils/constants/find';
+import cleanFind from 'src/utils/cleaners/find';
+import { resultTitleTypes, resultTypes } from 'src/utils/constants/find';
 
 type BasicSearch = ReturnType<typeof cleanFind>;
 export type { BasicSearch as default };

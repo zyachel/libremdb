@@ -1,27 +1,16 @@
 // external
-import { GetServerSideProps, GetStaticProps, GetStaticPaths } from 'next'
+import { GetServerSideProps, GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-// local
-import Meta from '../../../components/meta/Meta';
-import Layout from '../../../layouts/Layout';
-import ErrorInfo from '../../../components/error/ErrorInfo';
-import {
-  Basic,
-  Cast,
-  DidYouKnow,
-  Info,
-  Media,
-  MoreLikeThis,
-  Reviews,
-} from '../../../components/title';
-// misc
-import Title from '../../../interfaces/shared/title';
-import { AppError } from '../../../interfaces/shared/error';
-import title from '../../../utils/fetchers/title';
-import { getProxiedIMDbImgUrl } from '../../../utils/helpers';
-// styles
-import styles from '../../../styles/modules/pages/title/title.module.scss';
+import Meta from 'src/components/meta/Meta';
+import Layout from 'src/layouts/Layout';
+import ErrorInfo from 'src/components/error/ErrorInfo';
+// prettier-ignore
+import { Basic, Cast, DidYouKnow, Info, Media, MoreLikeThis, Reviews } from 'src/components/title';
+import Title from 'src/interfaces/shared/title';
+import { AppError } from 'src/interfaces/shared/error';
+import title from 'src/utils/fetchers/title';
+import { getProxiedIMDbImgUrl } from 'src/utils/helpers';
+import styles from 'src/styles/modules/pages/title/title.module.scss';
 
 type Props = { data: Title; error: null } | { error: AppError; data: null };
 
@@ -49,7 +38,7 @@ const TitleInfo = ({ data, error }: Props) => {
       />
       <Head>
         <meta
-          title="og:image"
+          title='og:image'
           content={
             data.basic.poster?.url
               ? getProxiedIMDbImgUrl(data.basic.poster?.url)
@@ -73,23 +62,23 @@ const TitleInfo = ({ data, error }: Props) => {
 };
 
 // TO-DO: make a getServerSideProps wrapper for handling errors
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const titleId = ctx.params!.titleId as string
+export const getServerSideProps: GetServerSideProps = async ctx => {
+  const titleId = ctx.params!.titleId as string;
 
   try {
-    const data = await title(titleId)
+    const data = await title(titleId);
 
-    return { props: { data, error: null } }
+    return { props: { data, error: null } };
   } catch (error: any) {
-    const { message, statusCode } = error
-    ctx.res.statusCode = statusCode
-    ctx.res.statusMessage = message
+    const { message, statusCode } = error;
+    ctx.res.statusCode = statusCode;
+    ctx.res.statusMessage = message;
 
-    return { props: { error: { message, statusCode }, data: null } }
+    return { props: { error: { message, statusCode }, data: null } };
   }
-}
+};
 
-export default TitleInfo
+export default TitleInfo;
 
 // could've used getStaticProps instead of getServerSideProps, but meh.
 /*

@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { Reviews } from '../../interfaces/shared/title';
-import { formatNumber } from '../../utils/helpers';
-import styles from '../../styles/modules/components/title/reviews.module.scss';
+import { Reviews } from 'src/interfaces/shared/title';
+import { formatNumber } from 'src/utils/helpers';
+import styles from 'src/styles/modules/components/title/reviews.module.scss';
 
 type Props = {
   reviews: Reviews;

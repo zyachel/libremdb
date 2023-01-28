@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import redis from '../../utils/redis';
-import axiosInstance from '../../utils/axiosInstance';
+import redis from 'src/utils/redis';
+import axiosInstance from 'src/utils/axiosInstance';
 
 const getCleanReqHeaders = (headers: NextApiRequest['headers']) => ({
   ...(headers.accept && { accept: headers.accept }),

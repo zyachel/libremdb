@@ -1,8 +1,8 @@
-import { People } from '../../interfaces/shared/search';
 import Image from 'next/future/image';
 import Link from 'next/link';
-import { modifyIMDbImg } from '../../utils/helpers';
-import styles from '../../styles/modules/components/find/person.module.scss';
+import { People } from 'src/interfaces/shared/search';
+import { modifyIMDbImg } from 'src/utils/helpers';
+import styles from 'src/styles/modules/components/find/person.module.scss';
 
 type Props = {
   person: People[0];
@@ -21,7 +21,7 @@ const Person = ({ person }: Props) => {
           />
         ) : (
           <svg className={styles.imgNA}>
-            <use href="/svg/sprite.svg#icon-image-slash" />
+            <use href='/svg/sprite.svg#icon-image-slash' />
           </svg>
         )}
       </div>
@@ -32,7 +32,7 @@ const Person = ({ person }: Props) => {
         {person.aka && <p>{person.aka}</p>}
         {person.jobCateogry && <p>{person.jobCateogry}</p>}
         {(person.knownForTitle || person.knownInYear) && (
-          <ul className={styles.basicInfo} aria-label="quick facts">
+          <ul className={styles.basicInfo} aria-label='quick facts'>
             {person.knownForTitle && <li>{person.knownForTitle}</li>}
             {person.knownInYear && <li>{person.knownInYear}</li>}
           </ul>

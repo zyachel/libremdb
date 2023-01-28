@@ -1,9 +1,8 @@
-import { Titles } from '../../interfaces/shared/search';
 import Image from 'next/future/image';
 import Link from 'next/link';
-import { modifyIMDbImg } from '../../utils/helpers';
-
-import styles from '../../styles/modules/components/find/title.module.scss';
+import { Titles } from 'src/interfaces/shared/search';
+import { modifyIMDbImg } from 'src/utils/helpers';
+import styles from 'src/styles/modules/components/find/title.module.scss';
 
 type Props = {
   title: Titles[0];
@@ -22,7 +21,7 @@ const Title = ({ title }: Props) => {
           />
         ) : (
           <svg className={styles.imgNA}>
-            <use href="/svg/sprite.svg#icon-image-slash" />
+            <use href='/svg/sprite.svg#icon-image-slash' />
           </svg>
         )}
       </div>
@@ -30,7 +29,7 @@ const Title = ({ title }: Props) => {
         <Link href={`/title/${title.id}`}>
           <a className={`heading ${styles.heading}`}>{title.name}</a>
         </Link>
-        <ul aria-label="quick facts" className={styles.basicInfo}>
+        <ul aria-label='quick facts' className={styles.basicInfo}>
           {title.type && <li>{title.type}</li>}
           {title.sAndE && <li>{title.sAndE}</li>}
           {title.releaseYear && <li>{title.releaseYear}</li>}
@@ -42,11 +41,11 @@ const Title = ({ title }: Props) => {
           </p>
         )}
         {title.seriesId && (
-          <ul aria-label="quick series facts" className={styles.seriesInfo}>
+          <ul aria-label='quick series facts' className={styles.seriesInfo}>
             {title.seriesType && <li>{title.seriesType}</li>}
             <li>
               <Link href={`/title/${title.seriesId}`}>
-                <a className="link">{title.seriesName}</a>
+                <a className='link'>{title.seriesName}</a>
               </Link>
             </li>
             {title.seriesReleaseYear && <li>{title.seriesReleaseYear}</li>}

@@ -1,11 +1,10 @@
-import Find from '../../interfaces/shared/search';
 import Company from './Company';
 import Person from './Person';
 import Title from './Title';
-
-import styles from '../../styles/modules/components/find/results.module.scss';
 import Keyword from './Keyword';
-import { getResTitleTypeHeading } from '../../utils/helpers';
+import Find from 'src/interfaces/shared/search';
+import { getResTitleTypeHeading } from 'src/utils/helpers';
+import styles from 'src/styles/modules/components/find/results.module.scss';
 
 type Props = {
   results: Find | null;
@@ -43,11 +42,11 @@ const Results = ({ results, className, title }: Props) => {
 
   return (
     <article className={`${className} ${styles.results}`}>
-      <h1 className="heading heading__primary">Results for '{title}'</h1>
+      <h1 className='heading heading__primary'>Results for '{title}'</h1>
       <div className={styles.results__list}>
         {!!titles.length && (
           <section className={styles.titles}>
-            <h2 className="heading heading__secondary">
+            <h2 className='heading heading__secondary'>
               {titlesSectionHeading}
             </h2>
             <ul className={styles.titles__list}>
@@ -59,7 +58,7 @@ const Results = ({ results, className, title }: Props) => {
         )}
         {!!people.length && (
           <section className={styles.people}>
-            <h2 className="heading heading__secondary">People</h2>
+            <h2 className='heading heading__secondary'>People</h2>
             <ul className={styles.people__list}>
               {people.map(person => (
                 <Person person={person} key={person.id} />
@@ -69,7 +68,7 @@ const Results = ({ results, className, title }: Props) => {
         )}
         {!!companies.length && (
           <section className={styles.people}>
-            <h2 className="heading heading__secondary">Companies</h2>
+            <h2 className='heading heading__secondary'>Companies</h2>
             <ul className={styles.people__list}>
               {companies.map(company => (
                 <Company company={company} key={company.id} />
@@ -79,7 +78,7 @@ const Results = ({ results, className, title }: Props) => {
         )}
         {!!keywords.length && (
           <section className={styles.people}>
-            <h2 className="heading heading__secondary">Keywords</h2>
+            <h2 className='heading heading__secondary'>Keywords</h2>
             <ul className={styles.people__list}>
               {keywords.map(keyword => (
                 <Keyword keyword={keyword} key={keyword.id} />

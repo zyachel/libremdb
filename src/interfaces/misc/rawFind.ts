@@ -1,4 +1,7 @@
-import { ResultMetaTitleTypes, ResultMetaTypes } from '../shared/search';
+import {
+  ResultMetaTitleTypes,
+  ResultMetaTypes,
+} from 'src/interfaces/shared/search';
 
 export default interface RawFind {
   props: {

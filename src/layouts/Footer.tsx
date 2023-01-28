@@ -1,10 +1,8 @@
-import { FC } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-
 import styles from '../styles/modules/layout/footer.module.scss';
 
-const Footer: FC = () => {
+const Footer = () => {
   const { pathname } = useRouter();
   const className = (link: string) =>
     pathname === link ? styles.nav__linkActive : styles.nav__link;

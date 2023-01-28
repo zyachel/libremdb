@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import ThemeToggler from '../components/buttons/ThemeToggler';
-
-import styles from '../styles/modules/layout/header.module.scss';
+import ThemeToggler from 'src/components/buttons/ThemeToggler';
+import styles from 'src/styles/modules/layout/header.module.scss';
 
 type Props = { full?: boolean; children?: ReactNode };
 

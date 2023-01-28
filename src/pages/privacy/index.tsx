@@ -1,7 +1,7 @@
-import Meta from '../../components/meta/Meta';
-import Layout from '../../layouts/Layout';
-import packageInfo from '../../../package.json';
-import styles from '../../styles/modules/pages/privacy/privacy.module.scss';
+import Meta from 'src/components/meta/Meta';
+import Layout from 'src/layouts/Layout';
+import packageInfo from 'src/../package.json';
+import styles from 'src/styles/modules/pages/privacy/privacy.module.scss';
 
 const Privacy = () => {
   return (

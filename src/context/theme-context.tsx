@@ -1,5 +1,5 @@
 import React, { useState, createContext, ReactNode } from 'react';
-import { isLocalStorageAvailable } from '../utils/helpers';
+import { isLocalStorageAvailable } from 'src/utils/helpers';
 
 const getInitialTheme = () => {
   // for server-side rendering, as window isn't availabe there

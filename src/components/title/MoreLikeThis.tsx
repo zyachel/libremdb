@@ -1,8 +1,8 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
-import { MoreLikeThis } from '../../interfaces/shared/title';
-import { formatNumber, modifyIMDbImg } from '../../utils/helpers';
-import styles from '../../styles/modules/components/title/more-like-this.module.scss';
+import { MoreLikeThis } from 'src/interfaces/shared/title';
+import { formatNumber, modifyIMDbImg } from 'src/utils/helpers';
+import styles from 'src/styles/modules/components/title/more-like-this.module.scss';
 
 type Props = {
   className: string;

@@ -1,5 +1,5 @@
-import cleanTitle from '../../utils/cleaners/title';
-import title from '../../utils/fetchers/title';
+import cleanTitle from 'src/utils/cleaners/title';
+import title from 'src/utils/fetchers/title';
 
 export type AxiosTitleRes = Awaited<ReturnType<typeof title>>;
 

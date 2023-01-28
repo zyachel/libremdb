@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Info } from '../../interfaces/shared/title';
-import { formatMoney, formatTime } from '../../utils/helpers';
-
-import styles from '../../styles/modules/components/title/info.module.scss';
+import { Info } from 'src/interfaces/shared/title';
+import { formatMoney, formatTime } from 'src/utils/helpers';
+import styles from 'src/styles/modules/components/title/info.module.scss';
 
 type Props = {
   info: Info;

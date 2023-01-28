@@ -1,9 +1,7 @@
-/* eslint-disable react/no-unescaped-entities */
 import Link from 'next/link';
-import Meta from '../../components/meta/Meta';
-import Layout from '../../layouts/Layout';
-
-import styles from '../../styles/modules/pages/about/about.module.scss';
+import Meta from 'src/components/meta/Meta';
+import Layout from 'src/layouts/Layout';
+import styles from 'src/styles/modules/pages/about/about.module.scss';
 
 const About = () => {
   return (

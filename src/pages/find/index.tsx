@@ -1,17 +1,14 @@
 import { GetServerSideProps } from 'next';
-
-import Layout from '../../layouts/Layout';
-import ErrorInfo from '../../components/error/ErrorInfo';
-import Meta from '../../components/meta/Meta';
-import Results from '../../components/find';
-import basicSearch from '../../utils/fetchers/basicSearch';
-import Form from '../../components/forms/find';
-
-import Find, { FindQueryParams } from '../../interfaces/shared/search';
-import { AppError } from '../../interfaces/shared/error';
-import { cleanQueryStr } from '../../utils/helpers';
-
-import styles from '../../styles/modules/pages/find/find.module.scss';
+import Layout from 'src/layouts/Layout';
+import ErrorInfo from 'src/components/error/ErrorInfo';
+import Meta from 'src/components/meta/Meta';
+import Results from 'src/components/find';
+import Form from 'src/components/forms/find';
+import Find, { FindQueryParams } from 'src/interfaces/shared/search';
+import { AppError } from 'src/interfaces/shared/error';
+import basicSearch from 'src/utils/fetchers/basicSearch';
+import { cleanQueryStr } from 'src/utils/helpers';
+import styles from 'src/styles/modules/pages/find/find.module.scss';
 
 type Props =
   | { data: { title: string; results: Find }; error: null }

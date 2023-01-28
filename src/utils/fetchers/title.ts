@@ -1,11 +1,8 @@
-// external deps
 import * as cheerio from 'cheerio';
-// local files
-import axiosInstance from '../axiosInstance';
-import cleanTitle from '../cleaners/title';
-import { AppError } from '../helpers';
-// interfaces
-import RawTitle from '../../interfaces/misc/rawTitle';
+import RawTitle from 'src/interfaces/misc/rawTitle';
+import axiosInstance from 'src/utils/axiosInstance';
+import cleanTitle from 'src/utils/cleaners/title';
+import { AppError } from 'src/utils/helpers';
 
 const title = async (titleId: string) => {
   try {

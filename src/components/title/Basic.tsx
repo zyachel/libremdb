@@ -1,15 +1,14 @@
 import { Fragment } from 'react';
 import Image from 'next/future/image';
 import Link from 'next/link';
-
+import { Basic } from 'src/interfaces/shared/title';
 import {
   formatNumber,
   formatTime,
   getProxiedIMDbImgUrl,
   modifyIMDbImg,
-} from '../../utils/helpers';
-import { Basic } from '../../interfaces/shared/title';
-import styles from '../../styles/modules/components/title/basic.module.scss';
+} from 'src/utils/helpers';
+import styles from 'src/styles/modules/components/title/basic.module.scss';
 
 type Props = {
   className: string;

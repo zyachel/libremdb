@@ -1,10 +1,8 @@
-// external deps
 import * as cheerio from 'cheerio';
-// local files
-import axiosInstance from '../axiosInstance';
-import { AppError } from '../helpers';
-import RawFind from '../../interfaces/misc/rawFind';
-import cleanFind from '../cleaners/find';
+import RawFind from 'src/interfaces/misc/rawFind';
+import axiosInstance from 'src/utils/axiosInstance';
+import { AppError } from 'src/utils/helpers';
+import cleanFind from 'src/utils/cleaners/find';
 
 const basicSearch = async (queryStr: string) => {
   try {

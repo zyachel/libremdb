@@ -1,10 +1,9 @@
-import type { AppProps } from 'next/app';
-import usePageLoading from '../hooks/usePageLoading';
-import ProgressBar from '../components/loaders/ProgressBar';
-import ErrorBoundary from '../components/error/ErrorBoundary';
-import ThemeProvider from '../context/theme-context';
-
-import '../styles/main.scss';
+import { AppProps } from 'next/app';
+import ProgressBar from 'src/components/loaders/ProgressBar';
+import ErrorBoundary from 'src/components/error/ErrorBoundary';
+import ThemeProvider from 'src/context/theme-context';
+import usePageLoading from 'src/hooks/usePageLoading';
+import 'src/styles/main.scss';
 
 const ModifiedApp = ({ Component, pageProps }: AppProps) => {
   const { isPageLoading, key } = usePageLoading();

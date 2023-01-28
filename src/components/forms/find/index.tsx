@@ -1,10 +1,9 @@
-import { useRouter } from 'next/router';
 import { ChangeEventHandler, FormEventHandler, useRef, useState } from 'react';
-import { cleanQueryStr } from '../../../utils/helpers';
-import { resultTypes, resultTitleTypes } from '../../../utils/constants/find';
-
-import styles from '../../../styles/modules/components/form/find.module.scss';
-import { QueryTypes } from '../../../interfaces/shared/search';
+import { useRouter } from 'next/router';
+import { cleanQueryStr } from 'src/utils/helpers';
+import { QueryTypes } from 'src/interfaces/shared/search';
+import { resultTypes, resultTitleTypes } from 'src/utils/constants/find';
+import styles from 'src/styles/modules/components/form/find.module.scss';
 
 /**
  * helper function to render similar radio btns. saves from boilerplate.
@@ -19,11 +18,11 @@ const renderRadioBtns = (
   return data.types.map(({ name, val }) => (
     <p className={parentClass} key={val}>
       <input
-        type="radio"
+        type='radio'
         name={data.key}
         id={`${data.key}:${val}`}
         value={val}
-        className="visually-hidden"
+        className='visually-hidden'
       />
       <label htmlFor={`${data.key}:${val}`}>{name}</label>
     </p>
@@ -66,30 +65,30 @@ const Form = ({ className }: Props) => {
 
   return (
     <form
-      action="/find"
+      action='/find'
       onSubmit={submitHandler}
       ref={formRef}
       className={`${className} ${styles.form}`}
     >
-      <p className="heading heading__primary">Search</p>
+      <p className='heading heading__primary'>Search</p>
 
       <p className={styles.searchbar}>
         <svg
           className={`icon ${styles.searchbar__icon}`}
-          focusable="false"
-          aria-hidden="true"
-          role="img"
+          focusable='false'
+          aria-hidden='true'
+          role='img'
         >
-          <use href="/svg/sprite.svg#icon-search"></use>
+          <use href='/svg/sprite.svg#icon-search'></use>
         </svg>
         <input
-          id="searchbar"
-          type="search"
-          name="q"
-          placeholder="movies, people..."
+          id='searchbar'
+          type='search'
+          name='q'
+          placeholder='movies, people...'
           className={styles.searchbar__input}
         />
-        <label className="visually-hidden" htmlFor="searchbar">
+        <label className='visually-hidden' htmlFor='searchbar'>
           Search for anything
         </label>
       </p>
@@ -106,14 +105,14 @@ const Form = ({ className }: Props) => {
         {renderRadioBtns(resultTitleTypes, styles.titleType)}
       </fieldset>
       <p className={styles.exact}>
-        <label htmlFor="exact">Exact Matches</label>
-        <input type="checkbox" name="exact" id="exact" value="true" />
+        <label htmlFor='exact'>Exact Matches</label>
+        <input type='checkbox' name='exact' id='exact' value='true' />
       </p>
       <div className={styles.buttons}>
-        <button type="reset" className={styles.button}>
+        <button type='reset' className={styles.button}>
           Clear
         </button>
-        <button type="submit" className={styles.button}>
+        <button type='submit' className={styles.button}>
           Submit
         </button>
       </div>

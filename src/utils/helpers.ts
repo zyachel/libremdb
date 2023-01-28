@@ -1,7 +1,7 @@
 import {
   ResultMetaTitleTypes,
   ResultMetaTypes,
-} from '../interfaces/shared/search';
+} from 'src/interfaces/shared/search';
 import { resultTitleTypes } from './constants/find';
 
 export const formatTime = (timeInSecs: number) => {

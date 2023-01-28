@@ -1,5 +1,5 @@
-import RawTitle from '../../interfaces/misc/rawTitle';
-import { formatDate } from '../helpers';
+import RawTitle from 'src/interfaces/misc/rawTitle';
+import { formatDate } from 'src/utils/helpers';
 
 const cleanTitle = (rawData: RawTitle) => {
   const {

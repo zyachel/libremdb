@@ -1,7 +1,7 @@
-import { Companies } from '../../interfaces/shared/search';
+import { Companies } from 'src/interfaces/shared/search';
 import Link from 'next/link';
 
-import styles from '../../styles/modules/components/find/company.module.scss';
+import styles from 'src/styles/modules/components/find/company.module.scss';
 
 type Props = {
   company: Companies[0];

@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import { Fragment } from 'react';
-import { DidYouKnow } from '../../interfaces/shared/title';
-import styles from '../../styles/modules/components/title/did-you-know.module.scss';
+import { DidYouKnow } from 'src/interfaces/shared/title';
+import styles from 'src/styles/modules/components/title/did-you-know.module.scss';
 
 type Props = {
   data: DidYouKnow;

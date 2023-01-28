@@ -1,9 +1,8 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
-import { Cast } from '../../interfaces/shared/title';
-import { modifyIMDbImg } from '../../utils/helpers';
-
-import styles from '../../styles/modules/components/title/cast.module.scss';
+import { Cast } from 'src/interfaces/shared/title';
+import { modifyIMDbImg } from 'src/utils/helpers';
+import styles from 'src/styles/modules/components/title/cast.module.scss';
 
 type Props = {
   className: string;

@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
-import Layout from '../../layouts/Layout';
-import Meta from '../meta/Meta';
-
-import styles from '../../styles/modules/components/error/error-info.module.scss';
+import Layout from 'src/layouts/Layout';
+import Meta from 'src/components/meta/Meta';
+import styles from 'src/styles/modules/components/error/error-info.module.scss';
 
 // for details regarding the svg, go to sadgnu.svg file
 // description copied verbatim from https://www.gnu.org/graphics/sventsitsky-sadgnu.html
