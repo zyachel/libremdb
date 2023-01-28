@@ -3,17 +3,17 @@
 .contact {
   // to make text more readable for large screen users
   margin: auto;
-  width: min(100%, 100rem);
+  width: min(100%, 85rem);
 
   display: grid;
   --doc-whitespace: var(--spacer-8);
-  --comp-whitespace: var(--spacer-3);
+  --comp-whitespace: var(--spacer-5);
 
   padding: var(--doc-whitespace);
-  place-content: center;
+  // place-content: center;
 
   &__heading {
-    text-align: center;
+    // text-align: center;
   }
 
   @include helper.bp('bp-700') {

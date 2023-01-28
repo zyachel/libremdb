@@ -12,7 +12,7 @@
   padding: var(--doc-whitespace);
 
   &__heading {
-    text-align: center;
+    // text-align: center;
   }
 
   @include helper.bp('bp-700') {
