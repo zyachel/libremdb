@@ -6,7 +6,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 
 |                                                                                                          |                                                                                                        |
 | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| <img src="./public/img/misc/preview.png" title="screenshot (desktop screen, light mode)" width="1500" /> | <img src="./public/img/misc/preview2.png" title="screenshot (mobile screen, dark mode)" width="385" /> |
+| <img src="./public/img/misc/preview.jpg" title="screenshot (desktop screen, light mode)" width="1500" /> | <img src="./public/img/misc/preview2.jpg" title="screenshot (mobile screen, dark mode)" width="400" /> |
 
 ---
 
