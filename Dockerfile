@@ -5,6 +5,7 @@ FROM node:lts-alpine AS deps
 
 WORKDIR /opt/app
 COPY package.json pnpm-lock.yaml ./
+RUN npm install -g pnpm
 RUN pnpm install --frozen-lockfile
 
 # Rebuild the source code only when needed
@@ -15,13 +16,13 @@ FROM node:lts-alpine AS builder
 
 ENV NODE_ENV=production
 WORKDIR /opt/app
+RUN npm install -g pnpm
 COPY . .
 COPY --from=deps /opt/app/node_modules ./node_modules
 RUN pnpm build
 
 # Production image, copy all the files and run next
-FROM node:lts-alpine AS runner
-
+FROM gcr.io/distroless/nodejs18-debian11 AS runner
 ARG X_TAG
 WORKDIR /opt/app
 ENV NODE_ENV=production
@@ -31,4 +32,4 @@ COPY --from=builder /opt/app/.next ./.next
 COPY --from=builder /opt/app/node_modules ./node_modules
 ENV HOST=0.0.0.0
 ENV PORT=3000
-CMD ["node_modules/.bin/next", "start"]
+CMD ["./node_modules/next/dist/bin/next", "start"]
