@@ -3,21 +3,45 @@
 version: '3'
 
 services:
-  frontend:
+  libremdb:
     container_name: libremdb
     build:
       context: .
-      network: host
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    env_file: .env.local
+    env_file: .env.local.example
     depends_on:
-      - redis
+      - libremdb-redis
     restart: always
-  redis:
+    user: 65534:65534 # equivalent to the nobody user
+    read_only: true
+    tmpfs:
+      - /opt/app/.next/cache/:size=10M,mode=0770,uid=65534,gid=65534,noexec,nosuid,nodev
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    networks:
+      - libremdb
+
+  libremdb-redis:
     container_name: libremdb_redis
     image: redis
     # FOR DEBUGGING ONLY
     # ports:
     #   - "6379:6379"
     restart: always
+    user: nobody
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /data:size=10M,mode=0770,uid=65534,gid=65534,noexec,nosuid,nodev
+    cap_drop:
+      - ALL
+    networks:
+      - libremdb
+
+networks:
+  libremdb:
