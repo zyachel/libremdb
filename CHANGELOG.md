@@ -1,3 +1,24 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## [3.0.0](https://github.com/zyachel/libremdb/compare/v2.4.0...v3.0.0) (2023-04-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **title:** older versions won't work, at least for title route
+
+### Features
+
+* add info related to the current instance ([2c5d2f8](https://github.com/zyachel/libremdb/commit/2c5d2f86e46a52223f07d573b152bad5174ee2d9))
+* **route:** add name route ([75732e0](https://github.com/zyachel/libremdb/commit/75732e00869f9777e87e767a48648996345f02f7))
+
+
+### Bug Fixes
+
+* **title:** fix title page crash ([8ce02d0](https://github.com/zyachel/libremdb/commit/8ce02d02364c8e1f03a8b16594bc20ee6766a8c6))
+
 # [2.4.0](https://github.com/zyachel/libremdb/compare/v2.3.1...v2.4.0) (2023-01-22)
 
 
@@ -50,6 +71,3 @@
 ### Bug Fixes
 
 * **title:** fix site crash ([dd75df0](https://github.com/zyachel/libremdb/commit/dd75df01eb7c03d8945a8bd20ed231a66bd88b8f))
-
-
-
