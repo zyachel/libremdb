@@ -107,7 +107,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 
   - [ ] lists
   - [ ] moviemeter
-  - [ ] person info(includes directors and actors)
+  - [x] person info(includes directors and actors)
   - [ ] company info
   - [ ] user info
 

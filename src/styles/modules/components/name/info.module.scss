@@ -1,0 +1,21 @@
+.info {
+  display: grid;
+
+  gap: var(--doc-whitespace);
+}
+
+.accolades, .details {
+  display: grid;
+  gap: var(--comp-whitespace);
+
+  &__container {
+    display: grid;
+    gap: var(--spacer-0);
+
+    // for span elements like these: 'release date:'
+    & > p > span:first-of-type {
+      font-weight: var(--fw-bold);
+    }
+  }
+}
+

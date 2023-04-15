@@ -1,0 +1,49 @@
+@use '../../../abstracts' as helper;
+
+.credits {
+  display: grid;
+  gap: var(--comp-whitespace);
+
+  & > section {
+    overflow-x: auto;
+    display: grid;
+    gap: var(--spacer-1);
+  }
+
+  details {
+    overflow-x: auto;
+  }
+
+  summary {
+    cursor: pointer;
+    font-size: var(--fs-4);
+    color: var(--clr-text-accent);
+    font-family: var(--ff-primary);
+  }
+}
+
+.container {
+  --max-width: 18rem;
+  --min-height: 40rem;
+
+  list-style: none;
+  overflow-x: auto;
+
+  display: grid;
+  grid-auto-flow: column;
+  // grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacer-4);
+  padding: var(--spacer-1) var(--spacer-2) var(--spacer-3) var(--spacer-2);
+
+  grid-auto-columns: var(--max-width);
+  min-height: var(--min-height);
+
+  > li {
+    list-style: none;
+  }
+
+  @include helper.bp('bp-700') {
+    grid-auto-columns: calc(var(--max-width) - 1rem);
+    min-height: calc(var(--min-height) - 5rem);
+  }
+}

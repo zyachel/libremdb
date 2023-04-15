@@ -101,7 +101,7 @@ const cleanTitle = (rawData: RawTitle) => {
         total: misc.videos.total,
         videos: misc.videoStrip.edges.map(video => ({
           id: video.node.id,
-          type: video.node.contentType.displayName,
+          type: video.node.contentType.displayName.value,
           caption: video.node.name.value,
           runtime: video.node.runtime.value,
           thumbnail: video.node.thumbnail.url,
