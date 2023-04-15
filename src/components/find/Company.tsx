@@ -1,22 +1,13 @@
+import { CardResult } from 'src/components/card';
 import { Companies } from 'src/interfaces/shared/search';
-import Link from 'next/link';
 
-import styles from 'src/styles/modules/components/find/company.module.scss';
+type Props = { company: Companies[number] };
 
-type Props = {
-  company: Companies[0];
-};
-
-const Company = ({ company }: Props) => {
-  return (
-    <li className={styles.company}>
-      <Link href={`name/${company.id}`}>
-        <a className={`heading ${styles.heading}`}>{company.name}</a>
-      </Link>
-      {company.country && <p>{company.country}</p>}
-      {!!company.type && <p>{company.type}</p>}
-    </li>
-  );
-};
+const Company = ({ company }: Props) => (
+  <CardResult name={company.name} link={`/search/title?companies=${company.id}`}>
+    {company.country && <p>{company.country}</p>}
+    {!!company.type && <p>{company.type}</p>}
+  </CardResult>
+);
 
 export default Company;

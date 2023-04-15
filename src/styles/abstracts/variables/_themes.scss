@@ -22,17 +22,13 @@ $_light: (
   // 4.2 for borders, primarily
   fill-muted: hsl(0, 0%, 80%),
   // shadows on cards
-  shadow: 0 0 1rem hsla(0, 0%, 0%, 0.2),
+  shadow: 0 0 0.5em hsla(0, 0%, 0%, 0.2),
   // keyboard, focus hightlight
   highlight: hsl(176, 43%, 46%),
   // for gradient behind hero text on about page.
   gradient:
     (
-      radial-gradient(
-        at 23% 32%,
-        hsla(344, 79%, 40%, 0.15) 0px,
-        transparent 70%
-      ),
+      radial-gradient(at 23% 32%, hsla(344, 79%, 40%, 0.15) 0px, transparent 70%),
       radial-gradient(at 72% 55%, hsla(344, 79%, 40%, 0.2) 0px, transparent 50%)
     ),
   // changes color of native html elemnts, either 'light' or 'dark' must be set.

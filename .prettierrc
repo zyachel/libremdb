@@ -4,5 +4,6 @@
   "arrowParens": "avoid",
   "semi": true,
   "singleQuote": true,
-  "jsxSingleQuote": true
+  "jsxSingleQuote": true,
+  "printWidth": 100
 }

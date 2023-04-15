@@ -1,20 +1,12 @@
-import Link from 'next/link';
+import { CardResult } from 'src/components/card';
 import { Keywords } from 'src/interfaces/shared/search';
-import styles from 'src/styles/modules/components/find/keyword.module.scss';
 
-type Props = {
-  keyword: Keywords[0];
-};
+type Props = { keyword: Keywords[number] };
 
-const Keyword = ({ keyword }: Props) => {
-  return (
-    <li className={styles.keyword}>
-      <Link href={`name/${keyword.id}`}>
-        <a className={`heading ${styles.heading}`}>{keyword.text}</a>
-      </Link>
-      {keyword.numTitles && <p>{keyword.numTitles} titles</p>}
-    </li>
-  );
-};
+const Keyword = ({ keyword }: Props) => (
+  <CardResult link={`/search/keyword?keywords=${keyword.text}`} name={keyword.text}>
+    {keyword.numTitles && <p>{keyword.numTitles} titles</p>}
+  </CardResult>
+);
 
 export default Keyword;

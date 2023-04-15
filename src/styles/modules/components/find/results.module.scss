@@ -10,7 +10,10 @@
   }
 }
 
-.titles, .people, .companies, .keywords {
+.titles,
+.people,
+.companies,
+.keywords {
   display: grid;
   gap: var(--spacer-2);
 
@@ -18,8 +21,5 @@
     padding: var(--spacer-2);
     display: grid;
     gap: var(--spacer-4);
-    // justify-self: start;
-
-
   }
 }

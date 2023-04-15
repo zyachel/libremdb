@@ -33,15 +33,12 @@ const ErrorInfo = ({ message, statusCode, misc }: Props) => {
         >
           <title id='gnu-title'>GNU and Tux</title>
           <desc id='gnu-desc'>
-            A pencil drawing of a big gnu and a small penguin, both very sad.
-            GNU is despondently sitting on a bench, and Tux stands beside him,
-            looking down and patting him on the back.
+            A pencil drawing of a big gnu and a small penguin, both very sad. GNU is despondently
+            sitting on a bench, and Tux stands beside him, looking down and patting him on the back.
           </desc>
           <use href='/svg/sadgnu.svg#sad-gnu'></use>
         </svg>
-        <h1 className={`heading heading__primary ${styles.heading}`}>
-          {title}
-        </h1>
+        <h1 className={`heading heading__primary ${styles.heading}`}>{title}</h1>
         {misc ? (
           <>
             <p>{misc.subtext}</p>
@@ -52,7 +49,7 @@ const ErrorInfo = ({ message, statusCode, misc }: Props) => {
         ) : (
           <p>
             Go back to{' '}
-            <Link href='/about'>
+            <Link href='/'>
               <a className='link'>the homepage</a>
             </Link>
             .

@@ -1,0 +1,44 @@
+.item {
+  height: 100%;
+  display: grid;
+  grid-template-rows: minmax(auto, 65%) auto;
+
+  text-decoration: none;
+  color: currentColor;
+}
+
+.imgContainer {
+  justify-self: stretch;
+  position: relative;
+
+  // for icon when image is unavailable
+  display: grid;
+  place-items: center;
+}
+
+.img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.imgNA {
+  fill: var(--clr-fill-muted);
+  height: 40%;
+}
+
+.textContainer {
+  display: grid;
+  gap: var(--spacer-1);
+  padding: var(--spacer-1);
+  text-align: center;
+  justify-items: center;
+  align-content: start;
+}
+
+.name {
+  font-size: 1.2em;
+}
+
+.role {
+  font-size: .95em;
+}

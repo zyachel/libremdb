@@ -1,10 +1,10 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import Footer from './Footer';
 import Header from './Header';
 
 type Props = {
-  full?: boolean;
-  children: React.ReactNode;
+  full?: true;
+  children: ReactNode;
   className: string;
 };
 

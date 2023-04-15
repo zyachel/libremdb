@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { ReactNode } from 'react';
 
 type Props = {
   title: string;
@@ -6,11 +7,15 @@ type Props = {
   imgUrl?: string;
 };
 
+const BASE_URL = process.env.NEXT_PUBLIC_URL ?? 'https://iket.me';
+
 const Meta = ({
   title,
   description = 'libremdb, a free & open source IMDb front-end.',
   imgUrl = 'icon.svg',
 }: Props) => {
+  const url = new URL(imgUrl, BASE_URL);
+
   return (
     <Head>
       <meta charSet='UTF-8' />
@@ -30,10 +35,7 @@ const Meta = ({
       <meta property='og:site_name' content='libremdb' />
       <meta property='og:locale' content='en_US' />
       <meta property='og:type' content='video.movie' />
-      <meta
-        property='og:image'
-        content={`${process.env.NEXT_PUBLIC_URL}/${imgUrl}`}
-      />
+      <meta property='og:image' content={url.toString()} />
     </Head>
   );
 };

@@ -1,9 +1,6 @@
-import Basic from './Basic';
-import Cast from './Cast';
-import DidYouKnow from './DidYouKnow';
-import Info from './Info';
-import Media from './Media';
-import MoreLikeThis from './MoreLikeThis';
-import Reviews from './Reviews';
-
-export { Basic, Cast, DidYouKnow, Info, Media, MoreLikeThis, Reviews };
+export { default as Basic } from './Basic';
+export { default as Cast } from './Cast';
+export { default as DidYouKnow } from './DidYouKnow';
+export { default as Info } from './Info';
+export { default as MoreLikeThis } from './MoreLikeThis';
+export { default as Reviews } from './Reviews';

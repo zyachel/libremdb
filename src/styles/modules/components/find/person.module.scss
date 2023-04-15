@@ -1,57 +1,4 @@
-@use '../../../abstracts' as helper;
-
-.person {
-  --width: 10rem;
-  --height: var(--width);
-
-  background: var(--clr-bg-accent);
-  box-shadow: var(--clr-shadow);
-  border-radius: 5px;
-  overflow: hidden; // for background image
-  display: grid;
-  grid-template-columns: var(--width) auto;
-  
-  @include helper.bp('bp-450') {
-    --height: 15rem;
-    grid-template-columns: auto;
-  }
-}
-
-.imgContainer {
-  display: grid;
-  place-items: center;
-  min-height: var(--height);
-}
-
-.img {
-  object-fit: cover;
-  object-position: center 25%; // most of the time, person's face is visible at 1/4 of height in a potrait image.
-
-}
-
-.imgNA {
-  width: 80%;
-  fill: var(--clr-fill-muted);
-}
-
-.info {
-  display: grid;
-  padding: var(--spacer-3);
-  gap: var(--spacer-0);
-
-  @include helper.bp('bp-450') {
-    padding: var(--spacer-1);
-  }
-}
-
-.heading {
-  font-size: var(--fs-4);
-  text-decoration: none;
-}
-
-
-
-.basicInfo, .seriesInfo {
+.basicInfo {
   display: flex;
   list-style: none;
   flex-wrap: wrap;
@@ -62,13 +9,5 @@
     font-weight: 900;
     line-height: 0;
     font-size: var(--fs-5);
-  }
-}
-
-
-.stars  {
-
-  span {
-   font-weight: var(--fw-bold); 
   }
 }

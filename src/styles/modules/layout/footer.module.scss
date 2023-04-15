@@ -23,10 +23,10 @@
 
   &__link {
     @include helper.prettify-link(var(--clr-link));
-  }
 
-  &__linkActive {
-    @include helper.prettify-link(var(--clr-link), $animate: false);
+    &[aria-current] {
+      @include helper.prettify-link(var(--clr-link), $animate: false);
+    }
   }
 }
 

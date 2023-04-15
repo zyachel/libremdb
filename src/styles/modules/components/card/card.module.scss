@@ -1,0 +1,11 @@
+.card {
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: var(--clr-bg-accent);
+  box-shadow: var(--clr-shadow);
+}
+
+.hoverable:hover,
+.hoverable:focus-within {
+  background-color: var(--clr-bg-muted);
+}

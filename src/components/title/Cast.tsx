@@ -1,7 +1,5 @@
-import Image from 'next/future/image';
-import Link from 'next/link';
+import { CardCast } from 'src/components/card';
 import { Cast } from 'src/interfaces/shared/title';
-import { modifyIMDbImg } from 'src/utils/helpers';
 import styles from 'src/styles/modules/components/title/cast.module.scss';
 
 type Props = {
@@ -10,46 +8,25 @@ type Props = {
 };
 
 const Cast = ({ className, cast }: Props) => {
-  if (!cast.length) return <></>;
+  if (!cast.length) return null;
 
   return (
     <section className={`${className} ${styles.container}`}>
       <h2 className='heading heading__secondary'>Cast</h2>
       <ul className={styles.cast}>
         {cast.map(member => (
-          <li key={member.id} className={styles.member}>
-            <div className={styles.member__imgContainer}>
-              {member.image ? (
-                <Image
-                  src={modifyIMDbImg(member.image, 400)}
-                  alt=''
-                  fill
-                  className={styles.member__img}
-                  sizes='200px'
-                />
-              ) : (
-                <svg className={styles.member__imgNA}>
-                  <use href='/svg/sprite.svg#icon-image-slash' />
-                </svg>
-              )}
-            </div>
-            <div className={styles.member__textContainer}>
-              <p>
-                <Link href={`/name/${member.id}`}>
-                  <a className={styles.member__name}>{member.name}</a>
-                </Link>
-              </p>
-              <p className={styles.member__role}>
-                {member.characters?.join(', ')}
-                {member.attributes && (
-                  <span> ({member.attributes.join(', ')})</span>
-                )}
-              </p>
-            </div>
-          </li>
+          <CardCast
+            key={member.id}
+            link={`/name/${member.id}`}
+            name={member.name}
+            image={member.image}
+            characters={member.characters}
+            attributes={member.attributes}
+          />
         ))}
       </ul>
     </section>
   );
 };
+
 export default Cast;

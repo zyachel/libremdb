@@ -1,0 +1,62 @@
+@use '../../../abstracts' as helper;
+
+.item {
+  --width: 10rem;
+  --height: var(--width);
+
+  display: grid;
+  grid-template-columns: var(--width) auto;
+
+  text-decoration: none;
+  color: inherit;
+
+  @include helper.bp('bp-450') {
+    --height: 15rem;
+    grid-template-columns: auto;
+  }
+}
+
+.sansImage {
+  grid-template-columns:  auto;
+  padding: var(--spacer-1);
+  
+  .imgContainer {
+    display: none;
+  }
+}
+
+.imgContainer {
+  display: grid;
+  place-items: center;
+  min-height: var(--height);
+  position: relative;
+}
+
+.img {
+  object-fit: cover;
+  object-position: center 25%; // most of the time, person's face is visible at 1/4 of height in a potrait image.
+}
+
+.imgNA {
+  width: 80%;
+  fill: var(--clr-fill-muted);
+}
+
+.info {
+  display: grid;
+  padding: var(--spacer-3);
+  gap: var(--spacer-0);
+
+  @include helper.bp('bp-450') {
+    padding: var(--spacer-1);
+  }
+
+  & :empty {
+    display: none;
+  }
+}
+
+.heading {
+  font-size: var(--fs-4);
+  text-decoration: none;
+}

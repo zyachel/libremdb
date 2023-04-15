@@ -1,11 +1,15 @@
+/* eslint-disable no-unused-vars */
 import Redis from 'ioredis';
 
 const redisUrl = process.env.REDIS_URL;
 const toUseRedis = process.env.USE_REDIS === 'true';
 
-let redis: Redis | null;
+const stub: Pick<Redis, 'get' | 'setex' | 'getBuffer'> = {
+  get: async key => Promise.resolve(null),
+  setex: async (key, seconds, value) => Promise.resolve('OK'),
+  getBuffer: (key, callback) => Promise.resolve(null),
+};
 
-if (toUseRedis && redisUrl) redis = new Redis(redisUrl);
-else redis = null;
+const redis = toUseRedis && redisUrl ? new Redis(redisUrl) : stub;
 
 export default redis;

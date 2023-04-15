@@ -12,18 +12,16 @@ type Props = {
   title: string;
 };
 
-const resultsExist = (results: Props['results']) => {
-  if (
-    !results ||
-    (!results.people.length &&
-      !results.keywords.length &&
-      !results.companies.length &&
-      !results.titles.length)
-  )
-    return false;
-
-  return true;
-};
+const resultsExist = (
+  results: Props['results']
+): results is NonNullable<Props['results']> =>
+  Boolean(
+    results &&
+      (results.people.length ||
+        results.keywords.length ||
+        results.companies.length ||
+        results.titles.length)
+  );
 
 // MAIN COMPONENT
 const Results = ({ results, className, title }: Props) => {
@@ -34,7 +32,7 @@ const Results = ({ results, className, title }: Props) => {
       </h1>
     );
 
-  const { titles, people, keywords, companies, meta } = results!;
+  const { titles, people, keywords, companies, meta } = results;
   const titlesSectionHeading = getResTitleTypeHeading(
     meta.type,
     meta.titleType

@@ -5,9 +5,9 @@ const getInitialTheme = () => {
   // for server-side rendering, as window isn't availabe there
   if (typeof window === 'undefined') return 'light';
 
-  const userPrefersTheme = isLocalStorageAvailable()
-    ? window.localStorage.getItem('theme')
-    : null;
+  const userPrefersTheme = (
+    isLocalStorageAvailable() ? window.localStorage.getItem('theme') : null
+  ) as 'light' | 'dark' | null;
   const browserPrefersDarkTheme = window.matchMedia(
     '(prefers-color-scheme: dark)'
   ).matches;
@@ -28,7 +28,7 @@ const updateMetaTheme = () => {
 
 const initialContext = {
   theme: '',
-  setTheme: (theme: string) => {},
+  setTheme: (theme: ReturnType<typeof getInitialTheme>) => { },
 };
 
 export const themeContext = createContext(initialContext);
@@ -36,7 +36,7 @@ export const themeContext = createContext(initialContext);
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [curTheme, setCurTheme] = useState(getInitialTheme);
 
-  const setTheme = (theme: string) => {
+  const setTheme = (theme: typeof curTheme) => {
     setCurTheme(theme);
     if (isLocalStorageAvailable()) window.localStorage.setItem('theme', theme);
     document.documentElement.dataset.theme = theme;

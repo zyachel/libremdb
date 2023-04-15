@@ -1,13 +1,15 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
-import { Media } from 'src/interfaces/shared/title';
+import { Media } from 'src/interfaces/shared';
 import { getProxiedIMDbImgUrl, modifyIMDbImg } from 'src/utils/helpers';
-import styles from 'src/styles/modules/components/title/media.module.scss';
+import styles from 'src/styles/modules/components/media/media.module.scss';
 
 type Props = {
   className: string;
   media: Media;
 };
+
+// TODO: refactor this component.
 
 const Media = ({ className, media }: Props) => {
   return (
@@ -21,13 +23,9 @@ const Media = ({ className, media }: Props) => {
               <div className={styles.trailer}>
                 <video
                   aria-label='trailer video'
-                  // it's a relatively new tag. hence jsx-all1 complains
-                  aria-description={media.trailer.caption}
                   controls
                   playsInline
-                  poster={getProxiedIMDbImgUrl(
-                    modifyIMDbImg(media.trailer.thumbnail)
-                  )}
+                  poster={getProxiedIMDbImgUrl(modifyIMDbImg(media.trailer.thumbnail))}
                   className={styles.trailer__video}
                   preload='none'
                 >
@@ -76,9 +74,7 @@ const Media = ({ className, media }: Props) => {
                   fill
                   sizes='400px'
                 />
-                <figcaption className={styles.image__caption}>
-                  {image.caption.plainText}
-                </figcaption>
+                <figcaption className={styles.image__caption}>{image.caption.plainText}</figcaption>
               </figure>
             ))}
           </div>

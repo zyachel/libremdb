@@ -1,8 +1,6 @@
 import cleanTitle from 'src/utils/cleaners/title';
 import title from 'src/utils/fetchers/title';
 
-export type AxiosTitleRes = Awaited<ReturnType<typeof title>>;
-
 // for full title
 type Title = ReturnType<typeof cleanTitle>;
 export type { Title as default };

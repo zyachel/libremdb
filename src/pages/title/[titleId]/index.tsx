@@ -1,23 +1,20 @@
-// external
-import { GetServerSideProps, GetStaticProps, GetStaticPaths } from 'next';
-import Head from 'next/head';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Meta from 'src/components/meta/Meta';
 import Layout from 'src/layouts/Layout';
 import ErrorInfo from 'src/components/error/ErrorInfo';
-// prettier-ignore
-import { Basic, Cast, DidYouKnow, Info, Media, MoreLikeThis, Reviews } from 'src/components/title';
+import Media from 'src/components/media/Media';
+import { Basic, Cast, DidYouKnow, Info, MoreLikeThis, Reviews } from 'src/components/title';
 import Title from 'src/interfaces/shared/title';
 import { AppError } from 'src/interfaces/shared/error';
 import title from 'src/utils/fetchers/title';
 import { getProxiedIMDbImgUrl } from 'src/utils/helpers';
 import styles from 'src/styles/modules/pages/title/title.module.scss';
 
-type Props = { data: Title; error: null } | { error: AppError; data: null };
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 // TO-DO: make a wrapper page component to display errors, if present in props
 const TitleInfo = ({ data, error }: Props) => {
-  if (error)
-    return <ErrorInfo message={error.message} statusCode={error.statusCode} />;
+  if (error) return <ErrorInfo message={error.message} statusCode={error.statusCode} />;
 
   const info = {
     meta: data.meta,
@@ -31,21 +28,10 @@ const TitleInfo = ({ data, error }: Props) => {
   return (
     <>
       <Meta
-        title={`${data.basic.title} (${
-          data.basic.releaseYear?.start || data.basic.type.name
-        })`}
-        description={data.basic.plot || undefined}
+        title={`${data.basic.title} (${data.basic.releaseYear?.start || data.basic.type.name})`}
+        description={data.basic.plot ?? undefined}
+        imgUrl={data.basic.poster?.url && getProxiedIMDbImgUrl(data.basic.poster.url)}
       />
-      <Head>
-        <meta
-          title='og:image'
-          content={
-            data.basic.poster?.url
-              ? getProxiedIMDbImgUrl(data.basic.poster?.url)
-              : '/icon-512.png'
-          }
-        />
-      </Head>
       <Layout className={styles.title}>
         <Basic data={data.basic} className={styles.basic} />
         <Media className={styles.media} media={data.media} />
@@ -62,8 +48,11 @@ const TitleInfo = ({ data, error }: Props) => {
 };
 
 // TO-DO: make a getServerSideProps wrapper for handling errors
-export const getServerSideProps: GetServerSideProps = async ctx => {
-  const titleId = ctx.params!.titleId as string;
+type Data = { data: Title; error: null } | { error: AppError; data: null };
+type Params = { titleId: string };
+
+export const getServerSideProps: GetServerSideProps<Data, Params> = async ctx => {
+  const titleId = ctx.params!.titleId;
 
   try {
     const data = await title(titleId);
