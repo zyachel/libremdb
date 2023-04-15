@@ -18,11 +18,7 @@ const cleanTitle = (rawData: RawTitle) => {
       //   originalTitle: main.originalTitleText.text,
       // }),
       type: {
-        id: main.titleType.id as
-          | 'movie'
-          | 'tvSeries'
-          | 'tvEpisode'
-          | 'videoGame',
+        id: main.titleType.id as 'movie' | 'tvSeries' | 'tvEpisode' | 'videoGame',
         name: main.titleType.text,
       },
       ...(main.productionStatus && {
@@ -47,10 +43,7 @@ const cleanTitle = (rawData: RawTitle) => {
         ranking: {
           position: main.meterRanking.currentRank,
           change: main.meterRanking.rankChange.difference,
-          direction: main.meterRanking.rankChange.changeDirection as
-            | 'UP'
-            | 'DOWN'
-            | 'FLAT',
+          direction: main.meterRanking.rankChange.changeDirection as 'UP' | 'DOWN' | 'FLAT',
         },
       }),
       genres: main.genres.genres.map(genre => ({
@@ -151,8 +144,7 @@ const cleanTitle = (rawData: RawTitle) => {
           totalEpisodes: misc.episodes.episodes.total,
           seasons: misc.episodes.seasons.map(season => season.number),
           years: misc.episodes.years.map(year => year.year),
-          topRatedEpisode:
-            misc.episodes.topRated.edges[0].node.ratingsSummary.aggregateRating,
+          topRatedEpisode: misc.episodes.topRated.edges[0].node.ratingsSummary.aggregateRating,
         },
       }),
     },
@@ -200,8 +192,7 @@ const cleanTitle = (rawData: RawTitle) => {
           startText: misc.connections.edges[0].node.category.text,
           title: {
             id: misc.connections.edges[0].node.associatedTitle.id,
-            year: misc.connections.edges[0].node.associatedTitle.releaseYear
-              .year,
+            year: misc.connections.edges[0].node.associatedTitle.releaseYear.year,
             text: misc.connections.edges[0].node.associatedTitle.titleText.text,
           },
         },
@@ -209,10 +200,7 @@ const cleanTitle = (rawData: RawTitle) => {
       ...(misc.soundtrack.edges.length && {
         soundTrack: {
           title: misc.soundtrack.edges[0].node.text,
-          htmls:
-            misc.soundtrack.edges[0].node.comments?.map(
-              html => html.plaidHtml
-            ) || null,
+          htmls: misc.soundtrack.edges[0].node.comments?.map(html => html.plaidHtml) || null,
         },
       }),
     },
@@ -235,8 +223,7 @@ const cleanTitle = (rawData: RawTitle) => {
           },
           review: {
             summary: misc.featuredReviews.edges[0].node.summary.originalText,
-            html: misc.featuredReviews.edges[0].node.text.originalText
-              .plaidHtml,
+            html: misc.featuredReviews.edges[0].node.text.originalText.plaidHtml,
           },
         },
       }),
@@ -329,14 +316,13 @@ const cleanTitle = (rawData: RawTitle) => {
         })),
       }),
       ...(misc.technicalSpecifications.aspectRatios.items.length && {
-        aspectRatios: misc.technicalSpecifications.aspectRatios.items.map(
-          item => item.aspectRatio
-        ),
+        aspectRatios: misc.technicalSpecifications.aspectRatios.items.map(item => item.aspectRatio),
       }),
       ...(misc.technicalSpecifications.colorations.items.length && {
-        colorations: misc.technicalSpecifications.colorations.items.map(
-          item => ({ id: item.conceptId, name: item.text })
-        ),
+        colorations: misc.technicalSpecifications.colorations.items.map(item => ({
+          id: item.conceptId,
+          name: item.text,
+        })),
       }),
       ...(main.runtime && { runtime: main.runtime?.seconds }),
     },
@@ -350,11 +336,7 @@ const cleanTitle = (rawData: RawTitle) => {
         },
       }),
       type: {
-        id: title.node.titleType.id as
-          | 'movie'
-          | 'tvSeries'
-          | 'tvEpisode'
-          | 'videoGame',
+        id: title.node.titleType.id as 'movie' | 'tvSeries' | 'tvEpisode' | 'videoGame',
         text: title.node.titleType.text,
       },
       certificate: title.node.certificate?.rating || null,
@@ -369,7 +351,7 @@ const cleanTitle = (rawData: RawTitle) => {
         avg: title.node.ratingsSummary.aggregateRating || null,
         numVotes: title.node.ratingsSummary.voteCount,
       },
-      genres: title.node.titleCardGenres.genres.map(genre => genre.text),
+      genres: title.node.titleGenres.genres.map(genre => genre.genre.text),
     })),
   };
 

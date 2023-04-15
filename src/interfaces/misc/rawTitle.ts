@@ -516,9 +516,11 @@ export default interface RawTitle {
               canRate: {
                 isRatable: boolean;
               };
-              titleCardGenres: {
+              titleGenres: {
                 genres: Array<{
-                  text: string;
+                  genre: {
+                    text: string;
+                  };
                 }>;
               };
               canHaveEpisodes: boolean;
