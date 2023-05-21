@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [3.1.0](https://github.com/zyachel/libremdb/compare/v3.0.0...v3.1.0) (2023-05-21)
+
+
+### Features
+
+* **cache:** implement caching of routes ([c53c88d](https://github.com/zyachel/libremdb/commit/c53c88db9bf98258547e2ca512f864800821cb1f))
+
+
+### Bug Fixes
+
+* **form:** fix hydration error ([8599ae2](https://github.com/zyachel/libremdb/commit/8599ae2c5ac11f2818f56c9f7de7666a38b4386c))
+* **name:** fix a couple of crashes in name and title route ([8d9b663](https://github.com/zyachel/libremdb/commit/8d9b6630a576b7e8331eb5431cd90d02733b4917))
+
 ## [3.0.0](https://github.com/zyachel/libremdb/compare/v2.4.0...v3.0.0) (2023-04-15)
 
 
