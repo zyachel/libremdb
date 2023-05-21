@@ -4,12 +4,6 @@
   display: grid;
   gap: var(--comp-whitespace);
 
-  & > section {
-    overflow-x: auto;
-    display: grid;
-    gap: var(--spacer-1);
-  }
-
   details {
     overflow-x: auto;
   }

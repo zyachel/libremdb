@@ -81,7 +81,7 @@ const cleanTitle = (rawData: RawTitle) => {
           isMature: main.primaryVideos.edges[0].node.isMature,
           thumbnail: main.primaryVideos.edges[0].node.thumbnail.url,
           runtime: main.primaryVideos.edges[0].node.runtime.value,
-          caption: main.primaryVideos.edges[0].node.description.value,
+          caption: main.primaryVideos.edges[0].node.description?.value ?? null,
           urls: main.primaryVideos.edges[0].node.playbackURLs.map(url => ({
             resolution: url.displayName.value,
             mimeType: url.mimeType,

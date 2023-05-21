@@ -82,13 +82,15 @@ const PersonalDetails = ({ info, accolades }: Props) => {
             <p>
               <span>Died: </span>
               <span>{info.death.date}</span>
-              <span>
-                {' '}
-                in{' '}
-                <Link href={`/search/name?death_place=${info.death.location}`}>
-                  <a className='link'>{info.death.location}</a>
-                </Link>
-              </span>
+              {info.death.location && (
+                <span>
+                  {' '}
+                  in{' '}
+                  <Link href={`/search/name?death_place=${info.death.location}`}>
+                    <a className='link'>{info.death.location}</a>
+                  </Link>
+                </span>
+              )}
             </p>
           )}
           {info.death.cause && (
@@ -102,11 +104,9 @@ const PersonalDetails = ({ info, accolades }: Props) => {
               <span>Spouses: </span>
               {info.spouses.map((spouse, i) => (
                 <span key={spouse.name}>
-                  <>
-                    {!!i && ', '}
-                    {renderPersonNameWithLink(spouse)} {spouse.range} (
-                    {spouse.attributes.join(', ')})
-                  </>
+                  {!!i && ', '}
+                  {renderPersonNameWithLink(spouse)} {spouse.range}
+                  {spouse.attributes && ' (' + spouse.attributes.join(', ') + ')'}
                 </span>
               ))}
             </p>
@@ -116,10 +116,8 @@ const PersonalDetails = ({ info, accolades }: Props) => {
               <span>Children: </span>
               {info.children.map((child, i) => (
                 <span key={child.name}>
-                  <>
-                    {!!i && ', '}
-                    {renderPersonNameWithLink(child)}
-                  </>
+                  {!!i && ', '}
+                  {renderPersonNameWithLink(child)}
                 </span>
               ))}
             </p>
@@ -129,10 +127,8 @@ const PersonalDetails = ({ info, accolades }: Props) => {
               <span>Parents: </span>
               {info.parents.map((parent, i) => (
                 <span key={parent.name}>
-                  <>
-                    {!!i && ', '}
-                    {renderPersonNameWithLink(parent)}
-                  </>
+                  {!!i && ', '}
+                  {renderPersonNameWithLink(parent)}
                 </span>
               ))}
             </p>
@@ -142,10 +138,8 @@ const PersonalDetails = ({ info, accolades }: Props) => {
               <span>Relatives: </span>
               {info.relatives.map((relative, i) => (
                 <span key={relative.name}>
-                  <>
-                    {!!i && ', '}
-                    {renderPersonNameWithLink(relative)} ({relative.relation})
-                  </>
+                  {!!i && ', '}
+                  {renderPersonNameWithLink(relative)} ({relative.relation})
                 </span>
               ))}
             </p>
@@ -155,10 +149,8 @@ const PersonalDetails = ({ info, accolades }: Props) => {
               <span>Other Works: </span>
               {info.otherWorks.map((work, i) => (
                 <span key={work.text}>
-                  <>
-                    {!!i && ', '}
-                    <span dangerouslySetInnerHTML={{ __html: work.text }} />
-                  </>
+                  {!!i && ', '}
+                  <span dangerouslySetInnerHTML={{ __html: work.text }} />
                 </span>
               ))}
             </p>

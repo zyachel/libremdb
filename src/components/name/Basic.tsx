@@ -10,7 +10,7 @@ type Props = {
 
 const Basic = ({ data, className }: Props) => {
   return (
-    <CardBasic className={className} image={data.poster.url} title={data.name}>
+    <CardBasic className={className} image={data.poster?.url} title={data.name}>
       <div className={styles.ratings}>
         {data.ranking && (
           <p className={styles.rating}>

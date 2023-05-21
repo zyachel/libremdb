@@ -125,7 +125,7 @@ export default interface RawTitle {
               runtime: {
                 value: number;
               };
-              description: {
+              description?: {
                 value: string;
                 language: string;
               };

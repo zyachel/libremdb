@@ -139,7 +139,7 @@ const cleanName = (rawData: RawName) => {
         })),
       },
       released: getCredits(misc.releasedPrimaryCredits),
-      unreleased: getCredits<'unreleased'>(misc.unreleasedPrimaryCredits),
+      // unreleased: getCredits<'unreleased'>(misc.unreleasedPrimaryCredits),
     },
     personalDetails: {
       officialSites: misc.personalDetailsExternalLinks.edges.map(item => ({
@@ -162,7 +162,7 @@ const cleanName = (rawData: RawName) => {
           name: spouse.spouse.asMarkdown.plainText,
           id: spouse.spouse.name?.id ?? null,
           range: spouse.timeRange.displayableProperty.value.plaidHtml,
-          attributes: spouse.attributes.map(attr => attr.text),
+          attributes: spouse.attributes?.map(attr => attr.text) ?? null,
         })) ?? null,
       children: misc.children.edges.map(child => ({
         name: child.node.relationName.displayableProperty.value.plainText,

@@ -34,7 +34,7 @@ export default interface Name {
           total: number;
         };*/
 
-        primaryImage: {
+        primaryImage?: {
           id: string;
           url: string;
           height: number;
@@ -687,13 +687,13 @@ export default interface Name {
                       }>;
                     };
                   };
-                 titleGenres: {
-                  genres: Array<{
-                    genre: {
-                      text: string;
-                    };
-                  }>;
-                };
+                  titleGenres: {
+                    genres: Array<{
+                      genre: {
+                        text: string;
+                      };
+                    }>;
+                  };
                   productionStatus: {
                     currentProductionStage: {
                       id: string;
@@ -882,7 +882,7 @@ export default interface Name {
               plainText: string;
             };
           };
-          attributes: Array<{
+          attributes?: Array<{
             id: string;
             text: string;
           }>;
