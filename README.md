@@ -38,8 +38,6 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | 1. Clearnet | | |
 | [libremdb.iket.me](https://libremdb.iket.me) | Canada  | Operated by me |
 | [libremdb.pussthecat.org](https://libremdb.pussthecat.org) | Germany | Operated by [PussTheCat.org](https://pussthecat.org/) |
-| [libremdbeu.herokuapp.com](https://libremdbeu.herokuapp.com) | Europe | Operated by [toyboatcash](https://github.com/toyboatcash) |
-| [lmdb.tokhmi.xyz](https://lmdb.tokhmi.xyz) | U.S. | Operated by [Tokhmi](https://tokhmi.xyz) |
 | [libremdb.esmailelbob.xyz](https://libremdb.esmailelbob.xyz) | Canada | Operated by [Esmail EL BoB](https://esmailelbob.xyz) |
 | [ld.vern.cc](https://ld.vern.cc) | US | Operated by [~vern](https://vern.cc) |
 | [binge.whatever.social](https://binge.whatever.social) | US & Germany | Operated by [Whatever Social](https://whatever.social) |
