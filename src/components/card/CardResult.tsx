@@ -25,16 +25,14 @@ const CardResult = ({ link, name, image, showImage, children, ...rest }: Props) 
     );
 
   return (
-    <Card hoverable {...rest}>
-      <Link href={link}>
-        <a className={`${styles.item} ${!showImage && styles.sansImage}`}>
-          <div className={styles.imgContainer}>{ImageComponent}</div>
-          <div className={styles.info}>
-            <p className={`heading ${styles.heading}`}>{name}</p>
-            {children}
-          </div>
-        </a>
-      </Link>
+    <Card hoverable {...rest} className={`${styles.item} ${!showImage && styles.sansImage}`}>
+      <div className={styles.imgContainer}>{ImageComponent}</div>
+      <div className={styles.info}>
+        <Link href={link}>
+          <a className={`heading ${styles.heading}`}>{name}</a>
+        </Link>
+        {children}
+      </div>
     </Card>
   );
 };

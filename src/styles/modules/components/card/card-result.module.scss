@@ -7,9 +7,6 @@
   display: grid;
   grid-template-columns: var(--width) auto;
 
-  text-decoration: none;
-  color: inherit;
-
   @include helper.bp('bp-450') {
     --height: 15rem;
     grid-template-columns: auto;
