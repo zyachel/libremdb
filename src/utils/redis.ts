@@ -2,7 +2,8 @@
 import Redis from 'ioredis';
 
 const redisUrl = process.env.REDIS_URL;
-const toUseRedis = process.env.USE_REDIS === 'true';
+const toUseRedis =
+  process.env.USE_REDIS === 'true' || process.env.USE_REDIS_FOR_API_ONLY === 'true';
 
 const stub: Pick<Redis, 'get' | 'setex' | 'getBuffer'> = {
   get: async key => Promise.resolve(null),

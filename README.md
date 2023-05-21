@@ -112,7 +112,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
   - [ ] company info
   - [ ] user info
 
-- [ ] use redis, or any other caching strategy
+- [X] use redis, or any other caching strategy
 - [x] implement a better installation method
 - [x] serve images and videos from libremdb itself
 

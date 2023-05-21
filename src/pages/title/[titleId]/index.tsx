@@ -6,8 +6,10 @@ import Media from 'src/components/media/Media';
 import { Basic, Cast, DidYouKnow, Info, MoreLikeThis, Reviews } from 'src/components/title';
 import Title from 'src/interfaces/shared/title';
 import { AppError } from 'src/interfaces/shared/error';
+import getOrSetApiCache from 'src/utils/getOrSetApiCache';
 import title from 'src/utils/fetchers/title';
 import { getProxiedIMDbImgUrl } from 'src/utils/helpers';
+import { titleKey } from 'src/utils/constants/keys';
 import styles from 'src/styles/modules/pages/title/title.module.scss';
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
@@ -55,7 +57,7 @@ export const getServerSideProps: GetServerSideProps<Data, Params> = async ctx =>
   const titleId = ctx.params!.titleId;
 
   try {
-    const data = await title(titleId);
+    const data = await getOrSetApiCache(titleKey(titleId), title, titleId);
 
     return { props: { data, error: null } };
   } catch (error: any) {

@@ -7,7 +7,9 @@ import { Basic, Credits, DidYouKnow, Info, Bio, KnownFor } from 'src/components/
 import Name from 'src/interfaces/shared/name';
 import { AppError } from 'src/interfaces/shared/error';
 import name from 'src/utils/fetchers/name';
+import getOrSetApiCache from 'src/utils/getOrSetApiCache';
 import { getProxiedIMDbImgUrl } from 'src/utils/helpers';
+import { nameKey } from 'src/utils/constants/keys';
 import styles from 'src/styles/modules/pages/name/name.module.scss';
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
@@ -46,7 +48,7 @@ export const getServerSideProps: GetServerSideProps<Data, Params> = async ctx =>
   const nameId = ctx.params!.nameId;
 
   try {
-    const data = await name(nameId);
+    const data = await getOrSetApiCache(nameKey(nameId), name, nameId);
 
     return { props: { data, error: null } };
   } catch (error: any) {

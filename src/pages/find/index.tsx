@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Layout from 'src/layouts/Layout';
 import ErrorInfo from 'src/components/error/ErrorInfo';
 import Meta from 'src/components/meta/Meta';
@@ -7,13 +7,12 @@ import Form from 'src/components/forms/find';
 import Find, { FindQueryParams } from 'src/interfaces/shared/search';
 import { AppError } from 'src/interfaces/shared/error';
 import basicSearch from 'src/utils/fetchers/basicSearch';
+import getOrSetApiCache from 'src/utils/getOrSetApiCache';
 import { cleanQueryStr } from 'src/utils/helpers';
+import { findKey } from 'src/utils/constants/keys';
 import styles from 'src/styles/modules/pages/find/find.module.scss';
 
-type Props =
-  | { data: { title: string; results: Find }; error: null }
-  | { data: { title: null; results: null }; error: null }
-  | { data: { title: string; results: null }; error: AppError };
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 const getMetadata = (title: string | null) => ({
   title: title || 'Search',
@@ -23,8 +22,7 @@ const getMetadata = (title: string | null) => ({
 });
 
 const BasicSearch = ({ data: { title, results }, error }: Props) => {
-  if (error)
-    return <ErrorInfo message={error.message} statusCode={error.statusCode} />;
+  if (error) return <ErrorInfo message={error.message} statusCode={error.statusCode} />;
 
   return (
     <>
@@ -40,19 +38,23 @@ const BasicSearch = ({ data: { title, results }, error }: Props) => {
 };
 
 // TODO: use generics for passing in queryParams(to components) for better type-checking.
-export const getServerSideProps: GetServerSideProps = async ctx => {
+type Data =
+  | { data: { title: string; results: Find }; error: null }
+  | { data: { title: null; results: null }; error: null }
+  | { data: { title: string; results: null }; error: AppError };
+
+export const getServerSideProps: GetServerSideProps<Data, FindQueryParams> = async ctx => {
   // sample query str: find/?q=babylon&s=tt&ttype=ft&exact=true
   const queryObj = ctx.query as FindQueryParams;
   const query = queryObj.q?.trim();
 
-  if (!query)
-    return { props: { data: { title: null, results: null }, error: null } };
+  if (!query) return { props: { data: { title: null, results: null }, error: null } };
 
   try {
     const entries = Object.entries(queryObj);
     const queryStr = cleanQueryStr(entries);
 
-    const res = await basicSearch(queryStr);
+    const res = await getOrSetApiCache(findKey(queryStr), basicSearch, queryStr);
 
     return {
       props: { data: { title: query, results: res }, error: null },

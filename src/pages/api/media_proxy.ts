@@ -1,30 +1,32 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { AxiosRequestHeaders } from 'axios';
 import redis from 'src/utils/redis';
 import axiosInstance from 'src/utils/axiosInstance';
+import { mediaKey } from 'src/utils/constants/keys';
 
-const getCleanReqHeaders = (headers: NextApiRequest['headers']) => ({
-  ...(headers.accept && { accept: headers.accept }),
-  ...(headers.range && { range: headers.range }),
-  ...(headers['accept-encoding'] && {
-    'accept-encoding': headers['accept-encoding'] as string,
-  }),
-});
+const dontCacheMedia =
+  process.env.USE_REDIS_FOR_API_ONLY === 'true' || process.env.USE_REDIS !== 'true';
 
-const resHeadersArr = [
-  'content-range',
-  'content-length',
-  'content-type',
-  'accept-ranges',
-];
+const ttl = process.env.REDIS_CACHE_TTL_MEDIA ?? 30 * 60;
+
+const getCleanReqHeaders = (headers: NextApiRequest['headers']) => {
+  const cleanHeaders: AxiosRequestHeaders = {};
+
+  if (headers.accept) cleanHeaders.accept = headers.accept;
+  if (headers.range) cleanHeaders.range = headers.range;
+  if (headers['accept-encoding'])
+    cleanHeaders['accept-encoding'] = headers['accept-encoding'].toString();
+
+  return cleanHeaders;
+};
+
+const resHeadersArr = ['content-range', 'content-length', 'content-type', 'accept-ranges'];
 
 // checks if a url is pointing towards a video/image from imdb
 const regex =
   /^https:\/\/((m\.)?media-amazon\.com|imdb-video\.media-imdb\.com).*\.(jpg|jpeg|png|mp4|gif|webp).*$/;
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const mediaUrl = req.query.url as string | undefined;
     const requestHeaders = getCleanReqHeaders(req.headers);
@@ -36,8 +38,8 @@ export default async function handler(
         message: 'Invalid query',
       });
 
-    // 2. sending streamed response if redis isn't enabled
-    if (redis === null) {
+    // 2. sending streamed response if redis, or redis for media isn't enabled
+    if (dontCacheMedia) {
       const mediaRes = await axiosInstance.get(mediaUrl, {
         responseType: 'stream',
         headers: requestHeaders,
@@ -54,23 +56,21 @@ export default async function handler(
     }
 
     // 3. else if resourced is cached, sending it
-    const cachedMedia = await redis!.getBuffer(mediaUrl);
+    const cachedMedia = await redis.getBuffer(mediaKey(mediaUrl));
 
     if (cachedMedia) {
       res.setHeader('x-cached', 'true');
-      res.status(302).send(cachedMedia);
+      res.status(304).send(cachedMedia);
       return;
     }
 
     // 4. else getting, caching and sending response
-    const mediaRes = await axiosInstance(mediaUrl, {
+    const { data } = await axiosInstance(mediaUrl, {
       responseType: 'arraybuffer',
     });
 
-    const { data } = mediaRes;
-
     // saving in redis for 30 minutes
-    await redis!.setex(mediaUrl, 30 * 60, Buffer.from(data));
+    await redis.setex(mediaKey(mediaUrl), ttl, Buffer.from(data));
 
     // sending media
     res.setHeader('x-cached', 'false');
