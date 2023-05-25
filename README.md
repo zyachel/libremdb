@@ -44,7 +44,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | [libremdb.lunar.icu](https://libremdb.lunar.icu/) | Germany (Cloudflare) | Operated by [lunar.icu](https://lunar.icu/) |
 | [libremdb.jeikobu.net](https://libremdb.jeikobu.net) | Germany (Cloudflare) | Operated by [shindouj](https://github.com/shindouj) |
 | [lmdb.hostux.net](https://lmdb.hostux.net) | France | Operated by [Hostux.net](https://hostux.net) |
-| [imdb.xbdm.fun](https://imdb.xbdm.fun) | Germany (Cloudflare) | Operated by [xbdm](https://github.com/xbdmHQ) |
+| [binge.whateveritworks.org](https://binge.whateveritworks.org) | Germany (Cloudflare) | Operated by [WhateverItWorks](https://github.com/WhateverItWorks) |
 | [libremdb.nerdyfam.tech](https://libremdb.nerdyfam.tech) | U.S. | Operated by [Nerdyfam.tech](https://nerdyfam.tech/) |
 | [libremdb.fascinated.cc](https://libremdb.fascinated.cc) | Germany (Cloudflare) | Operated by [RealFascinated](https://github.com/RealFascinated) |
 | 2. Onion | | |
