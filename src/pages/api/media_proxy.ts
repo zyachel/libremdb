@@ -60,7 +60,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (cachedMedia) {
       res.setHeader('x-cached', 'true');
-      res.status(304).send(cachedMedia);
+      res.send(cachedMedia);
       return;
     }
 
