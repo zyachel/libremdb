@@ -15,8 +15,8 @@ import styles from 'src/styles/modules/pages/title/title.module.scss';
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 // TO-DO: make a wrapper page component to display errors, if present in props
-const TitleInfo = ({ data, error }: Props) => {
-  if (error) return <ErrorInfo message={error.message} statusCode={error.statusCode} />;
+const TitleInfo = ({ data, error, originalPath }: Props) => {
+  if (error) return <ErrorInfo {...error} originalPath={originalPath} />;
 
   const info = {
     meta: data.meta,
@@ -34,7 +34,7 @@ const TitleInfo = ({ data, error }: Props) => {
         description={data.basic.plot ?? undefined}
         imgUrl={data.basic.poster?.url && getProxiedIMDbImgUrl(data.basic.poster.url)}
       />
-      <Layout className={styles.title}>
+      <Layout className={styles.title} originalPath={originalPath}>
         <Basic data={data.basic} className={styles.basic} />
         <Media className={styles.media} media={data.media} />
         <Cast className={styles.cast} cast={data.cast} />
@@ -50,22 +50,25 @@ const TitleInfo = ({ data, error }: Props) => {
 };
 
 // TO-DO: make a getServerSideProps wrapper for handling errors
-type Data = { data: Title; error: null } | { error: AppError; data: null };
+type Data = ({ data: Title; error: null } | { error: AppError; data: null }) & {
+  originalPath: string;
+};
 type Params = { titleId: string };
 
 export const getServerSideProps: GetServerSideProps<Data, Params> = async ctx => {
   const titleId = ctx.params!.titleId;
+  const originalPath = ctx.resolvedUrl;
 
   try {
     const data = await getOrSetApiCache(titleKey(titleId), title, titleId);
 
-    return { props: { data, error: null } };
+    return { props: { data, error: null, originalPath } };
   } catch (error: any) {
     const { message, statusCode } = error;
     ctx.res.statusCode = statusCode;
     ctx.res.statusMessage = message;
 
-    return { props: { error: { message, statusCode }, data: null } };
+    return { props: { error: { message, statusCode }, data: null, originalPath } };
   }
 };
 

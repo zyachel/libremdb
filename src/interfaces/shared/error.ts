@@ -1,5 +1,3 @@
-export type AppError = {
-  message: string;
-  statusCode: number;
-  stack?: any;
-};
+import { AppError as AppErrorClass } from 'src/utils/helpers';
+
+export type AppError = Omit<InstanceType<typeof AppErrorClass>, 'name'>;

@@ -11,7 +11,8 @@ import styles from 'src/styles/modules/components/error/error-info.module.scss';
 type Props = {
   message: string;
   statusCode?: number;
-  // props specific to error boundary.
+  originalPath?: string;
+  /** props specific to error boundary. */
   misc?: {
     subtext: string;
     buttonText: string;
@@ -19,12 +20,12 @@ type Props = {
   };
 };
 
-const ErrorInfo = ({ message, statusCode, misc }: Props) => {
+const ErrorInfo = ({ message, statusCode, misc, originalPath }: Props) => {
   const title = statusCode ? `${message} (${statusCode})` : message;
   return (
     <>
       <Meta title={title} description='you encountered an error page!' />
-      <Layout className={styles.error}>
+      <Layout className={styles.error} originalPath={originalPath}>
         <svg
           className={styles.gnu}
           focusable='false'
@@ -52,6 +53,15 @@ const ErrorInfo = ({ message, statusCode, misc }: Props) => {
             <Link href='/'>
               <a className='link'>the homepage</a>
             </Link>
+            , or view this route{' '}
+            <a
+              className='link'
+              href={`https://www.imdb.com${originalPath ?? ''}`}
+              target='_blank'
+              rel='noreferrer'
+            >
+              on IMDb
+            </a>
             .
           </p>
         )}

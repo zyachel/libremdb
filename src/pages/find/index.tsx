@@ -21,13 +21,16 @@ const getMetadata = (title: string | null) => ({
     : 'Search for anything on libremdb, a free & open source IMDb front-end',
 });
 
-const BasicSearch = ({ data: { title, results }, error }: Props) => {
-  if (error) return <ErrorInfo message={error.message} statusCode={error.statusCode} />;
+const BasicSearch = ({ data: { title, results }, error, originalPath }: Props) => {
+  if (error) return <ErrorInfo {...error} originalPath={originalPath} />;
+
+  let layoutClassName = styles.find;
+  if (!title) layoutClassName += ' ' + styles.find__home;
 
   return (
     <>
       <Meta {...getMetadata(title)} />
-      <Layout className={`${styles.find} ${!title && styles.find__home}`}>
+      <Layout className={layoutClassName} originalPath={originalPath}>
         {title && ( // only showing when user has searched for something
           <Results results={results} title={title} className={styles.results} />
         )}
@@ -38,17 +41,21 @@ const BasicSearch = ({ data: { title, results }, error }: Props) => {
 };
 
 // TODO: use generics for passing in queryParams(to components) for better type-checking.
-type Data =
+type Data = (
   | { data: { title: string; results: Find }; error: null }
   | { data: { title: null; results: null }; error: null }
-  | { data: { title: string; results: null }; error: AppError };
+  | { data: { title: string; results: null }; error: AppError }
+) & {
+  originalPath: string;
+};
 
 export const getServerSideProps: GetServerSideProps<Data, FindQueryParams> = async ctx => {
   // sample query str: find/?q=babylon&s=tt&ttype=ft&exact=true
   const queryObj = ctx.query as FindQueryParams;
   const query = queryObj.q?.trim();
+  const originalPath = ctx.resolvedUrl;
 
-  if (!query) return { props: { data: { title: null, results: null }, error: null } };
+  if (!query) return { props: { data: { title: null, results: null }, error: null, originalPath } };
 
   try {
     const entries = Object.entries(queryObj);
@@ -57,7 +64,7 @@ export const getServerSideProps: GetServerSideProps<Data, FindQueryParams> = asy
     const res = await getOrSetApiCache(findKey(queryStr), basicSearch, queryStr);
 
     return {
-      props: { data: { title: query, results: res }, error: null },
+      props: { data: { title: query, results: res }, error: null, originalPath },
     };
   } catch (error: any) {
     const { message, statusCode } = error;
@@ -68,6 +75,7 @@ export const getServerSideProps: GetServerSideProps<Data, FindQueryParams> = asy
       props: {
         error: { message, statusCode },
         data: { title: query, results: null },
+        originalPath,
       },
     };
   }

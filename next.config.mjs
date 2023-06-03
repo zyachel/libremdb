@@ -2,21 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  async rewrites() {
-    return {
-      afterFiles: [
-        {
-          source: '/',
-          destination: '/find',
-        },
-      ],
-      fallback: [
-        {
-          source: '/:path*',
-          destination: '/404',
-        },
-      ],
-    };
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/find',
+        permanent: true,
+      },
+    ];
   },
   images: {
     domains: ['m.media-amazon.com'],

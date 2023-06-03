@@ -6,12 +6,13 @@ type Props = {
   full?: true;
   children: ReactNode;
   className: string;
+  originalPath?: string;
 };
 
-const Layout = ({ full, children, className }: Props) => {
+const Layout = ({ full, children, className, originalPath }: Props) => {
   return (
     <>
-      <Header full={full} />
+      <Header full={full} originalPath={originalPath} />
       <main id='main' className={`main ${className}`}>
         {children}
       </main>

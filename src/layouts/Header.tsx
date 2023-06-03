@@ -1,21 +1,14 @@
-import { ReactNode } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import ThemeToggler from 'src/components/buttons/ThemeToggler';
 import styles from 'src/styles/modules/layout/header.module.scss';
 
-type Props = { full?: boolean; children?: ReactNode };
+type Props = { full?: boolean; originalPath?: string };
 
-const Header = (props: Props) => {
-  const { asPath: path } = useRouter();
-
+const Header = ({ full, originalPath }: Props) => {
   return (
-    <header
-      id='header'
-      className={`${styles.header} ${props.full ? styles.header__about : ''}`}
-    >
+    <header id='header' className={`${styles.header} ${full ? styles.header__about : ''}`}>
       <div className={styles.topbar}>
-        <Link href='/'>
+        <Link href='/find'>
           <a aria-label='go to homepage' className={styles.logo}>
             <svg className={styles.logo__icon} role='img' aria-hidden>
               <use href='/svg/sprite.svg#icon-logo'></use>
@@ -23,7 +16,7 @@ const Header = (props: Props) => {
             <span className={styles.logo__text}>libremdb</span>
           </a>
         </Link>
-        {props.full && (
+        {full && (
           <nav className={styles.nav}>
             <ul className={styles.nav__list}>
               <li className={styles.nav__item}>
@@ -45,14 +38,8 @@ const Header = (props: Props) => {
           </nav>
         )}
         <div className={styles.misc}>
-          <a
-            href={`https://www.imdb.com${path}`}
-            target='_blank'
-            rel='noreferrer'
-          >
-            <span className='visually-hidden'>
-              View on IMDb (opens in new tab)
-            </span>
+          <a href={`https://www.imdb.com${originalPath ?? ''}`} target='_blank' rel='noreferrer'>
+            <span className='visually-hidden'>View on IMDb (opens in new tab)</span>
             <svg className='icon' role='img' aria-hidden>
               <use href='/svg/sprite.svg#icon-external-link'></use>
             </svg>
@@ -68,7 +55,7 @@ const Header = (props: Props) => {
           <ThemeToggler className={styles.themeToggler} />
         </div>
       </div>
-      {props.full && (
+      {full && (
         <div className={styles.hero}>
           <h1 className={`heading heading__primary ${styles.hero__text}`}>
             A free & open source IMDb front-end
@@ -83,10 +70,7 @@ const Header = (props: Props) => {
               nitter
             </a>
             , and{' '}
-            <a
-              href='https://github.com/digitalblossom/alternative-frontends'
-              className='link'
-            >
+            <a href='https://github.com/digitalblossom/alternative-frontends' className='link'>
               many others
             </a>
             .

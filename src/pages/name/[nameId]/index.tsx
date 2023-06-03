@@ -14,8 +14,8 @@ import styles from 'src/styles/modules/pages/name/name.module.scss';
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 
-const NameInfo = ({ data, error }: Props) => {
-  if (error) return <ErrorInfo message={error.message} statusCode={error.statusCode} />;
+const NameInfo = ({ data, error, originalPath }: Props) => {
+  if (error) return <ErrorInfo {...error} originalPath={originalPath} />;
 
   return (
     <>
@@ -24,7 +24,7 @@ const NameInfo = ({ data, error }: Props) => {
         description={data.basic.bio.short + '...'}
         imgUrl={data.basic.poster?.url && getProxiedIMDbImgUrl(data.basic.poster.url)}
       />
-      <Layout className={styles.name}>
+      <Layout className={styles.name} originalPath={originalPath}>
         <Basic data={data.basic} className={styles.basic} />
         <Media className={styles.media} media={data.media} />
         <div className={styles.textarea}>
@@ -41,23 +41,26 @@ const NameInfo = ({ data, error }: Props) => {
   );
 };
 
-type Data = { data: Name; error: null } | { error: AppError; data: null };
+type Data = ({ data: Name; error: null } | { error: AppError; data: null }) & {
+  originalPath: string;
+};
 type Params = { nameId: string };
 
 export const getServerSideProps: GetServerSideProps<Data, Params> = async ctx => {
   const nameId = ctx.params!.nameId;
+  const originalPath = ctx.resolvedUrl;
 
   try {
     const data = await getOrSetApiCache(nameKey(nameId), name, nameId);
 
-    return { props: { data, error: null } };
+    return { props: { data, error: null, originalPath } };
   } catch (error: any) {
     const { message, statusCode } = error;
 
     ctx.res.statusCode = statusCode;
     ctx.res.statusMessage = message;
 
-    return { props: { error: { message, statusCode }, data: null } };
+    return { props: { error: { message, statusCode }, data: null, originalPath } };
   }
 };
 
