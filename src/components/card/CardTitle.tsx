@@ -52,7 +52,7 @@ const CardTitle = ({ link, name, year, image, ratings, titleType, children, ...r
                 <span> ({formatNumber(ratings.numVotes)} votes)</span>
               </p>
             )}
-            {children}
+            <div className={styles.children}>{children}</div>
           </div>
         </a>
       </Link>

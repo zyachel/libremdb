@@ -35,6 +35,12 @@
   align-content: start;
 }
 
+.children {
+  max-height: 7em; // firefox doesn't support lh yet.
+  max-height: 7lh;
+  overflow: auto;
+}
+
 .name {
   font-size: 1.2em;
 }
