@@ -6,13 +6,13 @@ export default interface Name {
         nameText: {
           text: string;
         };
-        disambiguator?: {
-          text: string;
-        };
         /*
         searchIndexing: {
           disableIndexing: boolean
         }*/
+        disambiguator?: {
+          text: string;
+        };
         knownFor: {
           edges: Array<{
             node: {
@@ -49,18 +49,17 @@ export default interface Name {
           publicationStatus: string
         }
         */
-
-        primaryProfessions: Array<{
-          category: {
-            text: string;
-          };
-        }>;
         bio: {
           text: {
             plainText: string;
             plaidHtml: string;
           };
         };
+        primaryProfessions: Array<{
+          category: {
+            text: string;
+          };
+        }>;
         birthDate: {
           displayableProperty: {
             value: {
@@ -103,6 +102,9 @@ export default interface Name {
           total: number;
         };
         subNavAwardNominations: {
+          total: number;
+        };
+        subNavFaqs: {
           total: number;
         };
         // videos: {
@@ -222,185 +224,21 @@ export default interface Name {
             };
           }>;
         };
-        // primaryImage: {
-        //   id: string;
-        //   caption: {
-        //     plainText: string;
-        //   };
-        //   height: number;
-        //   width: number;
-        //   url: string;
-        // };
-        // imageUploadLink: null;
-        // nameText: {
-        //   text: string;
-        // };
-        knownFor: {
-          edges: Array<{
-            node: {
-              summary: {
-                attributes?: Array<{
-                  text: string;
-                }>;
-                episodeCount?: number;
-                principalCategory: {
-                  text: string;
-                  id: string;
-                };
-                principalCharacters?: Array<{
-                  name: string;
-                }>;
-                principalJobs?: Array<{
-                  id: string;
-                  text: string;
-                }>;
-                yearRange: {
-                  year: number;
-                  endYear?: number;
-                };
-              };
-              credit: {
-                attributes?: Array<{
-                  text: string;
-                }>;
-                category: {
-                  id: string;
-                  text: string;
-                };
-                characters?: Array<{
-                  name: string;
-                }>;
-                episodeCredits: {
-                  total: number;
-                  yearRange?: {
-                    year: number;
-                    endYear: number;
-                  };
-                  displayableYears: {
-                    total: number;
-                    edges: Array<{
-                      node: {
-                        year: string;
-                        displayableProperty: {
-                          value: {
-                            plainText: string;
-                          };
-                        };
-                      };
-                    }>;
-                  };
-                  displayableSeasons: {
-                    total: number;
-                    edges: Array<{
-                      node: {
-                        season: string;
-                        displayableProperty: {
-                          value: {
-                            plainText: string;
-                          };
-                        };
-                      };
-                    }>;
-                  };
-                };
-                jobs?: Array<{
-                  id: string;
-                  text: string;
-                }>;
-              };
-              title: {
-                id: string;
-                canRate: {
-                  isRatable: boolean;
-                };
-                certificate?: {
-                  rating: string;
-                };
-                originalTitleText: {
-                  text: string;
-                };
-                titleText: {
-                  text: string;
-                };
-                titleType: {
-                  canHaveEpisodes: boolean;
-                  displayableProperty: {
-                    value: {
-                      plainText: string;
-                    };
-                  };
-                  text: string;
-                  id: 'movie' | 'tvSeries' | 'tvEpisode' | 'videoGame';
-                };
-                primaryImage: {
-                  id: string;
-                  url: string;
-                  height: number;
-                  width: number;
-                  caption: {
-                    plainText: string;
-                  };
-                };
-                ratingsSummary: {
-                  aggregateRating?: number;
-                  voteCount: number;
-                };
-                latestTrailer?: {
-                  id: string;
-                };
-                releaseYear: {
-                  year: number;
-                  endYear?: number;
-                };
-                runtime?: {
-                  seconds: number;
-                };
-                series: null;
-                episodes?: {
-                  displayableSeasons: {
-                    total: number;
-                    edges: Array<{
-                      node: {
-                        season: string;
-                        displayableProperty: {
-                          value: {
-                            plainText: string;
-                          };
-                        };
-                      };
-                    }>;
-                  };
-                  displayableYears: {
-                    total: number;
-                    edges: Array<{
-                      node: {
-                        year: string;
-                        displayableProperty: {
-                          value: {
-                            plainText: string;
-                          };
-                        };
-                      };
-                    }>;
-                  };
-                };
-                titleGenres: {
-                  genres: Array<{
-                    genre: {
-                      text: string;
-                    };
-                  }>;
-                };
-                productionStatus: {
-                  currentProductionStage: {
-                    id: string;
-                    text: string;
-                  };
-                };
-              };
-            };
-          }>;
+        /*
+        primaryImage: {
+          id: string;
+          caption: {
+            plainText: string;
+          };
+          height: number;
+          width: number;
+          url: string;
         };
+        imageUploadLink: null;
+        nameText: {
+          text: string;
+        };
+        */
         primaryProfessions: Array<{
           category: {
             text: string;
@@ -753,6 +591,172 @@ export default interface Name {
             };
           }>;
         };
+        knownForFeature: {
+          edges: Array<{
+            node: {
+              summary: {
+                attributes?: Array<{
+                  text: string;
+                }>;
+                episodeCount?: number;
+                principalCategory: {
+                  text: string;
+                  id: string;
+                };
+                principalCharacters?: Array<{
+                  name: string;
+                }>;
+                principalJobs?: Array<{
+                  id: string;
+                  text: string;
+                }>;
+                yearRange: {
+                  year: number;
+                  endYear?: number;
+                };
+              };
+              credit: {
+                attributes?: Array<{
+                  text: string;
+                }>;
+                category: {
+                  id: string;
+                  text: string;
+                };
+                characters?: Array<{
+                  name: string;
+                }>;
+                episodeCredits: {
+                  total: number;
+                  yearRange?: {
+                    year: number;
+                    endYear: number;
+                  };
+                  displayableYears: {
+                    total: number;
+                    edges: Array<{
+                      node: {
+                        year: string;
+                        displayableProperty: {
+                          value: {
+                            plainText: string;
+                          };
+                        };
+                      };
+                    }>;
+                  };
+                  displayableSeasons: {
+                    total: number;
+                    edges: Array<{
+                      node: {
+                        season: string;
+                        displayableProperty: {
+                          value: {
+                            plainText: string;
+                          };
+                        };
+                      };
+                    }>;
+                  };
+                };
+                jobs?: Array<{
+                  id: string;
+                  text: string;
+                }>;
+              };
+              title: {
+                id: string;
+                canRate: {
+                  isRatable: boolean;
+                };
+                certificate?: {
+                  rating: string;
+                };
+                originalTitleText: {
+                  text: string;
+                };
+                titleText: {
+                  text: string;
+                };
+                titleType: {
+                  canHaveEpisodes: boolean;
+                  displayableProperty: {
+                    value: {
+                      plainText: string;
+                    };
+                  };
+                  text: string;
+                  id: 'movie' | 'tvSeries' | 'tvEpisode' | 'videoGame';
+                };
+                primaryImage: {
+                  id: string;
+                  url: string;
+                  height: number;
+                  width: number;
+                  caption: {
+                    plainText: string;
+                  };
+                };
+                ratingsSummary: {
+                  aggregateRating?: number;
+                  voteCount: number;
+                };
+                latestTrailer?: {
+                  id: string;
+                };
+                releaseYear: {
+                  year: number;
+                  endYear?: number;
+                };
+                runtime?: {
+                  seconds: number;
+                };
+                series: null;
+                episodes?: {
+                  displayableSeasons: {
+                    total: number;
+                    edges: Array<{
+                      node: {
+                        season: string;
+                        displayableProperty: {
+                          value: {
+                            plainText: string;
+                          };
+                        };
+                      };
+                    }>;
+                  };
+                  displayableYears: {
+                    total: number;
+                    edges: Array<{
+                      node: {
+                        year: string;
+                        displayableProperty: {
+                          value: {
+                            plainText: string;
+                          };
+                        };
+                      };
+                    }>;
+                  };
+                };
+                titleGenres: {
+                  genres: Array<{
+                    genre: {
+                      text: string;
+                    };
+                  }>;
+                };
+                productionStatus: {
+                  currentProductionStage: {
+                    id: string;
+                    text: string;
+                  };
+                };
+              };
+            };
+          }>;
+        };
         videos: {
           total: number;
           edges: Array<{
@@ -799,18 +803,20 @@ export default interface Name {
             };
           };
         };
-        // birthDate: {
-        //   dateComponents: {
-        //     day?: number;
-        //     month?: number;
-        //     year: number;
-        //   };
-        //   displayableProperty: {
-        //     value: {
-        //       plainText: string;
-        //     };
-        //   };
-        // };
+        /*
+        birthDate: {
+          dateComponents: {
+            day?: number;
+            month?: number;
+            year: number;
+          };
+          displayableProperty: {
+            value: {
+              plainText: string;
+            };
+          };
+        };
+        */
         birthLocation: {
           text: string;
           displayableProperty: {
@@ -819,18 +825,20 @@ export default interface Name {
             };
           };
         };
-        // deathDate?: {
-        //   dateComponents: {
-        //     day?: number;
-        //     month?: number;
-        //     year: number;
-        //   };
-        //   displayableProperty: {
-        //     value: {
-        //       plainText: string;
-        //     };
-        //   };
-        // };
+        /*
+        deathDate?: {
+          dateComponents: {
+            day?: number;
+            month?: number;
+            year: number;
+          };
+          displayableProperty: {
+            value: {
+              plainText: string;
+            };
+          };
+        };
+        */
         deathLocation?: {
           text: string;
           displayableProperty: {

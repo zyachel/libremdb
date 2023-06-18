@@ -39,10 +39,12 @@ const Basic = ({ data, className }: Props) => {
           {data.bio.short}...
         </p>
       }
-      <p className={styles.genres}>
-        <span className={styles.heading}>Known for: </span>
-        {data.knownFor.title} ({data.knownFor.role})
-      </p>
+      {data.knownFor.title && (
+        <p className={styles.genres}>
+          <span className={styles.heading}>Known for: </span>
+          {data.knownFor.title} ({data.knownFor.role})
+        </p>
+      )}
     </CardBasic>
   );
 };

@@ -14,8 +14,8 @@ const cleanName = (rawData: RawName) => {
       name: main.nameText.text,
       nameSuffix: main.disambiguator?.text ?? null,
       knownFor: {
-        title: main.knownFor.edges[0].node.title.titleText.text,
-        role: main.knownFor.edges[0].node.summary.principalCategory.text,
+        title: main.knownFor.edges[0]?.node.title.titleText.text ?? null,
+        role: main.knownFor.edges[0]?.node.summary.principalCategory.text ?? null,
       },
       ...(main.primaryImage && {
         poster: {
@@ -87,7 +87,7 @@ const cleanName = (rawData: RawName) => {
         },
       }),
     },
-    knownFor: misc.knownFor.edges.map(item => ({
+    knownFor: misc.knownForFeature.edges.map(item => ({
       id: item.node.title.id,
       title: item.node.title.titleText.text,
       ...(item.node.title.primaryImage && {
