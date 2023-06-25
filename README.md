@@ -47,6 +47,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | [binge.whateveritworks.org](https://binge.whateveritworks.org) | Germany (Cloudflare) | Operated by [WhateverItWorks](https://github.com/WhateverItWorks) |
 | [libremdb.nerdyfam.tech](https://libremdb.nerdyfam.tech) | U.S. | Operated by [Nerdyfam.tech](https://nerdyfam.tech/) |
 | [libremdb.fascinated.cc](https://libremdb.fascinated.cc) | Germany (Cloudflare) | Operated by [RealFascinated](https://github.com/RealFascinated) |
+| [libremdb.tux.pizza](https://libremdb.tux.pizza) | US | Operated by [tux.pizza](https://tux.pizza) |
 | 2. Onion | | |
 | [libremdb.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion](http://libremdb.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion) | Canada | Operated by [Esmail EL BoB](https://esmailelbob.xyz) |
 | [ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) | US | Operated by [~vern](https://vern.cc) |
