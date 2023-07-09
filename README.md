@@ -38,7 +38,6 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | 1. Clearnet | | |
 | [libremdb.iket.me](https://libremdb.iket.me) | Canada  | Operated by me |
 | [libremdb.pussthecat.org](https://libremdb.pussthecat.org) | Germany | Operated by [PussTheCat.org](https://pussthecat.org/) |
-| [libremdb.esmailelbob.xyz](https://libremdb.esmailelbob.xyz) | Canada | Operated by [Esmail EL BoB](https://esmailelbob.xyz) |
 | [ld.vern.cc](https://ld.vern.cc) | US | Operated by [~vern](https://vern.cc) |
 | [binge.whatever.social](https://binge.whatever.social) | US & Germany | Operated by [Whatever Social](https://whatever.social) |
 | [libremdb.lunar.icu](https://libremdb.lunar.icu/) | Germany (Cloudflare) | Operated by [lunar.icu](https://lunar.icu/) |
@@ -48,8 +47,8 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | [libremdb.nerdyfam.tech](https://libremdb.nerdyfam.tech) | U.S. | Operated by [Nerdyfam.tech](https://nerdyfam.tech/) |
 | [libremdb.fascinated.cc](https://libremdb.fascinated.cc) | Germany (Cloudflare) | Operated by [RealFascinated](https://github.com/RealFascinated) |
 | [libremdb.tux.pizza](https://libremdb.tux.pizza) | US | Operated by [tux.pizza](https://tux.pizza) |
+| [libremdb.frontendfriendly.xyz](https://libremdb.frontendfriendly.xyz) | &mdash; | Operated by [frontendfriendly.xyz](https://frontendfriendly.xyz) |
 | 2. Onion | | |
-| [libremdb.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion](http://libremdb.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion) | Canada | Operated by [Esmail EL BoB](https://esmailelbob.xyz) |
 | [ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) | US | Operated by [~vern](https://vern.cc) |
 | 3. I2P | | |
 | [vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p](http://vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p) | US | Operated by [~vern](https://vern.cc) |
