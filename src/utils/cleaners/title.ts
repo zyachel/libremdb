@@ -192,7 +192,7 @@ const cleanTitle = (rawData: RawTitle) => {
           startText: misc.connections.edges[0].node.category.text,
           title: {
             id: misc.connections.edges[0].node.associatedTitle.id,
-            year: misc.connections.edges[0].node.associatedTitle.releaseYear.year,
+            year: misc.connections.edges[0].node.associatedTitle.releaseYear?.year ?? null,
             text: misc.connections.edges[0].node.associatedTitle.titleText.text,
           },
         },
