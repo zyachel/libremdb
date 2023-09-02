@@ -40,14 +40,14 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | [libremdb.pussthecat.org](https://libremdb.pussthecat.org) | Germany | Operated by [PussTheCat.org](https://pussthecat.org/) |
 | [ld.vern.cc](https://ld.vern.cc) | US | Operated by [~vern](https://vern.cc) |
 | [binge.whatever.social](https://binge.whatever.social) | US & Germany | Operated by [Whatever Social](https://whatever.social) |
-| [libremdb.lunar.icu](https://libremdb.lunar.icu/) | Germany (Cloudflare) | Operated by [lunar.icu](https://lunar.icu/) |
+| [libremdb.lunar.icu](https://libremdb.lunar.icu) | Germany (Cloudflare) | Operated by [lunar.icu](https://lunar.icu/) |
 | [libremdb.jeikobu.net](https://libremdb.jeikobu.net) | Germany (Cloudflare) | Operated by [shindouj](https://github.com/shindouj) |
 | [lmdb.hostux.net](https://lmdb.hostux.net) | France | Operated by [Hostux.net](https://hostux.net) |
 | [binge.whateveritworks.org](https://binge.whateveritworks.org) | Germany (Cloudflare) | Operated by [WhateverItWorks](https://github.com/WhateverItWorks) |
-| [libremdb.nerdyfam.tech](https://libremdb.nerdyfam.tech) | U.S. | Operated by [Nerdyfam.tech](https://nerdyfam.tech/) |
-| [libremdb.fascinated.cc](https://libremdb.fascinated.cc) | Germany (Cloudflare) | Operated by [RealFascinated](https://github.com/RealFascinated) |
+| [libremdb.nerdyfam.tech](https://libremdb.nerdyfam.tech) | US | Operated by [Nerdyfam.tech](https://nerdyfam.tech/) |
 | [libremdb.tux.pizza](https://libremdb.tux.pizza) | US | Operated by [tux.pizza](https://tux.pizza) |
 | [libremdb.frontendfriendly.xyz](https://libremdb.frontendfriendly.xyz) | &mdash; | Operated by [frontendfriendly.xyz](https://frontendfriendly.xyz) |
+[d.opnxng.com](https://d.opnxng.com) | Singapore | Operated by [Opnxng](https://about.opnxng.com/)
 | 2. Onion | | |
 | [ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) | US | Operated by [~vern](https://vern.cc) |
 | 3. I2P | | |
