@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [3.1.1](https://github.com/zyachel/libremdb/compare/v3.1.0...v3.1.1) (2023-10-14)
+
+
+### Bug Fixes
+
+* **card:** fix long attributes in cards under 'Known For' section ([736d680](https://github.com/zyachel/libremdb/commit/736d6802430a3f4f364915f3df93fc548a51ebf1))
+* **error:** fix incorrect 'view on IMDb' link on error page ([0aea2f4](https://github.com/zyachel/libremdb/commit/0aea2f47dad6eb78e319ea1abd8c444f2cba4424))
+* **media proxy:** fix 304 response code with body error ([c610ef4](https://github.com/zyachel/libremdb/commit/c610ef4d1be39c122715a0eb200155537e7d6abf))
+* **name:** fix name route crash ([38ed0c6](https://github.com/zyachel/libremdb/commit/38ed0c62177532b93f61af4172ffa6e5b9995bdc))
+* **name:** fix route crash for some ids ([e91c313](https://github.com/zyachel/libremdb/commit/e91c313f127632f1bd44d190af71bc841bbe87b7))
+* **title:** fix a crash in title route ([21a1c83](https://github.com/zyachel/libremdb/commit/21a1c83d95b703fa08cdb96c206626f22d5366c9))
+
 ## [3.1.0](https://github.com/zyachel/libremdb/compare/v3.0.0...v3.1.0) (2023-05-21)
 
 
