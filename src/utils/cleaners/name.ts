@@ -113,7 +113,7 @@ const cleanName = (rawData: RawName) => {
         avg: item.node.title.ratingsSummary.aggregateRating ?? null,
         numVotes: item.node.title.ratingsSummary.voteCount,
       },
-      genres: item.node.title.titleGenres.genres.map(genre => genre.genre.text),
+      genres: item.node.title.titleGenres?.genres.map(genre => genre.genre.text) ?? [],
 
       summary: {
         numEpisodes: item.node.summary.episodeCount ?? null,
@@ -133,10 +133,11 @@ const cleanName = (rawData: RawName) => {
           id: cat.titleTypeCategory.id,
           label: cat.titleTypeCategory.text,
         })),
-        genres: misc.creditSummary.genres.map(genre => ({
-          total: genre.total,
-          name: genre.genre.displayableProperty.value.plainText,
-        })),
+        genres:
+          misc.creditSummary.genres.map(genre => ({
+            total: genre.total,
+            name: genre.genre.displayableProperty.value.plainText,
+          })) ?? [],
       },
       released: getCredits(misc.releasedPrimaryCredits),
       // unreleased: getCredits<'unreleased'>(misc.unreleasedPrimaryCredits),
@@ -263,7 +264,7 @@ const getCredits = <T extends 'released' | 'unreleased' = 'released'>(
         numVotes: item.node.title.ratingsSummary.voteCount,
       },
       test: JSON.stringify(item.node.title),
-      genres: item.node.title.titleGenres.genres.map(genre => genre.genre.text),
+      genres: item.node.title.titleGenres?.genres.map(genre => genre.genre.text) ?? [],
       productionStatus: item.node.title.productionStatus.currentProductionStage.text,
 
       summary: {

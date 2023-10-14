@@ -373,7 +373,7 @@ export default interface Name {
                       }>;
                     };
                   };
-                  titleGenres: {
+                  titleGenres?: {
                     genres: Array<{
                       genre: {
                         text: string;
@@ -525,7 +525,7 @@ export default interface Name {
                       }>;
                     };
                   };
-                  titleGenres: {
+                  titleGenres?: {
                     genres: Array<{
                       genre: {
                         text: string;
@@ -740,7 +740,7 @@ export default interface Name {
                     }>;
                   };
                 };
-                titleGenres: {
+                titleGenres?: {
                   genres: Array<{
                     genre: {
                       text: string;
