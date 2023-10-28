@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Meta from 'src/components/meta/Meta';
-import Layout from 'src/layouts/Layout';
+import Layout from 'src/components/layout';
 import styles from 'src/styles/modules/pages/about/about.module.scss';
 
 const About = () => {

@@ -1,6 +1,5 @@
-import { ReactNode } from 'react';
 import Link from 'next/link';
-import Layout from 'src/layouts/Layout';
+import Layout from 'src/components/layout';
 import Meta from 'src/components/meta/Meta';
 import styles from 'src/styles/modules/components/error/error-info.module.scss';
 

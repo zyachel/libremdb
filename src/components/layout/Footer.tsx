@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import styles from '../styles/modules/layout/footer.module.scss';
+import styles from 'src/styles/modules/layout/footer.module.scss';
 
 const links = [
   { path: '/about', text: 'About' },

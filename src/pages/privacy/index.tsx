@@ -1,5 +1,5 @@
 import Meta from 'src/components/meta/Meta';
-import Layout from 'src/layouts/Layout';
+import Layout from 'src/components/layout';
 import packageInfo from 'src/../package.json';
 import styles from 'src/styles/modules/pages/privacy/privacy.module.scss';
 

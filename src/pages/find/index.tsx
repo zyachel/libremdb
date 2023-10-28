@@ -1,5 +1,5 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import Layout from 'src/layouts/Layout';
+import Layout from 'src/components/layout';
 import ErrorInfo from 'src/components/error/ErrorInfo';
 import Meta from 'src/components/meta/Meta';
 import Results from 'src/components/find';

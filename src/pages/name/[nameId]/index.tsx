@@ -1,6 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Meta from 'src/components/meta/Meta';
-import Layout from 'src/layouts/Layout';
+import Layout from 'src/components/layout';
 import ErrorInfo from 'src/components/error/ErrorInfo';
 import Media from 'src/components/media/Media';
 import { Basic, Credits, DidYouKnow, Info, Bio, KnownFor } from 'src/components/name';

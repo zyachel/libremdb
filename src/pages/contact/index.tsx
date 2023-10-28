@@ -1,5 +1,5 @@
 import Meta from 'src/components/meta/Meta';
-import Layout from 'src/layouts/Layout';
+import Layout from 'src/components/layout';
 import styles from 'src/styles/modules/pages/contact/contact.module.scss';
 
 const Contact = () => {
