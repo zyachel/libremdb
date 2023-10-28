@@ -1,0 +1,18 @@
+.container {
+  display: grid;
+  gap: var(--spacer-1);
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+
+  & * + *::before {
+    content: '\00b7';
+    padding-inline: var(--spacer-0);
+    font-weight: 900;
+    line-height: 0;
+    font-size: var(--fs-5);
+  }
+}

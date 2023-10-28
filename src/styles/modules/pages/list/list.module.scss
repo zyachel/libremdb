@@ -1,0 +1,19 @@
+@use '../../../abstracts' as helper;
+
+.list {
+  --doc-whitespace: var(--spacer-8);
+  --comp-whitespace: var(--spacer-3);
+
+  display: grid;
+
+  gap: var(--doc-whitespace);
+  padding: var(--doc-whitespace);
+
+  @include helper.bp('bp-700') {
+    --doc-whitespace: var(--spacer-5);
+  }
+
+  @include helper.bp('bp-450') {
+    padding: var(--spacer-3);
+  }
+}

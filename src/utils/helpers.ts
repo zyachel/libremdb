@@ -66,6 +66,9 @@ export const modifyIMDbImg = (url: string, widthInPx = 600) => {
   return url;
 };
 
+const placeholderImageRegex = /https:\/\/m\.media-amazon.com\/images\/.{1}\/sash\/.*/;
+export const isIMDbImgPlaceholder = (url?: string | null) => url ? placeholderImageRegex.test(url) : false;
+
 export const getProxiedIMDbImgUrl = (url: string) => {
   return `/api/media_proxy?url=${encodeURIComponent(url)}`;
 };

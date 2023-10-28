@@ -1,0 +1,31 @@
+@use '../../../abstracts' as helper;
+
+.container {
+  --min-width: 22rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-width), 1fr));
+  
+  gap: var(--spacer-1);
+  
+  @include helper.bp('bp-900') {
+    --min-width: 18rem;
+  }
+  @include helper.bp('bp-700') {
+    --min-width: 15rem;
+  }
+
+  @include helper.bp('bp-450') {
+    --min-width: 12rem;
+  }
+}
+
+.imgContainer {
+  position: relative;
+
+  aspect-ratio: 2 / 3;
+}
+
+.img {
+  height: 100%;
+  object-fit: contain;
+}

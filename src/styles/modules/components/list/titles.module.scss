@@ -1,0 +1,133 @@
+@use '../../../abstracts' as helper;
+
+.titles {
+  display: grid;
+  gap: var(--spacer-6);
+  --min-width: 55rem;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-width), 1fr));
+
+  @include helper.bp('bp-700') {
+    grid-template-columns: auto;
+    gap: var(--spacer-5);
+  }
+
+  @include helper.bp('bp-450') {
+    gap: var(--spacer-3);
+  }
+}
+
+.title {
+  --image-dimension: 18rem;
+
+  display: grid;
+  grid-template-columns: var(--image-dimension) auto;
+
+  @include helper.bp('bp-700') {
+    grid-template-columns: auto;
+    grid-template-rows: var(--image-dimension) auto;
+  }
+  @include helper.bp('bp-450') {
+    --image-dimension: 15rem;
+  }
+}
+
+.imgContainer {
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.img {
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.imgNA {
+  width: 80%;
+  fill: var(--clr-fill-muted);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: var(--spacer-3);
+  gap: var(--spacer-0);
+
+  @include helper.bp('bp-450') {
+    padding: var(--spacer-2);
+  }
+
+  & :empty:not(svg, use, img) {
+    display: none;
+  }
+}
+
+.heading {
+  text-decoration: none;
+}
+
+.ratings {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  gap: var(--spacer-2);
+}
+
+.rating {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  justify-items: center;
+  align-items: center;
+  // place-content: center;
+
+  &__icon {
+    --dim: 1.3em;
+    fill: var(--clr-fill);
+    height: var(--dim);
+    width: var(--dim);
+    max-width: initial;
+  }
+
+  &__num {
+    font-size: var(--fs-4);
+    font-weight: var(--fw-medium);
+    text-align: center;
+  }
+
+  &__text {
+    grid-column: 1 / -1;
+    font-size: 0.9em;
+    color: var(--clr-text-muted);
+  }
+}
+
+.basicInfo {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+
+  & * + ::before {
+    content: '\00b7';
+    padding-inline: var(--spacer-1);
+    font-weight: 900;
+    line-height: 0;
+    font-size: var(--fs-5);
+  }
+}
+
+.plot {
+  padding-block: var(--spacer-0);
+
+  span {
+    font-weight: var(--fw-medium);
+  }
+}
+
+.otherInfo {
+  list-style: none;
+
+  span {
+    font-weight: var(--fw-medium);
+  }
+}
