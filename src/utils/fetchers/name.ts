@@ -18,9 +18,6 @@ const name = async (nameId: string) => {
   } catch (err: any) {
     if (err.response?.status === 404) throw new AppError('not found', 404, err.cause);
 
-    console.warn(err);
-    
-
     throw new AppError('something went wrong', 500, err.cause);
   }
 };
