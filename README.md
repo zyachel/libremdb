@@ -49,6 +49,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | [libremdb.frontendfriendly.xyz](https://libremdb.frontendfriendly.xyz) | &mdash; | Operated by [frontendfriendly.xyz](https://frontendfriendly.xyz) |
 [d.opnxng.com](https://d.opnxng.com) | Singapore | Operated by [Opnxng](https://about.opnxng.com/)
 [libremdb.catsarch.com](https://libremdb.catsarch.com) | US | Operated by [Butter Cat](https://catsarch.com/)
+[mdb.sudovanilla.com](https://mdb.sudovanilla.com) | US (Cloudflare) | Operated by [SudoVanilla](https://sudovanilla.com/)
 | 2. Onion | | |
 | [ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) | US | Operated by [~vern](https://vern.cc) |
 | 3. I2P | | |
