@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [3.3.0](https://github.com/zyachel/libremdb/compare/v3.2.0...v3.3.0) (2023-12-07)
+
+
+### Features
+
+* **api:** add a catch-all route ([9fdd731](https://github.com/zyachel/libremdb/commit/9fdd7311368411d59784977f77d1af103ae16543))
+* **api:** add api endpoints for dynamic routes ([19f1700](https://github.com/zyachel/libremdb/commit/19f1700a55867c1fb8d6c11431bd4557e7520de1))
+
+
+### Bug Fixes
+
+* **api:** refactor all endpoints a bit ([4dffbbc](https://github.com/zyachel/libremdb/commit/4dffbbc0ec870a8f9a56e4ee62e6a6c472552f6a))
+* **title:** fix title route crash ([a5b7d52](https://github.com/zyachel/libremdb/commit/a5b7d527833a67f40f992c13bbe391884c0d1f82))
+
 ## [3.2.0](https://github.com/zyachel/libremdb/compare/v3.1.1...v3.2.0) (2023-10-28)
 
 
