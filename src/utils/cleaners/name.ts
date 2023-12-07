@@ -50,7 +50,7 @@ const cleanName = (rawData: RawName) => {
           caption: main.primaryVideos.edges[0].node.description?.value ?? null,
           urls: main.primaryVideos.edges[0].node.playbackURLs.map(url => ({
             resolution: url.displayName.value,
-            mimeType: url.mimeType,
+            mimeType: url.mimeType ?? null,
             url: url.url,
           })),
         },

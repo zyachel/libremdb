@@ -32,7 +32,7 @@ const Media = ({ className, media }: Props) => {
                   {media.trailer.urls.map(source => (
                     <source
                       key={source.url}
-                      type={source.mimeType}
+                      type={source.mimeType ?? undefined}
                       src={getProxiedIMDbImgUrl(source.url)}
                       data-res={source.resolution}
                     />

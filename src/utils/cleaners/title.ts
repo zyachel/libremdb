@@ -84,7 +84,7 @@ const cleanTitle = (rawData: RawTitle) => {
           caption: main.primaryVideos.edges[0].node.description?.value ?? null,
           urls: main.primaryVideos.edges[0].node.playbackURLs.map(url => ({
             resolution: url.displayName.value,
-            mimeType: url.mimeType,
+            mimeType: url.mimeType ?? null,
             url: url.url,
           })),
         },
@@ -351,7 +351,7 @@ const cleanTitle = (rawData: RawTitle) => {
         avg: title.node.ratingsSummary.aggregateRating || null,
         numVotes: title.node.ratingsSummary.voteCount,
       },
-      genres: title.node.titleGenres.genres.map(genre => genre.genre.text),
+      genres: title.node.titleGenres?.genres.map(genre => genre.genre.text) ?? null,
     })),
   };
 

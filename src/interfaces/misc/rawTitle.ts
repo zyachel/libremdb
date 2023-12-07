@@ -138,7 +138,7 @@ export default interface RawTitle {
                   value: string;
                   language: string;
                 };
-                mimeType: string;
+                mimeType?: string;
                 url: string;
               }>;
               previewURLs: Array<{
@@ -516,7 +516,7 @@ export default interface RawTitle {
               canRate: {
                 isRatable: boolean;
               };
-              titleGenres: {
+              titleGenres?: {
                 genres: Array<{
                   genre: {
                     text: string;
