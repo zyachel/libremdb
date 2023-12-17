@@ -51,9 +51,11 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 [libremdb.catsarch.com](https://libremdb.catsarch.com) | US | Operated by [Butter Cat](https://catsarch.com/)
 [mdb.sudovanilla.com](https://mdb.sudovanilla.com) | US (Cloudflare) | Operated by [SudoVanilla](https://sudovanilla.com/)
 [libremdb.r4fo.com](https://libremdb.r4fo.com) | The Netherlands | Operated by [r4fo](https://r4fo.com/)
+[libremdb.privacydev.net](https://libremdb.privacydev.net) | France | Operated by [PrivacyDev](https://privacydev.net)
 | 2. Onion | | |
 | [ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) | US | Operated by [~vern](https://vern.cc) |
 [libremdb.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion](http://libremdb.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion/) | The Netherlands | Operated by [r4fo](https://r4fo.com/)
+| [libremdb.g4c3eya4clenolymqbpgwz3q3tawoxw56yhzk4vugqrl6dtu3ejvhjid.onion](http://libremdb.g4c3eya4clenolymqbpgwz3q3tawoxw56yhzk4vugqrl6dtu3ejvhjid.onion) | France | Operated by [PrivacyDev](https://privacydev.net) |
 | 3. I2P | | |
 | [vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p](http://vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p) | US | Operated by [~vern](https://vern.cc) |
 
