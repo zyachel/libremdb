@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [3.3.1](https://github.com/zyachel/libremdb/compare/v3.3.0...v3.3.1) (2024-01-06)
+
+
+### Bug Fixes
+
+* **dockerfile:** fix failing docker build ([719f42b](https://github.com/zyachel/libremdb/commit/719f42b5e6f6bafc0807986b6198dbbe1cb271ab))
+
 ## [3.3.0](https://github.com/zyachel/libremdb/compare/v3.2.0...v3.3.0) (2023-12-07)
 
 
