@@ -52,6 +52,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 [mdb.sudovanilla.com](https://mdb.sudovanilla.com) | US (Cloudflare) | Operated by [SudoVanilla](https://sudovanilla.com/)
 [libremdb.r4fo.com](https://libremdb.r4fo.com) | The Netherlands | Operated by [r4fo](https://r4fo.com/)
 [libremdb.privacydev.net](https://libremdb.privacydev.net) | France | Operated by [PrivacyDev](https://privacydev.net)
+[libremdb.ducks.party](https://libremdb.ducks.party) | Netherlands | Operated by [ducks.party](https://ducks.party)
 | 2. Onion | | |
 | [ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) | US | Operated by [~vern](https://vern.cc) |
 [libremdb.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion](http://libremdb.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion/) | The Netherlands | Operated by [r4fo](https://r4fo.com/)
