@@ -33,33 +33,25 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 ## Instances
 
 <!-- prettier-ignore -->
-| Instance URL | Region | Notes |
-| ------------ | ------ | ----- |
-| 1. Clearnet | | |
-| [libremdb.iket.me](https://libremdb.iket.me) | Canada  | Operated by me |
-| [libremdb.pussthecat.org](https://libremdb.pussthecat.org) | Germany | Operated by [PussTheCat.org](https://pussthecat.org/) |
-| [ld.vern.cc](https://ld.vern.cc) | US | Operated by [~vern](https://vern.cc) |
-| [binge.whatever.social](https://binge.whatever.social) | US & Germany | Operated by [Whatever Social](https://whatever.social) |
-| [libremdb.lunar.icu](https://libremdb.lunar.icu) | Germany (Cloudflare) | Operated by [lunar.icu](https://lunar.icu/) |
-| [libremdb.jeikobu.net](https://libremdb.jeikobu.net) | Germany (Cloudflare) | Operated by [shindouj](https://github.com/shindouj) |
-| [lmdb.hostux.net](https://lmdb.hostux.net) | France | Operated by [Hostux.net](https://hostux.net) |
-| [binge.whateveritworks.org](https://binge.whateveritworks.org) | Germany (Cloudflare) | Operated by [WhateverItWorks](https://github.com/WhateverItWorks) |
-| [libremdb.nerdyfam.tech](https://libremdb.nerdyfam.tech) | US | Operated by [Nerdyfam.tech](https://nerdyfam.tech/) |
-| [libremdb.tux.pizza](https://libremdb.tux.pizza) | US | Operated by [tux.pizza](https://tux.pizza) |
-| [libremdb.frontendfriendly.xyz](https://libremdb.frontendfriendly.xyz) | &mdash; | Operated by [frontendfriendly.xyz](https://frontendfriendly.xyz) |
-[d.opnxng.com](https://d.opnxng.com) | Singapore | Operated by [Opnxng](https://about.opnxng.com/)
-[libremdb.catsarch.com](https://libremdb.catsarch.com) | US | Operated by [Butter Cat](https://catsarch.com/)
-[mdb.sudovanilla.com](https://mdb.sudovanilla.com) | US (Cloudflare) | Operated by [SudoVanilla](https://sudovanilla.com/)
-[libremdb.r4fo.com](https://libremdb.r4fo.com) | The Netherlands | Operated by [r4fo](https://r4fo.com/)
-[libremdb.privacydev.net](https://libremdb.privacydev.net) | France | Operated by [PrivacyDev](https://privacydev.net)
-[libremdb.ducks.party](https://libremdb.ducks.party) | Netherlands | Operated by [ducks.party](https://ducks.party)
-| 2. Onion | | |
-| [ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion](http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion) | US | Operated by [~vern](https://vern.cc) |
-[libremdb.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion](http://libremdb.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion/) | The Netherlands | Operated by [r4fo](https://r4fo.com/)
-| [libremdb.g4c3eya4clenolymqbpgwz3q3tawoxw56yhzk4vugqrl6dtu3ejvhjid.onion](http://libremdb.g4c3eya4clenolymqbpgwz3q3tawoxw56yhzk4vugqrl6dtu3ejvhjid.onion) | France | Operated by [PrivacyDev](https://privacydev.net) |
-[libremdb.catsarchywsyuss6jdxlypsw5dc7owd5u5tr6bujxb7o6xw2hipqehyd.onion](https://libremdb.catsarchywsyuss6jdxlypsw5dc7owd5u5tr6bujxb7o6xw2hipqehyd.onion) | US | Operated by [Butter Cat](https://catsarch.com/)
-| 3. I2P | | |
-| [vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p](http://vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p) | US | Operated by [~vern](https://vern.cc) |
+| Instance                                 | Tor                                                                                    | I2P                                                                         | Region  | Cloudflare  | Notes                                                              |
+| ---------------------------------------- | -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ------- | ----------- | ------------------------------------------------------------------ |
+| <https://libremdb.iket.me/>              | No                                                                                     | No                                                                          | CA      | No          | Operated by me                                                     |
+| <https://libremdb.pussthecat.org/>       | No                                                                                     | No                                                                          | DE      | No          | Operated by [PussTheCat.org](https://pussthecat.org/)              |
+| <https://ld.vern.cc/>                    | [Yes](http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion/)       | [Yes](http://vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p/) | US      | No          | Operated by [~vern](https://vern.cc/)                              |
+| <https://binge.whatever.social/>         | No                                                                                     | No                                                                          | US/DE   | No          | Operated by [Whatever Social](https://whatever.social/)            |
+| <https://libremdb.lunar.icu/>            | No                                                                                     | No                                                                          | DE      | No          | Operated by [lunar.icu](https://lunar.icu/)                        |
+| <https://libremdb.jeikobu.net/>          | No                                                                                     | No                                                                          | DE      | Yes         | Operated by [shindouj](https://github.com/shindouj/)               |
+| <https://lmdb.hostux.net/>               | No                                                                                     | No                                                                          | FR      | No          | Operated by [Hostux.net](https://hostux.net/)                      |
+| <https://binge.whateveritworks.org/>     | No                                                                                     | No                                                                          | DE      | Yes         | Operated by [WhateverItWorks](https://github.com/WhateverItWorks/) |
+| <https://libremdb.nerdyfam.tech/>        | No                                                                                     | No                                                                          | US      | Yes         | Operated by [Nerdyfam.tech](https://nerdyfam.tech/)                |
+| <https://libremdb.tux.pizza/>            | No                                                                                     | No                                                                          | US      | No          | Operated by [tux.pizza](https://tux.pizza/)                        |
+| <https://libremdb.frontendfriendly.xyz/> | No                                                                                     | No                                                                          | &mdash; | No          | Operated by [frontendfriendly.xyz](https://frontendfriendly.xyz/)  |
+| <https://d.opnxng.com/>                  | No                                                                                     | No                                                                          | SG      | No          | Operated by [Opnxng](https://about.opnxng.com/)                    |
+| <https://libremdb.catsarch.com/>         | [Yes](https://libremdb.catsarchywsyuss6jdxlypsw5dc7owd5u5tr6bujxb7o6xw2hipqehyd.onion) | No                                                                          | US      | No          | Operated by [Butter Cat](https://catsarch.com/)                    |
+| <https://mdb.sudovanilla.com/>           | No                                                                                     | No                                                                          | US      | Yes         | Operated by [SudoVanilla](https://sudovanilla.com/)                |
+| <https://libremdb.r4fo.com/>             | [Yes](http://libremdb.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion/) | No                                                                          | NL      | No          | Operated by [r4fo](https://r4fo.com/)                              |
+| <https://libremdb.privacydev.net/>       | [Yes](http://libremdb.g4c3eya4clenolymqbpgwz3q3tawoxw56yhzk4vugqrl6dtu3ejvhjid.onion/) | No                                                                          | FR      | No          | Operated by [PrivacyDev](https://privacydev.net/)                  |
+| <https://libremdb.ducks.party/>          | No                                                                                     | No                                                                          | NL      | No          | Operated by [ducks.party](https://ducks.party/)                    |
 
 ---
 
