@@ -61,6 +61,8 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | 3. I2P | | |
 | [vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p](http://vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p) | US | Operated by [~vern](https://vern.cc) |
 
+Instances list in JSON format can be found in [instances.json](instances.json) file.
+
 ---
 
 ## Questions you might have
