@@ -1,92 +1,91 @@
 [
-    {
-        "clearnet": "https://https://libremdb.iket.me/",
-        "cdn": false,
-        "country": "CA"
-    },
-    {
-        "clearnet": "https://https://libremdb.pussthecat.org/",
-        "cdn": false,
-        "country": "DE"
-    },
-    {
-        "clearnet": "https://https://ld.vern.cc/",
-        "tor": "http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion/",
-        "i2p": "http://vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p/",
-        "cdn": false,
-        "country": "US"
-    },
-    {
-        "clearnet": "https://https://binge.whatever.social/",
-        "cdn": false,
-        "country": "US/DE"
-    },
-    {
-        "clearnet": "https://https://libremdb.lunar.icu/",
-        "cdn": false,
-        "country": "DE"
-    },
-    {
-        "clearnet": "https://https://libremdb.jeikobu.net/",
-        "cdn": true,
-        "country": "DE"
-    },
-    {
-        "clearnet": "https://https://lmdb.hostux.net/",
-        "cdn": false,
-        "country": "FR"
-    },
-    {
-        "clearnet": "https://https://binge.whateveritworks.org/",
-        "cdn": true,
-        "country": "DE"
-    },
-    {
-        "clearnet": "https://https://libremdb.nerdyfam.tech/",
-        "cdn": true,
-        "country": "US"
-    },
-    {
-        "clearnet": "https://https://libremdb.tux.pizza/",
-        "cdn": false,
-        "country": "US"
-    },
-    {
-        "clearnet": "https://https://libremdb.frontendfriendly.xyz/",
-        "cdn": false,
-        "country": "&mdash;"
-    },
-    {
-        "clearnet": "https://https://d.opnxng.com/",
-        "cdn": false,
-        "country": "SG"
-    },
-    {
-        "clearnet": "https://https://libremdb.catsarch.com/",
-        "tor": "https://libremdb.catsarchywsyuss6jdxlypsw5dc7owd5u5tr6bujxb7o6xw2hipqehyd.onion",
-        "cdn": false,
-        "country": "US"
-    },
-    {
-        "clearnet": "https://https://mdb.sudovanilla.com/",
-        "cdn": true,
-        "country": "US"
-    },
-    {
-        "clearnet": "https://https://libremdb.r4fo.com/",
-        "tor": "http://libremdb.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion/",
-        "cdn": false,
-        "country": "NL"
-    },
-    {
-        "clearnet": "https://https://libremdb.privacydev.net/",
-        "tor": "http://libremdb.g4c3eya4clenolymqbpgwz3q3tawoxw56yhzk4vugqrl6dtu3ejvhjid.onion/",
-        "cdn": false,
-        "country": "FR"
-    },
-    {
-        "clearnet": "https://https://libremdb.ducks.party/",
-        "cdn": false,
-        "country": "NL"
-    }
+  {
+    "clearnet": "https://libremdb.iket.me/",
+    "cdn": false,
+    "country": "CA"
+  },
+  {
+    "clearnet": "https://libremdb.pussthecat.org/",
+    "cdn": false,
+    "country": "DE"
+  },
+  {
+    "clearnet": "https://ld.vern.cc/",
+    "tor": "http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion/",
+    "i2p": "http://vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p/",
+    "cdn": false,
+    "country": "US"
+  },
+  {
+    "clearnet": "https://binge.whatever.social/",
+    "cdn": false,
+    "country": "US/DE"
+  },
+  {
+    "clearnet": "https://libremdb.lunar.icu/",
+    "cdn": false,
+    "country": "DE"
+  },
+  {
+    "clearnet": "https://libremdb.jeikobu.net/",
+    "cdn": true,
+    "country": "DE"
+  },
+  {
+    "clearnet": "https://lmdb.hostux.net/",
+    "cdn": false,
+    "country": "FR"
+  },
+  {
+    "clearnet": "https://binge.whateveritworks.org/",
+    "cdn": true,
+    "country": "DE"
+  },
+  {
+    "clearnet": "https://libremdb.nerdyfam.tech/",
+    "cdn": true,
+    "country": "US"
+  },
+  {
+    "clearnet": "https://libremdb.tux.pizza/",
+    "cdn": false,
+    "country": "US"
+  },
+  {
+    "clearnet": "https://libremdb.frontendfriendly.xyz/",
+    "cdn": false
+  },
+  {
+    "clearnet": "https://d.opnxng.com/",
+    "cdn": false,
+    "country": "SG"
+  },
+  {
+    "clearnet": "https://libremdb.catsarch.com/",
+    "tor": "http://libremdb.catsarchywsyuss6jdxlypsw5dc7owd5u5tr6bujxb7o6xw2hipqehyd.onion",
+    "cdn": false,
+    "country": "US"
+  },
+  {
+    "clearnet": "https://mdb.sudovanilla.com/",
+    "cdn": true,
+    "country": "US"
+  },
+  {
+    "clearnet": "https://libremdb.r4fo.com/",
+    "tor": "http://libremdb.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion/",
+    "cdn": false,
+    "country": "NL"
+  },
+  {
+    "clearnet": "https://libremdb.privacydev.net/",
+    "tor": "http://libremdb.g4c3eya4clenolymqbpgwz3q3tawoxw56yhzk4vugqrl6dtu3ejvhjid.onion/",
+    "cdn": false,
+    "country": "FR"
+  },
+  {
+    "clearnet": "https://libremdb.ducks.party/",
+    "cdn": false,
+    "country": "NL"
+  }
 ]
