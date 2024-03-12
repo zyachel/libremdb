@@ -87,5 +87,10 @@
     "clearnet": "https://libremdb.ducks.party/",
     "cdn": false,
     "country": "NL"
+  },
+  {
+    "clearnet": "https://lmdb.ngn.tf/",
+    "cdn": false,
+    "country": "TR"
   }
 ]
