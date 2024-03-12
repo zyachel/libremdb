@@ -52,6 +52,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | <https://libremdb.r4fo.com/>             | [Yes](http://libremdb.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion/) | No                                                                          | NL      | No          | Operated by [r4fo](https://r4fo.com/)                              |
 | <https://libremdb.privacydev.net/>       | [Yes](http://libremdb.g4c3eya4clenolymqbpgwz3q3tawoxw56yhzk4vugqrl6dtu3ejvhjid.onion/) | No                                                                          | FR      | No          | Operated by [PrivacyDev](https://privacydev.net/)                  |
 | <https://libremdb.ducks.party/>          | No                                                                                     | No                                                                          | NL      | No          | Operated by [ducks.party](https://ducks.party/)                    |
+| <https://lmdb.ngn.tf>                    | No                                                                                     | No                                                                          | TR      | No          | Operated by [ngn](https://ngn.tf)                                  |
 
 Instances list in JSON format can be found in [instances.json](instances.json) file.
 
