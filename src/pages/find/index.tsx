@@ -11,6 +11,7 @@ import getOrSetApiCache from 'src/utils/getOrSetApiCache';
 import { cleanQueryStr } from 'src/utils/helpers';
 import { findKey } from 'src/utils/constants/keys';
 import styles from 'src/styles/modules/pages/find/find.module.scss';
+import { findFilterable } from 'src/utils/constants/find';
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 
@@ -58,8 +59,7 @@ export const getServerSideProps: GetServerSideProps<Data, FindQueryParams> = asy
   if (!query) return { props: { data: { title: null, results: null }, error: null, originalPath } };
 
   try {
-    const entries = Object.entries(queryObj);
-    const queryStr = cleanQueryStr(entries);
+    const queryStr = cleanQueryStr(queryObj, findFilterable);
 
     const res = await getOrSetApiCache(findKey(queryStr), basicSearch, queryStr);
 

@@ -562,7 +562,7 @@ export default interface Name {
           };
         }>;
         totalCredits: {
-          total: number;
+          total?: number;
           // restriction?: {
           //   unrestrictedTotal: number;
           //   explanations: Array<{

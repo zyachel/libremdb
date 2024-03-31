@@ -81,18 +81,13 @@ export const AppError = class extends Error {
   }
 };
 
-export const cleanQueryStr = (
-  entries: [string, string][],
-  filterable = ['q', 's', 'exact', 'ttype']
-) => {
-  let queryStr = '';
+export const cleanQueryStr = (record: Record<string, string>, filterable: string[]) => {
+  const urlSearchParams = new URLSearchParams();
 
-  entries.forEach(([key, val], i) => {
-    if (!val || !filterable.includes(key)) return;
-    queryStr += `${i > 0 ? '&' : ''}${key}=${val.trim()}`;
+  filterable.forEach(key => {
+    if (record[key]) urlSearchParams.append(key, record[key].trim());
   });
-
-  return queryStr;
+  return urlSearchParams.toString();
 };
 
 export const getResTitleTypeHeading = (

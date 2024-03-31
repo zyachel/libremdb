@@ -1,0 +1,43 @@
+@use '../../../abstracts' as helper;
+
+.container {
+  // major whitespace properties used on title page
+  --doc-whitespace: var(--spacer-8);
+  --comp-whitespace: var(--spacer-3);
+
+  display: grid;
+
+  gap: var(--doc-whitespace);
+  padding: var(--doc-whitespace);
+  align-items: start;
+
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-areas:
+    'card card card form form'
+    'results results results form form';
+
+  @include helper.bp('bp-900') {
+    grid-template-columns: none;
+    grid-template-areas: 'card' 'results' 'form';
+  }
+
+  @include helper.bp('bp-700') {
+    --doc-whitespace: var(--spacer-5);
+  }
+
+  @include helper.bp('bp-450') {
+    --doc-whitespace: var(--spacer-3);
+  }
+}
+
+.card {
+  grid-area: card;
+}
+
+.results {
+  grid-area: results;
+}
+
+.form {
+  grid-area: form;
+}

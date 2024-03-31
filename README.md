@@ -101,7 +101,7 @@ Instances list in JSON format can be found in [instances.json](instances.json) f
 - [x] add a way to see trailer and other videos
 - [ ] implement movie specific routes like:
 
-  - [ ] reviews(including critic reviews)
+  - [x] reviews(including critic reviews)
   - [ ] video & image gallery
   - [ ] sections under 'did you know'
   - [ ] release info
@@ -109,7 +109,7 @@ Instances list in JSON format can be found in [instances.json](instances.json) f
 
 - [ ] implement other routes like:
 
-  - [ ] lists
+  - [x] lists
   - [ ] moviemeter
   - [x] person info(includes directors and actors)
   - [ ] company info

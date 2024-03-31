@@ -43,4 +43,10 @@
   <symbol  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" id="icon-external-link">
     <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"></path>
   </symbol>
+  <symbol  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" id="icon-alert">
+    <path d="M13 14H11V9H13M13 18H11V16H13M1 21H23L12 2L1 21Z"></path>
+  </symbol>
+  <symbol  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" id="icon-chevron">
+    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path>
+  </symbol>
 </svg>

@@ -2,7 +2,7 @@ import { ChangeEventHandler, FormEventHandler, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { cleanQueryStr } from 'src/utils/helpers';
 import { QueryTypes } from 'src/interfaces/shared/search';
-import { resultTypes, resultTitleTypes } from 'src/utils/constants/find';
+import { resultTypes, resultTitleTypes, findFilterable } from 'src/utils/constants/find';
 import styles from 'src/styles/modules/components/form/find.module.scss';
 
 type Props = {
@@ -29,13 +29,15 @@ const Form = ({ className }: Props) => {
 
     const formEl = formRef.current!;
     const formData = new FormData(formEl);
-    const query = (formData.get('q') as string).trim();
+    const query = formData.get('q');
+    if (typeof query !== 'string' || !query.trim()) return setIsDisabled(false);
 
-    const entries = [...formData.entries()] as [string, string][];
-    const queryStr = cleanQueryStr(entries);
+    const queryParams = Object.fromEntries(
+      formData.entries() as IterableIterator<[string, string]>
+    );
+    const queryStr = cleanQueryStr(queryParams, findFilterable);
 
-    if (query) router.push(`/find?${queryStr}`);
-    else setIsDisabled(false);
+    router.push(`/find?${queryStr}`);
     formEl.reset();
   };
 
@@ -116,6 +118,5 @@ const RadioBtns = ({
     ))}
   </>
 );
-
 
 export default Form;

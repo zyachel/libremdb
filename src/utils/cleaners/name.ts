@@ -126,7 +126,7 @@ const cleanName = (rawData: RawName) => {
       },
     })),
     credits: {
-      total: misc.totalCredits.total,
+      total: misc.totalCredits?.total ?? null,
       summary: {
         titleType: misc.creditSummary.titleTypeCategories.map(cat => ({
           total: cat.total,

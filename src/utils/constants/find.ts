@@ -34,3 +34,5 @@ export const resultTitleTypes = {
   ],
   key: 'ttype',
 } as const;
+
+export const findFilterable = ['q', 'exact', resultTitleTypes.key, resultTypes.key]; 
