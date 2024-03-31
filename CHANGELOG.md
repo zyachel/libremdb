@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [3.4.0](https://github.com/zyachel/libremdb/compare/v3.3.1...v3.4.0) (2024-03-31)
+
+
+### Features
+
+* **reviews:** add reviews route ([dc42b32](https://github.com/zyachel/libremdb/commit/dc42b3204caf843d0f07fa28572c5ed275bb601d))
+
+
+### Bug Fixes
+
+* **instances:** fix urls in instances.json ([3eb5178](https://github.com/zyachel/libremdb/commit/3eb517849f279b2453579d0b5c5000e803a13bca))
+
 ## [3.3.1](https://github.com/zyachel/libremdb/compare/v3.3.0...v3.3.1) (2024-01-06)
 
 
