@@ -5,9 +5,9 @@ import ErrorInfo from 'src/components/error/ErrorInfo';
 import { Filters, Pagination, Reviews, TitleCard } from 'src/components/titleReviews';
 import { AppError } from 'src/interfaces/shared/error';
 import getOrSetApiCache from 'src/utils/getOrSetApiCache';
-import titleReviews, { cursoredReviews } from 'src/utils/fetchers/titleReviews';
+import titleReviews from 'src/utils/fetchers/titleReviews';
 import { cleanQueryStr, getProxiedIMDbImgUrl } from 'src/utils/helpers';
-import { titleKey, titleReviewsKey } from 'src/utils/constants/keys';
+import { titleReviewsKey } from 'src/utils/constants/keys';
 import styles from 'src/styles/modules/pages/titleReviews/titleReviews.module.scss';
 import TitleReviews from 'src/interfaces/shared/titleReviews';
 import { keys as titleReviewFiltersQueryKeys } from 'src/utils/constants/titleReviewsFilters';
@@ -31,7 +31,7 @@ const ReviewsPage = ({ data, error, originalPath }: Props) => {
         if (!res.ok) throw new Error('something went wrong');
         return res.json();
       })
-      .then(newData =>
+      .then((newData: { data: NonNullable<Props['data']> }) =>
         setAllData(prev => ({
           list: prev.list.concat(newData.data.list),
           cursor: newData.data.cursor ?? null,
@@ -73,7 +73,7 @@ export const getServerSideProps: GetServerSideProps<Data, Params> = async ctx =>
   const queryStr = cleanQueryStr(queryParams, titleReviewFiltersQueryKeys);
   try {
     const data = await getOrSetApiCache(
-      titleReviewsKey(titleId, queryStr),
+      titleReviewsKey(titleId, queryStr, null),
       titleReviews,
       titleId,
       queryStr

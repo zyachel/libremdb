@@ -15,7 +15,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const titleId = req.query.titleId as string;
     const queryObj = req.query as Record<string, string>;
     const queryStr = cleanQueryStr(queryObj, keys);
-    const data = await getOrSetApiCache(titleReviewsKey(titleId), reviews, titleId, queryStr);
+    const data = await getOrSetApiCache(
+      titleReviewsKey(titleId, queryStr, null),
+      reviews,
+      titleId,
+      queryStr
+    );
     res.status(200).json({ status: true, data });
   } catch (error: any) {
     const { message = 'Not found', statusCode = 404 } = error;

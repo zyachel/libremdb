@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import type { TitleReviewsCursored } from 'src/interfaces/shared/titleReviews';
 import { cursoredReviews } from 'src/utils/fetchers/titleReviews';
 import getOrSetApiCache from 'src/utils/getOrSetApiCache';
-import { titleReviewsCursoredKey } from 'src/utils/constants/keys';
+import { titleReviewsKey } from 'src/utils/constants/keys';
 import { AppError, cleanQueryStr } from 'src/utils/helpers';
 import { keys as titleReviewsQueryKeys } from 'src/utils/constants/titleReviewsFilters';
 
@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const queryObj = req.query as Record<string, string>;
     const queryStr = cleanQueryStr(queryObj, titleReviewsQueryKeys);
     const data = await getOrSetApiCache(
-      titleReviewsCursoredKey(titleId, paginationKey),
+      titleReviewsKey(titleId, queryStr, paginationKey),
       cursoredReviews,
       titleId,
       paginationKey,

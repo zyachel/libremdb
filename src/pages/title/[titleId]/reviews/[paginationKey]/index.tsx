@@ -2,14 +2,14 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Meta from 'src/components/meta/Meta';
 import Layout from 'src/components/layout';
 import ErrorInfo from 'src/components/error/ErrorInfo';
-import { BasicCard, Filters, Pagination, Reviews, TitleCard } from 'src/components/titleReviews';
+import { BasicCard, Filters, Pagination, Reviews } from 'src/components/titleReviews';
 import { AppError } from 'src/interfaces/shared/error';
 import getOrSetApiCache from 'src/utils/getOrSetApiCache';
-import titleReviews, { cursoredReviews } from 'src/utils/fetchers/titleReviews';
-import { cleanQueryStr, getProxiedIMDbImgUrl } from 'src/utils/helpers';
-import { titleKey, titleReviewsKey } from 'src/utils/constants/keys';
+import { cursoredReviews } from 'src/utils/fetchers/titleReviews';
+import { cleanQueryStr } from 'src/utils/helpers';
+import { titleReviewsKey } from 'src/utils/constants/keys';
 import styles from 'src/styles/modules/pages/titleReviews/titleReviews.module.scss';
-import TitleReviews, { TitleReviewsCursored } from 'src/interfaces/shared/titleReviews';
+import { TitleReviewsCursored } from 'src/interfaces/shared/titleReviews';
 import { keys as titleReviewsQueryKeys } from 'src/utils/constants/titleReviewsFilters';
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps<Data, Params> = async ctx =>
 
   try {
     const data = await getOrSetApiCache(
-      titleKey(titleId),
+      titleReviewsKey(titleId, queryStr, paginationKey),
       cursoredReviews,
       titleId,
       paginationKey,
