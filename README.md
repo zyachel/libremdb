@@ -53,6 +53,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | <https://libremdb.privacydev.net/>       | [Yes](http://libremdb.g4c3eya4clenolymqbpgwz3q3tawoxw56yhzk4vugqrl6dtu3ejvhjid.onion/) | No                                                                          | FR      | No          | Operated by [PrivacyDev](https://privacydev.net/)                  |
 | <https://libremdb.ducks.party/>          | No                                                                                     | No                                                                          | NL      | No          | Operated by [ducks.party](https://ducks.party/)                    |
 | <https://lmdb.ngn.tf/>                   | No                                                                                     | No                                                                          | TR      | No          | Operated by [ngn](https://ngn.tf/)                                 |
+| <https://lmdb.bloat.cat/>                   | No                                                                                     | No                                                                          | RO      | No          | Operated by [bloat.cat](https://bloat.cat/)                                 |
 
 Instances list in JSON format can be found in [instances.json](instances.json) file.
 
