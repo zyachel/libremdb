@@ -92,5 +92,10 @@
     "clearnet": "https://lmdb.ngn.tf/",
     "cdn": false,
     "country": "TR"
+  },
+  {
+    "clearnet": "https://lmdb.bloat.cat/",
+    "cdn": false,
+    "country": "RO"
   }
 ]
