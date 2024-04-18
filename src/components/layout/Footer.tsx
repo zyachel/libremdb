@@ -35,16 +35,10 @@ const Footer = () => {
           </li>
         </ul>
       </nav>
-      <p className={styles.licence}>
-        Licensed under{' '}
-        <a
-          className={styles.nav__link}
-          href='https://www.gnu.org/licenses/agpl-3.0-standalone.html'
-        >
-          GNU AGPLv3
-        </a>
-        .
-      </p>
+      <em className={styles.licence}>
+        libremdb does not host any content. All content on libremdb is from IMDb. IMDb is a
+        trademark of IMDb.com, Inc.
+      </em>
     </footer>
   );
 };

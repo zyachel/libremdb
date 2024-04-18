@@ -210,3 +210,9 @@ I'm availabe on [[matrix]](https://matrix.to/#/@ninal:matrix.org) and [email](ma
 
 Licensed under GNU AGPLv3.  
 See [License](./LICENSE) for full legalese.
+
+---
+
+## Disclaimer
+
+*libremdb does not host any content. All content on libremdb is from IMDb. IMDb is a trademark of IMDb.com, Inc.*
