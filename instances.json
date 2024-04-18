@@ -97,5 +97,10 @@
     "clearnet": "https://lmdb.bloat.cat/",
     "cdn": false,
     "country": "RO"
+  },
+  {
+    "clearnet": "https://libremdb.darkness.services/",
+    "cdn": true,
+    "country": "US"
   }
 ]
