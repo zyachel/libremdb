@@ -102,5 +102,10 @@
     "clearnet": "https://libremdb.darkness.services/",
     "cdn": true,
     "country": "US"
+  },
+  {
+    "clearnet": "https://libremdb.nirn.quest/",
+    "cdn": false,
+    "country": "US"
   }
 ]

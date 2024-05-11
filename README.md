@@ -54,6 +54,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | <https://lmdb.ngn.tf/>                   | No                                                                                     | No                                                                          | TR      | No         | Operated by [ngn](https://ngn.tf/)                                 |
 | <https://lmdb.bloat.cat/>                | No                                                                                     | No                                                                          | RO      | No         | Operated by [bloat.cat](https://bloat.cat/)                        |
 | <https://libremdb.darkness.services/>    | No                                                                                     | No                                                                          | US      | Yes        | Operated by [blade10101](https://github.com/blade10101)            |
+| <https://libremdb.nirn.quest/>    | No                                                                                     | No                                                                          | US      | No        | Operated by [hyperreal64](https://github.com/hyperreal64)            |
 
 Instances list in JSON format can be found in [instances.json](instances.json) file.
 
