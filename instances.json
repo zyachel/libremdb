@@ -67,11 +67,6 @@
     "country": "US"
   },
   {
-    "clearnet": "https://mdb.sudovanilla.com/",
-    "cdn": true,
-    "country": "US"
-  },
-  {
     "clearnet": "https://libremdb.r4fo.com/",
     "tor": "http://libremdb.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion/",
     "cdn": false,
