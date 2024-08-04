@@ -103,5 +103,17 @@
     "clearnet": "https://libremdb.hyperreal.coffee/",
     "cdn": false,
     "country": "US"
+  },
+  {
+    "clearnet": "https://ld.ca.zorby.top/",
+    "tor": "http://q3hetdcyyy572xznqmsledzlbv77moycoqs6ptehpp5vsmx4dtcuqeqd.onion/",
+    "i2p": "http://5j37qusybvyhecljn4hr5i4chifdlfqfkfveythzpzyfxiibt7cq.b32.i2p/",
+    "cdn": false,
+    "country": "CA"
+  },
+  {
+    "clearnet": "https://imdb.nerdvpn.de/",
+    "cdn": false,
+    "country": "UA"
   }
 ]

@@ -53,7 +53,9 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | <https://lmdb.ngn.tf/>                   | No                                                                                     | No                                                                          | TR      | No         | Operated by [ngn](https://ngn.tf/)                                 |
 | <https://lmdb.bloat.cat/>                | No                                                                                     | No                                                                          | RO      | No         | Operated by [bloat.cat](https://bloat.cat/)                        |
 | <https://libremdb.darkness.services/>    | No                                                                                     | No                                                                          | US      | Yes        | Operated by [blade10101](https://github.com/blade10101)            |
-| <https://libremdb.hyperreal.coffee/>    | No                                                                                     | No                                                                          | US      | No        | Operated by [hyperreal64](https://github.com/hyperreal64)            |
+| <https://libremdb.hyperreal.coffee/>     | No                                                                                     | No                                                                          | US      | No         | Operated by [hyperreal64](https://github.com/hyperreal64)          |
+| <https://ld.ca.zorby.top/>               | [Yes](http://q3hetdcyyy572xznqmsledzlbv77moycoqs6ptehpp5vsmx4dtcuqeqd.onion/)          | [Yes](http://5j37qusybvyhecljn4hr5i4chifdlfqfkfveythzpzyfxiibt7cq.b32.i2p/) | CA      | No         | Operated by [Troughy](https://zorby.top/)                          |
+| <https://imdb.nerdvpn.de/>               | No                                                                                     | No                                                                          | UA      | No         | Operated by [Weidenwiesel](https://nerdvpn.de/)                    |
 
 Instances list in JSON format can be found in [instances.json](instances.json) file.
 
@@ -215,4 +217,4 @@ See [License](./LICENSE) for full legalese.
 
 ## Disclaimer
 
-*libremdb does not host any content. All content on libremdb is from IMDb. IMDb is a trademark of IMDb.com, Inc.*
+_libremdb does not host any content. All content on libremdb is from IMDb. IMDb is a trademark of IMDb.com, Inc._
