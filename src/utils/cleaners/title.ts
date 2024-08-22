@@ -110,7 +110,7 @@ const cleanTitle = (rawData: RawTitle) => {
     },
     accolades: {
       wins: misc.wins.total,
-      nominations: misc.nominations.total,
+      nominations: misc.nominationsExcludeWins.total,
       ...(misc.prestigiousAwardSummary && {
         awards: {
           name: misc.prestigiousAwardSummary.award.text,
