@@ -8,7 +8,7 @@ import Find, { FindQueryParams } from 'src/interfaces/shared/search';
 import { AppError } from 'src/interfaces/shared/error';
 import basicSearch from 'src/utils/fetchers/basicSearch';
 import getOrSetApiCache from 'src/utils/getOrSetApiCache';
-import { cleanQueryStr } from 'src/utils/helpers';
+import { cleanQueryStr, getErrorProperties } from 'src/utils/helpers';
 import { findKey } from 'src/utils/constants/keys';
 import styles from 'src/styles/modules/pages/find/find.module.scss';
 import { findFilterable } from 'src/utils/constants/find';
@@ -66,8 +66,8 @@ export const getServerSideProps: GetServerSideProps<Data, FindQueryParams> = asy
     return {
       props: { data: { title: query, results: res }, error: null, originalPath },
     };
-  } catch (error: any) {
-    const { message, statusCode } = error;
+  } catch (error) {
+    const { message, statusCode } = getErrorProperties(error);
     ctx.res.statusCode = statusCode;
     ctx.res.statusMessage = message;
 

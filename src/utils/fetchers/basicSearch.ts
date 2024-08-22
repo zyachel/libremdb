@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio';
 import RawFind from 'src/interfaces/misc/rawFind';
-import axiosInstance from 'src/utils/axiosInstance';
+import axiosInstance, { isSaneError } from 'src/utils/axiosInstance';
 import { AppError } from 'src/utils/helpers';
 import cleanFind from 'src/utils/cleaners/find';
 
@@ -14,11 +14,10 @@ const basicSearch = async (queryStr: string) => {
     const cleanData = cleanFind(parsedRawData);
 
     return cleanData;
-  } catch (err: any) {
-    if (err.response?.status === 404)
-      throw new AppError('not found', 404, err.cause);
+  } catch (err) {
+    if (isSaneError(err) && err.response?.status === 404) throw new AppError('not found', 404, err);
 
-    throw new AppError('something went wrong', 500, err.cause);
+    throw new AppError('something went wrong', 500, err);
   }
 };
 

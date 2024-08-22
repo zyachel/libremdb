@@ -74,10 +74,12 @@ export const getProxiedIMDbImgUrl = (url: string) => {
 };
 
 export const AppError = class extends Error {
-  constructor(message: string, public statusCode: number, cause?: any) {
-    super(message, cause);
+  constructor(message: string, public statusCode: number, errorOptions?: unknown) {
+    const saneErrorOptions = getErrorOptions(errorOptions);
+    super(message, saneErrorOptions);
 
     Error.captureStackTrace(this, AppError);
+    if (process.env.NODE_ENV === 'development') console.error(this);
   }
 };
 
@@ -90,10 +92,7 @@ export const cleanQueryStr = (record: Record<string, string>, filterable: string
   return urlSearchParams.toString();
 };
 
-export const getResTitleTypeHeading = (
-  type: ResultMetaTypes,
-  titleType: ResultMetaTitleTypes
-) => {
+export const getResTitleTypeHeading = (type: ResultMetaTypes, titleType: ResultMetaTitleTypes) => {
   if (type !== 'TITLE') return 'Titles';
 
   for (let i = 0; i < resultTitleTypes.types.length; i++) {
@@ -102,7 +101,6 @@ export const getResTitleTypeHeading = (
   }
 };
 
-
 export const isLocalStorageAvailable = () => {
   try {
     localStorage.getItem('test');
@@ -110,4 +108,26 @@ export const isLocalStorageAvailable = () => {
   } catch (e) {
     return false;
   }
+};
+
+const getErrorOptions = (error: unknown): ErrorOptions | undefined => {
+  if (!error || typeof error !== 'object') return undefined;
+
+  let cause: unknown;
+  // @ts-expect-error it's not an error! just that project's ts version is old, which can't be upgraded
+  if ('cause' in error) cause = error.cause;
+  // @ts-expect-error it's not an error! just that project's ts version is old, which can't be upgraded
+  else if ('stack' in error) cause = error.stack;
+
+  // @ts-expect-error it's not an error! just that project's ts version is old, which can't be upgraded
+  return { cause };
+};
+
+export const getErrorProperties = (
+  error: unknown,
+  message = 'Something went very wrong',
+  statusCode = 500
+) => {
+  if (error instanceof AppError) return error;
+  return new AppError(message, statusCode, error);
 };

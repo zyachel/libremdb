@@ -14,4 +14,7 @@ const axiosInstance = axios.create({
   },
 });
 
+
+export const isSaneError = axios.isAxiosError;
+
 export default axiosInstance;

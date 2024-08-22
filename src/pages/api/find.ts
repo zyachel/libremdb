@@ -3,7 +3,7 @@ import Find, { type FindQueryParams } from 'src/interfaces/shared/search';
 import basicSearch from 'src/utils/fetchers/basicSearch';
 import getOrSetApiCache from 'src/utils/getOrSetApiCache';
 import { findKey } from 'src/utils/constants/keys';
-import { AppError, cleanQueryStr } from 'src/utils/helpers';
+import { AppError, cleanQueryStr, getErrorProperties } from 'src/utils/helpers';
 import { findFilterable } from 'src/utils/constants/find';
 
 type ResponseData =
@@ -25,8 +25,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const results = await getOrSetApiCache(findKey(queryStr), basicSearch, queryStr);
 
     res.status(200).json({ status: true, data: { title: query, results } });
-  } catch (error: any) {
-    const { message = 'Not found', statusCode = 404 } = error;
+  } catch (error) {
+    const { message, statusCode } = getErrorProperties(error);
     res.status(statusCode).json({ status: false, message });
   }
 }

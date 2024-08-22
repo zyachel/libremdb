@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import * as cheerio from 'cheerio';
-import axiosInstance from 'src/utils/axiosInstance';
+import axiosInstance, { isSaneError } from 'src/utils/axiosInstance';
 import { AppError } from 'src/utils/helpers';
 
 const reviews = async (titleId: string, queryStr = '') => {
@@ -27,12 +27,12 @@ const reviews = async (titleId: string, queryStr = '') => {
 
     return { meta, list, cursor };
   } catch (err) {
-    if (err instanceof AxiosError && err.response?.status === 404)
-      throw new AppError('not found', 404, err.cause);
+    if (isSaneError(err) && err.response?.status === 404)
+      throw new AppError('not found', 404, err);
 
     if (err instanceof AppError) throw err;
 
-    throw new AppError('something went wrong', 500, err instanceof Error ? err.cause : undefined);
+    throw new AppError('something went wrong', 500, err);
   }
 };
 
@@ -62,12 +62,12 @@ export const cursoredReviews = async (
 
     return { meta: { title, titleId }, list, cursor };
   } catch (err) {
-    if (err instanceof AxiosError && err.response?.status === 404)
+    if (isSaneError(err) && err.response?.status === 404)
       throw new AppError('not found', 404, err.cause);
 
     if (err instanceof AppError) throw err;
 
-    throw new AppError('something went wrong', 500, err instanceof Error ? err.cause : undefined);
+    throw new AppError('something went wrong', 500, err);
   }
 };
 

@@ -6,7 +6,7 @@ import { Filters, Pagination, Reviews, TitleCard } from 'src/components/titleRev
 import { AppError } from 'src/interfaces/shared/error';
 import getOrSetApiCache from 'src/utils/getOrSetApiCache';
 import titleReviews from 'src/utils/fetchers/titleReviews';
-import { cleanQueryStr, getProxiedIMDbImgUrl } from 'src/utils/helpers';
+import { cleanQueryStr, getErrorProperties, getProxiedIMDbImgUrl } from 'src/utils/helpers';
 import { titleReviewsKey } from 'src/utils/constants/keys';
 import styles from 'src/styles/modules/pages/titleReviews/titleReviews.module.scss';
 import TitleReviews from 'src/interfaces/shared/titleReviews';
@@ -80,8 +80,8 @@ export const getServerSideProps: GetServerSideProps<Data, Params> = async ctx =>
     );
 
     return { props: { data, error: null, originalPath } };
-  } catch (error: any) {
-    const { message, statusCode } = error;
+  } catch (error) {
+    const { message, statusCode } = getErrorProperties(error);
     ctx.res.statusCode = statusCode;
     ctx.res.statusMessage = message;
 

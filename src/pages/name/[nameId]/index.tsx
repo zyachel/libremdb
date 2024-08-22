@@ -8,7 +8,7 @@ import Name from 'src/interfaces/shared/name';
 import { AppError } from 'src/interfaces/shared/error';
 import name from 'src/utils/fetchers/name';
 import getOrSetApiCache from 'src/utils/getOrSetApiCache';
-import { getProxiedIMDbImgUrl } from 'src/utils/helpers';
+import { getErrorProperties, getProxiedIMDbImgUrl } from 'src/utils/helpers';
 import { nameKey } from 'src/utils/constants/keys';
 import styles from 'src/styles/modules/pages/name/name.module.scss';
 
@@ -54,9 +54,8 @@ export const getServerSideProps: GetServerSideProps<Data, Params> = async ctx =>
     const data = await getOrSetApiCache(nameKey(nameId), name, nameId);
 
     return { props: { data, error: null, originalPath } };
-  } catch (error: any) {
-    const { message, statusCode } = error;
-
+  } catch (error) {
+    const { message, statusCode } = getErrorProperties(error);
     ctx.res.statusCode = statusCode;
     ctx.res.statusMessage = message;
 
