@@ -3,7 +3,7 @@ import type { TitleReviewsCursored } from 'src/interfaces/shared/titleReviews';
 import { cursoredReviews } from 'src/utils/fetchers/titleReviews';
 import getOrSetApiCache from 'src/utils/getOrSetApiCache';
 import { titleReviewsKey } from 'src/utils/constants/keys';
-import { AppError, cleanQueryStr } from 'src/utils/helpers';
+import { AppError, cleanQueryStr, getErrorProperties } from 'src/utils/helpers';
 import { keys as titleReviewsQueryKeys } from 'src/utils/constants/titleReviewsFilters';
 
 type ResponseData =
@@ -26,8 +26,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       queryStr
     );
     res.status(200).json({ status: true, data });
-  } catch (error: any) {
-    const { message = 'Not found', statusCode = 404 } = error;
+  } catch (error) {
+    const { message, statusCode } = getErrorProperties(error);
     res.status(statusCode).json({ status: false, message });
   }
 }

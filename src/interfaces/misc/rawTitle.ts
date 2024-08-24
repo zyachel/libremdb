@@ -290,7 +290,7 @@ export default interface RawTitle {
         wins: {
           total: number;
         };
-        nominations: {
+        nominationsExcludeWins: {
           total: number;
         };
         prestigiousAwardSummary?: {

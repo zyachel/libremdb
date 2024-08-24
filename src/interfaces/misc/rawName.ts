@@ -196,7 +196,7 @@ export default interface Name {
         wins: {
           total: number;
         };
-        nominations: {
+        nominationsExcludeWins: {
           total: number;
         };
         prestigiousAwardSummary?: {

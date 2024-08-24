@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio';
 import RawTitle from 'src/interfaces/misc/rawTitle';
-import axiosInstance from 'src/utils/axiosInstance';
+import axiosInstance, { isSaneError } from 'src/utils/axiosInstance';
 import cleanTitle from 'src/utils/cleaners/title';
 import { AppError } from 'src/utils/helpers';
 
@@ -15,11 +15,10 @@ const title = async (titleId: string) => {
     const cleanData = cleanTitle(parsedRawData);
     // returning
     return cleanData;
-  } catch (err: any) {
-    if (err.response?.status === 404)
-      throw new AppError('not found', 404, err.cause);
+  } catch (err) {
+    if (isSaneError(err) && err.response?.status === 404) throw new AppError('not found', 404, err);
 
-    throw new AppError('something went wrong', 500, err.cause);
+    throw new AppError('something went wrong', 500, err);
   }
 };
 

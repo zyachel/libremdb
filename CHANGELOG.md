@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.0.0](https://github.com/zyachel/libremdb/compare/v3.4.0...v4.0.0) (2024-08-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* **list:** will give 503 now
+
+### Bug Fixes
+
+* add disclaimer ([2626dfd](https://github.com/zyachel/libremdb/commit/2626dfd8ab75b6d05d20e92e8dc98be53017fe66))
+* **api:** fix reviews api ([1041de5](https://github.com/zyachel/libremdb/commit/1041de5439604baab5fbc113c31dbad3096a2945))
+* **cache:** make cache keys for review more distinctive ([324c138](https://github.com/zyachel/libremdb/commit/324c138ec49cd24e932f9b1f8569c22ca25ebc13))
+* **cleaners:** fix app crash ([333d3b1](https://github.com/zyachel/libremdb/commit/333d3b107e36a8455364e5e09fc6064a9745f3b9))
+* **error:** add sanity checks before error destructuring ([e320557](https://github.com/zyachel/libremdb/commit/e320557addd4f12f32a638f452a738b5a8f5aa32))
+* **list:** remove list route ([67891c7](https://github.com/zyachel/libremdb/commit/67891c765533791a1a276e0669358b935ef9f697))
+
 ## [3.4.0](https://github.com/zyachel/libremdb/compare/v3.3.1...v3.4.0) (2024-03-31)
 
 

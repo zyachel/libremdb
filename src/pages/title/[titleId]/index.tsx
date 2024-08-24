@@ -8,7 +8,7 @@ import Title from 'src/interfaces/shared/title';
 import { AppError } from 'src/interfaces/shared/error';
 import getOrSetApiCache from 'src/utils/getOrSetApiCache';
 import title from 'src/utils/fetchers/title';
-import { getProxiedIMDbImgUrl } from 'src/utils/helpers';
+import { getErrorProperties, getProxiedIMDbImgUrl } from 'src/utils/helpers';
 import { titleKey } from 'src/utils/constants/keys';
 import styles from 'src/styles/modules/pages/title/title.module.scss';
 
@@ -63,8 +63,8 @@ export const getServerSideProps: GetServerSideProps<Data, Params> = async ctx =>
     const data = await getOrSetApiCache(titleKey(titleId), title, titleId);
 
     return { props: { data, error: null, originalPath } };
-  } catch (error: any) {
-    const { message, statusCode } = error;
+  } catch (error) {
+    const { message, statusCode } = getErrorProperties(error);
     ctx.res.statusCode = statusCode;
     ctx.res.statusMessage = message;
 
