@@ -165,6 +165,10 @@ Change the docker-compose file to your liking and run `docker-compose up -d` to 
 
 There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay) made by [@TheFrenchGhosty](https://github.com/TheFrenchGhosty) for [PussTheCat.org's instance](https://libremdb.pussthecat.org). You can use that as well.
 
+OR 
+
+Use the pre-built images from github packages using `docker pull ghcr.io/zyachel/libremdb:latest` to pull latest images.
+
 ## Miscellaneous
 
 ### Automatic redirection
