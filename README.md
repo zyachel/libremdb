@@ -56,6 +56,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | <https://libremdb.hyperreal.coffee/>     | No                                                                                     | No                                                                          | US      | No         | Operated by [hyperreal64](https://github.com/hyperreal64)          |
 | <https://ld.ca.zorby.top/>               | [Yes](http://q3hetdcyyy572xznqmsledzlbv77moycoqs6ptehpp5vsmx4dtcuqeqd.onion/)          | [Yes](http://5j37qusybvyhecljn4hr5i4chifdlfqfkfveythzpzyfxiibt7cq.b32.i2p/) | CA      | No         | Operated by [Troughy](https://zorby.top/)                          |
 | <https://imdb.nerdvpn.de/>               | No                                                                                     | No                                                                          | UA      | No         | Operated by [Weidenwiesel](https://nerdvpn.de/)                    |
+| <https://libremdb.canine.tools/>         | No                                                                                     | No                                                                          | US      | No         | Operated by [canine.tools](https://canine.tools/)                  |
 
 Instances list in JSON format can be found in [instances.json](instances.json) file.
 
