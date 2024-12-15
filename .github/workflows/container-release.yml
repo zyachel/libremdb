@@ -3,7 +3,8 @@ name: Docker Image CI
 on:
   push:
     tags:
-      - 'v*'  # This will trigger the workflow on tags that start with 'v'
+      - 'v*'
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
