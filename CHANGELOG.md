@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.1.0](https://github.com/zyachel/libremdb/compare/v4.0.0...v4.1.0) (2024-12-15)
+
+
+### Features
+
+* github workflow for building container images ([4caf603](https://github.com/zyachel/libremdb/commit/4caf603162e17b9bb5c58db004dabb580172e267))
+
+
+### Bug Fixes
+
+* **reviews:** revert implementation of reviews route ([1030798](https://github.com/zyachel/libremdb/commit/1030798a734c2fa1d123476b24810b953d02146e))
+
 ## [4.0.0](https://github.com/zyachel/libremdb/compare/v3.4.0...v4.0.0) (2024-08-24)
 
 
