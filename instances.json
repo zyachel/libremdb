@@ -120,5 +120,10 @@
     "clearnet": "https://libremdb.canine.tools/",
     "cdn": false,
     "country": "US"
+  },
+  {
+    "clearnet": "https://libremdb-fly.fly.dev/",
+    "cdn": false,
+    "country": "US"
   }
 ]
