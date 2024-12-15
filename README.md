@@ -56,6 +56,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | <https://libremdb.hyperreal.coffee/>     | No                                                                                     | No                                                                          | US      | No         | Operated by [hyperreal64](https://github.com/hyperreal64)          |
 | <https://ld.ca.zorby.top/>               | [Yes](http://q3hetdcyyy572xznqmsledzlbv77moycoqs6ptehpp5vsmx4dtcuqeqd.onion/)          | [Yes](http://5j37qusybvyhecljn4hr5i4chifdlfqfkfveythzpzyfxiibt7cq.b32.i2p/) | CA      | No         | Operated by [Troughy](https://zorby.top/)                          |
 | <https://imdb.nerdvpn.de/>               | No                                                                                     | No                                                                          | UA      | No         | Operated by [Weidenwiesel](https://nerdvpn.de/)                    |
+| <https://libremdb.canine.tools/>         | No                                                                                     | No                                                                          | US      | No         | Operated by [canine.tools](https://canine.tools/)                  |
 
 Instances list in JSON format can be found in [instances.json](instances.json) file.
 
@@ -162,6 +163,23 @@ You can build the docker image using the provided Dockerfile(thanks to [@httpjam
 Change the docker-compose file to your liking and run `docker-compose up -d` to start the container, that's all!
 
 ### Docker (Built)
+
+Use the pre-built images from github packages using `docker pull ghcr.io/zyachel/libremdb:latest` to pull latest images.
+
+To run the container with pulled image use the following command.
+> Note: Env file is required for running this image. Download and edit this [env file](https://github.com/zyachel/libremdb/blob/main/.env.local.example).
+
+
+```sh 
+docker/podman run \
+ --detach \
+ --name "libremdb" \
+ -p 3000:3000 \
+ --env-file "path_to_env_file" \
+ ghcr.io/zyachel/libremdb:latest
+```
+
+OR 
 
 There's a [docker image](https://github.com/PussTheCat-org/docker-libremdb-quay) made by [@TheFrenchGhosty](https://github.com/TheFrenchGhosty) for [PussTheCat.org's instance](https://libremdb.pussthecat.org). You can use that as well.
 

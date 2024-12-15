@@ -115,5 +115,10 @@
     "clearnet": "https://imdb.nerdvpn.de/",
     "cdn": false,
     "country": "UA"
+  },
+  {
+    "clearnet": "https://libremdb.canine.tools/",
+    "cdn": false,
+    "country": "US"
   }
 ]
