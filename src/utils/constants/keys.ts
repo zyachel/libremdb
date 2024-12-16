@@ -1,4 +1,5 @@
 export const titleKey = (titleId: string) => `title:${titleId}`;
+export const titleEpisodesKey = (titleId: string, queryStr: string) => `title/episodes:${titleId}?${queryStr}`;
 export const titleReviewsKey = (titleId: string, queryStr: string, paginationKey: string | null) =>
   `title/reviews:${titleId}?${queryStr}&paginationKey=${paginationKey}`;
 export const nameKey = (nameId: string) => `name:${nameId}`;

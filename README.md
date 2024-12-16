@@ -112,6 +112,13 @@ Instances list in JSON format can be found in [instances.json](instances.json) f
   - [ ] release info
   - [ ] parental guide
 
+- [ ] implement serie specific routes like:
+
+  - [ ] episodes
+    - [ ] html page
+    - [ ] more episode
+    - [x] API
+
 - [ ] implement other routes like:
 
   - [ ] lists
