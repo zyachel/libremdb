@@ -58,6 +58,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | <https://imdb.nerdvpn.de/>               | No                                                                                     | No                                                                          | UA      | No         | Operated by [Weidenwiesel](https://nerdvpn.de/)                    |
 | <https://libremdb.canine.tools/>         | No                                                                                     | No                                                                          | US      | No         | Operated by [canine.tools](https://canine.tools/)                  |
 | <https://libremdb-fly.fly.dev/>          | No                                                                                     | No                                                                          | US      | No         | Operated by [jodanjodan](https://github.com/JodanJodan)                  |
+| <https://libremdb.cmc.pub/>              | No                                                                                     | No                                                                          | US      | No         | Operated by [cmc](https://cmc.pub)                  |
 
 Instances list in JSON format can be found in [instances.json](instances.json) file.
 
