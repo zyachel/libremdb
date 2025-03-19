@@ -127,7 +127,7 @@
     "country": "US"
   },
   {
-    "clearnet": "https://cmc.pub/",
+    "clearnet": "https://ld.cmc.pub/",
     "cdn": false,
     "country": "US"
 ]
