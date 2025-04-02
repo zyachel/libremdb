@@ -125,5 +125,9 @@
     "clearnet": "https://libremdb-fly.fly.dev/",
     "cdn": false,
     "country": "US"
-  }
+  },
+  {
+    "clearnet": "https://ld.cleberg.net/",
+    "cdn": false,
+    "country": "US"
 ]
