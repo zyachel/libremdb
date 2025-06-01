@@ -7,7 +7,13 @@ type Props = {
 };
 
 const DidYouKnow = ({ data }: Props) => {
-  if (!Object.keys(data).length) return <></>;
+  if (!Object.keys(data).length)
+    return (
+      <section className={styles.didYouKnow}>
+        <h2 className='heading heading__secondary'>Did you know</h2>
+        <p>Nothing interesting to show.</p>
+      </section>
+    );
   return (
     <section className={styles.didYouKnow}>
       <h2 className='heading heading__secondary'>Did you know</h2>
