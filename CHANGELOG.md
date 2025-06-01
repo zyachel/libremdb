@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.2.0](https://github.com/zyachel/libremdb/compare/v4.1.0...v4.2.0) (2025-06-01)
+
+
+### Features
+
+* **title:** add "interests" in basic info ([d84a0a3](https://github.com/zyachel/libremdb/commit/d84a0a3049d01c55b51b0af8fde8f8038dfbda73))
+
+
+### Bug Fixes
+
+* **error:** add trace to browser in dev mode ([65b1996](https://github.com/zyachel/libremdb/commit/65b19967ed8d98691941898dc24662ca0c22c330))
+* **name,title:** handle empty states in "did you know" section ([1da4292](https://github.com/zyachel/libremdb/commit/1da429201fd74dc1a2a0e60bcd82e14f7cdfcbaf))
+* **title:** fix title route crash ([e5719e3](https://github.com/zyachel/libremdb/commit/e5719e37bd7978b748c063acaf84ef3b41f6e419))
+
 ## [4.1.0](https://github.com/zyachel/libremdb/compare/v4.0.0...v4.1.0) (2024-12-15)
 
 
