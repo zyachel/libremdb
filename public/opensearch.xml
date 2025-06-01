@@ -1,0 +1,7 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>libremdb</ShortName>
+  <Description>Search libremdb</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="16" height="16" type="image/x-icon">https://libremdb.iket.me/favicon.ico</Image>
+  <Url type="text/html" method="get" template="https://libremdb.iket.me/find?q={searchTerms}"/>
+</OpenSearchDescription>

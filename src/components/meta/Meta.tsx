@@ -36,6 +36,13 @@ const Meta = ({
       <meta property='og:locale' content='en_US' />
       <meta property='og:type' content='video.movie' />
       <meta property='og:image' content={url.toString()} />
+
+      <link
+        rel='search'
+        type='application/opensearchdescription+xml'
+        href='/opensearch.xml'
+        title='libremdb'
+      ></link>
     </Head>
   );
 };
