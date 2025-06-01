@@ -12,6 +12,7 @@ const cleanTitle = (rawData: RawTitle) => {
     titleId: main.id,
     basic: {
       id: main.id,
+      isAdult: main.isAdult,
       title: main.titleText.text,
       // ...(main.originalTitleText.text.toLowerCase() !==
       //   main.titleText.text.toLowerCase() && {
@@ -50,6 +51,10 @@ const cleanTitle = (rawData: RawTitle) => {
         id: genre.id,
         text: genre.text,
       })),
+      interests: main.interests.edges.map(interest => ({
+        id: interest.node.id,
+        text: interest.node.primaryText.text,
+      })),
       plot: main.plot?.plotText?.plainText || null,
       primaryCrew: main.principalCredits.map(type => ({
         type: { category: type.category.text, id: type.category.id },
@@ -84,7 +89,7 @@ const cleanTitle = (rawData: RawTitle) => {
           caption: main.primaryVideos.edges[0].node.description?.value ?? null,
           urls: main.primaryVideos.edges[0].node.playbackURLs.map(url => ({
             resolution: url.displayName.value,
-            mimeType: url.mimeType ?? null,
+            mimeType: url.videoMimeType ?? null,
             url: url.url,
           })),
         },
@@ -121,6 +126,9 @@ const cleanTitle = (rawData: RawTitle) => {
         },
       }),
       topRating: misc.ratingsSummary.topRanking?.rank || null,
+    },
+    watchlist: {
+      text: main.engagementStatistics?.watchlistStatistics.displayableCount.text || null,
     },
     meta: {
       // for tv episode
@@ -208,24 +216,34 @@ const cleanTitle = (rawData: RawTitle) => {
       metacriticScore: main.metacritic?.metascore.score || null,
       numCriticReviews: main.criticReviewsTotal.total,
       numUserReviews: misc.reviews.total,
-      ...(misc.featuredReviews.edges.length && {
-        featuredReview: {
-          id: misc.featuredReviews.edges[0].node.id,
-          reviewer: {
-            id: misc.featuredReviews.edges[0].node.author.userId,
-            name: misc.featuredReviews.edges[0].node.author.nickName,
-          },
-          rating: misc.featuredReviews.edges[0].node.authorRating,
-          date: formatDate(misc.featuredReviews.edges[0].node.submissionDate),
-          votes: {
-            up: misc.featuredReviews.edges[0].node.helpfulness.upVotes,
-            down: misc.featuredReviews.edges[0].node.helpfulness.downVotes,
-          },
-          review: {
-            summary: misc.featuredReviews.edges[0].node.summary.originalText,
-            html: misc.featuredReviews.edges[0].node.text.originalText.plaidHtml,
-          },
+      ratingsDistribution:
+        misc.aggregateRatingsBreakdown.histogram?.histogramValues.map(v => ({
+          rating: v.rating,
+          votes: v.voteCount,
+        })) || [],
+      ...(misc.reviewSummary && {
+        ai: {
+          summary: misc.reviewSummary.overall.medium.value.plaidHtml,
+          themes: misc.reviewSummary.themes.map(t => ({
+            text: t.label.value,
+            id: t.themeId,
+            sentiment: t.sentiment as 'POSITIVE' | 'NEGATIVE',
+          })),
         },
+      }),
+      ...(misc.featuredReviews.edges.length && {
+        featuredReviews: misc.featuredReviews.edges.map(featuredReview => ({
+          id: featuredReview.node.id,
+          reviewer: {
+            id: featuredReview.node.author.userId,
+            name: featuredReview.node.author.username.text,
+          },
+          rating: featuredReview.node.authorRating,
+          review: {
+            summary: featuredReview.node.summary.originalText,
+            html: featuredReview.node.text.originalText.plaidHtml,
+          },
+        })),
       }),
     },
     details: {
@@ -242,8 +260,8 @@ const cleanTitle = (rawData: RawTitle) => {
           },
         },
       }),
-      ...(misc.countriesOfOrigin && {
-        countriesOfOrigin: misc.countriesOfOrigin.countries.map(country => ({
+      ...(misc.countriesDetails && {
+        countriesOfOrigin: misc.countriesDetails.countries.map(country => ({
           id: country.id,
           text: country.text,
         })),
@@ -353,6 +371,10 @@ const cleanTitle = (rawData: RawTitle) => {
       },
       genres: title.node.titleGenres?.genres.map(genre => genre.genre.text) ?? null,
     })),
+    faqs: {
+      questions: misc.faqs.edges.map(q => ({ question: q.node.question, id: q.node.id })),
+      total: misc.faqs.total,
+    },
   };
 
   return cleanData;
