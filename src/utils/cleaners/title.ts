@@ -81,18 +81,18 @@ const cleanTitle = (rawData: RawTitle) => {
     })),
     media: {
       ...(main.primaryVideos.edges.length && {
-        trailer: {
-          id: main.primaryVideos.edges[0].node.id,
-          isMature: main.primaryVideos.edges[0].node.isMature,
-          thumbnail: main.primaryVideos.edges[0].node.thumbnail.url,
-          runtime: main.primaryVideos.edges[0].node.runtime.value,
-          caption: main.primaryVideos.edges[0].node.description?.value ?? null,
-          urls: main.primaryVideos.edges[0].node.playbackURLs.map(url => ({
-            resolution: url.displayName.value,
+        trailers: main.primaryVideos.edges.map(trailer => ({
+          id: trailer.node.id,
+          isMature: trailer.node.isMature,
+          thumbnail: trailer.node.thumbnail.url,
+          runtime: trailer.node.runtime.value,
+          caption: trailer.node.description?.value ?? null,
+          urls: trailer.node.playbackURLs.map(url => ({
+            resolution: url.displayName.value as 'SD' | '480p',
             mimeType: url.videoMimeType ?? null,
             url: url.url,
           })),
-        },
+        })),
       }),
       images: {
         total: misc.titleMainImages.total,

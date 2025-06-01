@@ -143,7 +143,7 @@ export default interface Name {
                   value: string;
                   language: string;
                 };
-                mimeType?: string;
+                videoMimeType?: string;
                 url: string;
               }>;
               recommendedTimedTextTrack?: {

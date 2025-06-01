@@ -14,32 +14,41 @@ type Props = {
 const Media = ({ className, media }: Props) => {
   return (
     <div className={`${className} ${styles.media}`}>
-      {(media.trailer || !!media.videos.total) && (
+      {(media.trailers?.length || !!media.videos.total) && (
         <section className={styles.videos}>
           <h2 className='heading heading__secondary'>Videos</h2>
 
           <div className={styles.videos__container}>
-            {media.trailer && (
-              <div className={styles.trailer}>
+            {media.trailers?.map(trailer => (
+              <div className={styles.trailer} key={trailer.id}>
                 <video
-                  aria-label='trailer video'
+                  aria-label={trailer.caption ?? 'trailer video'}
                   controls
                   playsInline
-                  poster={getProxiedIMDbImgUrl(modifyIMDbImg(media.trailer.thumbnail))}
+                  poster={getProxiedIMDbImgUrl(modifyIMDbImg(trailer.thumbnail))}
                   className={styles.trailer__video}
                   preload='none'
+                  muted
                 >
-                  {media.trailer.urls.map(source => (
+                  {trailer.urls.map(source => (
                     <source
                       key={source.url}
-                      type={source.mimeType ?? undefined}
+                      type='video/mp4'
                       src={getProxiedIMDbImgUrl(source.url)}
+                      media={source.resolution !== 'SD' ? '(min-width: 450px)' : undefined}
                       data-res={source.resolution}
                     />
                   ))}
+
+                  <p>
+                    {trailer.caption}:{' '}
+                    <Link href={getProxiedIMDbImgUrl(trailer.urls[0]?.url)}>
+                      <a className='link'>link</a>
+                    </Link>
+                  </p>
                 </video>
               </div>
-            )}
+            ))}
 
             {!!media.videos.total &&
               media.videos.videos.map(video => (
