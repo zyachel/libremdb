@@ -9,6 +9,11 @@ const nextConfig = {
         destination: '/find',
         permanent: true,
       },
+      {
+        source: '/:langcode(\\w{2})/:slug*',
+        destination: '/:slug*',
+        permanent: true,
+      },
     ];
   },
   images: {
