@@ -67,13 +67,13 @@ export const getServerSideProps: GetServerSideProps<Data, FindQueryParams> = asy
       props: { data: { title: query, results: res }, error: null, originalPath },
     };
   } catch (error) {
-    const { message, statusCode } = getErrorProperties(error);
-    ctx.res.statusCode = statusCode;
-    ctx.res.statusMessage = message;
+    const err = getErrorProperties(error);
+    ctx.res.statusCode = err.statusCode;
+    ctx.res.statusMessage = err.message;
 
     return {
       props: {
-        error: { message, statusCode },
+        error: { message: err.message, statusCode: err.statusCode, stack: err.format() },
         data: { title: query, results: null },
         originalPath,
       },

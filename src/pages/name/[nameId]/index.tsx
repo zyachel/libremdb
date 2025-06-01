@@ -55,11 +55,17 @@ export const getServerSideProps: GetServerSideProps<Data, Params> = async ctx =>
 
     return { props: { data, error: null, originalPath } };
   } catch (error) {
-    const { message, statusCode } = getErrorProperties(error);
-    ctx.res.statusCode = statusCode;
-    ctx.res.statusMessage = message;
+    const err = getErrorProperties(error);
+    ctx.res.statusCode = err.statusCode;
+    ctx.res.statusMessage = err.message;
 
-    return { props: { error: { message, statusCode }, data: null, originalPath } };
+    return {
+      props: {
+        error: { message: err.message, statusCode: err.statusCode, stack: err.format() },
+        data: null,
+        originalPath,
+      },
+    };
   }
 };
 

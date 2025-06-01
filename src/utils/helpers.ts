@@ -74,12 +74,33 @@ export const getProxiedIMDbImgUrl = (url: string) => {
 };
 
 export const AppError = class extends Error {
-  constructor(message: string, public statusCode: number, errorOptions?: unknown) {
-    const saneErrorOptions = getErrorOptions(errorOptions);
-    super(message, saneErrorOptions);
+  constructor(message: string, public statusCode: number, cause?: unknown) {
+    const _cause = cause ? AppError.toError(cause) : undefined;
+    super(message, { cause: _cause });
 
     Error.captureStackTrace(this, AppError);
-    if (process.env.NODE_ENV === 'development') console.error(this);
+  }
+
+  static toError(err: unknown) {
+    if (err instanceof Error) return err;
+    return new Error(`Unexpected: ${JSON.stringify(err)}`);
+  }
+
+  format() {
+    let str = '';
+    let cur: Error | null = this;
+    let depth = 0;
+
+    while (cur && depth <= 4) {
+      if (cur.stack) str += `${cur.stack}\n`;
+      else str += `${cur.name}: ${cur.message}\n`;
+
+      cur = cur.cause instanceof Error ? cur.cause : null;
+      if (cur) str += 'Caused by:\n';
+      depth++;
+    }
+
+    return str.trimEnd();
   }
 };
 
@@ -108,19 +129,6 @@ export const isLocalStorageAvailable = () => {
   } catch (e) {
     return false;
   }
-};
-
-const getErrorOptions = (error: unknown): ErrorOptions | undefined => {
-  if (!error || typeof error !== 'object') return undefined;
-
-  let cause: unknown;
-  // @ts-expect-error it's not an error! just that project's ts version is old, which can't be upgraded
-  if ('cause' in error) cause = error.cause;
-  // @ts-expect-error it's not an error! just that project's ts version is old, which can't be upgraded
-  else if ('stack' in error) cause = error.stack;
-
-  // @ts-expect-error it's not an error! just that project's ts version is old, which can't be upgraded
-  return { cause };
 };
 
 export const getErrorProperties = (

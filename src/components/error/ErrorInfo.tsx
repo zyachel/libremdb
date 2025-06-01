@@ -11,6 +11,7 @@ type Props = {
   message: string;
   statusCode?: number;
   originalPath?: string;
+  stack?: string;
   /** props specific to error boundary. */
   misc?: {
     subtext: string;
@@ -19,7 +20,9 @@ type Props = {
   };
 };
 
-const ErrorInfo = ({ message, statusCode, misc, originalPath }: Props) => {
+const isDev = process.env.NODE_ENV === 'development';
+
+const ErrorInfo = ({ message, statusCode, misc, originalPath, stack }: Props) => {
   const title = statusCode ? `${message} (${statusCode})` : message;
   return (
     <>
@@ -39,6 +42,11 @@ const ErrorInfo = ({ message, statusCode, misc, originalPath }: Props) => {
           <use href='/svg/sadgnu.svg#sad-gnu'></use>
         </svg>
         <h1 className={`heading heading__primary ${styles.heading}`}>{title}</h1>
+        {Boolean(stack && isDev) && (
+          <pre className={styles.stack}>
+            <code>{stack}</code>
+          </pre>
+        )}
         {misc ? (
           <>
             <p>{misc.subtext}</p>
@@ -64,6 +72,13 @@ const ErrorInfo = ({ message, statusCode, misc, originalPath }: Props) => {
             .
           </p>
         )}
+        <p>
+          If you think this shouldn't happen,{' '}
+          <Link href='/contact'>
+            <a className='link'>let it be known</a>
+          </Link>
+          .
+        </p>
       </Layout>
     </>
   );

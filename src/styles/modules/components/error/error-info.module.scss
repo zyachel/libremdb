@@ -8,7 +8,7 @@
   display: grid;
   justify-content: center;
   justify-items: center;
-  gap: var(--spacer-1);
+  gap: var(--comp-whitespace);
 
   @include helper.bp('bp-700') {
     --doc-whitespace: var(--spacer-5);
@@ -29,6 +29,19 @@
 
 .heading {
   text-align: center;
+}
+
+.stack {
+  max-width: 90%;
+  max-height: 20rem;
+  padding: var(--spacer-3);
+  white-space: pre-wrap;
+  overflow: scroll;
+
+  user-select: all;
+
+  border-radius: var(--spacer-1);
+  background-color: var(--clr-bg-muted);
 }
 
 .button {

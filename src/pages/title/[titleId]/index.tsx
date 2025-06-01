@@ -5,7 +5,7 @@ import ErrorInfo from 'src/components/error/ErrorInfo';
 import Media from 'src/components/media/Media';
 import { Basic, Cast, DidYouKnow, Info, MoreLikeThis, Reviews } from 'src/components/title';
 import Title from 'src/interfaces/shared/title';
-import { AppError } from 'src/interfaces/shared/error';
+import type { AppError } from 'src/interfaces/shared/error';
 import getOrSetApiCache from 'src/utils/getOrSetApiCache';
 import title from 'src/utils/fetchers/title';
 import { getErrorProperties, getProxiedIMDbImgUrl } from 'src/utils/helpers';
@@ -63,12 +63,18 @@ export const getServerSideProps: GetServerSideProps<Data, Params> = async ctx =>
     const data = await getOrSetApiCache(titleKey(titleId), title, titleId);
 
     return { props: { data, error: null, originalPath } };
-  } catch (error) {
-    const { message, statusCode } = getErrorProperties(error);
-    ctx.res.statusCode = statusCode;
-    ctx.res.statusMessage = message;
+  } catch (e) {
+    const err = getErrorProperties(e);
+    ctx.res.statusCode = err.statusCode;
+    ctx.res.statusMessage = err.message;
 
-    return { props: { error: { message, statusCode }, data: null, originalPath } };
+    const error = {
+      message: err.message,
+      statusCode: err.statusCode,
+      stack: err.format(),
+    };
+    console.error(err);
+    return { props: { error, data: null, originalPath } };
   }
 };
 
