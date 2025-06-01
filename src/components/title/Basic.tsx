@@ -86,6 +86,21 @@ const Basic = ({ data, className }: Props) => {
           ))}
         </p>
       )}
+
+      {!!data.interests.length && (
+        <p className={styles.genres}>
+          <span className={styles.genres__heading}>Interests: </span>
+          {data.interests.map((interest, i) => (
+            <Fragment key={interest.id}>
+              {i > 0 && ', '}
+              <Link href={`/interest/${interest.id}`}>
+                <a className={styles.link}>{interest.text}</a>
+              </Link>
+            </Fragment>
+          ))}
+        </p>
+      )}
+
       <p className={styles.overview}>
         <span className={styles.overview__heading}>Plot: </span>
         <span className={styles.overview__text}>{data.plot || '-'}</span>
