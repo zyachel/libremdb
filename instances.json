@@ -125,5 +125,10 @@
     "clearnet": "https://libremdb-fly.fly.dev/",
     "cdn": false,
     "country": "US"
+  },
+  {
+    "clearnet": "https://libremdb.franklyflawless.org/",
+    "cdn": false,
+    "country": "DE"
   }
 ]
