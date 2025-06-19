@@ -166,7 +166,7 @@ Change the docker-compose file to your liking and run `docker-compose up -d` to 
 
 ### Docker (Built)
 
-Use the pre-built images from github packages using `docker pull ghcr.io/zyachel/libremdb:latest` to pull latest images.
+Use the pre-built images from github packages using `docker pull ghcr.io/zyachel/libremdb:main` to pull latest images.
 
 To run the container with pulled image use the following command.
 > Note: Env file is required for running this image. Download and edit this [env file](https://github.com/zyachel/libremdb/blob/main/.env.local.example).
@@ -178,7 +178,7 @@ docker/podman run \
  --name "libremdb" \
  -p 3000:3000 \
  --env-file "path_to_env_file" \
- ghcr.io/zyachel/libremdb:latest
+ ghcr.io/zyachel/libremdb:main
 ```
 
 OR 
