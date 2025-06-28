@@ -32,4 +32,5 @@ COPY --from=builder /opt/app/.next ./.next
 COPY --from=builder /opt/app/node_modules ./node_modules
 ENV HOST=0.0.0.0
 ENV PORT=3000
+EXPOSE 3000
 CMD ["./node_modules/next/dist/bin/next", "start"]
