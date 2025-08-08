@@ -9,9 +9,10 @@ type Props = {
   className?: string;
   image?: string;
   title: string;
+  originalTitle?: string;
 } & ComponentPropsWithoutRef<'section'>;
 
-const CardBasic = ({ image, children, className, title, ...rest }: Props) => {
+const CardBasic = ({ image, children, className, title, originalTitle, ...rest }: Props) => {
   const style: CSSProperties = {
     backgroundImage: image && `url(${getProxiedIMDbImgUrl(modifyIMDbImg(image, 300))})`,
   };
@@ -36,6 +37,7 @@ const CardBasic = ({ image, children, className, title, ...rest }: Props) => {
       </div>
       <div className={styles.info}>
         <h1 className={`${styles.title} heading heading__primary`}>{title}</h1>
+        {originalTitle && <span className={styles.originalTitle}>{originalTitle}</span>}
         {children}
       </div>
     </Card>

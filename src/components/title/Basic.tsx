@@ -22,6 +22,7 @@ const Basic = ({ data, className }: Props) => {
       className={`${styles.container} ${className}`}
       image={data.poster?.url}
       title={data.title}
+      originalTitle={data.originalTitle}
     >
       <ul className={styles.meta} aria-label='quick facts'>
         {data.status && data.status.id !== 'released' && (

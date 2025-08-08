@@ -14,10 +14,10 @@ const cleanTitle = (rawData: RawTitle) => {
       id: main.id,
       isAdult: main.isAdult,
       title: main.titleText.text,
-      // ...(main.originalTitleText.text.toLowerCase() !==
-      //   main.titleText.text.toLowerCase() && {
-      //   originalTitle: main.originalTitleText.text,
-      // }),
+      ...(main.originalTitleText.text.toLowerCase() !==
+        main.titleText.text.toLowerCase() && {
+        originalTitle: main.originalTitleText.text,
+      }),
       type: {
         id: main.titleType.id as 'movie' | 'tvSeries' | 'tvEpisode' | 'videoGame',
         name: main.titleType.text,
