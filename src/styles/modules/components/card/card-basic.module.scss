@@ -98,4 +98,8 @@
 
 .originalTitle {
   font-style: italic;
+
+  @include helper.bp('bp-900') {
+    text-align: center;
+  }
 }
