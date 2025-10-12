@@ -29,6 +29,6 @@ const KnownFor = ({ data }: Props) => {
 };
 
 const getRoles = (title: Props['data'][number]) =>
-  (title.summary.characters ?? title.summary.jobs)?.join(', ');
+  (title.summary.characters ?? title.summary.attributes)?.join(', ');
 
 export default KnownFor;

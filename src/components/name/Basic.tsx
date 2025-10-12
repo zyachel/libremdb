@@ -2,6 +2,7 @@ import { CardBasic } from 'src/components/card';
 import { Basic as BasicType } from 'src/interfaces/shared/name';
 import { formatNumber } from 'src/utils/helpers';
 import styles from 'src/styles/modules/components/name/basic.module.scss';
+import { Fragment } from 'react';
 
 type Props = {
   className: string;
@@ -39,10 +40,14 @@ const Basic = ({ data, className }: Props) => {
           {data.bio.short}...
         </p>
       }
-      {data.knownFor.title && (
+      {data.knownFor.length && (
         <p className={styles.genres}>
           <span className={styles.heading}>Known for: </span>
-          {data.knownFor.title} ({data.knownFor.role})
+          {data.knownFor.map((k, i) => (
+            <span key={k.title}>
+              {k.title} ({k.roles.join(', ')}){i < data.knownFor.length - 1 && ', '}
+            </span>
+          ))}
         </p>
       )}
     </CardBasic>

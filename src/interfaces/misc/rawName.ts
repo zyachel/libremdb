@@ -2,92 +2,74 @@ export default interface Name {
   props: {
     pageProps: {
       aboveTheFold: {
-        id: string;
-        nameText: {
-          text: string;
+        bio: {
+          text: {
+            plaidHtml: string;
+            plainText: string;
+          };
         };
-        /*
-        searchIndexing: {
-          disableIndexing: boolean
-        }*/
+        birthDate: {
+          date?: string;
+          dateComponents: {
+            day?: number;
+            isBCE: boolean;
+            month?: number;
+            year: number;
+          };
+          displayableProperty: {
+            value: {
+              plainText: string;
+            };
+          };
+        };
+        deathDate?: {
+          date?: string;
+          dateComponents: {
+            day?: number;
+            month?: number;
+            year: number;
+          };
+          displayableProperty: {
+            value: {
+              plainText: string;
+            };
+          };
+        };
+        deathStatus: 'ALIVE' | 'DEAD';
         disambiguator?: {
           text: string;
         };
-        knownFor: {
+        id: string;
+        images: {
           edges: Array<{
             node: {
-              title: {
-                titleText: {
-                  text: string;
+              id: string;
+            };
+          }>;
+          total: number;
+        };
+        knownForV2: {
+          credits: Array<{
+            creditedRoles: {
+              edges: Array<{
+                node: {
+                  category: {
+                    text: string;
+                  };
                 };
-              };
-              summary: {
-                principalCategory: {
-                  text: string;
-                };
+              }>;
+            };
+            title: {
+              titleText: {
+                text: string;
               };
             };
           }>;
         };
-        /*
-        images: {
-          total: number;
-        };*/
-
-        primaryImage?: {
-          id: string;
-          url: string;
-          height: number;
-          width: number;
-          caption: {
-            plainText: string;
-          };
-        };
-        /*
         meta: {
-          canonicalId: string
-          publicationStatus: string
-        }
-        */
-        bio: {
-          text: {
-            plainText: string;
-            plaidHtml: string;
-          };
+          canonicalId: string;
+          publicationStatus: string;
         };
-        primaryProfessions: Array<{
-          category: {
-            text: string;
-          };
-        }>;
-        birthDate: {
-          displayableProperty: {
-            value: {
-              plainText: string;
-            };
-          };
-          date?: string;
-          dateComponents: {
-            day?: number;
-            month?: number;
-            year: number;
-            isBCE: boolean;
-          };
-        };
-        deathDate?: {
-          displayableProperty: {
-            value: {
-              plainText: string;
-            };
-          };
-          date?: string;
-          dateComponents: {
-            day?: number;
-            month?: number;
-            year: number;
-          };
-        };
-        deathStatus: 'ALIVE' | 'DEAD';
         meterRanking?: {
           currentRank: number;
           rankChange: {
@@ -95,680 +77,91 @@ export default interface Name {
             difference: number;
           };
         };
-        subNavBio: {
-          id: string;
+        nameText: {
+          text: string;
         };
-        subNavTrivia: {
-          total: number;
-        };
-        subNavAwardNominations: {
-          total: number;
-        };
-        subNavFaqs: {
-          total: number;
-        };
-        // videos: {
-        //   total: number;
-        // };
-        primaryVideos: {
-          edges: Array<{
-            node: {
-              id: string;
-              isMature: boolean;
-              createdDate: string;
-              contentType: {
-                id: string;
-                displayName: {
-                  value: string;
-                };
-              };
-              thumbnail: {
-                url: string;
-                height: number;
-                width: number;
-              };
-              runtime: {
-                value: number;
-              };
-              description?: {
-                value: string;
-                language: string;
-              };
-              name: {
-                value: string;
-                language: string;
-              };
-              playbackURLs: Array<{
-                displayName: {
-                  value: string;
-                  language: string;
-                };
-                videoMimeType?: string;
-                url: string;
-              }>;
-              recommendedTimedTextTrack?: {
-                displayName: {
-                  value: string;
-                  language: string;
-                };
-                refTagFragment: string;
-                language: string;
-                url: string;
-              };
-              timedTextTracks: Array<{
-                displayName: {
-                  value: string;
-                  language: string;
-                };
-                refTagFragment: string;
-                language: string;
-                url: string;
-              }>;
-              previewURLs: Array<{
-                displayName: {
-                  value: string;
-                  language: string;
-                };
-                mimeType: string;
-                url: string;
-              }>;
-              primaryTitle: {
-                originalTitleText: {
-                  text: string;
-                };
-                titleText: {
-                  text: string;
-                };
-                releaseYear: {
-                  year: number;
-                  endYear: null;
-                };
-                titleType: {
-                  canHaveEpisodes: boolean;
-                };
-              };
-            };
-          }>;
-        };
-      };
-      mainColumnData: {
-        id: string;
-        wins: {
-          total: number;
-        };
-        nominationsExcludeWins: {
-          total: number;
-        };
-        prestigiousAwardSummary?: {
-          nominations: number;
-          wins: number;
-          award: {
-            text: string;
-            id: string;
-            event: {
-              id: string;
-            };
-          };
-        };
-        images: {
-          total: number;
-          edges: Array<{
-            node: {
-              id: string;
-              url: string;
-              caption: {
-                plainText: string;
-              };
-              height: number;
-              width: number;
-            };
-          }>;
-        };
-        /*
-        primaryImage: {
-          id: string;
+        primaryImage?: {
           caption: {
             plainText: string;
           };
           height: number;
-          width: number;
+          id: string;
           url: string;
+          width: number;
         };
-        imageUploadLink: null;
-        nameText: {
-          text: string;
-        };
-        */
         primaryProfessions: Array<{
           category: {
-            text: string;
-            id: string;
-          };
-        }>;
-        releasedPrimaryCredits: Array<{
-          category: {
             id: string;
             text: string;
           };
-          credits: {
-            total: number;
-            edges: Array<{
-              node: {
-                attributes?: Array<{
-                  text: string;
-                }>;
-                category: {
-                  id: string;
-                  text: string;
-                };
-                characters?: Array<{
-                  name: string;
-                }>;
-                episodeCredits: {
-                  total: number;
-                  yearRange?: {
-                    year: number;
-                    endYear?: number;
-                  };
-                  displayableYears: {
-                    total: number;
-                    edges: Array<{
-                      node: {
-                        year: string;
-                        displayableProperty: {
-                          value: {
-                            plainText: string;
-                          };
-                        };
-                      };
-                    }>;
-                  };
-                  displayableSeasons: {
-                    total: number;
-                    edges: Array<{
-                      node: {
-                        season: string;
-                        displayableProperty: {
-                          value: {
-                            plainText: string;
-                          };
-                        };
-                      };
-                    }>;
-                  };
-                };
-                title: {
-                  id: string;
-                  canRate: {
-                    isRatable: boolean;
-                  };
-                  certificate?: {
-                    rating: string;
-                  };
-                  originalTitleText: {
-                    text: string;
-                  };
-                  titleText: {
-                    text: string;
-                  };
-                  titleType: {
-                    canHaveEpisodes: boolean;
-                    displayableProperty: {
-                      value: {
-                        plainText: string;
-                      };
-                    };
-                    text: string;
-                    id: string;
-                  };
-                  primaryImage?: {
-                    id: string;
-                    url: string;
-                    height: number;
-                    width: number;
-                    caption: {
-                      plainText: string;
-                    };
-                  };
-                  ratingsSummary: {
-                    aggregateRating?: number;
-                    voteCount: number;
-                  };
-                  latestTrailer?: {
-                    id: string;
-                  };
-                  releaseYear: {
-                    year: number;
-                    endYear?: number;
-                  };
-                  runtime?: {
-                    seconds: number;
-                  };
-                  series: null;
-                  episodes?: {
-                    displayableSeasons: {
-                      total: number;
-                      edges: Array<{
-                        node: {
-                          season: string;
-                          displayableProperty: {
-                            value: {
-                              plainText: string;
-                            };
-                          };
-                        };
-                      }>;
-                    };
-                    displayableYears: {
-                      total: number;
-                      edges: Array<{
-                        node: {
-                          year: string;
-                          displayableProperty: {
-                            value: {
-                              plainText: string;
-                            };
-                          };
-                        };
-                      }>;
-                    };
-                  };
-                  titleGenres?: {
-                    genres: Array<{
-                      genre: {
-                        text: string;
-                      };
-                    }>;
-                  };
-                  productionStatus: {
-                    currentProductionStage: {
-                      id: string;
-                      text: string;
-                    };
-                  };
-                };
-                jobs?: Array<{
-                  id: string;
-                  text: string;
-                }>;
-              };
-            }>;
-            // pageInfo: {
-            //   hasNextPage: boolean;
-            //   hasPreviousPage: boolean;
-            //   endCursor: string;
-            // };
-          };
         }>;
-        unreleasedPrimaryCredits: Array<{
-          category: {
-            id: string;
-            text: string;
-          };
-          credits: {
-            total: number;
-            edges: Array<{
-              node: {
-                attributes?: Array<{
-                  text: string;
-                }>;
-                category: {
-                  id: string;
-                  text: string;
-                };
-                characters?: Array<{
-                  name: string;
-                }>;
-                episodeCredits: {
-                  total: number;
-                  yearRange: null;
-                  displayableYears: {
-                    total: number;
-                    edges: Array<{
-                      node: {
-                        year: string;
-                        displayableProperty: {
-                          value: {
-                            plainText: string;
-                          };
-                        };
-                      };
-                    }>;
-                  };
-                  displayableSeasons: {
-                    total: number;
-                    edges: Array<{
-                      node: {
-                        season: string;
-                        displayableProperty: {
-                          value: {
-                            plainText: string;
-                          };
-                        };
-                      };
-                    }>;
-                  };
-                };
-                title: {
-                  id: string;
-                  canRate: {
-                    isRatable: boolean;
-                  };
-                  certificate?: {
-                    rating: string;
-                  };
-                  originalTitleText: {
-                    text: string;
-                  };
-                  titleText: {
-                    text: string;
-                  };
-                  titleType: {
-                    canHaveEpisodes: boolean;
-                    displayableProperty: {
-                      value: {
-                        plainText: string;
-                      };
-                    };
-                    text: string;
-                    id: string;
-                  };
-                  primaryImage?: {
-                    id: string;
-                    url: string;
-                    height: number;
-                    width: number;
-                    caption: {
-                      plainText: string;
-                    };
-                  };
-                  ratingsSummary: {
-                    aggregateRating: null;
-                    voteCount: number;
-                  };
-                  latestTrailer?: {
-                    id: string;
-                  };
-                  releaseYear?: {
-                    year: number;
-                    endYear: null;
-                  };
-                  runtime?: {
-                    seconds: number;
-                  };
-                  series: null;
-                  episodes?: {
-                    displayableSeasons: {
-                      total: number;
-                      edges: Array<{
-                        node: {
-                          season: string;
-                          displayableProperty: {
-                            value: {
-                              plainText: string;
-                            };
-                          };
-                        };
-                      }>;
-                    };
-                    displayableYears: {
-                      total: number;
-                      edges: Array<{
-                        node: {
-                          year: string;
-                          displayableProperty: {
-                            value: {
-                              plainText: string;
-                            };
-                          };
-                        };
-                      }>;
-                    };
-                  };
-                  titleGenres?: {
-                    genres: Array<{
-                      genre: {
-                        text: string;
-                      };
-                    }>;
-                  };
-                  productionStatus: {
-                    currentProductionStage: {
-                      id: string;
-                      text: string;
-                    };
-                  };
-                };
-                jobs?: Array<{
-                  id: string;
-                  text: string;
-                }>;
-              };
-            }>;
-            // pageInfo: {
-            //   hasNextPage: boolean;
-            //   hasPreviousPage: boolean;
-            //   endCursor: string;
-            // };
-          };
-        }>;
-        jobs: Array<{
-          category: {
-            id: string;
-            text: string;
-          };
-          credits: {
-            total: number;
-          };
-        }>;
-        totalCredits: {
-          total?: number;
-          // restriction?: {
-          //   unrestrictedTotal: number;
-          //   explanations: Array<{
-          //     reason: string;
-          //     text: string;
-          //   }>;
-          // };
-        };
-        creditSummary: {
-          titleTypeCategories: Array<{
-            total: number;
-            titleTypeCategory: {
-              id: string;
-              text: string;
-            };
-          }>;
-          genres: Array<{
-            total: number;
-            genre: {
-              id: string;
-              displayableProperty: {
-                value: {
-                  plainText: string;
-                };
-              };
-            };
-          }>;
-        };
-        knownForFeature: {
+        primaryVideos: {
           edges: Array<{
             node: {
-              summary: {
-                attributes?: Array<{
-                  text: string;
-                }>;
-                episodeCount?: number;
-                principalCategory: {
-                  text: string;
-                  id: string;
+              contentType: {
+                displayName: {
+                  value: string;
                 };
-                principalCharacters?: Array<{
-                  name: string;
-                }>;
-                principalJobs?: Array<{
-                  id: string;
-                  text: string;
-                }>;
-                yearRange: {
-                  year: number;
-                  endYear?: number;
-                };
-              };
-              credit: {
-                attributes?: Array<{
-                  text: string;
-                }>;
-                category: {
-                  id: string;
-                  text: string;
-                };
-                characters?: Array<{
-                  name: string;
-                }>;
-                episodeCredits: {
-                  total: number;
-                  yearRange?: {
-                    year: number;
-                    endYear: number;
-                  };
-                  displayableYears: {
-                    total: number;
-                    edges: Array<{
-                      node: {
-                        year: string;
-                        displayableProperty: {
-                          value: {
-                            plainText: string;
-                          };
-                        };
-                      };
-                    }>;
-                  };
-                  displayableSeasons: {
-                    total: number;
-                    edges: Array<{
-                      node: {
-                        season: string;
-                        displayableProperty: {
-                          value: {
-                            plainText: string;
-                          };
-                        };
-                      };
-                    }>;
-                  };
-                };
-                jobs?: Array<{
-                  id: string;
-                  text: string;
-                }>;
-              };
-              title: {
                 id: string;
-                canRate: {
-                  isRatable: boolean;
+              };
+              createdDate: string;
+              description?: {
+                language: string;
+                value: string;
+              };
+              id: string;
+              isMature: boolean;
+              name: {
+                language: string;
+                value: string;
+              };
+              playbackURLs: Array<{
+                displayName: {
+                  language: string;
+                  value: string;
                 };
-                certificate?: {
-                  rating: string;
+                metricDimensions: Array<{
+                  name: string;
+                  value: string;
+                }>;
+                url: string;
+                videoDefinition: string;
+                videoMimeType?: string;
+              }>;
+              previewURLs: Array<{
+                displayName: {
+                  language: string;
+                  value: string;
                 };
+                url: string;
+                videoDefinition: string;
+                videoMimeType: string;
+              }>;
+              primaryTitle: {
+                id: string;
                 originalTitleText: {
                   text: string;
+                };
+                releaseYear: {
+                  endYear: any;
+                  year: number;
                 };
                 titleText: {
                   text: string;
                 };
                 titleType: {
                   canHaveEpisodes: boolean;
-                  displayableProperty: {
-                    value: {
-                      plainText: string;
-                    };
-                  };
-                  text: string;
-                  id: 'movie' | 'tvSeries' | 'tvEpisode' | 'videoGame';
-                };
-                primaryImage: {
-                  id: string;
-                  url: string;
-                  height: number;
-                  width: number;
-                  caption: {
-                    plainText: string;
-                  };
-                };
-                ratingsSummary: {
-                  aggregateRating?: number;
-                  voteCount: number;
-                };
-                latestTrailer?: {
-                  id: string;
-                };
-                releaseYear: {
-                  year: number;
-                  endYear?: number;
-                };
-                runtime?: {
-                  seconds: number;
-                };
-                series: null;
-                episodes?: {
-                  displayableSeasons: {
-                    total: number;
-                    edges: Array<{
-                      node: {
-                        season: string;
-                        displayableProperty: {
-                          value: {
-                            plainText: string;
-                          };
-                        };
-                      };
-                    }>;
-                  };
-                  displayableYears: {
-                    total: number;
-                    edges: Array<{
-                      node: {
-                        year: string;
-                        displayableProperty: {
-                          value: {
-                            plainText: string;
-                          };
-                        };
-                      };
-                    }>;
-                  };
-                };
-                titleGenres?: {
-                  genres: Array<{
-                    genre: {
-                      text: string;
-                    };
-                  }>;
-                };
-                productionStatus: {
-                  currentProductionStage: {
-                    id: string;
-                    text: string;
-                  };
                 };
               };
-            };
-          }>;
-        };
-        videos: {
-          total: number;
-          edges: Array<{
-            node: {
-              id: string;
-              contentType: {
+              recommendedTimedTextTrack: {
                 displayName: {
+                  language: string;
                   value: string;
                 };
-              };
-              name: {
-                value: string;
+                language: string;
+                refTagFragment: string;
+                type: string;
+                url: string;
               };
               runtime: {
                 value: number;
@@ -778,82 +171,45 @@ export default interface Name {
                 url: string;
                 width: number;
               };
-              primaryTitle: {
-                originalTitleText: {
-                  text: string;
+              timedTextTracks: Array<{
+                displayName: {
+                  language: string;
+                  value: string;
                 };
-                titleText: {
-                  text: string;
-                };
-                releaseYear: {
-                  year: number;
-                  endYear?: number;
-                };
-                titleType: {
-                  canHaveEpisodes: boolean;
-                };
-              };
+                language: string;
+                refTagFragment: string;
+                type: string;
+                url: string;
+              }>;
             };
           }>;
         };
-        height?: {
-          displayableProperty: {
-            value: {
-              plainText: string;
-            };
+        professions: Array<{
+          profession: {
+            id: string;
+            text: string;
           };
+        }>;
+        searchIndexing: {
+          disableIndexing: boolean;
         };
-        /*
-        birthDate: {
-          dateComponents: {
-            day?: number;
-            month?: number;
-            year: number;
-          };
-          displayableProperty: {
-            value: {
-              plainText: string;
-            };
-          };
+        subNavAwardNominations: {
+          total: number;
         };
-        */
-        birthLocation: {
-          text: string;
-          displayableProperty: {
-            value: {
-              plainText: string;
-            };
-          };
+        subNavBio: {
+          id: string;
         };
-        /*
-        deathDate?: {
-          dateComponents: {
-            day?: number;
-            month?: number;
-            year: number;
-          };
-          displayableProperty: {
-            value: {
-              plainText: string;
-            };
-          };
+        subNavFaqs: {
+          total: number;
         };
-        */
-        deathLocation?: {
-          text: string;
-          displayableProperty: {
-            value: {
-              plainText: string;
-            };
-          };
+        subNavTrivia: {
+          total: number;
         };
-        deathCause?: {
-          displayableProperty: {
-            value: {
-              plainText: string;
-            };
-          };
+        videos: {
+          total: number;
         };
+      };
+      mainColumnData: {
         akas: {
           edges: Array<{
             node: {
@@ -865,6 +221,297 @@ export default interface Name {
             };
           }>;
         };
+        birthDate: {
+          dateComponents: {
+            day?: number;
+            month?: number;
+            year: number;
+          };
+          displayableProperty: {
+            value: {
+              plainText: string;
+            };
+          };
+        };
+        birthLocation: {
+          displayableProperty: {
+            value: {
+              plainText: string;
+            };
+          };
+          text: string;
+        };
+        children: {
+          edges: Array<{
+            node: {
+              relationshipType: {
+                id: string;
+                text: string;
+              };
+              relationName: {
+                name?: {
+                  id: string;
+                };
+                displayableProperty: {
+                  value: {
+                    plainText: string;
+                  };
+                };
+              };
+            };
+          }>;
+          pageInfo: {
+            endCursor?: string;
+            hasNextPage: boolean;
+          };
+          total: number;
+        };
+        creditSummary: {
+          genres: Array<{
+            genre: {
+              genreId: string;
+              text: string;
+            };
+            total: number;
+          }>;
+          totalCredits: {
+            restriction: any;
+            total: number;
+          };
+        };
+        deathCause?: {
+          displayableProperty: {
+            value: {
+              plainText: string;
+            };
+          };
+        };
+        deathDate?: {
+          dateComponents: {
+            day?: number;
+            month?: number;
+            year: number;
+          };
+          displayableProperty: {
+            value: {
+              plainText: string;
+            };
+          };
+        };
+
+        deathLocation?: {
+          displayableProperty: {
+            value: {
+              plainText: string;
+            };
+          };
+          text: string;
+        };
+        demographicData: Array<null>;
+        faqs: {
+          edges: Array<{
+            node: {
+              answer: {
+                plaidHtml: string;
+                plainText: string;
+              };
+              attributeId: string;
+              question: {
+                plainText: string;
+              };
+            };
+          }>;
+          total: number;
+        };
+        groupings: {
+          edges: Array<{
+            node: {
+              credits: {
+                total: number;
+              };
+              grouping: {
+                groupingId: string;
+                text: string;
+              };
+            };
+          }>;
+        };
+        height?: {
+          displayableProperty: {
+            value: {
+              plainText: string;
+            };
+          };
+        };
+        id: string;
+        images: {
+          edges: Array<{
+            node: {
+              caption: {
+                plainText: string;
+              };
+              height: number;
+              id: string;
+              url: string;
+              width: number;
+            };
+          }>;
+          total: number;
+        };
+        knownForFeatureV2: {
+          credits: Array<{
+            creditedRoles: {
+              edges: Array<{
+                node: {
+                  attributes?: Array<{
+                    text: string;
+                  }>;
+                  category: {
+                    categoryId: string;
+                    text: string;
+                    traits: Array<string>;
+                  };
+                  characters: {
+                    edges: Array<{
+                      node: {
+                        name: string;
+                      };
+                    }>;
+                  };
+                  episodeCredits: {
+                    displayableSeasons: {
+                      edges: Array<any>;
+                      total: number;
+                    };
+                    displayableYears: {
+                      edges: Array<any>;
+                      total: number;
+                    };
+                    total: number;
+                    yearRange: any;
+                  };
+                  text: string;
+                };
+              }>;
+            };
+            title: {
+              canRate: {
+                isRatable: boolean;
+              };
+              certificate?: {
+                rating: string;
+              };
+              id: string;
+              latestTrailer?: {
+                id: string;
+              };
+              originalTitleText: {
+                text: string;
+              };
+              primaryImage: {
+                caption: {
+                  plainText: string;
+                };
+                height: number;
+                id: string;
+                url: string;
+                width: number;
+              };
+              productionStatus: {
+                currentProductionStage: {
+                  id: string;
+                  text: string;
+                };
+                productionStatusHistory: Array<{
+                  status: {
+                    id: string;
+                    text: string;
+                  };
+                }>;
+              };
+              ratingsSummary: {
+                aggregateRating?: number;
+                voteCount: number;
+              };
+              releaseYear: {
+                endYear?: number;
+                year: number;
+              };
+              runtime?: {
+                seconds: number;
+              };
+              series: null;
+              titleGenres?: {
+                genres: Array<{
+                  genre: {
+                    text: string;
+                  };
+                }>;
+              };
+              titleText: {
+                text: string;
+              };
+              titleType: {
+                canHaveEpisodes: boolean;
+                displayableProperty: {
+                  value: {
+                    plainText: string;
+                  };
+                };
+                id: 'movie' | 'tvSeries' | 'tvEpisode' | 'videoGame';
+                text: string;
+              };
+            };
+          }>;
+        };
+        nameFilmBiography: {
+          total: number;
+        };
+        namePortrayal: {
+          total: number;
+        };
+        namePrintBiography: {
+          total: number;
+        };
+        nameText: {
+          text: string;
+        };
+        newCreditCategoryIdToOldCategoryIdObject: Record<string, string>;
+        nickNames: Array<{
+          displayableProperty: {
+            value: {
+              plainText: string;
+            };
+          };
+        }>;
+        nominationsExcludeWins: {
+          total: number;
+        };
+        others: {
+          edges: Array<{
+            node: {
+              relationName: {
+                displayableProperty: {
+                  value: {
+                    plainText: string;
+                  };
+                };
+                name: {
+                  id: string;
+                };
+              };
+              relationshipType: {
+                id: string;
+                text: string;
+              };
+            };
+          }>;
+          pageInfo: {
+            endCursor: string;
+            hasNextPage: boolean;
+          };
+          total: number;
+        };
         otherWorks: {
           edges: Array<{
             node: {
@@ -874,6 +521,40 @@ export default interface Name {
               text: {
                 plaidHtml: string;
               };
+            };
+          }>;
+          total: number;
+        };
+        parents: {
+          edges: Array<{
+            node: {
+              relationName: {
+                displayableProperty: {
+                  value: {
+                    plainText: string;
+                  };
+                };
+                name?: {
+                  id: string;
+                };
+              };
+              relationshipType: {
+                id: string;
+                text: string;
+              };
+            };
+          }>;
+          pageInfo: {
+            endCursor: string;
+            hasNextPage: boolean;
+          };
+          total: number;
+        };
+        personalDetailsExternalLinks: {
+          edges: Array<{
+            node: {
+              label: string;
+              url: string;
             };
           }>;
           total: number;
@@ -902,130 +583,46 @@ export default interface Name {
             };
           };
         }>;
-        parents: {
-          total: number;
-          // pageInfo: {
-          //   hasNextPage: boolean;
-          //   endCursor?: string;
-          // };
-          edges: Array<{
-            node: {
-              relationshipType: {
-                id: string;
-                text: string;
-              };
-              relationName: {
-                name?: {
-                  id: string;
-                };
-                displayableProperty: {
-                  value: {
-                    plainText: string;
-                  };
-                };
-              };
+        prestigiousAwardSummary?: {
+          award: {
+            event: {
+              id: string;
             };
-          }>;
+            id: string;
+            text: string;
+          };
+          nominations: number;
+          wins: number;
         };
-        children: {
-          total: number;
-          // pageInfo: {
-          //   hasNextPage: boolean;
-          //   endCursor?: string;
-          // };
-          edges: Array<{
-            node: {
-              relationshipType: {
-                id: string;
-                text: string;
-              };
-              relationName: {
-                name?: {
-                  id: string;
-                };
-                displayableProperty: {
-                  value: {
-                    plainText: string;
-                  };
-                };
-              };
+        primaryImage: {
+          caption: {
+            plainText: string;
+          };
+          height: number;
+          id: string;
+          url: string;
+          width: number;
+        };
+        professions: Array<{
+          professionCategory: {
+            linkedCreditCategory: {
+              categoryId: string;
             };
-          }>;
-        };
-        others: {
-          total: number;
-          // pageInfo: {
-          //   hasNextPage: boolean;
-          //   endCursor?: string;
-          // };
-          edges: Array<{
-            node: {
-              relationshipType: {
-                id: string;
-                text: string;
-              };
-              relationName: {
-                name: {
-                  id: string;
-                };
-                displayableProperty: {
-                  value: {
-                    plainText: string;
-                  };
-                };
-              };
-            };
-          }>;
-        };
-        personalDetailsExternalLinks: {
-          edges: Array<{
-            node: {
-              url: string;
-              label: string;
-            };
-          }>;
-          total: number;
-        };
-        publicityListings: {
-          total: number;
-        };
-        nameFilmBiography: {
-          total: number;
-        };
-        namePrintBiography: {
-          total: number;
-        };
-        namePortrayal: {
+          };
+        }>;
+        publicityArticle: {
           total: number;
         };
         publicityInterview: {
           total: number;
         };
-        publicityArticle: {
-          total: number;
-        };
-        publicityPictorial: {
+        publicityListings: {
           total: number;
         };
         publicityMagazineCover: {
           total: number;
         };
-        demographicData: Array<null>;
-        triviaTotal: {
-          total: number;
-        };
-        trivia: {
-          edges: Array<{
-            node: {
-              displayableArticle: {
-                body: {
-                  plaidHtml: string;
-                };
-              };
-            };
-          }>;
-        };
-        quotesTotal: {
+        publicityPictorial: {
           total: number;
         };
         quotes: {
@@ -1039,29 +636,147 @@ export default interface Name {
             };
           }>;
         };
-        trademarksTotal: {
+        quotesTotal: {
           total: number;
         };
-        trademarks: {
+        released: {
           edges: Array<{
             node: {
-              displayableArticle: {
-                body: {
-                  plaidHtml: string;
+              credits: {
+                edges: Array<{
+                  node: {
+                    creditedRoles: {
+                      edges: Array<{
+                        node: {
+                          attributes?: Array<{
+                            text: string;
+                          }>;
+                          category: {
+                            categoryId: string;
+                            text: string;
+                            traits: Array<string>;
+                          };
+                          characters?: {
+                            edges: Array<{
+                              node: {
+                                name: string;
+                              };
+                            }>;
+                          };
+                          text?: string;
+                        };
+                      }>;
+                    };
+                    episodeCredits: {
+                      displayableSeasons: {
+                        edges: Array<{
+                          node: {
+                            season: string;
+                          };
+                        }>;
+                        total: number;
+                      };
+                      displayableYears: {
+                        edges: Array<{
+                          node: {
+                            year: string;
+                          };
+                        }>;
+                        total: number;
+                      };
+                      total: number;
+                      yearRange?: {
+                        endYear?: number;
+                        year: number;
+                      };
+                    };
+                    title: {
+                      canRate: {
+                        isRatable: boolean;
+                      };
+                      certificate?: {
+                        rating: string;
+                      };
+                      id: string;
+                      latestTrailer?: {
+                        id: string;
+                      };
+                      originalTitleText: {
+                        text: string;
+                      };
+                      primaryImage?: {
+                        caption: {
+                          plainText: string;
+                        };
+                        height: number;
+                        id: string;
+                        url: string;
+                        width: number;
+                      };
+                      productionStatus: {
+                        currentProductionStage: {
+                          id: string;
+                          text: string;
+                        };
+                        productionStatusHistory: Array<{
+                          status: {
+                            id: string;
+                            text: string;
+                          };
+                        }>;
+                      };
+                      ratingsSummary: {
+                        aggregateRating?: number;
+                        voteCount: number;
+                      };
+                      releaseYear: {
+                        endYear?: number;
+                        year: number;
+                      };
+                      runtime?: {
+                        seconds: number;
+                      };
+                      series: null;
+                      titleGenres?: {
+                        genres: Array<{
+                          genre: {
+                            text: string;
+                          };
+                        }>;
+                      };
+                      titleText: {
+                        text: string;
+                      };
+                      titleType: {
+                        canHaveEpisodes: boolean;
+                        displayableProperty: {
+                          value: {
+                            plainText: string;
+                          };
+                        };
+                        id: string;
+                        text: string;
+                      };
+                    };
+                  };
+                }>;
+                pageInfo: {
+                  endCursor: string;
+                  hasNextPage: boolean;
                 };
+                total: number;
+              };
+              grouping: {
+                groupingId: string;
+                text: string;
               };
             };
           }>;
         };
-        nickNames: Array<{
-          displayableProperty: {
-            value: {
-              plainText: string;
-            };
+        selfVerifiedData: {
+          guildAffiliations: {
+            edges: Array<any>;
           };
-        }>;
-        titleSalariesTotal: {
-          total: number;
         };
         titleSalaries: {
           edges: Array<{
@@ -1085,6 +800,218 @@ export default interface Name {
               };
             };
           }>;
+        };
+        titleSalariesTotal: {
+          total: number;
+        };
+        trademarks: {
+          edges: Array<{
+            node: {
+              displayableArticle: {
+                body: {
+                  plaidHtml: string;
+                };
+              };
+            };
+          }>;
+        };
+        trademarksTotal: {
+          total: number;
+        };
+        trivia: {
+          edges: Array<{
+            node: {
+              displayableArticle: {
+                body: {
+                  plaidHtml: string;
+                };
+              };
+            };
+          }>;
+        };
+        triviaTotal: {
+          total: number;
+        };
+        unreleased: {
+          edges: Array<{
+            node: {
+              credits: {
+                edges: Array<{
+                  node: {
+                    creditedRoles: {
+                      edges: Array<{
+                        node: {
+                          attributes?: Array<{
+                            text: string;
+                          }>;
+                          category: {
+                            categoryId: string;
+                            text: string;
+                            traits: Array<string>;
+                          };
+                          characters?: {
+                            edges: Array<{
+                              node: {
+                                name: string;
+                              };
+                            }>;
+                          };
+                          text: string;
+                        };
+                      }>;
+                    };
+                    episodeCredits: {
+                      displayableSeasons: {
+                        edges: Array<{
+                          node: {
+                            season: string;
+                            displayableProperty: {
+                              value: {
+                                plainText: string;
+                              };
+                            };
+                          };
+                        }>;
+                        total: number;
+                      };
+                      displayableYears: {
+                        total: number;
+                        edges: Array<{
+                          node: {
+                            year: string;
+                            displayableProperty: {
+                              value: {
+                                plainText: string;
+                              };
+                            };
+                          };
+                        }>;
+                      };
+                      total: number;
+                      yearRange: any;
+                    };
+                    title: {
+                      canRate: {
+                        isRatable: boolean;
+                      };
+                      certificate?: {
+                        rating: string;
+                      };
+                      id: string;
+                      latestTrailer: any;
+                      originalTitleText: {
+                        text: string;
+                      };
+                      primaryImage?: {
+                        caption: {
+                          plainText: string;
+                        };
+                        height: number;
+                        id: string;
+                        url: string;
+                        width: number;
+                      };
+                      productionStatus: {
+                        currentProductionStage: {
+                          id: string;
+                          text: string;
+                        };
+                        productionStatusHistory: Array<{
+                          status: {
+                            id: string;
+                            text: string;
+                          };
+                        }>;
+                      };
+                      ratingsSummary: {
+                        aggregateRating: null;
+                        voteCount: number;
+                      };
+                      releaseYear?: {
+                        year: number;
+                        endYear: null;
+                      };
+                      runtime?: {
+                        seconds: number;
+                      };
+                      series: null;
+                      titleGenres?: {
+                        genres: Array<{
+                          genre: {
+                            text: string;
+                          };
+                        }>;
+                      };
+                      titleText: {
+                        text: string;
+                      };
+                      titleType: {
+                        canHaveEpisodes: boolean;
+                        displayableProperty: {
+                          value: {
+                            plainText: string;
+                          };
+                        };
+                        id: string;
+                        text: string;
+                      };
+                    };
+                  };
+                }>;
+                pageInfo: {
+                  endCursor: string;
+                  hasNextPage: boolean;
+                };
+                total: number;
+              };
+              grouping: {
+                groupingId: string;
+                text: string;
+              };
+            };
+          }>;
+        };
+        videos: {
+          edges: Array<{
+            node: {
+              contentType: {
+                displayName: {
+                  value: string;
+                };
+              };
+              id: string;
+              name: {
+                value: string;
+              };
+              primaryTitle: {
+                originalTitleText: {
+                  text: string;
+                };
+                releaseYear: {
+                  endYear?: number;
+                  year: number;
+                };
+                titleText: {
+                  text: string;
+                };
+                titleType: {
+                  canHaveEpisodes: boolean;
+                };
+              };
+              runtime: {
+                value: number;
+              };
+              thumbnail: {
+                height: number;
+                url: string;
+                width: number;
+              };
+            };
+          }>;
+          total: number;
+        };
+        wins: {
+          total: number;
         };
       };
     };

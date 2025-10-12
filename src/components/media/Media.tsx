@@ -1,12 +1,12 @@
 import Image from 'next/future/image';
 import Link from 'next/link';
-import { Media } from 'src/interfaces/shared';
+import type { Media as TMedia } from 'src/interfaces/shared';
 import { getProxiedIMDbImgUrl, modifyIMDbImg } from 'src/utils/helpers';
 import styles from 'src/styles/modules/components/media/media.module.scss';
 
 type Props = {
   className: string;
-  media: Media;
+  media: TMedia;
 };
 
 // TODO: refactor this component.

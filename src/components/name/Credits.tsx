@@ -16,11 +16,11 @@ const Credits = ({ className, data }: Props) => {
       {data.released.map(
         (item, i) =>
           !!item.total && (
-            <details open={i === 0} key={item.category.id}>
+            <details open={i === 0} key={item.category}>
               <summary>
-                {item.category.text} ({item.total})
+                {item.category} ({item.total})
               </summary>
-              <ul className={styles.container} key={item.category.id}>
+              <ul className={styles.container} key={item.category}>
                 {item.titles.map(title => (
                   <CardTitle
                     key={title.id}

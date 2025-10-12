@@ -13,17 +13,18 @@ const cleanName = (rawData: RawName) => {
       id: main.id,
       name: main.nameText.text,
       nameSuffix: main.disambiguator?.text ?? null,
-      knownFor: {
-        title: main.knownFor.edges[0]?.node.title.titleText.text ?? null,
-        role: main.knownFor.edges[0]?.node.summary.principalCategory.text ?? null,
-      },
-      ...(main.primaryImage && {
-        poster: {
-          url: main.primaryImage.url,
-          id: main.primaryImage.id,
-          caption: main.primaryImage.caption.plainText,
-        },
-      }),
+      knownFor: main.knownForV2.credits.map(t => ({
+        title: t.title.titleText.text,
+        roles: t.creditedRoles.edges.map(e => e.node.category.text),
+      })),
+      poster: main.primaryImage
+        ? {
+            url: main.primaryImage.url,
+            id: main.primaryImage.id,
+            caption: main.primaryImage.caption.plainText,
+          }
+        : null,
+
       primaryProfessions: main.primaryProfessions.map(profession => profession.category.text),
       bio: {
         full: main.bio.text.plaidHtml,
@@ -87,59 +88,52 @@ const cleanName = (rawData: RawName) => {
         },
       }),
     },
-    knownFor: misc.knownForFeature.edges.map(item => ({
-      id: item.node.title.id,
-      title: item.node.title.titleText.text,
-      ...(item.node.title.primaryImage && {
+    knownFor: misc.knownForFeatureV2.credits.map(item => ({
+      id: item.title.id,
+      title: item.title.titleText.text,
+      ...(item.title.primaryImage && {
         poster: {
-          id: item.node.title.primaryImage.id,
-          url: item.node.title.primaryImage.url,
-          caption: item.node.title.primaryImage.caption.plainText,
+          id: item.title.primaryImage.id,
+          url: item.title.primaryImage.url,
+          caption: item.title.primaryImage.caption.plainText,
         },
       }),
       type: {
-        id: item.node.title.titleType.id,
-        text: item.node.title.titleType.text,
+        id: item.title.titleType.id,
+        text: item.title.titleType.text,
       },
-      certificate: item.node.title.certificate?.rating ?? null,
-      ...(item.node.title.releaseYear && {
+      certificate: item.title.certificate?.rating ?? null,
+      ...(item.title.releaseYear && {
         releaseYear: {
-          start: item.node.title.releaseYear.year,
-          end: item.node.title.releaseYear.endYear ?? null,
+          start: item.title.releaseYear.year,
+          end: item.title.releaseYear.endYear ?? null,
         },
       }),
-      runtime: item.node.title.runtime?.seconds ?? null,
+      runtime: item.title.runtime?.seconds ?? null,
       ratings: {
-        avg: item.node.title.ratingsSummary.aggregateRating ?? null,
-        numVotes: item.node.title.ratingsSummary.voteCount,
+        avg: item.title.ratingsSummary.aggregateRating ?? null,
+        numVotes: item.title.ratingsSummary.voteCount,
       },
-      genres: item.node.title.titleGenres?.genres.map(genre => genre.genre.text) ?? [],
+      genres: item.title.titleGenres?.genres.map(genre => genre.genre.text) ?? [],
 
       summary: {
-        numEpisodes: item.node.summary.episodeCount ?? null,
-        years: {
-          start: item.node.summary.yearRange.year,
-          end: item.node.summary.yearRange.endYear ?? null,
-        },
-        characters: item.node.summary.principalCharacters?.map(character => character.name) ?? null,
-        jobs: item.node.summary.principalJobs?.map(job => job.text) ?? null,
+        characters:
+          item.creditedRoles.edges[0]?.node.characters.edges?.map(
+            character => character.node.name
+          ) ?? null,
+        attributes: item.creditedRoles.edges[0]?.node.attributes?.map(a => a.text) ?? null,
       },
     })),
     credits: {
-      total: misc.totalCredits?.total ?? null,
+      total: misc.creditSummary.totalCredits?.total ?? null,
       summary: {
-        titleType: misc.creditSummary.titleTypeCategories.map(cat => ({
-          total: cat.total,
-          id: cat.titleTypeCategory.id,
-          label: cat.titleTypeCategory.text,
-        })),
         genres:
           misc.creditSummary.genres.map(genre => ({
             total: genre.total,
-            name: genre.genre.displayableProperty.value.plainText,
+            name: genre.genre.text,
           })) ?? [],
       },
-      released: getCredits(misc.releasedPrimaryCredits),
+      released: getCredits(misc.released),
       // unreleased: getCredits<'unreleased'>(misc.unreleasedPrimaryCredits),
     },
     personalDetails: {
@@ -229,15 +223,15 @@ const cleanName = (rawData: RawName) => {
   return cleanData;
 };
 
-type RawReleased = RawName['props']['pageProps']['mainColumnData']['releasedPrimaryCredits'];
-type RawUnreleased = RawName['props']['pageProps']['mainColumnData']['unreleasedPrimaryCredits'];
+type RawReleased = RawName['props']['pageProps']['mainColumnData']['released'];
+type RawUnreleased = RawName['props']['pageProps']['mainColumnData']['unreleased'];
 const getCredits = <T extends 'released' | 'unreleased' = 'released'>(
   credits: T extends 'released' ? RawReleased : RawUnreleased
 ) =>
-  credits.map(creditItem => ({
-    category: creditItem.category,
-    total: creditItem.credits.total,
-    titles: creditItem.credits.edges.map(item => ({
+  credits.edges.map(e => ({
+    category: e.node.grouping.text,
+    total: e.node.credits.total,
+    titles: e.node.credits.edges.map(item => ({
       id: item.node.title.id,
       title: item.node.title.titleText.text,
       ...(item.node.title.primaryImage && {
@@ -273,8 +267,11 @@ const getCredits = <T extends 'released' | 'unreleased' = 'released'>(
           start: item.node.episodeCredits.yearRange?.year ?? null,
           end: item.node.episodeCredits.yearRange?.endYear ?? null,
         },
-        characters: item.node.characters?.map(char => char.name) ?? null,
-        jobs: item.node.jobs?.map(job => job.text) ?? null,
+        roles: item.node.creditedRoles.edges.map(e => ({
+          
+          characters: e.node.characters?.edges?.map(char => char.node.name) ?? null,
+          attributes: e.node.attributes?.map(job => job.text) ?? null,
+        }))
       },
     })),
   }));
