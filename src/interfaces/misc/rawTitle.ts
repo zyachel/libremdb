@@ -2,7 +2,6 @@ export default interface RawTitle {
   props: {
     pageProps: {
       aboveTheFoldData: {
-        canHaveEpisodes: boolean;
         canRate: {
           isRatable: boolean;
         };
@@ -18,6 +17,16 @@ export default interface RawTitle {
             };
           }>;
         };
+        castV2: Array<{
+          credits: Array<{
+            name: {
+              id: string;
+              nameText: {
+                text: string;
+              };
+            };
+          }>;
+        }>;
         certificate?: {
           rating: string;
         };
@@ -38,6 +47,19 @@ export default interface RawTitle {
         credits: {
           total: number;
         };
+        crewV2: Array<{
+          credits: Array<{
+            name: {
+              id: string;
+              nameText: {
+                text: string;
+              };
+            };
+          }>;
+          grouping: {
+            groupingId: string;
+          };
+        }>;
         criticReviewsTotal: {
           total: number;
         };
@@ -178,6 +200,10 @@ export default interface RawTitle {
                   language: string;
                   value: string;
                 };
+                metricDimensions: Array<{
+                  name: string;
+                  value: string;
+                }>;
                 url: string;
                 videoDefinition: string;
                 videoMimeType?: string;
@@ -216,15 +242,8 @@ export default interface RawTitle {
             };
           }>;
         };
-        principalCredits: Array<{
-          category: {
-            id: string;
-            text: string;
-          };
+        principalCreditsV2: Array<{
           credits: Array<{
-            attributes?: Array<{
-              text: string;
-            }>;
             name: {
               id: string;
               nameText: {
@@ -232,6 +251,10 @@ export default interface RawTitle {
               };
             };
           }>;
+          grouping: {
+            groupingId: string;
+            text: string;
+          };
           totalCredits: number;
         }>;
         production: {
@@ -392,45 +415,56 @@ export default interface RawTitle {
           }>;
           total: number;
         };
-        canHaveEpisodes: boolean;
         canRate: {
           isRatable: boolean;
         };
-        cast: {
-          edges: Array<{
-            node: {
-              attributes?: Array<{
-                text: string;
+        castV2: Array<{
+          credits: Array<{
+            creditedRoles: {
+              edges: Array<{
+                node: {
+                  attributes?: Array<{
+                    text: string;
+                  }>;
+                  category: {
+                    categoryId: string;
+                    text: string;
+                  };
+                  characters?: {
+                    edges: Array<{
+                      node: {
+                        name: string;
+                      };
+                    }>;
+                  };
+                };
               }>;
-              category: {
-                id: string;
+            };
+            episodeCredits: {
+              total: number;
+              yearRange?: {
+                year: number;
+                endYear: number;
+              };
+            };
+            name: {
+              id: string;
+              nameText: {
                 text: string;
               };
-              characters?: Array<{
-                name: string;
-              }>;
-              episodeCredits: {
-                total: number;
-                yearRange?: {
-                  year: number;
-                  endYear: number;
-                };
-              };
-              name: {
-                id: string;
-                nameText: {
-                  text: string;
-                };
-                primaryImage?: {
-                  height: number;
-                  url: string;
-                  width: number;
-                };
+              primaryImage: {
+                height: number;
+                url: string;
+                width: number;
               };
             };
           }>;
-          total: number;
-        };
+          grouping: {
+            groupingId: string;
+            text: string;
+          };
+          totalCredits: number;
+        }>;
         companies: {
           total: number;
         };
@@ -465,32 +499,6 @@ export default interface RawTitle {
             };
           }>;
         };
-        contributionQuestions: {
-          contributionLink: {
-            url: string;
-          };
-          edges: Array<{
-            node: {
-              entity: {
-                primaryImage?: {
-                  url: string;
-                  width: number;
-                  height: number;
-                  caption: {
-                    plainText: string;
-                  };
-                };
-              };
-              questionId: string;
-              questionText: {
-                plainText: string;
-              };
-              contributionLink: {
-                url: string;
-              };
-            };
-          }>;
-        };
         countriesDetails: {
           countries: Array<{
             id: string;
@@ -506,14 +514,20 @@ export default interface RawTitle {
             };
           }>;
         };
-        creators: Array<{
-          name: {
-            id: string;
-            nameText: {
-              text: string;
+        crewV2: Array<{
+          credits: Array<{
+            name: {
+              id: string;
+              nameText: {
+                text: string;
+              };
             };
+          }>;
+          grouping: {
+            groupingId: string;
+            text: string;
           };
-          attributes: any;
+          totalCredits: number;
         }>;
         detailsExternalLinks: {
           edges: Array<{
@@ -525,22 +539,6 @@ export default interface RawTitle {
           }>;
           total: number;
         };
-        directors: Array<{
-          category: {
-            id: string;
-            text: string;
-          };
-          credits: Array<{
-            name: {
-              id: string;
-              nameText: {
-                text: string;
-              };
-            };
-            attributes?: Array<{ text: string }>;
-          }>;
-          totalCredits: number;
-        }>;
         episodes?: {
           episodes: {
             total: number;
@@ -594,6 +592,9 @@ export default interface RawTitle {
                   plaidHtml: string;
                 };
               };
+              title: {
+                id: string;
+              };
             };
           }>;
         };
@@ -633,7 +634,6 @@ export default interface RawTitle {
         moreLikeThisTitles: {
           edges: Array<{
             node: {
-              canHaveEpisodes: boolean;
               canRate: {
                 isRatable: boolean;
               };
@@ -789,6 +789,26 @@ export default interface RawTitle {
           };
           voteCount: number;
         };
+        relatedInterests: {
+          edges: Array<{
+            node: {
+              id: string;
+              primaryImage: {
+                caption: {
+                  plainText: string;
+                };
+                height: number;
+                id: string;
+                url: string;
+                width: number;
+              };
+              primaryText: {
+                text: string;
+              };
+              visibilityLevel: string;
+            };
+          }>;
+        };
         releaseDate?: {
           country: {
             id: string;
@@ -818,11 +838,21 @@ export default interface RawTitle {
           }>;
         };
         runtime: {
+          displayableProperty: {
+            value: {
+              plainText: string;
+            };
+          };
           seconds: number;
         };
         series?: {
           series: {
             runtime?: {
+              displayableProperty: {
+                value: {
+                  plainText: string;
+                };
+              };
               seconds: number;
             };
           };
@@ -946,22 +976,6 @@ export default interface RawTitle {
             currency: string;
           };
         };
-        writers: Array<{
-          category: {
-            id: string;
-            text: string;
-          };
-          credits: Array<{
-            name: {
-              id: string;
-              nameText: {
-                text: string;
-              };
-            };
-            attributes?: Array<{ text: string }>;
-          }>;
-          totalCredits: number;
-        }>;
       };
       tconst: string;
     };

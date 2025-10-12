@@ -20,8 +20,7 @@ const Cast = ({ className, cast }: Props) => {
             link={`/name/${member.id}`}
             name={member.name}
             image={member.image}
-            characters={member.characters}
-            attributes={member.attributes}
+            roles={member.roles}
           />
         ))}
       </ul>

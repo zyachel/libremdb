@@ -56,10 +56,9 @@ const cleanTitle = (rawData: RawTitle) => {
         text: interest.node.primaryText.text,
       })),
       plot: main.plot?.plotText?.plainText || null,
-      primaryCrew: main.principalCredits.map(type => ({
-        type: { category: type.category.text, id: type.category.id },
+      primaryCrew: main.principalCreditsV2.map(type => ({
+        type: { category: type.grouping.text, id: type.grouping.text },
         crew: type.credits.map(person => ({
-          attributes: person.attributes?.map(attr => attr.text) || null,
           name: person.name.nameText.text,
           id: person.name.id,
         })),
@@ -72,13 +71,17 @@ const cleanTitle = (rawData: RawTitle) => {
         },
       }),
     },
-    cast: misc.cast.edges.map(cast => ({
-      name: cast.node.name.nameText.text,
-      id: cast.node.name.id,
-      image: cast.node.name.primaryImage?.url || null,
-      attributes: cast.node.attributes?.map(attr => attr.text) || null,
-      characters: cast.node.characters?.map(name => name.name) || null,
-    })),
+    cast: misc.castV2.flatMap(group =>
+      group.credits.map(cast => ({
+        name: cast.name.nameText.text,
+        id: cast.name.id,
+        image: cast.name.primaryImage?.url || null,
+        roles: cast.creditedRoles.edges.map(role => ({
+          attributes: role.node.attributes?.map(a => a.text) ?? null,
+          characters: role.node.characters?.edges.map(c => c.node.name) ?? null,
+        })),
+      }))
+    ),
     media: {
       ...(main.primaryVideos.edges.length && {
         trailers: main.primaryVideos.edges.map(trailer => ({
