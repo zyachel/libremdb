@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.3.0](https://github.com/zyachel/libremdb/compare/v4.2.0...v4.3.0) (2025-10-12)
+
+
+### Features
+
+* **opensearch:** add abilility to add libremdb as search engine ([821967d](https://github.com/zyachel/libremdb/commit/821967d5f2f7310acdc9553d60bd1e692f4dbd9f))
+* redirect paths from specific languages ([9eef744](https://github.com/zyachel/libremdb/commit/9eef744ab0e402d93842d9e84fe3054969a06776))
+* **title:** adds originalTitle ([0a598ee](https://github.com/zyachel/libremdb/commit/0a598eefb035625461254b3ea9d173277f862d98))
+
+
+### Bug Fixes
+
+* **lockfile:** update lockfile ([fc8ad82](https://github.com/zyachel/libremdb/commit/fc8ad824a1609896480fe03f88adb352d047ebbb))
+* make webmanifest recognisable by browsers ([b6a7bde](https://github.com/zyachel/libremdb/commit/b6a7bde206c03499bc7a443e834bc8384f0c1b27))
+* **media:** fix videos not playing ([0300b3e](https://github.com/zyachel/libremdb/commit/0300b3eec7b17aebfe52449e3e215c7cb2d3184e))
+* **name:** fix crash in name route ([e47496d](https://github.com/zyachel/libremdb/commit/e47496d9c977dd148d193a1bf501d3db39577b38))
+* **title:** center originalTitle in mobile ([9dca154](https://github.com/zyachel/libremdb/commit/9dca1546229e81745ea9680819be4acfa15ed5e9))
+* **title:** fix crash in title route ([1d8ebdd](https://github.com/zyachel/libremdb/commit/1d8ebdd16585d8213cc25770975f4b9f9560a953))
+
 ## [4.2.0](https://github.com/zyachel/libremdb/compare/v4.1.0...v4.2.0) (2025-06-01)
 
 
