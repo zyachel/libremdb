@@ -48,7 +48,6 @@ const Title = (props: Props['titles'][number]) => {
         <ul className={styles.basicInfo} aria-label='quick facts'>
           {props.certificate && <li>{props.certificate}</li>}
           {props.runtime && <li>{props.runtime}</li>}
-          {props.genre && <li>{props.genre}</li>}
         </ul>
         <ul className={styles.ratings}>
           {Boolean(props.rating) && <li className={styles.rating}>
@@ -67,9 +66,9 @@ const Title = (props: Props['titles'][number]) => {
           <span>Plot:</span> {props.plot}
         </p>
         <ul className={styles.otherInfo}>
-          {props.otherInfo.map(([infoHeading, info]) => (
+          {props.otherInfo.map(([infoHeading, ...info]) => (
             <li key={infoHeading}>
-              <span>{infoHeading}:</span> {info}
+              <span>{infoHeading}:</span> {info.join(", ")}
             </li>
           ))}
         </ul>

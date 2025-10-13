@@ -20,7 +20,7 @@ const Names = ({ names }: Props) => {
 };
 export default Names;
 
-const Name = ({ about, image, job, knownFor, knownForLink, name, url }: Props['names'][number]) => {
+const Name = ({ about, image, jobs, knownFor, knownForLink, name, url }: Props['names'][number]) => {
   // const style: CSSProperties = {
   //   backgroundImage: image ? `url(${getProxiedIMDbImgUrl(modifyIMDbImg(image, 300))})` : undefined,
   // };
@@ -43,7 +43,7 @@ const Name = ({ about, image, job, knownFor, knownForLink, name, url }: Props['n
           </OptionalLink>
         </h2>
         <ul className={styles.basicInfo} aria-label='quick facts'>
-          {job && <li>{job}</li>}
+          {jobs && <li>{jobs.join(", ")}</li>}
           {knownFor && (
             <li>
               <OptionalLink href={knownForLink}>{knownFor}</OptionalLink>

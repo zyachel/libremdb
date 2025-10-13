@@ -11,7 +11,6 @@ type DataTitle = {
   year: string;
   certificate: string;
   runtime: string;
-  genre: string;
   plot: string;
   rating: string;
   metascore: string;
@@ -22,7 +21,7 @@ type DataName = {
   image: string | null;
   name: string;
   url: string | null;
-  job: string | null;
+  jobs: string[] | null;
   knownFor: string | null;
   knownForLink: string | null;
   about: string;
@@ -30,10 +29,12 @@ type DataName = {
 
 type DataImage = string;
 
-export type DataKind = 'images' | 'titles' | 'names';
+export type DataKind = 'images' | 'titles' | 'names' | 'people';
 
 export type Data<T extends DataKind> = T extends 'images'
   ? DataImage
   : T extends 'names'
+  ? DataName
+  : T extends 'people'
   ? DataName
   : DataTitle;
