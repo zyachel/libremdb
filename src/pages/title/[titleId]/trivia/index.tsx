@@ -199,28 +199,11 @@ const TriviaPage = ({ data, error, originalPath }: Props) => {
       />
       <Layout className={styles.trivia} originalPath={originalPath}>
         <>
-          {showCopiedToast && (
-            <div
-              style={{
-                position: 'fixed',
-                top: '20px',
-                right: '20px',
-                backgroundColor: '#4caf50',
-                color: 'white',
-                padding: '1rem 1.5rem',
-                borderRadius: '4px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
-                zIndex: 1000,
-                animation: 'fadeIn 0.3s ease-in',
-              }}
-            >
-              ✓ Link copied to clipboard!
-            </div>
-          )}
+          {showCopiedToast && <div className={styles.toast}>✓ Link copied to clipboard!</div>}
           <div className={styles.trivia}>
             <div className={styles.backLink}>
               <Link href={`/title/${meta.titleId}`}>
-                <a className='link'>← Back to {meta.title}</a>
+                <a>← Back to {meta.title}</a>
               </Link>
             </div>
 
@@ -244,7 +227,7 @@ const TriviaPage = ({ data, error, originalPath }: Props) => {
                 <>
                   {regularItems.length > 0 && (
                     <>
-                      <h3 className='heading heading__tertiary' style={{ marginBottom: '1rem' }}>
+                      <h3 className={`heading heading__tertiary ${styles.categoryHeader}`}>
                         Regular Trivia ({regularItems.length}
                         {totalRegular > 0 && ` of ${totalRegular}`})
                       </h3>
@@ -255,27 +238,11 @@ const TriviaPage = ({ data, error, originalPath }: Props) => {
                             id={`regular-${index}`}
                             className={styles.triviaItem}
                           >
-                            <div
-                              style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'flex-start',
-                                marginBottom: '0.5rem',
-                              }}
-                            >
-                              <span style={{ color: '#888', fontSize: '0.85rem' }}>
-                                #{index + 1}
-                              </span>
+                            <div className={styles.triviaHeader}>
+                              <span className={styles.triviaNumber}>#{index + 1}</span>
                               <button
                                 onClick={() => copyLinkToClipboard(index, false)}
-                                style={{
-                                  background: 'none',
-                                  border: 'none',
-                                  color: '#888',
-                                  cursor: 'pointer',
-                                  fontSize: '0.85rem',
-                                  padding: '0.25rem 0.5rem',
-                                }}
+                                className={styles.shareButton}
                                 title='Copy link to this trivia'
                               >
                                 🔗 Share
@@ -295,15 +262,13 @@ const TriviaPage = ({ data, error, originalPath }: Props) => {
                             onClick={loadMoreRegular}
                             disabled={isLoadingRegular || isLoadingAllRegular}
                             className={styles.loadMoreButton}
-                            style={{ marginRight: '1rem' }}
                           >
                             {isLoadingRegular ? 'Loading...' : 'Load More'}
                           </button>
                           <button
                             onClick={loadAllRegular}
                             disabled={isLoadingAllRegular || isLoadingRegular}
-                            className={styles.loadMoreButton}
-                            style={{ backgroundColor: '#5799ef' }}
+                            className={styles.loadMoreButtonSecondary}
                           >
                             {isLoadingAllRegular ? 'Loading All...' : 'Load All Regular Trivia'}
                           </button>
@@ -314,10 +279,7 @@ const TriviaPage = ({ data, error, originalPath }: Props) => {
 
                   {spoilerItems.length > 0 && (
                     <>
-                      <h3
-                        className='heading heading__tertiary'
-                        style={{ marginTop: '3rem', marginBottom: '1rem' }}
-                      >
+                      <h3 className={`heading heading__tertiary ${styles.categoryHeader}`}>
                         Spoiler Trivia ({spoilerItems.length}
                         {totalSpoiler > 0 && ` of ${totalSpoiler}`})
                       </h3>
@@ -328,36 +290,16 @@ const TriviaPage = ({ data, error, originalPath }: Props) => {
                             id={`spoiler-${index}`}
                             className={styles.triviaItemSpoiler}
                           >
-                            <div
-                              style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'flex-start',
-                                marginBottom: '0.5rem',
-                              }}
-                            >
-                              <div>
-                                <div className={styles.spoilerBadge}>⚠ Spoiler</div>
-                              </div>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                <span style={{ color: '#888', fontSize: '0.85rem' }}>
-                                  #{index + 1}
-                                </span>
-                                <button
-                                  onClick={() => copyLinkToClipboard(index, true)}
-                                  style={{
-                                    background: 'none',
-                                    border: 'none',
-                                    color: '#888',
-                                    cursor: 'pointer',
-                                    fontSize: '0.85rem',
-                                    padding: '0.25rem 0.5rem',
-                                  }}
-                                  title='Copy link to this trivia'
-                                >
-                                  🔗 Share
-                                </button>
-                              </div>
+                            <div className={styles.spoilerBadge}>⚠ Spoiler</div>
+                            <div className={styles.triviaHeader}>
+                              <span className={styles.triviaNumber}>#{index + 1}</span>
+                              <button
+                                onClick={() => copyLinkToClipboard(index, true)}
+                                className={styles.shareButton}
+                                title='Copy link to this trivia'
+                              >
+                                🔗 Share
+                              </button>
                             </div>
                             <div
                               className={styles.triviaContent}
@@ -373,15 +315,13 @@ const TriviaPage = ({ data, error, originalPath }: Props) => {
                             onClick={loadMoreSpoiler}
                             disabled={isLoadingSpoiler || isLoadingAllSpoiler}
                             className={styles.loadMoreButton}
-                            style={{ marginRight: '1rem' }}
                           >
                             {isLoadingSpoiler ? 'Loading...' : 'Load More'}
                           </button>
                           <button
                             onClick={loadAllSpoiler}
                             disabled={isLoadingAllSpoiler || isLoadingSpoiler}
-                            className={styles.loadMoreButton}
-                            style={{ backgroundColor: '#5799ef' }}
+                            className={styles.loadMoreButtonSecondary}
                           >
                             {isLoadingAllSpoiler ? 'Loading All...' : 'Load All Spoiler Trivia'}
                           </button>
@@ -403,34 +343,37 @@ const TriviaPage = ({ data, error, originalPath }: Props) => {
   );
 };
 
-type Data = ({ data: Trivia; error: null } | { error: AppError; data: null }) & {
-  originalPath: string;
+export default TriviaPage;
+
+type Data = {
+  meta: Trivia['meta'];
+  items: Trivia['items'];
+  total: number;
+  hasMore: boolean;
 };
 type Params = { titleId: string };
 
-export const getServerSideProps: GetServerSideProps<Data, Params> = async ctx => {
-  const titleId = ctx.params!.titleId;
-  const originalPath = ctx.resolvedUrl;
+const getServerSideProps: GetServerSideProps<
+  | { data: Data; error: null; originalPath: string }
+  | { data: null; error: AppError; originalPath: string }
+> = async context => {
+  const { titleId } = context.params as Params;
+  const key = titleTriviaKey(titleId);
+  const originalPath = context.resolvedUrl;
 
   try {
-    // Fetch only the first page on server-side
-    const cacheKey = `${titleTriviaKey(titleId)}:page:1`;
-    const data = await getOrSetApiCache(cacheKey, trivia, titleId, 1);
-
-    return { props: { data, error: null, originalPath } };
-  } catch (e) {
-    const err = getErrorProperties(e);
-    ctx.res.statusCode = err.statusCode;
-    ctx.res.statusMessage = err.message;
-
-    const error = {
-      message: err.message,
-      statusCode: err.statusCode,
-      stack: err.format(),
+    const data = await getOrSetApiCache(key, trivia, titleId, 1);
+    return {
+      props: {
+        data,
+        error: null,
+        originalPath,
+      },
     };
-    console.error(err);
-    return { props: { error, data: null, originalPath } };
+  } catch (error) {
+    const errorProperties = getErrorProperties(error);
+    return { props: { data: null, error: errorProperties, originalPath } };
   }
 };
 
-export default TriviaPage;
+export { getServerSideProps };
