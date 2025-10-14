@@ -9,12 +9,12 @@ type DataTitle = {
   name: string;
   url: string | null;
   year: string;
-  certificate: string;
-  runtime: string;
-  genre: string;
+  certificate: string | null;
+  runtime: number;
+  genres: string[];
   plot: string;
-  rating: string;
-  metascore: string;
+  rating: {score: number, voteCount: number};
+  metascore: number | null;
   otherInfo: string[][];
 };
 
@@ -22,9 +22,8 @@ type DataName = {
   image: string | null;
   name: string;
   url: string | null;
-  job: string | null;
-  knownFor: string | null;
-  knownForLink: string | null;
+  jobs: string[];
+  knownFor: {title: string, url: string}[];
   about: string;
 };
 

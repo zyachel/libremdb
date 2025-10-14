@@ -1,5 +1,5 @@
 import Image from 'next/future/image';
-import { getProxiedIMDbImgUrl, modifyIMDbImg } from 'src/utils/helpers';
+import { formatNumber, formatTime, getProxiedIMDbImgUrl, modifyIMDbImg } from 'src/utils/helpers';
 import { Card } from 'src/components/card';
 import type { Data } from 'src/interfaces/shared/list';
 import styles from 'src/styles/modules/components/list/titles.module.scss';
@@ -47,12 +47,12 @@ const Title = (props: Props['titles'][number]) => {
         </h2>
         <ul className={styles.basicInfo} aria-label='quick facts'>
           {props.certificate && <li>{props.certificate}</li>}
-          {props.runtime && <li>{props.runtime}</li>}
-          {props.genre && <li>{props.genre}</li>}
+          {props.runtime && <li>{formatTime(props.runtime)}</li>}
+          {props.genres && <li>{props.genres.join(", ")}</li>}
         </ul>
         <ul className={styles.ratings}>
           {Boolean(props.rating) && <li className={styles.rating}>
-            <span className={styles.rating__num}>{props.rating}</span>
+            <span className={styles.rating__num}>{props.rating.score} ({formatNumber(props.rating.voteCount)})</span>
             <svg className={styles.rating__icon}>
               <use href='/svg/sprite.svg#icon-rating'></use>
             </svg>
@@ -67,9 +67,9 @@ const Title = (props: Props['titles'][number]) => {
           <span>Plot:</span> {props.plot}
         </p>
         <ul className={styles.otherInfo}>
-          {props.otherInfo.map(([infoHeading, info]) => (
+          {props.otherInfo.map(([infoHeading, ...info]) => (
             <li key={infoHeading}>
-              <span>{infoHeading}:</span> {info}
+              <span>{infoHeading}:</span> {info.join(", ")}
             </li>
           ))}
         </ul>
