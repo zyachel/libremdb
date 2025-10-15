@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
+import { formatNumber } from 'src/utils/helpers';
 import { CardResult } from 'src/components/card';
-import TitleReviews, { TitleReviewsCursored } from 'src/interfaces/shared/titleReviews';
+import TitleReviews from 'src/interfaces/shared/titleReviews';
 
 type Props = {
   meta: TitleReviews['meta'];
@@ -18,7 +19,7 @@ const Card = ({ meta, className }: Props) => {
       className={className}
     >
       <h1 className='heading heading__primary'>User Reviews</h1>
-      <p>{meta.numReviews}</p>
+      <p>{formatNumber(meta.numReviews)} reviews</p>
     </CardResult>
   );
 };
