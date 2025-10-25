@@ -12,16 +12,16 @@ export const ratings = {
     { name: '9', val: '9' },
     { name: '10', val: '10' },
   ],
-  key: 'ratingFilter',
+  key: 'rating',
 } as const;
 
 export const sortBy = {
   types: [
-    { name: 'Featured', val: 'curated' },
-    { name: 'Review Date', val: 'submissionDate' },
-    { name: 'Total Votes', val: 'totalVotes' },
-    { name: 'Prolific Reviewer', val: 'reviewVolume' },
-    { name: 'Review Rating', val: 'userRating' },
+    { name: 'Featured', val: 'featured' },
+    { name: 'Review Date', val: 'submission_date' },
+    { name: 'Total Votes', val: 'num_votes' },
+    { name: 'Prolific Reviewer', val: 'review_volume' },
+    { name: 'Review Rating', val: 'user_rating' },
   ],
   key: 'sort',
 } as const;
