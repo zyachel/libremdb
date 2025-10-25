@@ -42,17 +42,17 @@ const cleanReviewsList = (reviews: RawReview[]) => {
       return {
         summary: review.review.reviewSummary,
         reviewId: review.review.reviewId,
-        rating: review.review.authorRating,
+        rating: review.review.authorRating ?? null,
         by: {
           name: review.review.author.username.text,
-          link: `/user/${review.review.author.userId}`
+          link: `/user/${review.review.author.userId}`,
         },
         date: review.review.submissionDate,
         isSpoiler: review.review.spoiler,
         reviewHtml: review.review.reviewText,
         responses: {
           upVotes: review.review.helpfulnessVotes.upVotes,
-          downVotes: review.review.helpfulnessVotes.downVotes
+          downVotes: review.review.helpfulnessVotes.downVotes,
         },
       };
     })

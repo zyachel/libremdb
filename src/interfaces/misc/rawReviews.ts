@@ -40,7 +40,7 @@ export type RawReviews = {
           }
           releaseYear: {
             year: number
-            endYear: any
+            endYear?: number
           }
           plot: {
             plotText: {
@@ -55,7 +55,7 @@ export type RawReviews = {
               plainText: string
             }
           }
-          series: any
+          series?: any
           castPageTitle: {
             edges: Array<{
               node: {
@@ -68,7 +68,7 @@ export type RawReviews = {
               }
             }>
           }
-          creatorsPageTitle: Array<any>
+          creatorsPageTitle?: Array<any>
           directorsPageTitle: Array<{
             credits: Array<{
               name: {
@@ -80,7 +80,7 @@ export type RawReviews = {
             }>
           }>
           productionStatus: {
-            restriction: any
+            restriction?: any
             currentProductionStage: {
               id: string
             }
@@ -114,7 +114,7 @@ export type RawReviews = {
               }>
             }
             productionStatus: {
-              restriction: any
+              restriction?: any
               currentProductionStage: {
                 id: string
               }
@@ -297,32 +297,8 @@ export type RawReviews = {
         }
         titleText: string
       }
-      isProPremiumSubscriber: boolean
     }
   }
-  page: string
-  query: {
-    page: string
-    tconst: string
-  }
-  buildId: string
-  assetPrefix: string
-  runtimeConfig: {
-    env: string
-    stage: string
-    cachedGraphQLEndpoint: string
-    graphQLEndpoint: string
-    graphQLTimeout: string
-    adsPublicSiteHost: string
-    jwPlayerAssetEndpoint: string
-    jwPlayerAssetExpirimentalEndpoint: string
-  }
-  isFallback: boolean
-  gssp: boolean
-  locale: string
-  locales: Array<string>
-  defaultLocale: string
-  scriptLoader: Array<any>
 }
 
 export interface RawReview {
@@ -330,7 +306,7 @@ export interface RawReview {
   titleText: string
   review: {
     reviewId: string
-    authorRating: number
+    authorRating?: number
     author: {
       username: {
         text: string
