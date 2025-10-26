@@ -1,16 +1,15 @@
 import Link from 'next/link';
-import { formatDate } from 'src/utils/helpers';
-import List from 'src/interfaces/shared/list';
+import { formatDate, formatNumber } from 'src/utils/helpers';
+import List, { type DataKind } from 'src/interfaces/shared/list';
 import styles from 'src/styles/modules/components/list/meta.module.scss';
 
 type Props = {
-  title: string;
   meta: List['meta'];
-  description: List['description'];
+  kind: DataKind;
 };
-const Meta = ({ title, meta, description }: Props) => {
-  const by = meta.by.link ? (
-    <Link href={meta.by.link}>
+const Meta = ({ meta, kind }: Props) => {
+  const by = meta.by.id ? (
+    <Link href={`/user/${meta.by.id}`}>
       <a className='link'>{meta.by.name}</a>
     </Link>
   ) : (
@@ -19,16 +18,20 @@ const Meta = ({ title, meta, description }: Props) => {
 
   return (
     <header className={styles.container}>
-      <h1 className='heading heading__secondary'>{title}</h1>
+      <h1 className='heading heading__secondary'>{meta.title}</h1>
       <ul className={styles.list}>
-        <li>by {by}</li>
-        <li>{meta.created}</li>
-        {meta.updated && <li>{meta.updated}</li>}
         <li>
-          {meta.num} {meta.type}
+          List of {meta.num} {kind.toLowerCase()} created by {by} on {meta.created}
+          {meta.updated && <span> Last updated on {meta.updated}</span>}
+        </li>
+
+        <li>
+          Viewed {formatNumber(meta.views.totalPageViews)} times in total (
+          {formatNumber(meta.views.weekPageViews)} this week)
         </li>
       </ul>
-      {description && <p>{description}</p>}
+
+      {meta.description && <p>{meta.description}</p>}
     </header>
   );
 };

@@ -1,12 +1,12 @@
 import Image from 'next/future/image';
-import { getProxiedIMDbImgUrl, modifyIMDbImg } from 'src/utils/helpers';
+import { modifyIMDbImg } from 'src/utils/helpers';
 import { Card } from 'src/components/card';
-import type { Data } from 'src/interfaces/shared/list';
+import type { DataName } from 'src/interfaces/shared/list';
 import styles from 'src/styles/modules/components/list/names.module.scss';
 import OptionalLink from './OptionalLink';
 
 type Props = {
-  names: Data<'names'>[];
+  names: DataName[];
 };
 
 const Names = ({ names }: Props) => {
@@ -20,11 +20,7 @@ const Names = ({ names }: Props) => {
 };
 export default Names;
 
-const Name = ({ about, image, job, knownFor, knownForLink, name, url }: Props['names'][number]) => {
-  // const style: CSSProperties = {
-  //   backgroundImage: image ? `url(${getProxiedIMDbImgUrl(modifyIMDbImg(image, 300))})` : undefined,
-  // };
-
+const Name = ({ about, image, jobs, knownFor, name, url }: Props['names'][number]) => {
   return (
     <Card hoverable className={styles.name}>
       <div className={styles.imgContainer}>
@@ -43,14 +39,14 @@ const Name = ({ about, image, job, knownFor, knownForLink, name, url }: Props['n
           </OptionalLink>
         </h2>
         <ul className={styles.basicInfo} aria-label='quick facts'>
-          {job && <li>{job}</li>}
-          {knownFor && (
-            <li>
-              <OptionalLink href={knownForLink}>{knownFor}</OptionalLink>
+          {jobs && <li>{jobs.join(', ')}</li>}
+          {knownFor.map(movie => (
+            <li key={movie.url}>
+              <OptionalLink href={movie.url}>{movie.title}</OptionalLink>
             </li>
-          )}
+          ))}
         </ul>
-        <p>{about}</p>
+        <p className={styles.about}>{about}</p>
       </div>
     </Card>
   );

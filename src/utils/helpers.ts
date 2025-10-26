@@ -126,7 +126,7 @@ export const isLocalStorageAvailable = () => {
   try {
     localStorage.getItem('test');
     return true;
-  } catch (e) {
+  } catch {
     return false;
   }
 };
@@ -139,3 +139,10 @@ export const getErrorProperties = (
   if (error instanceof AppError) return error;
   return new AppError(message, statusCode, error);
 };
+
+const TAG_RE = /<[^>]+>/g;
+const BR_RE = /<br\s*\/?>/gi;
+
+export function htmlToText(html: string) {
+  return html.replace(BR_RE, ' ').replace(TAG_RE, '');
+}
