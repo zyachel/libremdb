@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.4.0](https://github.com/zyachel/libremdb/compare/v4.3.0...v4.4.0) (2025-10-26)
+
+
+### Features
+
+* re-implement title reviews ([8b519fe](https://github.com/zyachel/libremdb/commit/8b519fe8f0d033a2ec8a419e2e242719045c9df0))
+* readd support for lists ([42b5f7f](https://github.com/zyachel/libremdb/commit/42b5f7faf59eb60bff7671319cdd7c3a99c896a6))
+
+
+### Bug Fixes
+
+* adapt to new format for search filters in the reviews page ([85972de](https://github.com/zyachel/libremdb/commit/85972def17a47f45688380cbbfe0e754545a1120))
+* **list:** fix crashes in list route and refactor a bit ([3dd5d14](https://github.com/zyachel/libremdb/commit/3dd5d14058256fecc8a1224c3f6be2f75ffb5e41))
+* **list:** fix type issues and add views to meta ([8fedc57](https://github.com/zyachel/libremdb/commit/8fedc57a38a4354ddcf6cf078ce62555494bd2bb))
+* **reviews:** fix type error ([df2679e](https://github.com/zyachel/libremdb/commit/df2679ed545dd7378978b589cfa516a16f0793bd))
+* **reviews:** handle reviews sans rating ([4acbb99](https://github.com/zyachel/libremdb/commit/4acbb99ea8137e147922987622043920c956bf78))
+
 ## [4.3.0](https://github.com/zyachel/libremdb/compare/v4.2.0...v4.3.0) (2025-10-12)
 
 
