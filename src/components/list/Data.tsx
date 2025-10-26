@@ -1,23 +1,28 @@
-import type { DataKind, Data as TData } from 'src/interfaces/shared/list';
-import type { ToArray } from 'src/interfaces/shared';
+import type List from 'src/interfaces/shared/list';
+import type { DataImage, DataKind, DataTitle } from 'src/interfaces/shared/list';
 import Images from './Images';
 import Names from './Names';
 import Titles from './Titles';
 
 type Props = {
-  data: ToArray<TData<DataKind>>;
+  data: List['data'];
+  kind: DataKind;
 };
 
-const Data = ({ data }: Props) => {
-  if (isDataImages(data)) return <Images images={data} />;
-  if (isDataNames(data)) return <Names names={data} />;
+const Data = ({ kind, data }: Props) => {
+  if (isDataImages(data, kind)) return <Images images={data} />;
+  if (isDataNames(data, kind)) return <Names names={data} />;
+  if (isDataTitles(data, kind)) return <Titles titles={data} />;
 
-  return <Titles titles={data} />;
+  return null;
 };
 export default Data;
 
-const isDataImages = (data: unknown): data is TData<'images'>[] =>
-  Array.isArray(data) && typeof data[0] === 'string';
+const isDataImages = (_data: List['data'], kind: DataKind): _data is DataImage[] =>
+  kind === 'IMAGES';
 
-const isDataNames = (data: unknown): data is TData<'names'>[] =>
-  Array.isArray(data) && data[0] && typeof data[0] === 'object' && 'about' in data[0];
+const isDataNames = (_data: List['data'], kind: DataKind): _data is DataTitle[] =>
+  kind === 'PEOPLE';
+
+const isDataTitles = (_data: List['data'], kind: DataKind): _data is DataTitle[] =>
+  kind === 'PEOPLE';

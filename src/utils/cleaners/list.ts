@@ -1,70 +1,99 @@
-import { Data } from "src/interfaces/shared/list";
-import RawList from "src/interfaces/misc/rawList";
+import RawList from 'src/interfaces/misc/rawList';
+import { htmlToText } from 'src/utils/helpers';
 
-const cleanList = (rawList: RawList, currentPage: number) => {
-  const listData = rawList.props.pageProps.mainColumnData.list;
+const cleanList = (rawList: RawList) => {
+  const p = rawList.props.pageProps;
+  const d = p.mainColumnData.list;
+
   const meta = {
-    title: listData.name?.originalText ?? "",
-    description: listData.description?.originalText?.plainText || null,
+    title: d.name?.originalText ?? null,
+    description: d.description?.originalText?.plainText || null,
     by: {
-      name: listData.author.username.text,
-      link: `/user/${listData.author.userId}`,
+      name: d.author.username.text,
+      id: d.author.userId,
     },
-    created: listData.createdDate,
-    updated: listData.lastModifiedDate,
-    num: listData.items.total,
-    type: listData.listType.id.toLowerCase(),
+    id: d.id,
+    created: d.createdDate,
+    updated: d.lastModifiedDate,
+    num: d.items.total,
+    views: p.aboveTheFoldData.pageViews,
+    cover: d.primaryImage.image.url ?? null,
   };
-  let data: Data<typeof listData.listType.id>[] = [];
+
+  const pagination = {
+    total: p.totalItems,
+    // change later
+    cur: 0,
+    pageNum: p.initialPageNumber,
+  };
 
   // 1. images list
-  if (listData.listType.id === 'IMAGES') {
-    for (let image of listData.imageItems!.edges) {
-      data.push(image.node.listItem.url)
-    }
+  if (d.listType.id === 'IMAGES') {
+    const data = d.imageItems.edges.map(i => ({
+      caption: i.node.listItem.caption?.plainText ?? null,
+      image: i.node.listItem.url,
+      imageId: i.node.listItem.id,
+      names: i.node.listItem.names?.map(n => ({ name: n.nameText.text, nameId: n.id })) ?? [],
+      titles: i.node.listItem.titles?.map(t => ({ name: t.titleText.text, titleId: t.id })) ?? [],
+      userDescription: i.node.description?.originalText?.plaidHtml ?? null,
+    }));
+
+    pagination.cur = data.length;
+
+    return { meta, pagination, data, type: d.listType.id } as const;
   }
 
   // 2. movies list
-  else if (listData.listType.id === 'TITLES') {
-    for (let title of listData.titleListItemSearch!.edges) {
-      data.push({
-        image: title.listItem.primaryImage.url,
-        name: title.listItem.titleText.text,
-        url: `/title/${title.listItem.id}`,
-        year: title.listItem.releaseYear.year.toString(),
-        certificate: title.listItem.certificate?.rating ?? null,
-        runtime: title.listItem.runtime.seconds,
-        genres: title.listItem.titleGenres.genres.map(genre => genre.genre.text),
-        plot: title.listItem.plot.plotText.plainText,
-        rating: { score: title.listItem.ratingsSummary.aggregateRating, voteCount: title.listItem.ratingsSummary.voteCount },
-        metascore: title.listItem.metacritic?.metascore.score ?? null,
-        otherInfo: title.listItem.principalCreditsV2.map(credit => [credit.grouping.text, ...credit.credits.map(credit => credit.name.nameText.text)]),
-      });
-    };
+  if (d.listType.id === 'TITLES') {
+    const data = d.titleListItemSearch.edges.map(title => ({
+      userDescription: title.node.description?.originalText?.plaidHtml ?? null,
+      titleId: title.listItem.id,
+      image: title.listItem.primaryImage?.url ?? null,
+      name: title.listItem.titleText.text,
+      url: `/title/${title.listItem.id}`,
+      year: title.listItem.releaseYear?.year.toString() ?? null,
+      certificate: title.listItem.certificate?.rating ?? null,
+      runtime: title.listItem.runtime?.seconds ?? null,
+      genres: title.listItem.titleGenres?.genres.map(genre => genre.genre.text) ?? [],
+      plot: title.listItem.plot?.plotText?.plainText ?? null,
+      rating: {
+        score: title.listItem.ratingsSummary.aggregateRating,
+        voteCount: title.listItem.ratingsSummary.voteCount,
+      },
+      metascore: title.listItem.metacritic?.metascore.score ?? null,
+      otherInfo: title.listItem.principalCreditsV2.map(credit => [
+        credit.grouping.text,
+        ...credit.credits.map(credit => credit.name.nameText.text),
+      ]),
+    }));
+
+    pagination.cur = data.length;
+
+    return { meta, pagination, data, type: d.listType.id } as const;
   }
 
   // 3. actors list
-  else if (listData.listType.id === 'PEOPLE') {
-    for (let name of listData.nameListItemSearch!.edges) {
-      data.push({
-        image: name.listItem.primaryImage.url,
-        name: name.listItem.nameText.text,
-        url: `/name/${name.listItem.id}`,
-        jobs: name.listItem.professions.map(profession => profession.profession.text),
-        knownFor: name.listItem.knownForV2.credits.map(credit => { return { title: credit.title.titleText.text, url: `/title/${credit.title.id}` } }),
-        about: name.listItem.bio.displayableArticle.body.plaidHtml,
-      });
-    };
+  else if (d.listType.id === 'PEOPLE') {
+    const data = d.nameListItemSearch.edges.map(name => ({
+      nameId: name.listItem.id,
+      userDescription: name.node.description?.originalText?.plaidHtml ?? null,
+      image: name.listItem.primaryImage.url,
+      name: name.listItem.nameText.text,
+      url: `/name/${name.listItem.id}`,
+      jobs: name.listItem.professions.map(profession => profession.profession.text),
+      knownFor: name.listItem.knownForV2.credits.map(credit => {
+        return { title: credit.title.titleText.text, url: `/title/${credit.title.id}` };
+      }),
+      about:
+        // ideally would've first sliced then cleaned up tags, but in v8's perf we trust.
+        htmlToText(name.listItem.bio.displayableArticle.body.plaidHtml).slice(0, 400) + '...',
+    }));
+
+    pagination.cur = data.length;
+    return { meta, pagination, data, type: d.listType.id } as const;
   }
 
-  let pageInfo = (listData.titleListItemSearch ?? listData.nameListItemSearch ?? listData.imageItems)!.pageInfo;
-
-  let pagination = {
-    next: pageInfo.hasNextPage ? `/list/${listData.id}/?page=${currentPage + 1}` : "",
-    prev: pageInfo.hasPreviousPage ? `/list/${listData.id}/?page=${currentPage - 1}` : "",
-    range: `${(currentPage - 1) * 250 + 1} – ${Math.min(currentPage * 250, listData.items.total)}`
-  };
-  return { meta, pagination, data };
-}
+  return { meta, pagination, data: [], type: d.listType.id } as const;
+};
 
 export default cleanList;

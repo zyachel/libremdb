@@ -9,21 +9,24 @@ import getOrSetApiCache from 'src/utils/getOrSetApiCache';
 import list from 'src/utils/fetchers/list';
 import { listKey } from 'src/utils/constants/keys';
 import styles from 'src/styles/modules/pages/list/list.module.scss';
+import { getErrorProperties } from 'src/utils/helpers';
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 const List = ({ data, error, originalPath }: Props) => {
   if (error) return <ErrorInfo {...error} originalPath={originalPath} />;
 
-  const description = data.meta.description || `List created by ${data.meta.by.name} (${data.meta.num} ${data.meta.type}).`
+  const description =
+    data.meta.description ||
+    `List created by ${data.meta.by.name} (${data.meta.num} ${data.type.toLowerCase()}).`;
 
   return (
     <>
-      <Meta title={data.meta.title ?? ""} description={description} />
+      <Meta title={data.meta.title ?? ''} description={description} />
       <Layout className={styles.list} originalPath={originalPath}>
         <ListMeta meta={data.meta} />
-        <Data data={data.data} />
-        <Pagination pagination={data.pagination} />
+        <Data data={data.data} kind={data.type} />
+        <Pagination pagination={data.pagination} listId={data.meta.id} />
       </Layout>
     </>
   );
@@ -42,11 +45,11 @@ export const getServerSideProps: GetServerSideProps<TData, Params> = async ctx =
     const data = await getOrSetApiCache(listKey(listId, pageNum), list, listId, pageNum);
 
     return { props: { data, error: null, originalPath } };
-  } catch (error: any) {
-    const { message = 'Internal server error', statusCode = 500 } = error;
-    ctx.res.statusCode = statusCode;
-    ctx.res.statusMessage = message;
-    return { props: { error: { message, statusCode }, data: null, originalPath } };
+  } catch (error) {
+    const err = getErrorProperties(error);
+    ctx.res.statusCode = err.statusCode;
+    ctx.res.statusMessage = err.message;
+    return { props: { error: { message: err.message, statusCode: err.statusCode, stack: err.format() }, data: null, originalPath } };
   }
 };
 

@@ -6,7 +6,7 @@ import styles from 'src/styles/modules/components/list/names.module.scss';
 import OptionalLink from './OptionalLink';
 
 type Props = {
-  names: Data<'names'>[];
+  names: Data<'PEOPLE'>[];
 };
 
 const Names = ({ names }: Props) => {
@@ -43,15 +43,14 @@ const Name = ({ about, image, jobs, knownFor, name, url }: Props['names'][number
           </OptionalLink>
         </h2>
         <ul className={styles.basicInfo} aria-label='quick facts'>
-          {jobs && <li>{jobs.join(", ")}</li>}
-          {knownFor.map(movie => {
-            <li>
+          {jobs && <li>{jobs.join(', ')}</li>}
+          {knownFor.map(movie => (
+            <li key={movie.url}>
               <OptionalLink href={movie.url}>{movie.title}</OptionalLink>
             </li>
-          })
-        }
+          ))}
         </ul>
-        <p dangerouslySetInnerHTML={{ __html: about }}></p>
+        <p dangerouslySetInnerHTML={{ __html: about }} className={styles.about}></p>
       </div>
     </Card>
   );
