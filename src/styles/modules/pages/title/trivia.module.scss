@@ -1,0 +1,227 @@
+@use '../../../abstracts' as helper;
+
+.trivia {
+  --doc-whitespace: var(--spacer-8);
+  --comp-whitespace: var(--spacer-3);
+
+  display: grid;
+  gap: var(--doc-whitespace);
+  padding: var(--doc-whitespace);
+
+  @include helper.bp('bp-700') {
+    --doc-whitespace: var(--spacer-5);
+  }
+
+  @include helper.bp('bp-450') {
+    padding: var(--spacer-3);
+  }
+}
+
+.backLink {
+  margin-bottom: var(--comp-whitespace);
+  font-size: 0.9em;
+
+  a {
+    @include helper.prettify-link(var(--clr-link));
+  }
+}
+
+.header {
+  margin-bottom: var(--comp-whitespace);
+}
+
+.section {
+  display: grid;
+  gap: var(--comp-whitespace);
+}
+
+.sectionHeader {
+  margin-bottom: var(--spacer-2);
+}
+
+.count {
+  color: var(--clr-text-muted);
+  font-size: 0.9em;
+  margin-left: var(--spacer-2);
+}
+
+.triviaList {
+  display: grid;
+  gap: var(--comp-whitespace);
+}
+
+.triviaItem {
+  padding: var(--spacer-3);
+  background-color: var(--clr-bg-accent);
+  border-radius: 0.5rem;
+  border-left: 4px solid var(--clr-fill);
+  transition: background-color 200ms ease;
+
+  &:hover {
+    background-color: var(--clr-bg-muted);
+  }
+}
+
+.triviaItemSpoiler {
+  composes: triviaItem;
+  border-left-color: #dc2626;
+}
+
+.spoilerBadge {
+  display: inline-block;
+  padding: var(--spacer-0) var(--spacer-1);
+  margin-bottom: var(--spacer-1);
+  background-color: #dc2626;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.triviaContent {
+  line-height: var(--line-height);
+  color: var(--clr-text);
+
+  p {
+    margin-bottom: var(--spacer-1);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    @include helper.prettify-link(var(--clr-link));
+  }
+}
+
+.triviaHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacer-1);
+}
+
+.triviaNumber {
+  color: var(--clr-text-muted);
+  font-size: 0.85em;
+}
+
+.shareButton {
+  background: none;
+  border: none;
+  color: var(--clr-text-muted);
+  cursor: pointer;
+  font-size: 0.85em;
+  padding: var(--spacer-0) var(--spacer-1);
+  transition: color 200ms ease;
+
+  &:hover {
+    color: var(--clr-link);
+  }
+
+  &:focus-visible {
+    @include helper.focus-rules;
+  }
+}
+
+.emptyState {
+  padding: var(--spacer-5) var(--spacer-3);
+  text-align: center;
+  background-color: var(--clr-bg-accent);
+  border-radius: 0.5rem;
+}
+
+.emptyText {
+  color: var(--clr-text-muted);
+  font-size: 1.1em;
+}
+
+.loadMoreButton {
+  padding: var(--spacer-1) var(--spacer-3);
+  font-size: 1rem;
+  background-color: var(--clr-fill);
+  color: var(--clr-bg);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 200ms ease;
+
+  &:hover:not(:disabled) {
+    opacity: 0.85;
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    @include helper.focus-rules;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.loadMoreButtonSecondary {
+  composes: loadMoreButton;
+  background-color: var(--clr-link);
+  color: var(--clr-bg);
+}
+
+.loadMoreContainer {
+  display: flex;
+  gap: var(--spacer-2);
+  justify-content: center;
+  margin-top: var(--comp-whitespace);
+
+  @include helper.bp('bp-450') {
+    flex-direction: column;
+  }
+}
+
+.categoryHeader {
+  margin-top: var(--doc-whitespace);
+  margin-bottom: var(--spacer-2);
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.toast {
+  position: fixed;
+  top: var(--spacer-3);
+  right: var(--spacer-3);
+  background-color: #4caf50;
+  color: #fff;
+  padding: var(--spacer-2) var(--spacer-3);
+  border-radius: 0.25rem;
+  box-shadow: var(--clr-shadow);
+  z-index: 1000;
+  animation: fadeIn 300ms ease-in;
+
+  @include helper.bp('bp-450') {
+    top: var(--spacer-2);
+    right: var(--spacer-2);
+    left: var(--spacer-2);
+    text-align: center;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
