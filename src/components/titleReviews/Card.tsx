@@ -25,7 +25,7 @@ const Card = ({ meta, className }: Props) => {
 };
 
 type BasicCardProps = {
-  meta: TitleReviewsCursored['meta'];
+  meta: TitleReviews['meta'];
   className?: string;
 };
 export const BasicCard = ({ meta, className }: BasicCardProps) => {
