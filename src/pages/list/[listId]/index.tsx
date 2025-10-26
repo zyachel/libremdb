@@ -24,7 +24,7 @@ const List = ({ data, error, originalPath }: Props) => {
     <>
       <Meta title={data.meta.title ?? ''} description={description} />
       <Layout className={styles.list} originalPath={originalPath}>
-        <ListMeta meta={data.meta} />
+        <ListMeta kind={data.type} meta={data.meta} />
         <Data data={data.data} kind={data.type} />
         <Pagination pagination={data.pagination} listId={data.meta.id} />
       </Layout>

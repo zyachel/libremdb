@@ -1,12 +1,12 @@
 import Image from 'next/future/image';
 import { modifyIMDbImg } from 'src/utils/helpers';
 import { Card } from 'src/components/card';
-import type { Data } from 'src/interfaces/shared/list';
+import type { DataName } from 'src/interfaces/shared/list';
 import styles from 'src/styles/modules/components/list/names.module.scss';
 import OptionalLink from './OptionalLink';
 
 type Props = {
-  names: Data<'PEOPLE'>[];
+  names: DataName[];
 };
 
 const Names = ({ names }: Props) => {
@@ -21,10 +21,6 @@ const Names = ({ names }: Props) => {
 export default Names;
 
 const Name = ({ about, image, jobs, knownFor, name, url }: Props['names'][number]) => {
-  // const style: CSSProperties = {
-  //   backgroundImage: image ? `url(${getProxiedIMDbImgUrl(modifyIMDbImg(image, 300))})` : undefined,
-  // };
-
   return (
     <Card hoverable className={styles.name}>
       <div className={styles.imgContainer}>
@@ -50,7 +46,7 @@ const Name = ({ about, image, jobs, knownFor, name, url }: Props['names'][number
             </li>
           ))}
         </ul>
-        <p dangerouslySetInnerHTML={{ __html: about }} className={styles.about}></p>
+        <p className={styles.about}>{about}</p>
       </div>
     </Card>
   );

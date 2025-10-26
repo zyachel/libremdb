@@ -1,5 +1,5 @@
 import RawList from 'src/interfaces/misc/rawList';
-import { htmlToText } from 'src/utils/helpers';
+import { formatDate, htmlToText } from 'src/utils/helpers';
 
 const cleanList = (rawList: RawList) => {
   const p = rawList.props.pageProps;
@@ -13,8 +13,8 @@ const cleanList = (rawList: RawList) => {
       id: d.author.userId,
     },
     id: d.id,
-    created: d.createdDate,
-    updated: d.lastModifiedDate,
+    created: formatDate(d.createdDate),
+    updated: formatDate(d.lastModifiedDate),
     num: d.items.total,
     views: p.aboveTheFoldData.pageViews,
     cover: d.primaryImage.image.url ?? null,
