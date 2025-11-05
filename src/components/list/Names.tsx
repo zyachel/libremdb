@@ -46,7 +46,7 @@ const Name = ({ about, image, jobs, knownFor, name, url }: Props['names'][number
             </li>
           ))}
         </ul>
-        <p className={styles.about}>{about}</p>
+        <p className={styles.about} dangerouslySetInnerHTML={{__html: about}}></p>
       </div>
     </Card>
   );
