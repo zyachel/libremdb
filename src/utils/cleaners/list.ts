@@ -17,7 +17,7 @@ const cleanList = (rawList: RawList) => {
     updated: formatDate(d.lastModifiedDate),
     num: d.items.total,
     views: p.aboveTheFoldData.pageViews,
-    cover: d.primaryImage.image.url ?? null,
+    cover: d.primaryImage?.image?.url ?? null,
   };
 
   const pagination = {
@@ -77,7 +77,7 @@ const cleanList = (rawList: RawList) => {
     const data = d.nameListItemSearch.edges.map(name => ({
       nameId: name.listItem.id,
       userDescription: name.node.description?.originalText?.plaidHtml ?? null,
-      image: name.listItem.primaryImage.url,
+      image: name.listItem.primaryImage?.url || null,
       name: name.listItem.nameText.text,
       url: `/name/${name.listItem.id}`,
       jobs: name.listItem.professions.map(profession => profession.profession.text),

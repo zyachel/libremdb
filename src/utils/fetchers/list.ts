@@ -18,7 +18,7 @@ const list = async (listId: string, pageNum = '1') => {
     const cleanData = cleanList(parsedList);
     return cleanData;
   } catch (err) {
-     if (isSaneError(err) && err.response?.status === 404)
+    if (isSaneError(err) && err.response?.status === 404)
        throw new AppError('not found', 404, err);
 
     throw new AppError('something went wrong', 500, err);
