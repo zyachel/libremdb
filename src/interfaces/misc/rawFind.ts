@@ -15,42 +15,64 @@ export default interface RawFind {
       };
       nameResults: {
         results: Array<{
-          id: string;
-          displayNameText: string;
-          knownForJobCategory: string | 0;
-          knownForTitleText: string | 0;
-          knownForTitleYear: string | 0;
-          avatarImageModel?: {
-            url: string;
-            // maxHeight: number;
-            // maxWidth: number;
-            caption: string;
-          };
-          akaName?: string;
+          index: string;
+          listItem: {
+            nameId: string;
+            nameText: string;
+            knownFor?: {
+              originalTitleText: string;
+              titleId: string;
+              titleText: string;
+              canHaveEpisodes: false;
+              yearRange: {
+                year: number;
+              }
+            };
+            primaryImage?: {
+              url: string;
+              height: number;
+              width: number;
+              caption: string;
+            };
+            professions: string[];
+            bio?: string;
+          }
         }>;
         // nextCursor?: string;
         // hasExactMatches?: boolean;
       };
       titleResults: {
         results: Array<{
-          id: string;
-          titleNameText: string;
-          titleReleaseText?: string;
-          titleTypeText: string;
-          titlePosterImageModel?: {
-            url: string;
-            // maxHeight: number;
-            // maxWidth: number;
-            caption: string;
-          };
-          topCredits: Array<string>;
-          imageType: string;
-          seriesId?: string;
-          seriesNameText?: string;
-          seriesReleaseText?: string;
-          seriesTypeText?: string;
-          seriesSeasonText?: string;
-          seriesEpisodeText?: string;
+          index: string;
+          listItem: {
+            titleId: string;
+            titleText: string;
+            titleType: {
+              canHaveEpisodes: boolean;
+              id: string;
+              text: string;
+            };
+            originalTitleText: string;
+            plot: string;
+            primaryImage: {
+              url: string;
+              height: number;
+              width: number;
+              caption: string;
+            };
+            ratingSummary: {
+              aggregateRating: number;
+              voteCount: number;
+            };
+            releaseDate?: {
+              day: number;
+              month: number;
+              year: number;
+            };
+            runtime: number;
+            trailerId: string,
+            certificate?: string;
+          }
         }>;
         // nextCursor?: string;
         // hasExactMatches?: boolean;

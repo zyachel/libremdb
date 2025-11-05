@@ -1,14 +1,5 @@
 import RawFind from 'src/interfaces/misc/rawFind';
 
-const formatSAndE = (
-  season: string | undefined,
-  episode: string | undefined
-) => {
-  if (season && season !== 'Unknown' && episode && episode !== 'Unknown')
-    return `S${season} E${episode}`;
-  return null;
-};
-
 const cleanFind = (rawFind: RawFind) => {
   const {
     props: { pageProps: d },
@@ -20,37 +11,34 @@ const cleanFind = (rawFind: RawFind) => {
       type: d.findPageMeta.searchType || null,
       titleType: d.findPageMeta.titleSearchType?.[0] || null,
     },
-    people: d.nameResults.results.map(person => ({
-      id: person.id,
-      name: person.displayNameText,
-      aka: person.akaName || null,
-      jobCateogry: person.knownForJobCategory || null,
-      knownForTitle: person.knownForTitleText || null,
-      knownInYear: person.knownForTitleYear || null,
-      ...(person.avatarImageModel && {
+    people: d.nameResults.results.map(({listItem: person}) => ({
+      id: person.nameId,
+      name: person.nameText,
+      bio: person.bio || null,
+      professions: person.professions || null,
+      knownForTitle: person.knownFor?.titleText || null,
+      knownInYear: person.knownFor?.yearRange?.year || null,
+      ...(person.primaryImage && {
         image: {
-          url: person.avatarImageModel.url,
-          caption: person.avatarImageModel.caption,
+          url: person.primaryImage.url,
+          caption: person.primaryImage.caption,
         },
       }),
     })),
-    titles: d.titleResults.results.map(title => ({
-      id: title.id,
-      name: title.titleNameText,
-      type: title.titleTypeText,
-      releaseYear: title.titleReleaseText || null,
-      credits: title.topCredits,
-      ...(title.titlePosterImageModel && {
+    titles: d.titleResults.results.map(({listItem: title}) => ({
+      id: title.titleId,
+      name: title.titleText,
+      type: title.titleType.text,
+      plot: title.plot,
+      releaseYear: title.releaseDate?.year || null,
+      runtime: title.runtime || null,
+      certificate: title.certificate || null,
+      ...(title.primaryImage && {
         image: {
-          url: title.titlePosterImageModel.url,
-          caption: title.titlePosterImageModel.caption,
+          url: title.primaryImage.url,
+          caption: title.primaryImage.caption,
         },
       }),
-      seriesId: title.seriesId || null,
-      seriesName: title.seriesNameText || null,
-      seriesType: title.seriesTypeText || null,
-      seriesReleaseYear: title.seriesReleaseText || null,
-      sAndE: formatSAndE(title.seriesSeasonText, title.seriesEpisodeText),
     })),
     companies: d.companyResults.results.map(company => ({
       id: company.id,

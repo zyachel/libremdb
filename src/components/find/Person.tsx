@@ -7,12 +7,14 @@ type Props = { person: People[number] };
 const Person = ({ person }: Props) => {
   return (
     <CardResult showImage name={person.name} link={`/name/${person.id}`} image={person.image?.url}>
-      <p>{person.aka}</p>
-      <p>{person.jobCateogry}</p>
+      <p>{person.professions.join(", ")}</p>
       <ul className={styles.basicInfo} aria-label='quick facts'>
         {person.knownForTitle && <li>{person.knownForTitle}</li>}
         {person.knownInYear && <li>{person.knownInYear}</li>}
       </ul>
+      {person.bio && (
+        <p className={styles.bio} dangerouslySetInnerHTML={{__html: person.bio}}></p>
+      )}
     </CardResult>
   );
 };
