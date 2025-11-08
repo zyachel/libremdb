@@ -33,6 +33,10 @@ const cleanFind = (rawFind: RawFind) => {
       releaseYear: title.releaseDate?.year || null,
       runtime: title.runtime || null,
       certificate: title.certificate || null,
+      rating: {
+        score: title.ratingSummary.aggregateRating,
+        voteCount: title.ratingSummary.voteCount,
+      },
       ...(title.primaryImage && {
         image: {
           url: title.primaryImage.url,
