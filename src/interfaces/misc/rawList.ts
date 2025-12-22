@@ -46,8 +46,8 @@ export default interface RawList<T extends DataKind = DataKind> {
           };
           createdDate: string;
           lastModifiedDate: string;
-          primaryImage: {
-            image: {
+          primaryImage?: {
+            image?: {
               id: string;
               caption: {
                 plainText: string;
@@ -193,7 +193,7 @@ interface ListTitleItem {
 
 interface ListNameItem {
   id: string;
-  primaryImage: {
+  primaryImage?: {
     url: string;
     caption: {
       plainText: string;
