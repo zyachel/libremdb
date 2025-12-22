@@ -1,4 +1,5 @@
-import RawFind from 'src/interfaces/misc/rawFind';
+import RawFind from "src/interfaces/misc/rawFind";
+import { htmlToText } from "src/utils/helpers";
 
 const cleanFind = (rawFind: RawFind) => {
   const {
@@ -14,7 +15,7 @@ const cleanFind = (rawFind: RawFind) => {
     people: d.nameResults.results.map(({listItem: person}) => ({
       id: person.nameId,
       name: person.nameText,
-      bio: person.bio || null,
+      bio: person.bio ? htmlToText(person.bio).slice(0, 150) + "..." : null,
       professions: person.professions || null,
       knownForTitle: person.knownFor?.titleText || null,
       knownInYear: person.knownFor?.yearRange?.year || null,

@@ -13,7 +13,7 @@ const Person = ({ person }: Props) => {
         {person.knownInYear && <li>{person.knownInYear}</li>}
       </ul>
       {person.bio && (
-        <p className={styles.bio} dangerouslySetInnerHTML={{__html: person.bio}}></p>
+        <p className={styles.bio}>{person.bio}</p>
       )}
     </CardResult>
   );
