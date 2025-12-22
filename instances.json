@@ -65,7 +65,7 @@
     "tor": "http://libremdb.catsarchywsyuss6jdxlypsw5dc7owd5u5tr6bujxb7o6xw2hipqehyd.onion",
     "i2p": "http://qjlgasoy3nxepgzntucmcnb6pryqxakwdu7sxvqzi7spdfootryq.b32.i2p",
     "cdn": false,
-    "country": "US"
+    "country": "US/DE"
   },
   {
     "clearnet": "https://libremdb.r4fo.com/",
