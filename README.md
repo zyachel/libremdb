@@ -46,7 +46,7 @@ Inspired by projects like [teddit](https://codeberg.org/teddit/teddit), [nitter]
 | <https://libremdb.tux.pizza/>            | No                                                                                     | No                                                                          | US      | No         | Operated by [tux.pizza](https://tux.pizza/)                        |
 | <https://libremdb.frontendfriendly.xyz/> | No                                                                                     | No                                                                          | &mdash; | No         | Operated by [frontendfriendly.xyz](https://frontendfriendly.xyz/)  |
 | <https://d.opnxng.com/>                  | No                                                                                     | No                                                                          | SG      | No         | Operated by [Opnxng](https://about.opnxng.com/)                    |
-| <https://libremdb.catsarch.com/>         | [Yes](https://libremdb.catsarchywsyuss6jdxlypsw5dc7owd5u5tr6bujxb7o6xw2hipqehyd.onion) | [Yes](http://qjlgasoy3nxepgzntucmcnb6pryqxakwdu7sxvqzi7spdfootryq.b32.i2p/) | US      | No         | Operated by [Butter Cat](https://catsarch.com/)                    |
+| <https://libremdb.catsarch.com/>         | [Yes](https://libremdb.catsarchywsyuss6jdxlypsw5dc7owd5u5tr6bujxb7o6xw2hipqehyd.onion) | [Yes](http://qjlgasoy3nxepgzntucmcnb6pryqxakwdu7sxvqzi7spdfootryq.b32.i2p/) | US/DE   | No         | Operated by [Butter Cat](https://catsarch.com/)                    |
 | <https://libremdb.r4fo.com/>             | [Yes](http://libremdb.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion/) | No                                                                          | NL      | No         | Operated by [r4fo](https://r4fo.com/)                              |
 | <https://libremdb.privacydev.net/>       | [Yes](http://libremdb.g4c3eya4clenolymqbpgwz3q3tawoxw56yhzk4vugqrl6dtu3ejvhjid.onion/) | No                                                                          | FR      | No         | Operated by [PrivacyDev](https://privacydev.net/)                  |
 | <https://libremdb.ducks.party/>          | No                                                                                     | No                                                                          | NL      | No         | Operated by [ducks.party](https://ducks.party/)                    |
@@ -163,9 +163,9 @@ You can build the docker image using the provided Dockerfile(thanks to [@httpjam
 
 Change the docker-compose file to your liking and run `docker-compose up -d` to start the container, that's all!
 
-### Docker (Built)
+### Docker (Pre-Built)
 
-Use the pre-built images from github packages using `docker pull ghcr.io/zyachel/libremdb:main` to pull latest images.
+Use the pre-built images from github packages using `docker pull ghcr.io/zyachel/libremdb:latest` to pull latest images.
 
 To run the container with pulled image use the following command.
 > Note: Env file is required for running this image. Download and edit this [env file](https://github.com/zyachel/libremdb/blob/main/.env.local.example).
@@ -177,7 +177,7 @@ docker/podman run \
  --name "libremdb" \
  -p 3000:3000 \
  --env-file "path_to_env_file" \
- ghcr.io/zyachel/libremdb:main
+ ghcr.io/zyachel/libremdb:latest
 ```
 
 OR 

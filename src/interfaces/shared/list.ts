@@ -4,36 +4,10 @@ import list from 'src/utils/fetchers/list';
 type List = Awaited<ReturnType<typeof list>>;
 export type { List as default };
 
-type DataTitle = {
-  image: string | null;
-  name: string;
-  url: string | null;
-  year: string;
-  certificate: string;
-  runtime: string;
-  genre: string;
-  plot: string;
-  rating: string;
-  metascore: string;
-  otherInfo: string[][];
-};
+export type DataTitle = Extract<List, { type: 'TITLES' }>['data'][number];
 
-type DataName = {
-  image: string | null;
-  name: string;
-  url: string | null;
-  job: string | null;
-  knownFor: string | null;
-  knownForLink: string | null;
-  about: string;
-};
+export type DataName = Extract<List, { type: 'PEOPLE' }>['data'][number];
 
-type DataImage = string;
+export type DataImage = Extract<List, { type: 'IMAGES' }>['data'][number];
 
-export type DataKind = 'images' | 'titles' | 'names';
-
-export type Data<T extends DataKind> = T extends 'images'
-  ? DataImage
-  : T extends 'names'
-  ? DataName
-  : DataTitle;
+export type DataKind = List['type'];

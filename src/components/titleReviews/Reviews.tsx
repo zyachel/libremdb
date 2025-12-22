@@ -73,7 +73,7 @@ const Review = ({
         )}
       </details>
       <footer className={styles.review__metadata}>
-        <p>{responses}</p>
+        <p>{responses.upVotes} upvotes, {responses.downVotes} downvotes</p>
       </footer>
     </article>
   );

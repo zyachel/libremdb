@@ -4,24 +4,36 @@ import styles from 'src/styles/modules/components/list/pagination.module.scss';
 
 type Props = {
   pagination: List['pagination'];
+  listId: string;
 };
-const Pagination = ({ pagination }: Props) => {
-  const prevLink = pagination.prev && pagination.prev !== '#' ? pagination.prev : null;
-  const nextLink = pagination.next && pagination.next !== '#' ? pagination.next : null;
+const Pagination = ({ listId, pagination }: Props) => {
+  const total = pagination.total;
+  const current = pagination.cur;
+  const pageNumber = pagination.pageNum;
+  const hasPrev = pageNumber > 1;
+  const hasNext = pageNumber * current < total;
 
-  if (!prevLink && !nextLink) return null;
+  if (current >= total) return null;
 
   return (
     <nav aria-label='pagination'>
       <ul className={styles.nav}>
-        <li aria-hidden={!prevLink}>
-          <OptionalLink href={prevLink} className='link'>
+        <li aria-hidden={!hasPrev}>
+          <OptionalLink
+            href={hasPrev ? `/list/${listId}/?page=${pageNumber - 1}` : null}
+            className='link'
+          >
             Prev
           </OptionalLink>
         </li>
-        <li>{pagination.range} shown</li>
-        <li aria-hidden={!nextLink}>
-          <OptionalLink href={nextLink} className='link'>
+        <li>
+          {current} out of {total} shown
+        </li>
+        <li aria-hidden={!hasNext}>
+          <OptionalLink
+            href={hasNext ? `/list/${listId}/?page=${pageNumber + 1}` : null}
+            className='link'
+          >
             Next
           </OptionalLink>
         </li>
