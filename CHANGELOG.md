@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [4.5.0](https://github.com/zyachel/libremdb/compare/v4.4.0...v4.5.0) (2025-12-22)
+
+
+### Features
+
+* display rating of title search results ([144aa67](https://github.com/zyachel/libremdb/commit/144aa6706cd39830b9fb681df556deb15f0b21a5))
+
+
+### Bug Fixes
+
+* biographies in name lists contain raw html ([126c879](https://github.com/zyachel/libremdb/commit/126c8799438424c85a046df1973c4971f63e287c))
+* **find:** change html bio to plain text ([e61c2ce](https://github.com/zyachel/libremdb/commit/e61c2ced84958d81a3d885a1155cad4690346b57))
+* name lists containing a name without image don't load ([082ad98](https://github.com/zyachel/libremdb/commit/082ad988d40f57a1e34d8360f0e6266ed60a2fc2))
+* search doesn't work ([d0898c5](https://github.com/zyachel/libremdb/commit/d0898c518bbfebd752cc86f45898c7db1d603eeb))
+
 ## [4.4.0](https://github.com/zyachel/libremdb/compare/v4.3.0...v4.4.0) (2025-10-26)
 
 
