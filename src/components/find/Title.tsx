@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { formatNumber, formatTime } from 'src/utils/helpers';
 import { CardResult } from 'src/components/card';
 import { Titles } from 'src/interfaces/shared/search';
 import styles from 'src/styles/modules/components/find/title.module.scss';
@@ -10,25 +10,21 @@ const Title = ({ title }: Props) => {
     <CardResult showImage name={title.name} link={`/title/${title.id}`} image={title.image?.url}>
       <ul aria-label='quick facts' className={styles.basicInfo}>
         <li>{title.type}</li>
-        <li>{title.sAndE}</li>
+        {title.runtime && (
+          <li>{formatTime(title.runtime)}</li>
+        )}
         <li>{title.releaseYear}</li>
-      </ul>
-      {!!title.credits.length && (
-        <p className={styles.stars}>
-          <span>Stars: </span>
-          {title.credits.join(', ')}
-        </p>
-      )}
-      {title.seriesId && (
-        <ul aria-label='quick series facts' className={styles.seriesInfo}>
-          {title.seriesType && <li>{title.seriesType}</li>}
-          <li>
-            <Link href={`/title/${title.seriesId}`}>
-              <a className='link'>{title.seriesName}</a>
-            </Link>
+        {Boolean(title.rating.score) && (
+          <li className={styles.rating}>
+            <svg aria-label="Rating" className={styles.rating__icon}>
+              <use className={styles.rating__use} href='/svg/sprite.svg#icon-rating'></use>
+            </svg>
+           {title.rating.score} ({formatNumber(title.rating.voteCount)})
           </li>
-          {title.seriesReleaseYear && <li>{title.seriesReleaseYear}</li>}
-        </ul>
+        )}
+      </ul>
+      {title.plot && (
+        <p className={styles.plot} dangerouslySetInnerHTML={{__html: title.plot}}></p>
       )}
     </CardResult>
   );
