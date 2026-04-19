@@ -61,13 +61,6 @@
     "country": "SG"
   },
   {
-    "clearnet": "https://libremdb.catsarch.com/",
-    "tor": "http://libremdb.catsarchywsyuss6jdxlypsw5dc7owd5u5tr6bujxb7o6xw2hipqehyd.onion",
-    "i2p": "http://qjlgasoy3nxepgzntucmcnb6pryqxakwdu7sxvqzi7spdfootryq.b32.i2p",
-    "cdn": false,
-    "country": "US/DE"
-  },
-  {
     "clearnet": "https://libremdb.r4fo.com/",
     "tor": "http://libremdb.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion/",
     "cdn": false,
