@@ -39,7 +39,7 @@ const TitleInfo = ({ data, error, originalPath }: Props) => {
         <Media className={styles.media} media={data.media} />
         <Cast className={styles.cast} cast={data.cast} />
         <div className={styles.textarea}>
-          <DidYouKnow data={data.didYouKnow} />
+          <DidYouKnow data={data.didYouKnow} titleId={data.titleId} />
           <Reviews reviews={data.reviews} />
         </div>
         <Info className={styles.infoarea} info={info} />

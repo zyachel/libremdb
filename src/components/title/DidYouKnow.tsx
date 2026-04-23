@@ -1,12 +1,13 @@
 import Link from 'next/link';
-import { DidYouKnow } from 'src/interfaces/shared/title';
+import type { DidYouKnow as DidYouKnowType } from 'src/interfaces/shared/title';
 import styles from 'src/styles/modules/components/title/did-you-know.module.scss';
 
 type Props = {
-  data: DidYouKnow;
+  data: DidYouKnowType;
+  titleId: string;
 };
 
-const DidYouKnow = ({ data }: Props) => {
+const DidYouKnow = ({ data, titleId }: Props) => {
   if (!Object.keys(data).length)
     return (
       <section className={styles.didYouKnow}>
@@ -20,7 +21,16 @@ const DidYouKnow = ({ data }: Props) => {
       <div className={styles.container}>
         {data.trivia && (
           <div className={styles.item}>
-            <h3 className='heading heading__tertiary'>Trivia</h3>
+            <h3 className='heading heading__tertiary'>
+              Trivia
+              {data.trivia.total > 1 && (
+                <Link href={`/title/${titleId}/trivia`}>
+                  <a className='link' style={{ fontSize: '0.9rem', marginLeft: '1rem' }}>
+                    See all {data.trivia.total} trivia »
+                  </a>
+                </Link>
+              )}
+            </h3>
             <div
               className={styles.item__desc}
               dangerouslySetInnerHTML={{ __html: data.trivia.html }}
